@@ -5,7 +5,7 @@ ReactDOM.render(
   <div>
 
 
-Auth
+Auth.
  
   </div>,
   document.getElementById('root')

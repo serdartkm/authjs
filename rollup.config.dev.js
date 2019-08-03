@@ -76,8 +76,8 @@ const libPlugins = [
 
 module.exports = [
   {
-    input: './demo/src/index.js',
-    // external: ["react", "react-dom", "prop-types", "react-router-dom"],
+    input: './demo/client/index.js',
+     external: ["react", "react-dom", "prop-types"],
     output: {
       file: './demo/public/index.js',
       format: 'iife',
@@ -93,60 +93,6 @@ module.exports = [
       },
     },
     plugins: appPlugin,
-  },
-  {
-    input: './demo/src/index.js',
-    // external: ["react", "react-dom", "prop-types", "react-router-dom"],
-    output: {
-      file: './demo/public/index.js',
-      format: 'iife',
-      sourcemap: 'inline',
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'prop-types': 'PropTypes',
-        '@rtcjs/webrtc-signaling':'SignalingService',
-        '@rtcjs/webrtc-peer':'PeerConnection',
-        '@rtcjs/ui':'VideoClientUI',
-        '@rtcjs/contacts':'Contacts'
-      },
-    },
-    plugins: appPlugin,
-  },
-  /*
-  {
-    input: './packages/@webrtc-ui/src/index.js',
-    external: ['react', 'debug'],
-    output: [
-      {
-        file: './packages/@webrtc-ui/dist/index.esm.js',
-        format: 'es',
-      },
-    ],
-    plugins: libPlugins,
-  },
+  }
 
-  {
-    input: './packages/@webrtc-rtc/src/index.js',
-    external: ['react', 'debug', 'create-react-context'],
-    output: [
-      {
-        file: './packages/@webrtc-rtc/dist/index.esm.js',
-        format: 'es',
-      },
-    ],
-    plugins: libPlugins,
-  },
-  {
-    input: './packages/@webrtc-signaling/src/index.js',
-    external: ['react', 'debug'],
-    output: [
-      {
-        file: './packages/@webrtc-signaling/dist/index.esm.js',
-        format: 'es',
-      },
-    ],
-    plugins: libPlugins,
-  },
-  */
 ];
