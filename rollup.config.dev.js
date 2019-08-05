@@ -46,7 +46,7 @@ const appPlugin = [
   }),
 
   serve({
-    contentBase: './demo/public',
+    contentBase: './packages/demo/public',
     port: '10006',
     historyApiFallback: true,
   }),
@@ -76,10 +76,10 @@ const libPlugins = [
 
 module.exports = [
   {
-    input: './demo/client/index.js',
+    input: './packages/demo/client/index.js',
      external: ["react", "react-dom", "prop-types"],
     output: {
-      file: './demo/public/index.js',
+      file: './packages/demo/public/index.js',
       format: 'iife',
       sourcemap: 'inline',
       globals: {

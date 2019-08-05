@@ -1,1 +1,1 @@
-{"ignore": ["demo/client/*.js","demo/public/*.js"] }
+{"ignore": ["demo/client/*.js","demo/public/*.js"],"delay": "1400" }

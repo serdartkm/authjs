@@ -1,24 +1,44 @@
-import React, { Component } from 'react'
-import decode from "jwt-decode";
-class EmailPassword extends Component {
+import React from 'react'
 
-    state={loading:false,error:""}
+export const EmailPasswordContext = React.createContext()
+class EmailPasswordProvider extends React.Component {
+    state = { loading: false, error: "", isLoggedIn: false }
+    componentWillMount() {
+        
+        if (this.loggedIn()) {
+         
+           this.setState({ isLoggedIn: true })
+        }
 
-
-    login = (username, password) => {
+    }
+    signup = ({ username, password }) => {
+        this.setState({ loading: true })
+        return this.fetch(`/signup`, {
+            method: "POST",
+            body: JSON.stringify({ username, password })
+        }).then(res => {
+            console.log("signup-----",res)
+            this.setToken(res.token); // Setting the token in localStorage
+            return Promise.resolve(res);
+        })
+    }
+    login = ({ username, password }) => {
         // Get a token from api server using the fetch api
-
-            this.setState({loading:true})
+        this.setState({ loading: true })
         return this.fetch(`/log-in`, {
             method: "POST",
             body: JSON.stringify({
                 username,
                 password
             })
-    
+
         }).then(res => {
+            //console.log('res----', res)
+            this.setState({isLoggedIn:true})
             this.setToken(res.token); // Setting the token in localStorage
             return Promise.resolve(res);
+        }).catch((err) => {
+            console.log("error login", err)
         })
     };
 
@@ -52,6 +72,7 @@ class EmailPassword extends Component {
     };
 
     logout = () => {
+        this.setState({isLoggedIn:false})
         // Clear user token and profile data from localStorage
         localStorage.removeItem("id_token");
     };
@@ -74,7 +95,6 @@ class EmailPassword extends Component {
         if (this.loggedIn()) {
             headers["Authorization"] = "Bearer " + this.getToken();
         }
-
         return fetch(url, {
             headers,
             ...options
@@ -84,31 +104,39 @@ class EmailPassword extends Component {
     };
 
     _checkStatus = response => {
-        this.setState({loading:false})
+        
+        this.setState({ loading: false })
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) {
+
             // Success status lies between 200 to 300
             return response;
         } else {
-  
+            
             var error = new Error(response.statusText);
-            this.setState({error})
+            this.setState({ error })
             error.response = response;
             throw error;
         }
     };
-    render() {
-        const {children}= this.props
-        const {loading,error}= this.state
-        return children({
-            login:this.login,
-            loggedIn:this.loggedIn,
-            logout:this.logout,
-            loading,
-            error
 
-        })
+    render() {
+        const { children } = this.props
+        const { loading, error, isLoggedIn } = this.state
+        return (<EmailPasswordContext.Provider value={{
+            login: this.login,
+            isLoggedIn,
+            loggedIn: this.loggedIn,
+            logout: this.logout,
+            loading,
+            error,
+            signup: this.signup,
+            getToken:this.getToken
+        }}>
+            <div>{children}</div>
+        </EmailPasswordContext.Provider>
+        )
     }
 }
 
-export default EmailPassword
+export default EmailPasswordProvider

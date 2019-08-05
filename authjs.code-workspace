@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/personalcomputer/rtcjs"
+		},
+		{
+			"path": "/Users/personalcomputer/mern-auth"
+		},
+		{
+			"path": "/Users/personalcomputer/expressapp"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "authjs"
+	}
+}

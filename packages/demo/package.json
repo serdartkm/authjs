@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "events": {
+    "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+  "@authjs/mern-react":"*",
+  "@authjs/mern-express":"*"
   },
   "keywords": [],
   "author": "",
