@@ -6,7 +6,7 @@ import changePassword from './helper/changePassword'
 import login from './helper/login'
 import profile from './helper/profile'
 import recover from './helper/recover'
-
+import users from './helper/users'
 export default ({collection,resetUrl}) => {
     return async (req, res, next) => {
         if (req.path === "/log-in") {
@@ -25,6 +25,10 @@ export default ({collection,resetUrl}) => {
         if(req.path==="/recover"){
             console.log("recover function invoked")
             recover({req,res,collection,resetUrl})
+        }
+        if(req.path==="/users"| req.path==="/users/:id"){
+            console.log("/users called")
+            users({req,res,collection})
         }
        
     }

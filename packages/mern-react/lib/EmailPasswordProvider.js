@@ -1,5 +1,6 @@
 import React from 'react'
 import validate from '@authjs/validation'
+import axios from 'axios'
 export const EmailPasswordContext = React.createContext()
 
 const initValidation = {
@@ -15,6 +16,9 @@ class EmailPasswordProvider extends React.Component {
             this.setState({ isLoggedIn: true })
         }
     }
+
+
+
     setToken = ({ token }) => {
         this.setState({ token })
     }
@@ -125,7 +129,7 @@ class EmailPasswordProvider extends React.Component {
             this.setToken(res.token); // Setting the token in localStorage
             return Promise.resolve(res);
         }).catch((error) => {
-            console.log("error login---....", error)
+      
             this.setState({ serverError: error })
         })
     }

@@ -3,7 +3,6 @@ import { EmailPasswordContext } from '@authjs/mern-react'
 import CustomInput from './CustomInput'
 import {Redirect} from 'react-router-dom'
 const SignUp = () => {
-
     return (
         <EmailPasswordContext.Consumer>{({ onChange, email, password, signup, validation, isLoggedIn }) => {
           if(!isLoggedIn)
@@ -23,12 +22,9 @@ const SignUp = () => {
                     </div>
                 </div>
             )
-
             return <Redirect to="/" />
         }}</EmailPasswordContext.Consumer>
     )
-  
-
 }
 
 export default SignUp

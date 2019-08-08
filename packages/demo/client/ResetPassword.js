@@ -13,7 +13,6 @@ const ResetPassword = () => {
                             <legend>Reset Password:</legend>
                             <CustomInput placeholder="New Password" name="password" type="password" value={password} onChange={onChange} validation={{ ...validation.password }} label="New Password" />
                             <CustomInput placeholder="Confirm Password" name="confirm" type="password" value={confirm} onChange={onChange} validation={{ ...validation.password }} label="Confirm" />
-
                             <div>
                                 <button className="btn btn-primary" onClick={resetPassword}>Reset Password</button>
                             </div>
