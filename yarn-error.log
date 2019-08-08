@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js install --mutex network:42424 --non-interactive
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js install
 
 PATH: 
-  /Users/personalcomputer/authjs/node_modules/.bin:/Users/personalcomputer/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/bin:/var/folders/c0/k50hp1s160dcqj66fsfty18r0000gn/T/yarn--1564935953120-0.8829641345171786:/Users/personalcomputer/authjs/node_modules/.bin:/Users/personalcomputer/.config/yarn/link/node_modules/.bin:/Users/personalcomputer/authjs/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   1.17.3
@@ -30,6 +30,8 @@ npm manifest:
     "devDependencies": {
       "@babel/cli": "^7.5.5",
       "dotenv":"8.0.0",
+      "classnames":"2.2.6",
+      "nodemailer":"6.3.0",
       "body-parser":"^1.19.0",
       "@babel/core": "^7.5.5",
       "@babel/node": "^7.5.5",
@@ -8397,6 +8399,11 @@ Lockfile:
     integrity sha512-fZPsuhhUHMTlfkhDLGtfY80DSJTjOcx+qD1j5pqPkuhUHVS7xHZIg9EE4DHK8O3f0zTxXHX5VIkDG8pu98/wfQ==
     dependencies:
       semver "^5.3.0"
+  
+  nodemailer@6.3.0:
+    version "6.3.0"
+    resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.3.0.tgz#a89b0c62d3937bdcdeecbf55687bd7911b627e12"
+    integrity sha512-TEHBNBPHv7Ie/0o3HXnb7xrPSSQmH1dXwQKRaMKDBGt/ZN54lvDVujP6hKkO/vjkIYL9rK8kHSG11+G42Nhxuw==
   
   nodemon@1.18.11:
     version "1.18.11"

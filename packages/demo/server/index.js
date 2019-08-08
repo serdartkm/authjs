@@ -10,19 +10,20 @@ const app =express()
 app.use(bodyParser.json())
 let client =null;
 let db =null;
-(async()=>{
 
+(async()=>{
     try {
         client = await MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true });
         db = await client.db("demo");
         const collection = db.collection("users");
-        app.use(MernAuthMiddleware(collection));
+        app.use(express.static(path.join(__dirname, '../public')))
+        app.use(MernAuthMiddleware({collection,resetUrl:"http://localhost:3000/#/resetpass"}));
     } catch (error) {
         console.log("mongodb connection error",error)
     }
 })()
 
-app.use(express.static(path.join(__dirname, '../public')))
+
 /*
 process.once('SIGUSR2',()=>{
     process.kill(process.pid,'SIGUSR2')

@@ -1,38 +1,34 @@
 import React from 'react'
-import {EmailPasswordContext} from '@authjs/mern-react'
-class Login extends React.Component {
-    static contextType = EmailPasswordContext;
-    state = { email: "", password: "" }
- 
-    onChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({ [name]: value })
-    }
-    login=()=>{
-        const {email,password}=this.state
-        this.context.login({username:email,password})
-    }
-    logout=()=>{
-        this.context.logout()
-    }
-    render() {
-        const { email, password } = this.state
-        return (<div>Login <div>
-                    <div>
-                        <input onChange={this.onChange} value={email} name="email" type="text" placeholder="Enter Email" />
-                    </div>
-                    <div>
-                        <input onChange={this.onChange} value={password} name="password" type="password" placeholder="Enter Password" />
-                    </div>
-                    <div>
-                        <button onClick={this.login}>Login</button>
+import { EmailPasswordContext } from '@authjs/mern-react'
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import CustomInput from './CustomInput'
+
+const Login =()=>{
+    return (<EmailPasswordContext.Consumer>
+        {({email,password,login,onChange,validation,isLoggedIn})=>{
+            if(!isLoggedIn)
+            return(
+                <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-sm-12 col-md-6">
+                        <fieldset>
+                            <legend>Login:</legend>
+                            <CustomInput placeholder="Email Address" name="email" type="email" value={email} onChange={onChange} validation={{ ...validation.email }} label="Email Address" />
+                            <CustomInput placeholder="Password" name="password" type="password" value={password} onChange={onChange} validation={{ ...validation.password }} label="Password" />
+                            <div>
+                                <button type='submit' className="btn btn-primary" onClick={login}>Login</button>
+                            </div>
+                            <Link to="/recover">Forgot Password !</Link>
+                        </fieldset>
                     </div>
                 </div>
-
-        </div>)
-    }
-
+            </div>
+            )
+            return <Redirect to="/" />
+        }}
+    </EmailPasswordContext.Consumer>)
 }
+
 
 export default Login
