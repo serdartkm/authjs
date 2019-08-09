@@ -40,19 +40,19 @@ class EmailPasswordProvider extends React.Component {
             return
         }
         this.setState({ loading: true })
-        return this.fetch(`/recover`, {
-            method: "POST",
-            body: JSON.stringify({ email })
-        }).then(res => {
-            if(res.validation.email.isValid){
-                this.setState({validation:{...res.validation}})
-            }
-            // Setting the token in localStorage
-            return Promise.resolve(res);
-        }).catch((error) => {
-            this.setState({ serverError:error })
-        })
+        return axios.post('/recover', { email })
+            .then(response => {
+                const { data } = response
+                if (data.validation.email.isValid) {
+                    this.setState({ validation: { ...data.validation } })
+                }
+            })
+            .catch(error => {
+                this.setState({ serverError: error })
+            })
+
     }
+
     resetPassword = () => {
         const { password, token } = this.state
         const validationResult = validate({ password })
@@ -62,17 +62,15 @@ class EmailPasswordProvider extends React.Component {
             return
         }
         this.setState({ loading: true })
-        return this.fetch(`/change`, {
-            method: "POST",
-            body: JSON.stringify({ password, token })
-        }).then(res => {
-            console.log("change pass----", res)
-            this.setState({ message: res })
-            return Promise.resolve(res);
-        }).catch((error) => {
-            this.setState({ error })
+        return axios.post('/change', { password, token })
+            .then(response => {
+                const { data } = response
+                this.setState({ message: data })
+            })
+            .catch(error => {
+                this.setState({ serverError: error })
+            })
 
-        })
     }
 
     signup = () => {
@@ -81,27 +79,24 @@ class EmailPasswordProvider extends React.Component {
         this.setState({ validation: { ...validationResult } })
         //Client side validation
         if (!validationResult.email.isValid | !validationResult.password.isValid) {
-
             return
         }
         this.setState({ loading: true })
-        return this.fetch(`/signup`, {
-            method: "POST",
-            body: JSON.stringify({ email, password })
-        }).then(res => {
-            //Server side validation
-            if (res.token === undefined) {
-                this.setState({ validation: { ...res.validation } })
-                return
-            }
-
-            this.setState({ isLoggedIn: true })
-            this.setToken(res.token); // Setting the token in localStorage
-            return Promise.resolve(res);
-        }).catch((error) => {
-            this.setState({ serverError: error })
-        })
+        return axios.post('/signup', { email, password })
+            .then(response => {
+                const { data } = response
+                //Server side validation
+                if (data.token === undefined) {
+                    this.setState({ validation: { ...data.validation } })
+                    return
+                }
+                this.setState({ isLoggedIn: true })
+                this.setToken(data.token); // Setting the token in localStorage
+            }).catch(error => {
+                this.setState({ serverError: error })
+            })
     }
+
     login = () => {
         const { email, password } = this.state
         const validationResult = validate({ email, password })
@@ -113,23 +108,24 @@ class EmailPasswordProvider extends React.Component {
         }
         // Get a token from api server using the fetch api
         this.setState({ loading: true })
-        return this.fetch(`/log-in`, {
-            method: "POST",
-            body: JSON.stringify({
+
+        return axios.get('/log-in', {
+            params: {
                 email,
                 password
-            })
-        }).then(res => {
+            }
+        }).then((response) => {
+            const { data } = response
+            console.log("axios response", response)
             //Server side validation
-            if (res.token === undefined) {
-                this.setState({ validation: { ...res.validation } })
+            if (data.token === undefined) {
+                this.setState({ validation: { ...data.validation } })
                 return
             }
             this.setState({ isLoggedIn: true })
-            this.setToken(res.token); // Setting the token in localStorage
-            return Promise.resolve(res);
+            this.setToken(data.token); // Setting the token in localStorage
+
         }).catch((error) => {
-      
             this.setState({ serverError: error })
         })
     }
@@ -176,45 +172,10 @@ class EmailPasswordProvider extends React.Component {
         return answer;
     };
 
-    fetch = (url, options) => {
-        // performs api calls sending the required authentication headers
-        const headers = {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-        };
-        // Setting Authorization header
-        // Authorization: Bearer xxxxxxx.xxxxxxxx.xxxxxx
-        if (this.loggedIn()) {
-            headers["Authorization"] = "Bearer " + this.getToken();
-        }
-        return fetch(url, {
-            headers,
-            ...options
-        })
-            .then(this._checkStatus)
-            .then(response => response.json());
-    };
-
-    _checkStatus = response => {
-
-        this.setState({ loading: false })
-        // raises an error in case response status is not a success
-        if (response.status >= 200 && response.status < 300) {
-
-            // Success status lies between 200 to 300
-            return response;
-        } else {
-
-            var error = new Error(response.statusText);
-            this.setState({ error })
-            error.response = response;
-            throw error;
-        }
-    };
 
     render() {
         const { children } = this.props
-        const { loading, isLoggedIn, email, password, validation } = this.state
+        const { loading, isLoggedIn, email, password, validation, confirm } = this.state
         return (<EmailPasswordContext.Provider value={{
             login: this.login,
             isLoggedIn,
@@ -226,9 +187,9 @@ class EmailPasswordProvider extends React.Component {
             recoverPassword: this.recoverPassword,
             email,
             password,
+            confirm,
             onChange: this.onChange,
             validation,
-            resetValidation: this.resetValidation,
             setToken: this.setToken
         }}>
             <div>{children}</div>

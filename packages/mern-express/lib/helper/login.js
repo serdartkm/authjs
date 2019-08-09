@@ -6,8 +6,8 @@ const invalidCredentials = {
   email: { isValid: false, message: "Email or password does not match." }
 }
 const login = async function (req, res, collection) {
-  const { email, password } = req.body
-
+  const { email, password } = req.query
+    console.log("params---",req.query)
  
   try {
     const user = await collection.findOne({ email })

@@ -1,12 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router,HashRouter, Route, Link } from 'react-router-dom'
-import Login from './Login'
-import SignUp from './Signup'
+import Login,{SignUp,RecoverPassword,RecoverResult,ResetPassword,Users} from '@authjs/react-ui-bootstrap'
 import AuthState from './AuthState'
-import ResetPassword from './ResetPassword'
-import RecoverPassword from './RecoverPassword'
 import Home from './Home'
-import Users from './Users'
+
 const App = () => {
     return <div>
         <HashRouter>

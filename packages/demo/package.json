@@ -12,7 +12,8 @@
   },
   "dependencies":{
   "@authjs/mern-react":"*",
-  "@authjs/mern-express":"*"
+  "@authjs/mern-express":"*",
+  "@authjs/react-ui-bootstrap":"*"
   },
   "keywords": [],
   "author": "",

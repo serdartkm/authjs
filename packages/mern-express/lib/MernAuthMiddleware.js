@@ -26,9 +26,9 @@ export default ({collection,resetUrl}) => {
             console.log("recover function invoked")
             recover({req,res,collection,resetUrl})
         }
-        if(req.path==="/users"| req.path==="/users/:id"){
+        if(req.path==="/users"){
             console.log("/users called")
-            users({req,res,collection})
+           users({req,res,collection})
         }
        
     }

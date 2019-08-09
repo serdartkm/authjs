@@ -11,6 +11,7 @@ class UserAdministration extends React.Component {
         return this.fetch(`/users`, {
             method: "GET"
         }).then(res => {
+            console.log("res---",res)
             this.setState({users:res.users})
             return Promise.resolve(res);
         }).catch((error) => {
@@ -24,7 +25,6 @@ class UserAdministration extends React.Component {
     }
 
     updateUser = () => {
-
     }
 
     deleteUser = (id) => {
@@ -66,8 +66,9 @@ class UserAdministration extends React.Component {
     };
     render() {
         const { children } = this.props
+        const {users}= this.state
         return (
-            <div>{children({ getUsers: this.getUsers, findUser: this.findUser, deleteUser: this.deleteUser, updateUser: this.updateUser })}</div>
+            <div>{children({ users,getUsers: this.getUsers, findUser: this.findUser, deleteUser: this.deleteUser, updateUser: this.updateUser })}</div>
         )
     }
 
