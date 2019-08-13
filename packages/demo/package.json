@@ -11,9 +11,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies":{
-  "@authjs/mern-react":"*",
-  "@authjs/mern-express":"*",
-  "@authjs/react-ui-bootstrap":"*"
+  "@authjs/react":"*",
+  "@authjs/express":"*",
+  "@authjs/react-ui":"*",
+  "@mongodbjs/express":"*",
+  "@xaf/table-render":"*",
+  "@xaf/editor-react":"*"
   },
   "keywords": [],
   "author": "",

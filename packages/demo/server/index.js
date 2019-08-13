@@ -1,8 +1,10 @@
-import MernAuthMiddleware from '@authjs/mern-express'
+import MernAuthMiddleware from '@authjs/express'
 import express from'express'
 import path from 'path'
 import bodyParser from 'body-parser'
+import expressMongo from '@mongodbjs/express'
 const MongoClient = require("mongodb").MongoClient;
+
 require('dotenv').config()
 //
 //console.log("PROCESS ENV",process.env.secret)
@@ -10,12 +12,12 @@ const app =express()
 app.use(bodyParser.json())
 let client =null;
 let db =null;
-
 (async()=>{
     try {
         client = await MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true });
         db = await client.db("demo");
         const collection = db.collection("users");
+        app.use(expressMongo({mongoUrl:"mongodb://localhost:27017"}))
         app.use(express.static(path.join(__dirname, '../public')))
         app.use(MernAuthMiddleware({collection,resetUrl:"http://localhost:3000/#/resetpass"}));
     } catch (error) {
