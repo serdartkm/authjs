@@ -2,8 +2,12 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node packages/demo/server/index.js \" ",
+    "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/server/index.js \" ",
+    "authjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node authjs/rtcdemo/server/index.js \" ",
+    "xaf:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node xaf/demo/server/index.js \" ",
+    "mongodbjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node mongodbjs/demo/server/index.js \" ",
     "install": "",
     "server": " nodemon --exec babel-node demo/server/index.js",
     "dev": "babel demo/server -d demo/dist && node demo/dist/index.js"
@@ -58,6 +62,7 @@
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "4.0.1",
+    "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "2.1.1",
     "rollup-plugin-serve": "1.0.1",
     "rollup-plugin-svg": "1.0.1",
@@ -66,6 +71,9 @@
   },
   "workspaces": [
     "packages/*",
-    "demo/*"
+    "xaf/*",
+    "mongodbjs/*",
+    "authjs/*",
+    "rtcjs/*"
   ]
 }

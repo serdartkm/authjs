@@ -5,7 +5,7 @@
 0 silly argv   '$0': '/Users/personalcomputer/authjs/node_modules/.bin/lerna' }
 1 notice cli v3.16.4
 2 verbose rootPath /Users/personalcomputer/authjs
-3 error Error: Invalid package name "xaf/editor-react": name can only contain URL-friendly characters
+3 error Error: Invalid package name "xaf/messaging-controller": name can only contain URL-friendly characters
 3 error     at invalidPackageName (/Users/personalcomputer/authjs/node_modules/npm-package-arg/npa.js:82:15)
 3 error     at Result.setName (/Users/personalcomputer/authjs/node_modules/npm-package-arg/npa.js:118:11)
 3 error     at new Result (/Users/personalcomputer/authjs/node_modules/npm-package-arg/npa.js:107:23)

@@ -1,0 +1,23 @@
+{
+  "name": "mongodbjs-demo",
+  "version": "1.0.0",
+  "description": "",
+  "events": {
+    "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+  "@authjs/react":"*",
+  "@authjs/express":"*",
+  "@authjs/react-ui":"*",
+  "@mongodbjs/express":"*",
+  "@xaf/table-render":"*",
+  "@xaf/editor-react":"*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

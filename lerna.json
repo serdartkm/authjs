@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/*","demo/*"
+    "packages/*","xaf/*","mongodbjs/*","authjs/*","rtcjs/*"
     
   ],
   "npmClient": "yarn",

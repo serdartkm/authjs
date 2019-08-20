@@ -6,8 +6,11 @@ import { eslint } from 'rollup-plugin-eslint';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
-
+import postcss from 'rollup-plugin-postcss'
 const appPlugin = [
+  postcss({
+    plugins: []
+  }),
   resolve({
     browser: true,
     extensions: ['.js', '.jsx', '.json'],
@@ -45,54 +48,68 @@ const appPlugin = [
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
   }),
 
-  serve({
-    contentBase: './packages/demo/public',
-    port: '10006',
-    historyApiFallback: true,
-  }),
-  livereload('./packages/demo/public'),
+
 ];
 
-const libPlugins = [
-  eslint(),
-  babel({
-    exclude: 'node_modules/**',
-    presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
-    plugins: [
-      '@babel/plugin-proposal-class-properties',
-      '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-transform-async-to-generator',
-    ],
-  }),
+const globalNames= {
+  react: 'React',
+  'react-dom': 'ReactDOM',
+  'prop-types': 'PropTypes',
+  '@rtcjs/webrtc-signaling':'SignalingService',
+  '@rtcjs/webrtc-peer':'PeerConnection',
+  '@rtcjs/ui':'VideoClientUI',
+  '@rtcjs/contacts':'Contacts'
+}
 
-  replace({
-    ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-  }),
-
-  resolve(),
-  commonjs(),
-  globals(),
-];
-
+const externals =["react", "react-dom", "prop-types"]
 module.exports = [
   {
-    input: './packages/demo/client/index.js',
-     external: ["react", "react-dom", "prop-types"],
+     input: './authjs/demo/client/index.js',
+     external: externals,
     output: {
-      file: './packages/demo/public/index.js',
+      file: './authjs/demo/public/index.js',
       format: 'iife',
       sourcemap: 'inline',
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'prop-types': 'PropTypes',
-        '@rtcjs/webrtc-signaling':'SignalingService',
-        '@rtcjs/webrtc-peer':'PeerConnection',
-        '@rtcjs/ui':'VideoClientUI',
-        '@rtcjs/contacts':'Contacts'
-      },
+      globals: globalNames,
     },
     plugins: appPlugin,
-  }
+  },
+  {
+    input: './rtcjs/rtc-demo/client/index.js',
+    external: externals,
+   output: {
+     file: './rtcjs/rtc-demo/public/index.js',
+     format: 'iife',
+     sourcemap: 'inline',
+     globals: globalNames,
+   },
+   
+   plugins: appPlugin,
+ },
+
+ {
+  input: './xaf/demo/client/index.js',
+  external: externals,
+ output: {
+   file: './xaf/demo/public/index.js',
+   format: 'iife',
+   sourcemap: 'inline',
+   globals: globalNames,
+ },
+ 
+ plugins: appPlugin,
+},
+{
+  input: './mongodbjs/demo/client/index.js',
+  external: externals,
+ output: {
+   file: './mongodbjs/demo/public/index.js',
+   format: 'iife',
+   sourcemap: 'inline',
+   globals: globalNames,
+ },
+ 
+ plugins: appPlugin,
+}
 
 ];

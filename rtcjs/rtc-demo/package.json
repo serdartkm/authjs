@@ -1,0 +1,28 @@
+{
+  "name": "rtcjs-demo",
+  "version": "1.0.0",
+  "description": "",
+  "events": {
+    "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+  "socket.io": "^2.2.0",
+  "@authjs/react":"*",
+  "@authjs/express":"*",
+  "@authjs/react-ui":"*",
+  "@mongodbjs/express":"*",
+  "@xaf/table-render":"*",
+  "@xaf/editor-react":"*",
+  "@rtcjs/server":"*",
+  "@rtcjs/messaging-module":"*",
+  "@rtcjs/messaging-module-webrtc":"*",
+  "@rtcjs/videochat-module-webrtc":"*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

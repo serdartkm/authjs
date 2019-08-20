@@ -1,0 +1,31 @@
+{
+  "name": "@rtcjs/webrtc-peer",
+  "version": "1.0.82",
+  "main": "dist/index.esm.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf dist"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.5"
+  },
+  "devDependencies": {
+    "semantic-release": "^15.13.16"
+  },
+  "release": {
+    "branch": "master",
+    "tagFormat": "rtc-${version}"
+  },
+  "gitHead": "1172b62544a7886cf36621f52b7f1bb40c6c5996",
+  "dependencies": {
+    "react": "^16.8.6"
+  }
+}

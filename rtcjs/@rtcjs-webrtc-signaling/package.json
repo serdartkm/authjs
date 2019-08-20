@@ -1,0 +1,24 @@
+{
+  "name": "@rtcjs/webrtc-signaling",
+  "version": "1.0.82",
+  "main": "dist/index.esm.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.5"
+  },
+  "release": {
+    "branch": "master",
+    "tagFormat": "sign-${version}"
+  }
+}
