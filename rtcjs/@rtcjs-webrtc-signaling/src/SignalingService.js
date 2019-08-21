@@ -8,8 +8,9 @@ class SignalingService extends React.Component {
       offer: null,
       answer: null,
       connected: false,
-      candidate:null,
+      candidate: null,
       error: null,
+      closeConnection:false
     };
   }
 
@@ -22,87 +23,72 @@ class SignalingService extends React.Component {
       this.socket = io();
     }
     this.socket.on("offer", message => {
-      console.log("offer recieved from ",message.offer)
+    
       this.setState({ offer: message.offer });
     });
     this.socket.on("answer", message => {
-      console.log("answer recieved from ",message.name)
+  
       this.setState({ answer: message.answer });
     });
     this.socket.on("candidate", message => {
-      console.log("recived candiate from ", this.props.name, message.candidate)
+   
       this.setState({ candidate: message.candidate });
     });
     this.socket.on("connect", () => {
       this.setState({ connected: true });
     });
+    this.socket.on("close", () => {
+      this.setState({ closeConnection: true,offer:null,answer:null,candidate:null });
+    });
   } // end of componentDidMount/
 
-  sendCandidate = ({candidate}) => {
-    console.log("sending candidate---------",candidate)
-    if (true) {
-      const { name, targetName } = this.props;
-      const message = {
-        name,
-        targetName,
-        candidate
-      };
+  sendCandidate = ({ candidate }) => {
+    const { name, targetName } = this.props;
 
-      this.socket.emit("candidate", message)
-    } else {
-      this.setState({ error: "error sending candidate" });
-    }
+    this.socket.emit("candidate", {
+      name,
+      targetName,
+      candidate
+    })
+
   };
 
   sendClose = () => {
     const { name, targetName } = this.props;
-
-    const message = {
+    this.socket.emit("close", {
       name,
       targetName
-    };
-    this.socket.emit("close_connection", message)
-   
+    })
+    this.setState({closeConnection:true,offer:null,answer:null,candidate:null})
   };
 
-  sendOffer = ({offer}) => {
-    if (true) {
-      const { name, targetName } = this.props;
-   
-      const message = {
-        name,
-        targetName,
-        offer
-      };
+  sendOffer = ({ offer }) => {
 
-      this.socket.emit("offer", message)
+    const { name, targetName } = this.props;
 
-    } else {
-      this.setState({ error: "could not call.Please try again" });
-    }
+    this.socket.emit("offer", {
+      name,
+      targetName,
+      offer
+    })
   };
 
-  sendAnswer = ({answer}) => {
-    if (true) {
-      const { name, targetName } = this.props;
+  sendAnswer = ({ answer }) => {
 
-      const message = {
-        name,
-        targetName,
-        answer
-      };
+    const { name, targetName } = this.props;
+    this.socket.emit("answer", {
+      name,
+      targetName,
+      answer
+    })
 
-      this.socket.emit("answer", message)
 
-    } else {
-      this.setState({ error: "Could not send answer. Please try again" });
-    }
   };
 
 
 
   render() {
-    const { answer, offer, candidate, error, connected } = this.state;
+    const { answer, offer, candidate, error, connected,closeConnection } = this.state;
     const { children } = this.props;
     const context = {
       signalingError: error,
@@ -114,11 +100,12 @@ class SignalingService extends React.Component {
       sendAnswer: this.sendAnswer,
       sendClose: this.sendClose,
       sendCandidate: this.sendCandidate,
+      closeConnection
     };
     return children(context)
   }
 }
- SignalingService.propTypes = {
+SignalingService.propTypes = {
   /** name of caller */
   name: PropTypes.string.isRequired,
   /** name of callee */

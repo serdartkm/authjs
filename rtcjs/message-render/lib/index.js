@@ -67,9 +67,12 @@ const messagesForRender = ({ messages, localSide, remoteSide }) => {
         }
     })
 }
-const MessageRender = ({ messages, localSide = "Right", remoteSide = "Left", MessageContainer, FirstMessageLeft, FirstMessageRight, SubMessageLeft, SubMessageRight }) => {
+class MessageRender  extends React.Component{
+
+  render(){
+    const  { messages, localSide = "Right", remoteSide = "Left", MessageContainer, FirstMessageLeft, FirstMessageRight, SubMessageLeft, SubMessageRight }= this.props
     const messagesForView = messages.length>0 && messagesForRender({ messages, localSide, remoteSide })
-  
+
     if (MessageContainer)
         return (<MessageContainer>{messages.length>0 && messagesForView.map((m, i) => {
           
@@ -120,7 +123,7 @@ const MessageRender = ({ messages, localSide = "Right", remoteSide = "Left", Mes
         </MessageContainer>)
 
     return <div>MessageContainer not provided</div>
-
+    }
 }
 
 

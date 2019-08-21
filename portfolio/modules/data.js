@@ -1,0 +1,43 @@
+export default [{
+    startdate : new Date(2019, 8, 10, 13, 30, 0).getTime(),
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"SocketIO Text Messaging Module",
+    description:"Reusable Text messaging module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/socketmessaging",
+
+},
+{startdate : new Date(2019, 8, 20, 13, 30, 0).getTime(),
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"WebRTC Text Messaging Module",
+    description:"Reusable Text messaging module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcmessaging",
+
+},
+{startdate : new Date(2019, 8, 25, 13, 30, 0).getTime(),
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"WebRTC Video Chat Module",
+    description:"Reusable P2P videochat module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+{startdate : new Date(2019, 9, 10, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"WebRTC File transfer Module",
+    description:"Reusable P2P file transfer module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+}
+]

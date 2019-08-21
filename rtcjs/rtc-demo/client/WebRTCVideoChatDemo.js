@@ -1,26 +1,37 @@
 import React from 'react'
 import VideoChatModuleWebRTC from '@rtcjs/videochat-module-webrtc'
 import DeviceContainer, { DevicesView } from './DevicesView'
+import {LocalMediaStream} from '@rtcjs/videochat-display-components'
 const WebRTCMessagingDemo =()=>{
 
     return (
-        <DeviceContainer>{({ selected }) => {
-            return (
-                <div>
-                    <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{backgroundColor:"#b2dfdb"}}>WebRTC VideoChat Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
-                    <div style={{ display: "flex", justifyContent: "center", zoom: "0.3"  }}>
-                        <DevicesView deviceType={selected} >
-                        <VideoChatModuleWebRTC initiator={true} serverUrl="http://localhost:3000/"  name="mario@gmail.com" targetName="dragos@gmail.com" />
-                        </DevicesView>
-                        <DevicesView deviceType={selected} >
-                        <VideoChatModuleWebRTC serverUrl="http://localhost:3000/"  name="dragos@gmail.com" targetName="mario@gmail.com" />
-                        </DevicesView>
+        <LocalMediaStream>
+            {({localMediaStream})=>{
+             
+                return (
+                    <div>
+                    <DeviceContainer>{({ selected }) => {
+                        return (
+                            <div>
+                                <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{backgroundColor:"#b2dfdb"}}>WebRTC VideoChat Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
+                                <div style={{ display: "flex", justifyContent: "center", zoom: "0.3"  }}>
+                                    <DevicesView deviceType={selected} >
+                                    <VideoChatModuleWebRTC localMediaStream={localMediaStream} initiator={true} serverUrl="http://localhost:3000/"  name="mario@gmail.com" targetName="dragos@gmail.com" />
+                                    </DevicesView>
+                                    <DevicesView deviceType={selected} >
+                                    <VideoChatModuleWebRTC localMediaStream={localMediaStream} serverUrl="http://localhost:3000/"  name="dragos@gmail.com" targetName="mario@gmail.com" />
+                                    </DevicesView>
+                                </div>
+                            </div>
+                        )
+                    }}
+            
+                    </DeviceContainer>
                     </div>
-                </div>
-            )
-        }}
-
-        </DeviceContainer>
+                )
+            }}
+        </LocalMediaStream>
+     
     )
 }
 

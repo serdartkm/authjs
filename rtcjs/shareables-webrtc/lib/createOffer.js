@@ -1,17 +1,19 @@
-const createOffer = ({self,sendOffer,offerError}) => {
-  console.log("create offer initialized")
-    self.rtcPeerConnection
-      .createOffer()
-      .then(offer => {
-        console.log("offer created--", offer)
-        self.rtcPeerConnection.setLocalDescription(offer);
-        sendOffer({ offer: self.rtcPeerConnection.localDescription });
-      })
-      .catch(error => {
-        console.log("error---", error)
-        offerError({error})
-      });
-  };
+import servers from './servers'
+const createOffer = ({ self, sendOffer }) => {
+  if (self.rtcPeerConnection === null) {
+    self.rtcPeerConnection = new RTCPeerConnection(servers);
+  }
+  self.rtcPeerConnection
+    .createOffer()
+    .then(offer => {
 
+      self.rtcPeerConnection.setLocalDescription(offer);
+      sendOffer({ offer });
+    })
+    .catch(error => {
 
-  export default createOffer
+      self.setState((prevState)=>({errors:[...prevState.errors,error]}))
+    });
+};
+
+export default createOffer

@@ -1,29 +1,38 @@
+import closeCall from './closeCall'
+import createAnswer from './createAnswer'
+import destroyRTC from './destroyRTC'
+const compWillUpdate =({self, nextProps,answer,offer,candidate,sendAnswer})=>{
 
 
-const compWillUpdate =({self, nextProps,createAnswer,answer,offer,candidate})=>{
-  //  console.log("nextProps", nextProps)
+  if(self.rtcPeerConnection!==null){
+  if(nextProps.closeConnection){
+    closeCall({self})
+    setTimeout(()=>{
+      destroyRTC({self})
+    },200)
+    
+  }
     if (nextProps.answer !== null && answer === null) {
-    //  console.log("answer----", nextProps.answer)
       self.rtcPeerConnection.setRemoteDescription(
         new RTCSessionDescription(nextProps.answer)
       );
     }
-    if (nextProps.offer !== null && offer === null && createAnswer) {
-      console.log("offer recieved on update------->>>", nextProps.offer)
+    if (nextProps.offer !== null && offer === null && sendAnswer) {
+
       const { offer } = nextProps
-      createAnswer({ offer,self:self })
+      createAnswer({ offer,self:self,sendAnswer })
     }
     if (
       self.rtcPeerConnection &&
       self.rtcPeerConnection.remoteDescription !== null
     ) {
       if (candidate === null && nextProps.candidate !== null) {
-        console.log("candidate-----!!!!!!", nextProps.candidate)
+
         self.rtcPeerConnection.addIceCandidate(
           new RTCIceCandidate(nextProps.candidate)
         );
       } else if (nextProps.candidate !== null && nextProps.candidate) {
-        console.log("candidate-----??????", nextProps.candidate)
+
         if (
           nextProps.candidate !== undefined &&
           nextProps.candidate !== undefined
@@ -35,5 +44,5 @@ const compWillUpdate =({self, nextProps,createAnswer,answer,offer,candidate})=>{
       }
     }
   }
-
+}
   export default compWillUpdate

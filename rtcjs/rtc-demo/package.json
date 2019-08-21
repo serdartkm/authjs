@@ -20,7 +20,8 @@
   "@rtcjs/server":"*",
   "@rtcjs/messaging-module":"*",
   "@rtcjs/messaging-module-webrtc":"*",
-  "@rtcjs/videochat-module-webrtc":"*"
+  "@rtcjs/videochat-module-webrtc":"*",
+  "@rtcjs/videochat-display-components":"*"
   },
   "keywords": [],
   "author": "",

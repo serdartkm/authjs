@@ -6,14 +6,17 @@ import rtcStateUpdate from './rtcStateUpdate'
 import servers from './servers'
 import useDataChannel from './useDataChannel'
 import useMediaStream from './useMediaStream'
-
+import destroyRTC from './destroyRTC'
+import initialState from './initialState'
 
 export {
+  initialState,
   createOffer,
   createAnswer,
   rtcStateUpdate,
   useDataChannel,
   useMediaStream,
   closeCall,
-  servers
+  servers,
+  destroyRTC
 }

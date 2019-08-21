@@ -1,30 +1,20 @@
 import React from "react";
-import withChatLog,{loadFromStorage,saveToLocalStorage} from "@rtcjs/chat-log";
+import withChatLog from "@rtcjs/chat-log";
 class MessagingController extends React.Component {
-  state = { message: "",messages:[] };
+
   componentDidMount() {
     const { socket, name } = this.props;
-    loadFromStorage({key:name,onLoad:({messages})=>{
-      this.setState({messages})
-    }});
+    this.props.loadFromStorage({key:name})
     this.socket = socket;
     this.socket.on("text_message", data => {
-     
-      const { name, targetName, message, datetime } = data;
-      console.log("message recived---====",data)
-      const localMessage = {
-        from :name,
+      const { name , message, datetime } = data;
+      this.props.saveRemoteMessage({
+        from:name,
         message,
         datetime,
-        targetName,
-        local:false
-      }
-      saveToLocalStorage({ message:localMessage,key:this.props.name});
-      this.setState((prevState)=>({messages:[...prevState.messages,localMessage]}))
-      this.gotoBottom("messageContainer")
-      console.log(
-        `I am ${name} got message from ${targetName} adn the message is ${message}`
-      );
+        key:this.props.name,
+        to:this.props.name
+      })   
     });
 
     this.socket.emit("join", name, data => {});
@@ -32,51 +22,23 @@ class MessagingController extends React.Component {
       console.log("joined----", data);
     });
   } 
-
-  onTextChange = e => {
-    const value = e.target.value;
-    this.setState({ message: value });
-    console.log("message state-------",this.state.message)
-  };
-   gotoBottom=(name)=>{
-    var elements = document.getElementsByName(name);
-    elements.forEach(e=>{
-      e.scrollTop = e.scrollHeight - e.clientHeight;
-    })
- }
   sendMessage = () => {
     const { name, targetName, socket } = this.props;
-    const currentDateTime = new Date();
-    const { message } = this.state;
-    
-    const messageSent = {
-      name,
+    const { message } = this.props;
+    socket.emit("text_message", { name,
       targetName,
       message,
-      datetime: currentDateTime.getTime()
-    };
-    socket.emit("text_message", messageSent);
-    const localMessage ={
-      local:true,
-      message,
-      from:name,
-      datetime: currentDateTime.getTime()
-      }
-    saveToLocalStorage({message:localMessage,key:name});
-    this.setState((prevState)=>({messages:[...prevState.messages,localMessage]}))
-    this.gotoBottom("messageContainer")
-    this.setState({message:""})
+      datetime:new Date().getTime()});
+      this.props.saveLocalMessage({key:name,to:targetName})
   };
   render() {
-    const { children } = this.props;
-    const { message,messages } = this.state;
+    const { children,message,messages } = this.props;
     return children({
           messages,
           sendMessage: this.sendMessage,
-          onTextChange: this.onTextChange,
+          onTextChange: this.props.onTextChange,
           message
         })
   }
 }
-
-export default MessagingController
+export default withChatLog(MessagingController)

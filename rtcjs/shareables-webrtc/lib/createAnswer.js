@@ -1,16 +1,19 @@
-const createAnswer = ({ offer,self,sendAnswer,answerError }) => {
- 
-    self.rtcPeerConnection
-      .setRemoteDescription(new RTCSessionDescription(offer))
-      .then(() => self.rtcPeerConnection.createAnswer())
-      .then(answer => {
-        console.log("answer created", answer)
-        self.rtcPeerConnection.setLocalDescription(answer);
-        sendAnswer({ answer: self.rtcPeerConnection.localDescription });
-      })
-      .catch(error => {
-        answerError({error})
-      });
-  };
+import servers from './servers'
+const createAnswer = ({ offer, self, sendAnswer }) => {
 
-  export default createAnswer
+  if (self.rtcPeerConnection === null) {
+    self.rtcPeerConnection = new RTCPeerConnection(servers);
+  }
+  self.rtcPeerConnection
+    .setRemoteDescription(new RTCSessionDescription(offer))
+    .then(() => self.rtcPeerConnection.createAnswer())
+    .then(answer => {
+      self.rtcPeerConnection.setLocalDescription(answer);
+      sendAnswer({ answer });
+    })
+    .catch(error => {
+     self.setState((prevState)=>({errors:[...prevState.errors,error]}))
+    });
+};
+
+export default createAnswer

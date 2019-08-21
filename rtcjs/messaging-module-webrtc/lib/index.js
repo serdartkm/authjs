@@ -3,8 +3,8 @@ import MessagingControllerWebRTC from '@rtcjs/messaging-controller-webrtc'
 import WebRTCSignaling from '@rtcjs/webrtc-signaling'
 import MessagesDisplayer from '@rtcjs/messages-displayer'
 import MessageEditorDisplayer from '@rtcjs/message-editor-displayer'
-const ConnectionState=({connectionState})=>{
-    if(connectionState==="connected"){
+const ConnectionState=({signalingState})=>{
+    if(signalingState==="stable"){
         return <div style={{color:"white",backgroundColor:"#81c784"}}>connected</div>
     }
     else{
@@ -25,11 +25,11 @@ const MessagingModuleWebRTC = ({ initiator, name, targetName, serverUrl }) => {
                     candidate={candidate}
                     sendOffer={sendOffer}
                     sendAnswer={sendAnswer}
-                    sendCandidate={sendCandidate}>{({ message, messages, sendMessage, onTextChange, connectionState }) => {
+                    sendCandidate={sendCandidate}>{({ message, messages, sendMessage, onTextChange, connectionState,signalingState }) => {
                         return (<div  style={{width:"100%",height:"100%",display:"flex",flexDirection:"column"}}>
-                            <ConnectionState connectionState={connectionState}/>
+                            <ConnectionState  signalingState={signalingState}/>
                             <MessagesDisplayer messages={messages} />
-                            <MessageEditorDisplayer disabled={connectionState !=="connected"} message={message} sendMesage={sendMessage} onTextChange={onTextChange} />
+                            <MessageEditorDisplayer disabled={signalingState !=="stable"} message={message} sendMesage={sendMessage} onTextChange={onTextChange} />
                         </div>)
                     }}</MessagingControllerWebRTC>
            )

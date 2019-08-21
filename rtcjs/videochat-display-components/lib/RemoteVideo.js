@@ -18,10 +18,20 @@ class RemoteVideo extends React.Component{
     
       componentDidMount() {
         const { remoteMediaStream } = this.props;
-        console.log("local media",remoteMediaStream)
+     
         this.remoteVideoRef.current.srcObject = remoteMediaStream;
+
+   
       }
-    
+      componentWillUpdate(newProps){
+
+  
+        if(newProps.closeConnection){
+          this.remoteVideoRef.current.getTracks().forEach(track => track.stop());
+   
+         
+        }
+      }
       componentDidUpdate() {
         const { remoteMediaStream } = this.props;
         this.remoteVideoRef.current.srcObject = remoteMediaStream;

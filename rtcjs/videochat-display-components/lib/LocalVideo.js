@@ -21,13 +21,28 @@ class LocalVideo extends React.Component{
     
       componentDidMount() {
         const { localMediaStream } = this.props;
-        console.log("local media",localMediaStream)
+      
         this.videoRef.current.srcObject = localMediaStream;
       }
-    
+      componentWillUpdate(newProps){
+      
+        if(newProps.close){
+          this.videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+          this.videoRef.current.removeAttribute("srcObject");
+        }
+      }
       componentDidUpdate() {
         const { localMediaStream } = this.props;
         this.videoRef.current.srcObject = localMediaStream;
+      }
+
+      componentWillUpdate(newProps){
+  
+        if(newProps.closeConnection){
+        //  this.videoRef.current.getTracks().forEach(track => track.stop());
+   
+         
+        }
       }
 render(){
     return( <div
@@ -37,8 +52,7 @@ render(){
         <video
           style={{
             height: '100%',
-            width: '100%',
-           
+            width: '100%',  
             padding: 0,
             margin: 0,
           }}

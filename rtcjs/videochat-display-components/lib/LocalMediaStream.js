@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 const mediaStreamConstraints = {
   video: true,
@@ -24,12 +24,11 @@ class LocalMediaStream extends React.Component {
     const { localMediaStream } = this.state;
     const { children } = this.props;
     if (localMediaStream !== null) {
+  
       return children({ localMediaStream });
     }
     return null;
   }
 }
-LocalMediaStream.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+
 export default LocalMediaStream;

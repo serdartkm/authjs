@@ -1,49 +1,65 @@
 import React from "react";
-
+import { loadFromStorage, saveToLocalStorage } from './LocStorage'
 const withChatLog = ComposedComponent =>
   class extends React.Component {
-    state = { messages: [], archivedMessages: [] };
+    state = { messages: [], message: "" };
 
-    componentWillMount() {}
+    componentWillMount() { 
 
-    getLocalMessages = key => {
-      if (JSON.parse(localStorage.getItem(key)) !== null) {
-        this.setState({ messages: JSON.parse(localStorage.getItem(key)) });
-      }
+    }
+    componentDidUpdate(){
+ 
+    }
+
+    loadFromStorage = ({ key }) => {
+      loadFromStorage({
+        key, onLoad: ({ messages }) => {
+          this.setState({ messages })
+        }
+      })
+ 
+    }
+
+  
+    saveLocalMessage =({key,to})=>{
+      const local=true;
+      const datetime= new Date().getTime()
+      const {message}= this.state
+      const from =key
+      
+      saveToLocalStorage({message:{message,from,local,datetime,to},key,onSave:()=>{
+        this.setState((prevState)=>({messages:[...prevState.messages,{local,datetime,message,from}],message:""}))
+      }})
+   
+    }
+    saveRemoteMessage =({from,key,datetime,message,to})=>{
+      console.log("----",from,key,datetime,message)
+      const local=false
+     saveToLocalStorage({message:{message,from,local,datetime,to},key,onSave:()=>{
+      this.setState((prevState)=>({messages:[...prevState.messages,{local,datetime,message,from}]}))
+      }})
+
+
+    }
+    onTextChange = e => {
+      const value = e.target.value;
+      this.setState({ message: value });
+      
     };
-
-    getArchivedMessages = () => {};
-
-    saveToLocalStorage = (m,key) => {
- console.log("m", m)
- console.log("key", key)
-      this.setState((state, props) => ({
-        messages: [...state.messages, m]
-      }));
-
-      localStorage.setItem(key, JSON.stringify(m));
-    };
-
-
-
-    removeFromLocalStorage = id => {};
-
-    archiveMessages = () => {};
 
     render() {
-      const { messages } = this.state;
+      const { messages, message } = this.state;
 
 
       return (
         <ComposedComponent
           {...this.props}
-          getLocalMessages={this.getLocalMessages}
+          loadFromStorage={this.loadFromStorage}
           messages={messages}
-          saveToLocalStorage={this.saveToLocalStorage}
-   
-          removeFromLocalStorage={this.removeFromLocalStorage}
-          archiveMessages={this.archiveMessages}
-          getArchivedMessages={this.getArchivedMessages}
+          message={message}
+          saveLocalMessage={this.saveLocalMessage}
+          saveRemoteMessage ={this.saveRemoteMessage}
+          onTextChange={this.onTextChange}
         />
       );
     }

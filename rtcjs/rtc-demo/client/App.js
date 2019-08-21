@@ -6,7 +6,7 @@ import NavBar from './NavBar'
 import SocketMessagingDemo from './SocketMessagingDemo'
 import WebRTCMessagingDemo from './WebRTCMessaingDemo'
 import WebRTCVideoChatDemo from './WebRTCVideoChatDemo'
-
+import {CodeLab,Education,Modules,Projects} from '../../../portfolio/index'
 const App = () => {
     return <div>
         <HashRouter>
@@ -21,6 +21,11 @@ const App = () => {
             <Route path="/socketmessaging" component={SocketMessagingDemo}/>
             <Route path="/webrtcmessaging" component={WebRTCMessagingDemo}/>
             <Route path ="/webrtcvideochat" component={WebRTCVideoChatDemo}/>
+            
+            <Route path ="/codelab" component={CodeLab}/>
+            <Route path ="/certification" component={Education}/>
+            <Route path ="/modules" component={Modules}/>
+            <Route path ="/projects" component={Projects}/>
             <Route path="/resetpass/:username/:token" component={ResetPassword}/>
         </HashRouter>
     </div>
