@@ -1,65 +1,57 @@
 import React from 'react'
 const style = {
-    
-    backgroundColor: "#eeeeee",
-    overflow: "auto",
-    width:"100%",
-    height:"100%",
-   // display:"flex",
-   // justifyContent:"center",
-    
+
+  backgroundColor: "#eeeeee",
+  overflow: "auto",
+  width: "100%",
+  height: "100%",
+  // display:"flex",
+  // justifyContent:"center",
+
 };
 
-class RemoteVideo extends React.Component{
-    constructor(props) {
-        super(props);
-        this.remoteVideoRef = React.createRef();
-      }
-    
-      componentDidMount() {
-        const { remoteMediaStream } = this.props;
-     
-        this.remoteVideoRef.current.srcObject = remoteMediaStream;
+class RemoteVideo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.remoteVideoRef = React.createRef();
+  }
 
-   
-      }
-      componentWillUpdate(newProps){
+  componentDidMount() {
+    const { remoteMediaStream } = this.props;
 
+    this.remoteVideoRef.current.srcObject = remoteMediaStream;
+
+
+  }
   
-        if(newProps.closeConnection){
-          this.remoteVideoRef.current.getTracks().forEach(track => track.stop());
-   
-         
-        }
-      }
-      componentDidUpdate() {
-        const { remoteMediaStream } = this.props;
-        this.remoteVideoRef.current.srcObject = remoteMediaStream;
-      }
-    render(){
-        return( <div
-            style={style}
-          >
-            {' '}
-            <video
-              style={{
-                height: '100%',
-                width:'100%',
-                flex:1,
-              //  backgroundColor: 'brown',
-                padding: 0,
-                margin: 0,
-              }}
-              ref={this.remoteVideoRef}
-              autoPlay
-              playsInline
-            >
-              ddd
+  componentDidUpdate() {
+    const { remoteMediaStream } = this.props;
+    this.remoteVideoRef.current.srcObject = remoteMediaStream;
+  }
+  render() {
+    return (<div
+      style={style}
+    >
+      {' '}
+      <video
+        style={{
+          height: '100%',
+          width: '100%',
+          flex: 1,
+          //  backgroundColor: 'brown',
+          padding: 0,
+          margin: 0,
+        }}
+        ref={this.remoteVideoRef}
+        autoPlay
+        playsInline
+      >
+        ddd
             </video>
-        
-          </div>)
-    }
-   
+
+    </div>)
+  }
+
 }
 
 export default RemoteVideo

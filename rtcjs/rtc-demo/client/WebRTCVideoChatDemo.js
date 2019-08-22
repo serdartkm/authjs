@@ -1,82 +1,77 @@
 import React from 'react'
 import VideoChatModuleWebRTC from '@rtcjs/videochat-module-webrtc'
 import DeviceContainer, { DevicesView } from './DevicesView'
-import {LocalMediaStream} from '@rtcjs/videochat-display-components'
-const WebRTCMessagingDemo =()=>{
+import { LocalMediaStream } from '@rtcjs/videochat-display-components'
+import ViewSwithcer from './CodeNav'
+const WebRTCMessagingDemo = () => {
 
     return (
         <LocalMediaStream>
-            {({localMediaStream})=>{
-             
+            {({ localMediaStream }) => {
                 return (
                     <div>
-                    <DeviceContainer>{({ selected }) => {
-                        return (
-                            <div>
-                                <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{backgroundColor:"#b2dfdb"}}>WebRTC VideoChat Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
-                                <div style={{ display: "flex", justifyContent: "center", zoom: "0.3"  }}>
-                                    <DevicesView deviceType={selected} >
-                                    <VideoChatModuleWebRTC localMediaStream={localMediaStream} initiator={true} serverUrl="http://localhost:3000/"  name="mario@gmail.com" targetName="dragos@gmail.com" />
-                                    </DevicesView>
-                                    <DevicesView deviceType={selected} >
-                                    <VideoChatModuleWebRTC localMediaStream={localMediaStream} serverUrl="http://localhost:3000/"  name="dragos@gmail.com" targetName="mario@gmail.com" />
-                                    </DevicesView>
+                        <DeviceContainer>{({ selected }) => {
+                            return (
+                                <div>
+                                    <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{ backgroundColor: "#b2dfdb" }}>WebRTC VideoChat Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
+                                    <div style={{ display: "flex", justifyContent: "center", zoom: "0.3" }}>
+                                        <DevicesView deviceType={selected} >
+                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} initiator={true} serverUrl="http://localhost:3000/" name="mario@gmail.com" targetName="dragos@gmail.com" />
+                                        </DevicesView>
+                                        <DevicesView deviceType={selected} >
+                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} serverUrl="http://localhost:3000/" name="dragos@gmail.com" targetName="mario@gmail.com" />
+                                        </DevicesView>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    }}
-            
-                    </DeviceContainer>
+                            )
+                        }}
+                        </DeviceContainer>
                     </div>
                 )
             }}
         </LocalMediaStream>
-     
     )
 }
 
-export default WebRTCMessagingDemo
+//export default WebRTCMessagingDemo
 
-/*
-<div>
-        <h4 style={{ textAlign: "center", margin: 10 }}>Messaging Module (with WebRTC)</h4>
-                <h6 style={{ textAlign: "center", margin: 10 }}>Developed by using ReactJS,MondoDB,Expressjs,SocketIO as a signaling service</h6>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-
-                    <div style={{ flex: 1, marginRight: 2 }}>user: mario@gmail.com
-                    <MobileView>
-                    <MessagingModuleWebRTC initiator={true} serverUrl="http://localhost:3000/"  name="mario@gmail.com" targetName="dragos@gmail.com" />
-                    </MobileView>
-                      
-                    </div>
-                    <div style={{ flex: 1, marginLeft: 2 }}>user: dragos@gmail.com
-                    
-                    <MobileView>
-                    <MessagingModuleWebRTC serverUrl="http://localhost:3000/"  name="dragos@gmail.com" targetName="mario@gmail.com" />
-
-                    </MobileView>
-                       
-                    </div>
-                </div>
-    </div>
-*/
-
-const MobileView =({children})=>{
-    return (
-<div className="md-iphone-5 md-black-device md-glare">
-   <div className="md-body">
-
-      <div className="md-buttons"></div>
-
-      <div className="md-front-camera"></div>
-      <div className="md-top-speaker"></div>
-      <div className="md-screen">
-          {children}
-      </div>
-
-      <button className="md-home-button"></button>
-  </div>
-</div>
+const DemoView =()=>{
+    return (<ViewSwithcer>{({selected})=>{
+        return(<div className="container">
+            {selected===0 && <WebRTCMessagingDemo/> }
+            {<h3 hidden={selected===0} >WebRTCVideoChatModule</h3>}
+            {<pre hidden={selected===0} data-src="./videochat-module-webrtc/WebRTCVideoChatModule.js"  ></pre>}
+            {<h3 hidden={selected===0} >WebRTCSignaling Component</h3>}
+            {<pre hidden={selected===0} data-src="./rtcjs-webrtc-signaling/WebRTCSignaling.js" ></pre>}
+            {<h3 hidden={selected===0} >WebRTCVideoChatController Component</h3>}
+            {<pre hidden={selected===0} data-src="./videochat-controller-webrtc/index.js"></pre>}
+            {<h3 hidden={selected===0} >WebRTCVideoChatDisplayer Component</h3>}
+            {<pre hidden={selected===0} data-src="./videochat-displayer/index.js"></pre>}
+            {<h3 hidden={selected===0} >WebRTCVideoChatControlDisplayer Component</h3>}
+            {<pre hidden={selected===0} data-src="./videochat-control-displayer/index.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: closeCall func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/closeCall.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: createAnswer func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/createAnswer.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: createOffer func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/createOffer.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: destroyRTC func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/destroyRTC.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: initialState</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/initialState.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: rtcStateUpdate func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/rtcStateUpdate.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: STUN servers obj</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/servers.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: useDataChannel func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/useDataChannel.js"></pre>}
+            {<h3 hidden={selected===0} >shareable-webrtc: useMediaStream func</h3>}
+            {<pre hidden={selected===0} data-src="./shareables-webrtc/useMediaStream.js"></pre>}
         
-    )
+        </div>)
+    }}</ViewSwithcer>)
 }
+
+export default DemoView
+
+

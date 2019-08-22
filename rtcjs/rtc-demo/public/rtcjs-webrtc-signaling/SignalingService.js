@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import io from "socket.io-client";
-class SignalingService extends React.Component {
+class WebRTCSignalingComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -90,7 +90,7 @@ class SignalingService extends React.Component {
   render() {
     const { answer, offer, candidate, error, connected,closeConnection } = this.state;
     const { children } = this.props;
-    const context = {
+    const signalingContext = {
       signalingError: error,
       connected,
       answer,
@@ -102,7 +102,7 @@ class SignalingService extends React.Component {
       sendCandidate: this.sendCandidate,
       closeConnection
     };
-    return children(context)
+    return children(signalingContext)
   }
 }
 SignalingService.propTypes = {
@@ -113,4 +113,4 @@ SignalingService.propTypes = {
   /** provide render props to connect signaling service to PeerComponent.See below example */
   children: PropTypes.func.isRequired
 };
-export default SignalingService;
+export default WebRTCSignalingComponent;

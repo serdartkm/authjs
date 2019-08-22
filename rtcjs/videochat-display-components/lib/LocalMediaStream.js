@@ -20,6 +20,9 @@ class LocalMediaStream extends React.Component {
     //  this.localVideoRef.current.srcObject = mediaStream;
   };
 
+  componentWillMount(){
+    this.setState({localMediaStream:null})
+  }
   render() {
     const { localMediaStream } = this.state;
     const { children } = this.props;

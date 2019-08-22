@@ -7,9 +7,31 @@ import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
 import postcss from 'rollup-plugin-postcss'
-
+import copy from 'rollup-plugin-copy'
+"rtcjs/videochat-module-webrtc/lib"
 const appPlugin = [
+  copy({
+    targets: [
+      { src: 'rtcjs/videochat-module-webrtc/lib/WebRTCVideoChatModule.js', dest: 'rtcjs/rtc-demo/public/videochat-module-webrtc' },
+      { src: 'rtcjs/videochat-controller-webrtc/lib/index.js', dest: 'rtcjs/rtc-demo/public/videochat-controller-webrtc' },
+      { src: 'rtcjs/videochat-displayer/lib/index.js', dest: 'rtcjs/rtc-demo/public/videochat-displayer' },
+      { src: 'rtcjs/videochat-control-displayer/lib/index.js', dest: 'rtcjs/rtc-demo/public/videochat-control-displayer' },
+      { src: 'rtcjs/@rtcjs-webrtc-signaling/src/WebRTCSignaling.js', dest: 'rtcjs/rtc-demo/public/rtcjs-webrtc-signaling' },
 
+      { src: 'rtcjs/shareables-webrtc/lib/closeCall.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/createAnswer.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/createOffer.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/destroyRTC.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/initialState.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/rtcStateUpdate.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/servers.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/useDataChannel.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+      { src: 'rtcjs/shareables-webrtc/lib/useMediaStream.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
+
+
+
+    ]
+  }),
   postcss({
     plugins: []
   }),
@@ -65,17 +87,7 @@ const globalNames= {
 
 const externals =["react", "react-dom", "prop-types"]
 module.exports = [
-  {
-     input: './authjs/demo/client/index.js',
-     external: externals,
-    output: {
-      file: './authjs/demo/public/index.js',
-      format: 'iife',
-      sourcemap: 'inline',
-      globals: globalNames,
-    },
-    plugins: appPlugin,
-  },
+
   {
     input: './rtcjs/rtc-demo/client/index.js',
     external: externals,
@@ -89,29 +101,6 @@ module.exports = [
    plugins: appPlugin,
  },
 
- {
-  input: './xaf/demo/client/index.js',
-  external: externals,
- output: {
-   file: './xaf/demo/public/index.js',
-   format: 'iife',
-   sourcemap: 'inline',
-   globals: globalNames,
- },
- 
- plugins: appPlugin,
-},
-{
-  input: './mongodbjs/demo/client/index.js',
-  external: externals,
- output: {
-   file: './mongodbjs/demo/public/index.js',
-   format: 'iife',
-   sourcemap: 'inline',
-   globals: globalNames,
- },
- 
- plugins: appPlugin,
-}
+
 
 ];

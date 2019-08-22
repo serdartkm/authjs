@@ -25,10 +25,11 @@ export default [{
     tag:"DiReact",
     title:"WebRTC Video Chat Module",
     description:"Reusable P2P videochat module.",
-    gitlink:"https://github.com/serdartkm/authjs",
+    gitlink:"",
     codesandboxlink:"/webrtcvideochat",
 
 },
+/*
 {startdate : new Date(2019, 9, 10, 13, 30, 0).getTime(),
     workingon:true,
     toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
@@ -39,5 +40,53 @@ export default [{
     gitlink:"https://github.com/serdartkm/authjs",
     codesandboxlink:"/webrtcvideochat",
 
+},
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"GPS location sharing Module",
+    description:"Reusable P2P GPS location sharing module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+,
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Video Chat with modified video Module",
+    description:"Reusable P2P video chat with modified face  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+,
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Share Drawing desk Module",
+    description:"Reusable P2P  Drawing desk  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
 }
+,
+{startdate : new Date(2019, 9, 13, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Photo sharing Module",
+    description:"Reusable P2P Photo sharing  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+}
+*/
 ]

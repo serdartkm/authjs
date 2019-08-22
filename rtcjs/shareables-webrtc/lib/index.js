@@ -8,7 +8,7 @@ import useDataChannel from './useDataChannel'
 import useMediaStream from './useMediaStream'
 import destroyRTC from './destroyRTC'
 import initialState from './initialState'
-
+import sendMessage from './sendMessage'
 export {
   initialState,
   createOffer,
@@ -18,5 +18,6 @@ export {
   useMediaStream,
   closeCall,
   servers,
-  destroyRTC
+  destroyRTC,
+  sendMessage
 }
