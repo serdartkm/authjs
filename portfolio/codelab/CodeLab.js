@@ -1,8 +1,11 @@
 import React from 'react'
-
+import TimeLine from './TimeLine'
+import data from './data'
 const CodeLab =()=>{
+    return (<div>CodeLab
 
-    return<div>CodeLab</div>
+        <TimeLine data={data}/>
+    </div>)
 }
 
 export default CodeLab

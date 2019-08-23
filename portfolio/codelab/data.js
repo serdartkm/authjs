@@ -1,0 +1,96 @@
+export default [{
+    startdate : new Date(2019, 1, 25, 13, 30, 0).getTime(),
+    toolbox:["Reactjs","ReduxJS","MongoDB"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Text Chat App",
+    description:"Peer to Peer text messaging",
+    gitlink:"https://github.com/serdartkm/TextChatApp",
+    codesandboxlink:"https://codesandbox.io/s/y2z9k7vvjg",
+
+},
+{
+startdate : new Date(2018, 11, 29, 13, 30, 0).getTime(),
+toolbox:["Reactjs","ReduxJS","MongoDB"],
+testing:["Cypressjs"],
+tag:"DiMongodb",
+title:"Todo App",
+description:"Create, Read, Update, Delete tasks..",
+gitlink:"https://github.com/serdartkm/ToDoApp",
+codesandboxlink:"https://codesandbox.io/s/8z2y6zzvk0",
+
+},
+{
+    startdate : new Date(2018, 1, 8, 13, 30, 0).getTime(),
+    toolbox:["Reactjs"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Sample CRUD",
+    description:"Sample CRUD with React js",
+    gitlink:"https://github.com/serdartkm/SampleCRUD",
+    codesandboxlink:"https://codesandbox.io/s/81r0n6l112",
+    
+    },
+
+    
+/*
+{startdate : new Date(2019, 9, 10, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"WebRTC File transfer Module",
+    description:"Reusable P2P file transfer module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"GPS location sharing Module",
+    description:"Reusable P2P GPS location sharing module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+,
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Video Chat with modified video Module",
+    description:"Reusable P2P video chat with modified face  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+},
+,
+{startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Share Drawing desk Module",
+    description:"Reusable P2P  Drawing desk  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+}
+,
+{startdate : new Date(2019, 9, 13, 13, 30, 0).getTime(),
+    workingon:true,
+    toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
+    testing:["Cypressjs"],
+    tag:"DiReact",
+    title:"Photo sharing Module",
+    description:"Reusable P2P Photo sharing  module.",
+    gitlink:"https://github.com/serdartkm/authjs",
+    codesandboxlink:"/webrtcvideochat",
+
+}
+*/
+]

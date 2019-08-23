@@ -1,21 +1,20 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add rollup-plugin-copy -W -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  C:\Go\bin;C:\ProgramData\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Enterprise Vault\EVClient\;C:\Program Files\Git\cmd;C:\Users\u13589\AppData\Roaming\npm;C:\Program Files (x86)\Yarn\bin\;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;c:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;c:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;c:\Program Files\Microsoft SQL Server\110\Tools\Binn\;c:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\nodejs\;C:\Users\u13589\AppData\Local\Microsoft\WindowsApps;C:\Users\u13589\AppData\Local\atom\bin;C:\Users\u13589\AppData\Local\Yarn\bin;D:\Microsoft VS Code\bin;C:\Users\u13589\go\bin;C:\Users\u13589\AppData\Roaming\npm
 
 Yarn version: 
-  1.17.3
+  1.12.3
 
 Node version: 
-  10.16.0
+  10.16.1
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: connect ECONNREFUSED 104.16.27.35:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
+  Error: EPERM: operation not permitted, open 'D:\authjs\node_modules\html-webpack-plugin\node_modules\.bin\webpack.cmd'
 
 npm manifest: 
   {
@@ -81,6 +80,7 @@ npm manifest:
       "rollup-plugin-analyzer": "^3.0.1",
       "rollup-plugin-babel": "4.3.2",
       "rollup-plugin-commonjs": "9.2.0",
+      "rollup-plugin-copy": "^3.1.0",
       "rollup-plugin-eslint": "^6.0.0",
       "rollup-plugin-image": "^1.0.2",
       "rollup-plugin-livereload": "^1.0.0",
@@ -91,8 +91,7 @@ npm manifest:
       "rollup-plugin-serve": "1.0.1",
       "rollup-plugin-svg": "1.0.1",
       "rollup-plugin-terser": "^5.0.0",
-      "rollup-plugin-uglify": "6.0.2",
-      "rollup-plugin-copy-assets":"2.0.1"
+      "rollup-plugin-uglify": "6.0.2"
     },
     "workspaces": [
       "packages/*",
