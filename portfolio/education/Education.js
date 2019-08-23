@@ -52,12 +52,12 @@ class AboutMe extends Component {
                             Certification, representing approximately 400 hours of coursework
     </p>
 
-                      
+                        <div style={{display:"flex",justifyContent:"space-between"}}>
                             <a target="_blank" className="btn btn-primary" href="https://www.freecodecamp.org/certification/serdartkm/legacy-front-end" variant="outline-primary">  View Certificate</a>
 
                             <a target="_blank" className="btn btn-primary" href="https://www.freecodecamp.org/serdartkm" variant="outline-primary">  See Timeline</a>
                     
-
+                        </div>
 
                     </TimelineItem>
                 </Timeline>

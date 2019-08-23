@@ -7,9 +7,7 @@ class ViewSwitcher extends React.Component {
     selectTab = (selected) => {
         this.setState({ selected })
     }
-    componentDidMount(){
-        Prism.fileHighlight();
-    }
+ 
 
     render() {
         //const { CodeComponent, DemoComponent } = this.props
