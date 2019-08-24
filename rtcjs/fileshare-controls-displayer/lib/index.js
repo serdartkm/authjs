@@ -1,7 +1,7 @@
-'use strict';
+import FileDownloader from './FileDownloader'
+import FileSelector from './FileSelector'
 
-module.exports = fileshareControlsDisplayer;
-
-function fileshareControlsDisplayer() {
-    // TODO
+export{
+    FileDownloader,
+    FileSelector
 }

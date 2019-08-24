@@ -1,7 +1,3 @@
-'use strict';
+import WebRTCFileShareModule from './WebRTCFileShareModule'
 
-module.exports = fileshareModuleWebrtc;
-
-function fileshareModuleWebrtc() {
-    // TODO
-}
+export default WebRTCFileShareModule

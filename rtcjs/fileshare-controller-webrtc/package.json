@@ -6,6 +6,9 @@
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "dependencies": {
+    "@rtcjs/shareables-webrtc":"*"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"

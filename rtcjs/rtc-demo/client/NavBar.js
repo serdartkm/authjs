@@ -21,9 +21,7 @@ const NavBar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/projects">Projects <span className="sr-only">(current)</span></NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/codelab">Playground <span className="sr-only">(current)</span></NavLink>
-                        </li>
+
                         <li className="nav-item dropdown" hidden>
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Chat Modules

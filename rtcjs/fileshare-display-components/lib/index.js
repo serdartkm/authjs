@@ -1,7 +1,6 @@
-'use strict';
+import FileSelector from './FileSelector'
 
-module.exports = fileshareDisplayComponents;
 
-function fileshareDisplayComponents() {
-    // TODO
+export {
+ //   FileSelector
 }

@@ -64,7 +64,7 @@ class WebRTCSignaling extends React.Component {
   };
 
   sendOffer = ({ offer }) => {
-
+      console.log("offer is sent",offer)
     const { name, targetName } = this.props;
 
     this.socket.emit("offer", {

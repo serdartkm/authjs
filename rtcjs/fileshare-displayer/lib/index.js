@@ -1,7 +1,9 @@
-'use strict';
+import React from 'react'
 
-module.exports = fileshareDisplayer;
+const FileShareDisplayer =()=>{
 
-function fileshareDisplayer() {
-    // TODO
+    return (<div>FileShareDisplayer</div>)
 }
+
+
+export default FileShareDisplayer

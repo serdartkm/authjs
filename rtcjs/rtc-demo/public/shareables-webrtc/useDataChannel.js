@@ -19,6 +19,7 @@ const useDataChannel = ({ self,
   };
   //when we receive a message from the other peer, display it on the screen 
   self.dataChannel.onmessage = function (event) {
+    console.log("recived message",event)
     onMessage(event)
   }
 

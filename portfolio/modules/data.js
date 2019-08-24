@@ -29,18 +29,19 @@ export default [{
     codesandboxlink:"/webrtcvideochat",
 
 },
-/*
+
 {startdate : new Date(2019, 9, 10, 13, 30, 0).getTime(),
     workingon:true,
     toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
     testing:["Cypressjs"],
     tag:"DiReact",
-    title:"WebRTC File transfer Module",
-    description:"Reusable P2P file transfer module.",
-    gitlink:"https://github.com/serdartkm/authjs",
-    codesandboxlink:"/webrtcvideochat",
+    title:"WebRTC File share Module",
+    description:"Reusable P2P file share module.",
+    gitlink:"",
+    codesandboxlink:"/webrtcfileshare",
 
-},
+}
+/*
 {startdate : new Date(2019, 9, 11, 13, 30, 0).getTime(),
     workingon:true,
     toolbox:["Reactjs","SocketIO","Expressjs","MongoDB","WebRTC"],
