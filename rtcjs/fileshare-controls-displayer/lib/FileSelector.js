@@ -8,10 +8,7 @@ class FileSelector extends React.Component {
         this.fileInputRef = React.createRef()
     }
 
-    componentDidMount() {
-
-    }
-
+  
     render() {
         const { onFileChange } = this.props
         return (<div>FileSelector

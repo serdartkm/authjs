@@ -1,27 +1,41 @@
-
 import servers from './servers'
 
 const useDataChannel = ({ self,
   onMessage,
   sendCandidate,
 }) => {
-  self.rtcPeerConnection = new RTCPeerConnection(servers, { optional: [{ RtpDataChannels: true }] });
+  self.rtcPeerConnection = new RTCPeerConnection(servers);
   self.dataChannel = self.rtcPeerConnection.createDataChannel("channel1", { reliable: true });
-  self.dataChannel.onerror = function (error) {
-    self.setState((prevState)=>({errors:[...prevState.errors,error]}))
 
-  };
+  self.rtcPeerConnection.ondatachannel = (event) => {
 
-  self.dataChannel.onclose = function () {
+    var receiveChannel = event.channel;
+    receiveChannel.onmessage = function (event) {
+     // console.log("Got Data Channel Message:", typeof( event.data));
+      try {
+        onMessage(event)
+      } catch (error) {
+        console.log("OnMessage error--",error)
+      }
+  
+    };
 
- self.setState({closeConnection:true})
 
-  };
-  //when we receive a message from the other peer, display it on the screen 
-  self.dataChannel.onmessage = function (event) {
-    console.log("recived message",event)
-    onMessage(event)
+    receiveChannel.onerror = function (error) {
+      self.setState((prevState) => ({ errors: [...prevState.errors, error] }))
+
+    };
+
+    receiveChannel.onclose = function () {
+
+      self.setState({ closeConnection: true })
+
+    };
+    //when we receive a message from the other peer, display it on the screen 
+
   }
+
+
 
 
   self.rtcPeerConnection.onsignalingstatechange = () => {
@@ -30,9 +44,9 @@ const useDataChannel = ({ self,
 
   self.rtcPeerConnection.onicecandidate = e => {
     if (e.candidate !== null) {
-      const {candidate}=e
-      sendCandidate({candidate})
-  }
+      const { candidate } = e
+      sendCandidate({ candidate })
+    }
   };
 
   self.rtcPeerConnection.onconnectionstatechange = () => {

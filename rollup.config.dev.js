@@ -60,7 +60,7 @@ const appPlugin = [
       'node_modules/react-is/index.js': ['isValidElementType','ForwardRef'],
     },
   }),
-  globals(),
+
   babel({
     exclude: 'node_modules/**',
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
@@ -74,8 +74,7 @@ const appPlugin = [
   replace({
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
   }),
-
-
+  globals(),
 ];
 
 const globalNames= {

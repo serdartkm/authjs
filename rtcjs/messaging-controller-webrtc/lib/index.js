@@ -2,6 +2,7 @@ import React from 'react'
 import withChatLog from "@rtcjs/chat-log";
 import { createOffer, useDataChannel, rtcStateUpdate, initialState } from '@rtcjs/shareables-webrtc'
 
+
 class MessagingControllerWebRTC extends React.Component {
   state = { ...initialState }
 
@@ -36,6 +37,8 @@ class MessagingControllerWebRTC extends React.Component {
   } // END OF COMPONENT DID UPDATE
 
   sendMessage = () => {
+
+
     const { name, targetName } = this.props;
     const { message } = this.props;
     this.dataChannel.send(JSON.stringify({
