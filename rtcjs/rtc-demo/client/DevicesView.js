@@ -8,22 +8,22 @@ import classNames from 'classnames'
 class DeviceContainer extends React.Component {
 
 
-    state = { selected: ""}
+    state = { selected: "" }
 
     switchDevice = (selected) => {
 
         this.setState({ selected })
     }
 
-  
+
     render() {
         const { children } = this.props
-        const { selected, height,scale } = this.state
-   
+        const { selected, height, scale } = this.state
+
         return (<div>
             <DeviceSwitcher switchDevice={this.switchDevice} />
             <div>
-                {children({ selected, height,scale })}
+                {children({ selected, height, scale })}
             </div>
 
         </div>)
@@ -33,35 +33,38 @@ class DeviceContainer extends React.Component {
 export default DeviceContainer
 const DeviceSwitcher = ({ switchDevice, selected }) => {
 
-    const btnStyle={
-    margin:2
+    const btnStyle = {
+        margin: 2
     }
 
-    return (<div style={{zoom:"50%"}}>
+    return (<div style={{ zoom: "50%" }}>
 
-        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !=="imac", 'btn-dark': selected==="imac" })} onClick={() => switchDevice('imac')}>imac</button>
-        <button  style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !=="ipad", 'btn-dark': selected==="ipad" })} onClick={() => switchDevice('ipad')}>ipad</button>
-        <button  style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !=="iphone", 'btn-dark': selected ==="iphone" })} onClick={() => switchDevice('iphone')}>iphone</button>
-        <button  style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !=="macbook", 'btn-dark': selected==="macbook" })} onClick={() => switchDevice('macbook')}>macbook</button>
+        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !== "imac", 'btn-dark': selected === "imac" })} onClick={() => switchDevice('imac')}>imac</button>
+        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !== "ipad", 'btn-dark': selected === "ipad" })} onClick={() => switchDevice('ipad')}>ipad</button>
+        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !== "iphone", 'btn-dark': selected === "iphone" })} onClick={() => switchDevice('iphone')}>iphone</button>
+        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !== "macbook", 'btn-dark': selected === "macbook" })} onClick={() => switchDevice('macbook')}>macbook</button>
+        <button style={btnStyle} type="button" className={classNames('btn', { 'btn-outline-dark': selected !== "macbook", 'btn-dark': selected === "default" })} onClick={() => switchDevice('default')}>default</button>
     </div>)
 }
 
 
 
-const DevicesView = ({ deviceType , children,user }) => {
-    
+const DevicesView = ({ deviceType, children, user }) => {
+
     switch (deviceType) {
         case "imac":
-            return (<div style={{padding:3}}><div style={{textAlign:"center"}}>{user}</div><IMacView>{children}</IMacView></div>)
+            return (<div style={{ padding: 3 }}><div style={{ textAlign: "center" }}>{user}</div><IMacView>{children}</IMacView></div>)
         case "ipad":
-            return (<div style={{padding:3}}><div style={{textAlign:"center"}}>{user}</div><IPadView>{children}</IPadView></div>)
+            return (<div style={{ padding: 3 }}><div style={{ textAlign: "center" }}>{user}</div><IPadView>{children}</IPadView></div>)
 
         case "iphone":
-            return (<div style={{padding:3}}><div style={{textAlign:"center"}}>{user}</div><IPhoneView>{children}</IPhoneView></div>)
+            return (<div style={{ padding: 3 }}><div style={{ textAlign: "center" }}>{user}</div><IPhoneView>{children}</IPhoneView></div>)
         case "macbook":
-            return (<div style={{padding:3}}><div style={{textAlign:"center"}}>{user}</div><MacBookView >{children}</MacBookView></div>)
+            return (<div style={{ padding: 3 }}><div style={{ textAlign: "center" }}>{user}</div><MacBookView >{children}</MacBookView></div>)
+        case "default":
+            return <DefaultView user={user}>{children}</DefaultView>
         default:
-            return <div style={{padding:3}}><div style={{textAlign:"center"}}>{user}</div><IPhoneView>{children}</IPhoneView></div>
+            return <DefaultView user={user}>{children}</DefaultView>
     }
 }
 export {
@@ -90,16 +93,16 @@ const IPadView = ({ children }) => {
 
     return (
         <div className="md-ipad  md-white-device">
-        <div className="md-body">
-            <div className="md-front-camera"></div>
-    
-            <div className="md-screen">
-           {children}
+            <div className="md-body">
+                <div className="md-front-camera"></div>
+
+                <div className="md-screen">
+                    {children}
+                </div>
+
+                <button className="md-home-button"></button>
             </div>
-    
-            <button className="md-home-button"></button>
-        </div>
-    </div>)
+        </div>)
 }
 
 const IPhoneView = ({ children }) => {
@@ -131,4 +134,11 @@ const MacBookView = ({ children }) => {
     </div>
     )
 
+}
+
+const DefaultView = ({ children, user }) => {
+
+    return (<div style={{ height: "50vh",width:"30%",margin:10 }}>
+        <div>{user}</div>
+        {children}</div>)
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import WebRTCFileShareController from '@rtcjs/fileshare-controller-webrtc'
 import { FileDownloader, FileSelector } from '@rtcjs/fileshare-controls-displayer'
+import FileShareDisplayer from '@rtcjs/fileshare-displayer'
 import WebRTCSignaling from '@rtcjs/webrtc-signaling'
 
 const ConnectionState=({signalingState})=>{
@@ -11,10 +12,8 @@ const ConnectionState=({signalingState})=>{
         return <div style={{color:"white",backgroundColor:"red"}}>not connected</div>
     }
 }
-class WebRTCFileShareModule extends React.Component {
-    render() {
+const WebRTCFileShareModule =({serverUrl,name,targetName,initiator})=>{
 
-        const {serverUrl,name,targetName,initiator}= this.props
         return (<WebRTCSignaling
         
                 serverUrl={serverUrl} name={name} targetName={targetName}>{(signalingContext) => {
@@ -25,48 +24,18 @@ class WebRTCFileShareModule extends React.Component {
                         targetName={targetName}
                         {...signalingContext}
                     >{(fileshareControllerContext) => {
-                        return (<div>FileShareModule
+                
+                        return (<div style={{width:"100%",height:"100%",display:"flex",flexDirection:"column"}}>
                             <ConnectionState {...fileshareControllerContext}/>
-                            <FileDownloader {...fileshareControllerContext} {...signalingContext} />
-                            <FileSelector {...fileshareControllerContext} {...signalingContext} />
+                            <FileShareDisplayer {...signalingContext} {...fileshareControllerContext}  />
+                    
                         </div>)
                     }}</WebRTCFileShareController>
                 )
             }}</WebRTCSignaling>)
     }
 
-}
 
 export default WebRTCFileShareModule
 
 
-/* 
-
-import React from 'react'
-import WebRTCFileShareController from '@rtcjs/fileshare-controller-webrtc'
-import { FileDownloader, FileSelector } from '@rtcjs/fileshare-controls-displayer'
-import WebRTCSignaling from '@rtcjs/webrtc-signaling'
-class WebRTCFileShareModule extends React.Component {
-    render() {
-        return (<WebRTCSignaling
-        
-            serverUrl={serverUrl} name={name} targetName={targetName}>{(signalingContext) => {
-                return (
-                    <WebRTCFileShareController
-                        name={name}
-                        targetName={targetName}
-                        {...signalingContext}
-                    >{(videoChatControllerContext) => {
-                        return (<div>
-                            <FileDownloader {...videoChatControllerContext} {...signalingContext} />
-                            <FileSelector {...videoChatControllerContext} {...signalingContext} />
-                        </div>)
-                    }}</WebRTCFileShareController>
-                )
-            }}</WebRTCSignaling>)
-    }
-
-}
-
-export default WebRTCFileShareModule
-*/

@@ -10,7 +10,7 @@ const WebRTCFileShareDemo = () => {
             return (
                 <div>
                     <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{ backgroundColor: "#b2dfdb" }}>WebRTC FileShare Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
-                    <div style={{ display: "flex", justifyContent: "center", zoom: "0.3" }}>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
                         <DevicesView deviceType={selected} user="mario@gmail.com">
                             <WebRTCFileShareModule initiator={true} serverUrl="http://localhost:3000/" name="mario@gmail.com" targetName="dragos@gmail.com" />
                         </DevicesView>
