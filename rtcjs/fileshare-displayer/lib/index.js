@@ -1,18 +1,35 @@
 import React from 'react'
 import FileReciver from './FileReciever'
 import FileSender from './FileSender'
-
-
-
+import { FileSelector } from '@rtcjs/fileshare-controls-displayer'
+import {InitiateFileSending} from '@rtcjs/fileshare-display-components'
 const FileShareDisplayer =(props)=>{
 
-  if(props.initiator){
+  const {connectionState,initiator,uploadProgress}= props
+
+  if(connectionState !=="connected"){
+   return <InitiateFileSending {...props}/>
+  }
+
+  else if(connectionState ==="connected" && uploadProgress===0 && initiator){
+    return <FileSelector {...props}/>
+  }
+  else
+  if( connectionState ==="connected" &&  uploadProgress >0 && initiator){
+ 
     return <FileSender {...props}/>
   }
-  else if(!props.initiator){
+
+ 
+  else if(!initiator && connectionState ==="connected"){
+ 
     return <FileReciver {...props}/>
   }
-  return null
+
+
+
+ 
+  return <div>Unknown</div>
 
   
 }

@@ -1,15 +1,14 @@
 import React from 'react'
-import { sendArrayBuffer, sendString, useDataChannel, rtcStateUpdate, createOffer } from '@rtcjs/shareables-webrtc'
+import { sendArrayBuffer, sendString, useDataChannel, rtcStateUpdate, createOffer, closeCall } from '@rtcjs/shareables-webrtc'
 
 const initialState = {
+
     file: "",
     currentChunk: 0,
     incomingFileInfo: "",
     incomingFileData: [],
     bytesRecieved: 0,
     bytesSent: 0,
-    downloadInProgress: false,
-    uploadInProgress: false,
     downloadProgress: 0,
     uploadProgress: 0,
     transferIsComplete: false,
@@ -17,7 +16,10 @@ const initialState = {
     BYTES_PER_CHUNK: 100,
     start: 0,
     end: 0,
-    cancelled: false
+    cancelled: false,
+    initiator: false,
+    connectionState: "",
+    signalingState: ""
 }
 
 class WebRTCFileShareController extends React.Component {
@@ -25,22 +27,23 @@ class WebRTCFileShareController extends React.Component {
     state = { ...initialState }
 
     componentDidMount() {
-        const { downloadInProgress } = this.state
-        const { initiator, sendOffer, sendCandidate } = this.props
+        //  const { downloadInProgress } = this.state
+     
 
         this.fileReader = new FileReader()
 
         this.fileReader.onloadend = (r) => {
 
-            const { bytesRecieved, incomingFileInfo } = this.state
+            const { bytesRecieved, incomingFileInfo, cancelled } = this.state
             if (r.target.readyState == FileReader.DONE) {
                 var buffer = r.target.result
                 const { file, currentChunk, BYTES_PER_CHUNK } = this.state
-                if (buffer.byteLength > 0) {
+                if (buffer.byteLength > 0 && cancelled === false) {
                     sendArrayBuffer({ self: this, message: r.target.result })
                     this.progressUpload(buffer)
+
                 }
-                if (Number.parseInt((BYTES_PER_CHUNK * currentChunk)) <= Number.parseInt(file.size)) {
+                if (Number.parseInt((BYTES_PER_CHUNK * currentChunk)) <= Number.parseInt(file.size) && cancelled === false) {
                     this.readNextChunk(file);
                     if (bytesRecieved === incomingFileInfo.fileSize) {
                         this.endDownload()
@@ -50,6 +53,31 @@ class WebRTCFileShareController extends React.Component {
             }
         }
 
+       
+            this.createDataChannel()
+            console.log("willMount",this.rtcPeerConnection)
+    }
+
+    componentWillUpdate(nextProps) {
+
+        rtcStateUpdate({ self: this, nextProps, ...this.props, autoAnswer: true })
+
+        if(this.rtcPeerConnection ===null){
+            this.createDataChannel()
+          }
+
+    
+    } // END OF COMPONENT DID UPDATE
+    componentWillReceiveProps(props) {
+        if (props.closeConnection != this.props.closeConnection && props.closeConnection === true) {
+            this.resetController()
+            closeCall({self:this})
+        }
+      
+    }
+
+    createDataChannel =()=>{
+        const { sendCandidate } = this.props
         useDataChannel({
             self: this, onMessage: (e) => {
                 if (typeof (e.data) === "string") {
@@ -61,8 +89,9 @@ class WebRTCFileShareController extends React.Component {
                     else if (message.type === "cancel") {
                         console.log("cancel message recived")
 
-                        this.setState({ cancelled: true, downloadInProgress: false, uploadInProgress: false })
+                        this.setState({ cancelled: true })
                     }
+
 
                 }
 
@@ -74,30 +103,23 @@ class WebRTCFileShareController extends React.Component {
             sendCandidate
         })
 
-        if (initiator) {
-            createOffer({
-                self: this, sendOffer
-            })
-        }
     }
 
-    componentWillUpdate(nextProps) {
-
-        rtcStateUpdate({ self: this, nextProps, ...this.props, autoAnswer: true })
-    } // END OF COMPONENT DID UPDATE
-
-
     onFileChange = (e) => {
+        const { initiator } = this.state
 
-        if (e.target.files[0] !== null) {
-            const file = e.target.files[0]
-            this.setState({ file: e.target.files[0], currentChunk: 0, uploadInProgress: true })
-            const message = { fileName: file.name, fileSize: file.size, type: "fileinfo" }
-            sendString({ self: this, message })
-            this.readNextChunk(file)
-        }
-        else {
-            console.log("file is null")
+      
+        if (initiator) {
+            if (e.target.files[0] !== null) {
+                const file = e.target.files[0]
+                this.setState({ file: e.target.files[0], currentChunk: 0 })
+                const message = { fileName: file.name, fileSize: file.size, type: "fileinfo" }
+                sendString({ self: this, message })
+                this.readNextChunk(file)
+            }
+            else {
+                console.log("file is null")
+            }
         }
     }
 
@@ -115,7 +137,7 @@ class WebRTCFileShareController extends React.Component {
 
     startDownload = ({ message }) => {
 
-        this.setState({ incomingFileInfo: message, bytesRecieved: 0, downloadInProgress: true })
+        this.setState({ incomingFileInfo: message, bytesRecieved: 0, cancelled: false })
     }
 
     progressDownload = (e) => {
@@ -133,7 +155,7 @@ class WebRTCFileShareController extends React.Component {
         let uploadProgress = (((bytesSent + e.byteLength) / file.size) * 100).toFixed() > 0 && (((bytesSent + e.byteLength) / file.size) * 100).toFixed()
         this.setState((prevState) => ({ bytesSent: e.byteLength + prevState.bytesSent, uploadProgress }))
         if ((bytesSent + e.byteLength) === file.size) {
-            this.setState({ uploadInProgress: false, transferIsComplete: true })
+            this.setState({ transferIsComplete: true })
         }
     }
 
@@ -141,13 +163,13 @@ class WebRTCFileShareController extends React.Component {
 
         const { incomingFileData } = this.state
         const assembledFile = new Blob(incomingFileData)
-        this.setState({ downloadInProgress: false, assembledFile, transferIsComplete: true })
+        this.setState({ assembledFile, transferIsComplete: true })
     }
 
     cancelTransfer = () => {
         const message = { type: "cancel" }
         sendString({ self: this, message })
-        this.setState({ cancelled: true, downloadInProgress: false, uploadInProgress: false })
+        this.setState({ cancelled: true })
     }
 
     pauseTransfer = () => {
@@ -159,13 +181,38 @@ class WebRTCFileShareController extends React.Component {
     }
 
     resetController = () => {
+        this.setState((prevState) => ({ ...initialState, initiator: prevState.initiator }))
+    }
+
+
+    setInitiator = () => {
+        const { sendOffer } = this.props
+
+    
+            this.createDataChannel()
+        
+        createOffer({
+            self: this, sendOffer
+        })
+        this.setState({ initiator: true })
+
+        console.log("initiator name", this.props.name)
+    }
+
+    closeTransfer = () => {
+
         this.setState({ ...initialState })
+        this.props.sendClose()
+        closeCall({self:this})
+
     }
 
     render() {
 
         const { children } = this.props
-        return children({ ...this.props, ...this.state, onFileChange: this.onFileChange, cancelTransfer: this.cancelTransfer, resetController: this.resetController })
+
+        console.log("this.state", this.state)
+        return children({ ...this.props, ...this.state, onFileChange: this.onFileChange, cancelTransfer: this.cancelTransfer, resetController: this.resetController, setInitiator: this.setInitiator, closeTransfer: this.closeTransfer })
     }
 
 }

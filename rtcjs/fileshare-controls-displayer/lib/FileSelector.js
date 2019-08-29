@@ -3,7 +3,7 @@ import React from 'react'
 const style={
     height:"100%",
     width:"100%",
-    backgroundColor:"yellow",
+
     display:"flex",
     justifyContent:"center",
     alignItems:"center"
@@ -16,12 +16,20 @@ class FileSelector extends React.Component {
         this.fileInputRef = React.createRef()
     }
 
-    upload() {
-        document.getElementById("selectFile").click()
+ 
+
+
+    upload=()=> {
+        if(this.props.initiator){
+            
+            document.getElementById("selectFile").click()
+        }
+    
+      
       }
     render() {
-        const { onFileChange } = this.props
-        return (<div style={style}>
+        const { onFileChange,setInitiator } = this.props
+        return (<div style={style} className="bg-info">
                     <button className="btn btn-primary" onClick={this.upload}>Select File</button>
                     <input name="file"  onChange={onFileChange} hidden type="file" ref={this.fileInputRef} className="form-control-file" id="selectFile" className="visually-hidden" />
            

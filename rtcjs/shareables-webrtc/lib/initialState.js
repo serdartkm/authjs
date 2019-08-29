@@ -4,5 +4,6 @@ export default {
     errors:[],
     remoteMediaStream: null,
     localMediaStream: null,
+
 }
 

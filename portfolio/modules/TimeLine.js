@@ -50,7 +50,7 @@ const  TimeLine =({data})=> {
                         key={i}
                             date={ c.workingon ? new Date(c.startdate).toLocaleDateString()+" working on ":new Date(c.startdate).toLocaleDateString() }
                             iconStyle={{ background: IconColor({icon:c.tag}), color:"#fafafa" }}
-                            icon={<IconSelected icon={c.tag} />}
+                            icon={<img src={`./icons/${c.tag}.png`} className="rounded" style={{width:80,height:80}}/>}
                         >
                             <h3 className="vertical-timeline-element-title">{c.title}</h3>
                             <p className="vertical-timeline-element-subtitle">DEV TOOLS USED: {(' ')} {tools.join(', ')}</p>

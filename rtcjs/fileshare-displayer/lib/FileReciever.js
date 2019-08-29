@@ -1,23 +1,25 @@
 import React from 'react'
-import { FileSelector, FileDownloader } from '@rtcjs/fileshare-controls-displayer'
-import { TransferInStart, TransferCancelled } from '@rtcjs/fileshare-display-components'
+import {FileDownloader } from '@rtcjs/fileshare-controls-displayer'
+import { TransferInStart, TransferCancelled,ReadyToRecievFile } from '@rtcjs/fileshare-display-components'
 const FileSender = (props) => {
-  const { cancelled, start, downloadInProgress, transferIsComplete } = props
+  const { cancelled, transferIsComplete,connectionState,downloadProgress,incomingFileData } = props
   if (cancelled) {
 
     return <TransferCancelled {...props} />
-  } else
-    if (start === 0 && downloadInProgress === false && transferIsComplete === false) {
-      return <FileSelector {...props} />
-    }
-    else if (downloadInProgress) {
+  }
+  else
+  if (connectionState==="connected" && downloadProgress ===0 ) {
+    return <ReadyToRecievFile {...props} />
+  }
+    else if (!transferIsComplete) {
       return <TransferInStart {...props} />
     }
 
+   
     else if (transferIsComplete) {
       return <FileDownloader {...props} />
     }
-  return null
+  return <div>Empty inside File Recievr</div>
 }
 
 

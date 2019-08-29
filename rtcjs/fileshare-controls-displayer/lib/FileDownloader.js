@@ -26,14 +26,14 @@ class FileDownloader extends React.Component {
 
     render() {
         const {resetController}= this.props
-        return (<div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", height: "100%", backgroundColor: "yellow", width: "100%" }}>
+        return (<div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", height: "100%", width: "100%" }}  className="bg-success">
 
-            <IconContext.Provider value={{ color: "green", size: '5em' }}>
+            <IconContext.Provider value={{ color: "white", size: '5em' }}>
                 <div>
                     <MdDone />
                 </div>
             </IconContext.Provider>
-            <a className="btn btn-outline-success" ref={this.anchorRef} onClick={resetController}>Download file</a>
+            <a className="btn btn-primary" ref={this.anchorRef} onClick={resetController}>Download file</a>
         </div>)
     }
 

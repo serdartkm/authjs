@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { MdDone } from "react-icons/md";
 const TransferSuccess =()=>{
 
-    return (<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",backgroundColor:"yellow",width:"100%"}}>
+    return (<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100%",width:"100%"}} className="bg-success">
         
         <IconContext.Provider value={{ color: "green",size:'5em'}}>
               <div>

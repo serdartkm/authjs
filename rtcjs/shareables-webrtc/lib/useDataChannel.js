@@ -27,18 +27,16 @@ const useDataChannel = ({ self,
     };
 
     receiveChannel.onclose = function () {
-
-      self.setState({ closeConnection: true })
+  console.log("data channel is closed")
+    //  self.setState({ closeConnection: true })
 
     };
     //when we receive a message from the other peer, display it on the screen 
 
   }
 
-
-
-
   self.rtcPeerConnection.onsignalingstatechange = () => {
+    console.log("signalingStateMMMMMMMMMMMM",self.rtcPeerConnection.signalingState, self.props.name)
     self.setState({ signalingState: self.rtcPeerConnection.signalingState })
   };
 
@@ -50,7 +48,7 @@ const useDataChannel = ({ self,
   };
 
   self.rtcPeerConnection.onconnectionstatechange = () => {
-
+  console.log("connectionStateLLLLLLLLLLLLL",self.rtcPeerConnection.connectionState, self.props.name)
     self.setState({ connectionState: self.rtcPeerConnection.connectionState })
   }
 }

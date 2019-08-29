@@ -9,7 +9,7 @@ class WebRTCSignaling extends React.Component {
       connected: false,
       candidate: null,
       error: null,
-      closeConnection:false
+      closeConnection: false
     };
   }
 
@@ -22,22 +22,23 @@ class WebRTCSignaling extends React.Component {
       this.socket = io();
     }
     this.socket.on("offer", message => {
-    
+
       this.setState({ offer: message.offer });
     });
     this.socket.on("answer", message => {
-  
+
       this.setState({ answer: message.answer });
     });
     this.socket.on("candidate", message => {
-   
+
       this.setState({ candidate: message.candidate });
     });
     this.socket.on("connect", () => {
       this.setState({ connected: true });
     });
     this.socket.on("close", () => {
-      this.setState({ closeConnection: true,offer:null,answer:null,candidate:null });
+      this.setState({ closeConnection: true, offer: null, answer: null, candidate: null });
+
       this.props.resetWebRTCConrtoller()
     });
   } // end of componentDidMount/
@@ -54,17 +55,19 @@ class WebRTCSignaling extends React.Component {
   };
 
   sendClose = () => {
+    console.log("send close clicked")
     const { name, targetName } = this.props;
     this.socket.emit("close", {
       name,
       targetName
     })
-    this.setState({closeConnection:true,offer:null,answer:null,candidate:null})
+    this.setState({ closeConnection: true, offer: null, answer: null, candidate: null,connected:false })
+
     this.props.resetWebRTCConrtoller()
   };
 
   sendOffer = ({ offer }) => {
-   
+
     const { name, targetName } = this.props;
 
     this.socket.emit("offer", {
@@ -88,12 +91,12 @@ class WebRTCSignaling extends React.Component {
   render() {
     const { children } = this.props;
     const signalingContext = {
-     ...this.state,
+      ...this.state,
       sendOffer: this.sendOffer,
       sendAnswer: this.sendAnswer,
       sendClose: this.sendClose,
       sendCandidate: this.sendCandidate,
-     
+
     };
     return children(signalingContext)
   }
