@@ -31,7 +31,7 @@ class MessagingControllerWebRTC extends React.Component {
       })
     }
   }
-
+//
   componentWillUpdate(nextProps) {
     rtcStateUpdate({ self: this, nextProps, ...this.props, autoAnswer: true })
   } // END OF COMPONENT DID UPDATE
@@ -41,7 +41,9 @@ class MessagingControllerWebRTC extends React.Component {
 
     const { name, targetName } = this.props;
     const { message } = this.props;
-    this.dataChannel.send(JSON.stringify({
+     const readyState = this.dataChannel.readyState;
+     if(readyState==="open"){
+        this.dataChannel.send(JSON.stringify({
       name,
       targetName,
       message,
@@ -49,6 +51,8 @@ class MessagingControllerWebRTC extends React.Component {
     }))
 
     this.props.saveLocalMessage({ key: name, to: targetName })
+     }
+  
   }
 
   render() {

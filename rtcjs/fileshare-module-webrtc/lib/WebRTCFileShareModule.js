@@ -6,20 +6,21 @@ import WebRTCSignaling from '@rtcjs/webrtc-signaling'
 
 class WebRTCFileShareModule extends React.Component {
 
-    state = { visible: "true" }
+    state = { visible:true }
 
     resetWebRTCConrtoller = () => {
-        this.setState({ visible: "false" })
+        this.setState({ visible: false })
 
        setTimeout(() => {
-         this.setState({ visible: "true" })
-        }, 5000)
+         this.setState({ visible:true})
+        }, 0)
     }
     render() {
 
-        const { serverUrl, name, targetName,visible }= this.props
-
-        return (<WebRTCSignaling
+        const { serverUrl, name, targetName }= this.props
+                   const {visible}= this.state
+        console.log("visible",visible)
+        return (<div style={{height:"100%"}}>{visible ? <WebRTCSignaling
             resetWebRTCConrtoller={this.resetWebRTCConrtoller}
             serverUrl={serverUrl} name={name} targetName={targetName}>{(signalingContext) => {
         
@@ -38,7 +39,7 @@ class WebRTCFileShareModule extends React.Component {
                         </div>)
                     }}</WebRTCFileShareController>
                 )
-            }}</WebRTCSignaling>)
+                }}</WebRTCSignaling>: <div>NotVisible</div>}</div>)
 
         
 

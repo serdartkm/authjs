@@ -35,6 +35,8 @@ const useMediaStream = ({ self,
         }
     };
     self.rtcPeerConnection.onconnectionstatechange = () => {
+
+        console.log("connectionState.....", self.rtcPeerConnection.connectionState )
         self.setState({ connectionState: self.rtcPeerConnection.connectionState })
     };
     self.rtcPeerConnection.onsignalingstatechange = () => {

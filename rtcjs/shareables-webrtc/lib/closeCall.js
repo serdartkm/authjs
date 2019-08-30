@@ -2,7 +2,7 @@ const  closeCall = ({self}) => {
 
     if (self.rtcPeerConnection) {
    
-    
+     
          
           self.rtcPeerConnection.ontrack = null;
           self.rtcPeerConnection.onremovetrack = null;

@@ -3,6 +3,8 @@ import {FileDownloader } from '@rtcjs/fileshare-controls-displayer'
 import { TransferInStart, TransferCancelled,ReadyToRecievFile } from '@rtcjs/fileshare-display-components'
 const FileSender = (props) => {
   const { cancelled, transferIsComplete,connectionState,downloadProgress,incomingFileData } = props
+
+  console.log("props after cancelled",props)
   if (cancelled) {
 
     return <TransferCancelled {...props} />

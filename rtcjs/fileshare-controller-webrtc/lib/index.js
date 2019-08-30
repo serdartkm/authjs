@@ -28,7 +28,7 @@ class WebRTCFileShareController extends React.Component {
 
     componentDidMount() {
         //  const { downloadInProgress } = this.state
-     
+        this._ismounted = true;
 
         this.fileReader = new FileReader()
 
@@ -53,30 +53,41 @@ class WebRTCFileShareController extends React.Component {
             }
         }
 
-       
-            this.createDataChannel()
-            console.log("willMount",this.rtcPeerConnection)
+
+        this.createDataChannel()
+
     }
 
     componentWillUpdate(nextProps) {
+        if (this._ismounted = true) {
 
-        rtcStateUpdate({ self: this, nextProps, ...this.props, autoAnswer: true })
+            rtcStateUpdate({ self: this, nextProps, ...this.props, autoAnswer: true })
 
-        if(this.rtcPeerConnection ===null){
-            this.createDataChannel()
-          }
+            if (this.rtcPeerConnection === null) {
+                this.createDataChannel()
+            }
+        }
 
-    
+
+
     } // END OF COMPONENT DID UPDATE
     componentWillReceiveProps(props) {
         if (props.closeConnection != this.props.closeConnection && props.closeConnection === true) {
             this.resetController()
-            closeCall({self:this})
+            closeCall({ self: this })
         }
-      
+
     }
 
-    createDataChannel =()=>{
+    componentWillUnmount() {
+        this._ismounted = false;
+        closeCall({ self: this })
+
+        this.fileReader.onloadend=null
+        this.fileReader=null
+    }
+
+    createDataChannel = () => {
         const { sendCandidate } = this.props
         useDataChannel({
             self: this, onMessage: (e) => {
@@ -90,6 +101,7 @@ class WebRTCFileShareController extends React.Component {
                         console.log("cancel message recived")
 
                         this.setState({ cancelled: true })
+                        // closeCall({self:this})
                     }
 
 
@@ -108,7 +120,7 @@ class WebRTCFileShareController extends React.Component {
     onFileChange = (e) => {
         const { initiator } = this.state
 
-      
+
         if (initiator) {
             if (e.target.files[0] !== null) {
                 const file = e.target.files[0]
@@ -170,6 +182,8 @@ class WebRTCFileShareController extends React.Component {
         const message = { type: "cancel" }
         sendString({ self: this, message })
         this.setState({ cancelled: true })
+        //  closeCall({self:this})
+        this.closeTransfer()
     }
 
     pauseTransfer = () => {
@@ -188,9 +202,9 @@ class WebRTCFileShareController extends React.Component {
     setInitiator = () => {
         const { sendOffer } = this.props
 
-    
-            this.createDataChannel()
-        
+
+        //   this.createDataChannel()
+
         createOffer({
             self: this, sendOffer
         })
@@ -203,7 +217,7 @@ class WebRTCFileShareController extends React.Component {
 
         this.setState({ ...initialState })
         this.props.sendClose()
-        closeCall({self:this})
+        //  closeCall({self:this})
 
     }
 

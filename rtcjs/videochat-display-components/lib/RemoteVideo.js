@@ -29,27 +29,23 @@ class RemoteVideo extends React.Component {
     this.remoteVideoRef.current.srcObject = remoteMediaStream;
   }
   render() {
-    return (<div
-      style={style}
-    >
-      {' '}
+    return (
+      <div style={{height:"100%",width:"25vh",display:"flex",justifyContent:"center",aligntItems:"center",position:"relative", backgroundColor:"green"}}>
       <video
         style={{
-          height: '100%',
-          width: '100%',
+          height: 'auto',
+          width: '25vh',
           flex: 1,
           //  backgroundColor: 'brown',
           padding: 0,
           margin: 0,
+          position:"ansolute"
         }}
         ref={this.remoteVideoRef}
         autoPlay
         playsInline
       >
-        ddd
-            </video>
-
-    </div>)
+            </video></div>)
   }
 
 }

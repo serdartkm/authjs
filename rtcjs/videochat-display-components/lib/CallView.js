@@ -2,15 +2,13 @@ import React from 'react'
 import CallingAnimation from './CallingAnimation'
 
 const style = {
-
-    backgroundColor: "#eeeeee",
+    backgroundColor: "yellow", //"#eeeeee",
     overflow: "auto",
     width: "100%",
     height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-
 };
 const Calling = ({ signalingState,offer }) => {
 

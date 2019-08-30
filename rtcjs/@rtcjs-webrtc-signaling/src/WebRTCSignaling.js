@@ -42,7 +42,9 @@ class WebRTCSignaling extends React.Component {
       this.props.resetWebRTCConrtoller()
     });
   } // end of componentDidMount/
-
+componentWillUnmount(){
+  this.socket =null
+}
   sendCandidate = ({ candidate }) => {
     const { name, targetName } = this.props;
 

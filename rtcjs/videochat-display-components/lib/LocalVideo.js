@@ -2,14 +2,15 @@ import React from 'react'
 
 const style = {
     
-    backgroundColor: "#eeeeee",
-    overflow: "auto",
-    width:100,
-    height:100,
-    flex:10,
+    backgroundColor: "yellow", //"#eeeeee",
     position:"absolute",
-    right:5,
-    top:5
+    height:"auto",
+     top:25,
+     right:5,
+     width: 100,  
+     padding: 0,
+     margin: 0,
+     zIndex:50
 };
 
 
@@ -45,25 +46,17 @@ class LocalVideo extends React.Component{
         }
       }
 render(){
-    return( <div
-        style={style}
-      >
-        {' '}
+    return( 
         <video
-          style={{
-            height: '100%',
-            width: '100%',  
-            padding: 0,
-            margin: 0,
-          }}
+          style={style}
           ref={this.videoRef}
           autoPlay
           playsInline
         >
-          ddd
+        
         </video>
     
-      </div>)
+    )
 }
  
 }

@@ -10,7 +10,8 @@
     "mongodbjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node mongodbjs/demo/server/index.js \" ",
     "install": "",
     "server": " nodemon --exec babel-node demo/server/index.js",
-    "dev": "babel demo/server -d demo/dist && node demo/dist/index.js"
+    "dev": "babel demo/server -d demo/dist && node demo/dist/index.js",
+    "cypress":"cypress open"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

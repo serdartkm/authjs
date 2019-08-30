@@ -8,6 +8,7 @@ const createAnswer = ({ offer, self, sendAnswer }) => {
     .setRemoteDescription(new RTCSessionDescription(offer))
     .then(() => self.rtcPeerConnection.createAnswer())
     .then(answer => {
+     // console.log("answer...",answer)
       self.rtcPeerConnection.setLocalDescription(answer);
       sendAnswer({ answer });
     })

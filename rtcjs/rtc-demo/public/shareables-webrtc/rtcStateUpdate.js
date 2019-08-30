@@ -1,23 +1,22 @@
 import closeCall from './closeCall'
 import createAnswer from './createAnswer'
-import destroyRTC from './destroyRTC'
-const compWillUpdate = ({ self, nextProps, answer, offer, sendAnswer, autoAnswer = false }) => {
+const compWillUpdate = ({ self, nextProps, answer=null, offer=null, sendAnswer=null, autoAnswer = false }) => {
   if (self.rtcPeerConnection !== undefined && self.rtcPeerConnection !==null) {
     if (nextProps.closeConnection) {
       closeCall({ self })
 
    
     }
-    if (nextProps.answer !== null && answer === null) {
+    if ( nextProps.answer !==undefined && nextProps.answer !== null && answer === null) {
       self.rtcPeerConnection.setRemoteDescription(
         new RTCSessionDescription(nextProps.answer)
       );
     }
-    if (nextProps.offer !== null && offer === null && autoAnswer) {
+    if (nextProps.offer !==undefined && nextProps.offer !== null && offer === null && autoAnswer) {
       const { offer } = nextProps
       createAnswer({ offer, self: self, sendAnswer })
     }
-    if (self.rtcPeerConnection && self.rtcPeerConnection.remoteDescription !== null) {
+    if (self.rtcPeerConnection !==undefined && self.rtcPeerConnection.remoteDescription !== null) {
       if (nextProps.candidate !== undefined && nextProps.candidate !==null) {
         self.rtcPeerConnection.addIceCandidate(
           new RTCIceCandidate(nextProps.candidate)

@@ -6,7 +6,7 @@ const createOffer = ({ self, sendOffer }) => {
   self.rtcPeerConnection
     .createOffer()
     .then(offer => {
-
+     
       self.rtcPeerConnection.setLocalDescription(offer);
       sendOffer({ offer });
     })
