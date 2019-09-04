@@ -1,7 +1,7 @@
 {
   "name": "@mongodbjs/express",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
