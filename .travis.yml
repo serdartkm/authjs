@@ -17,8 +17,6 @@ before_deploy:
   - git stash
 deploy:
   provider: script
-   email: "YOUR_EMAIL_ADDRESS"
-   api_key: "YOUR_AUTH_TOKEN"
   script: "lerna publish --canary --yes --force-publish"
   skip_cleanup: true
   on:
