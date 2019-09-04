@@ -1,19 +1,19 @@
 {
   "name": "@authjs/react-ui",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@authjs/react": "^1.0.4",
-    "@xaf/bootstrap-async-button": "^1.0.4",
-    "@xaf/bootstrap-dialog": "^1.0.4",
-    "@xaf/bootstrap-input": "^1.0.4",
-    "@xaf/bootstrap-table": "^1.0.4",
-    "@xaf/editor-react": "^1.0.4"
+    "@authjs/react": "^1.0.5",
+    "@xaf/bootstrap-async-button": "^1.0.5",
+    "@xaf/bootstrap-dialog": "^1.0.5",
+    "@xaf/bootstrap-input": "^1.0.5",
+    "@xaf/bootstrap-table": "^1.0.5",
+    "@xaf/editor-react": "^1.0.5"
   },
   "peerDependencies": {
     "react-router-dom": "^5.0.1"

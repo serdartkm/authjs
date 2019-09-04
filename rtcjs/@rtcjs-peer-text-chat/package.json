@@ -1,10 +1,10 @@
 {
   "name": "@rtcjs/peer-text-chat",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@rtcjs/chat-log": "^1.0.4"
+    "@rtcjs/chat-log": "^1.0.5"
   }
 }
