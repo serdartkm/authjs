@@ -1,7 +1,7 @@
 {
   "name": "xaf-demo",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -11,12 +11,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@authjs/express": "^1.0.5",
-    "@authjs/react": "^1.0.5",
-    "@authjs/react-ui": "^1.0.5",
-    "@mongodbjs/express": "^1.0.5",
-    "@xaf/editor-react": "^1.0.5",
-    "@xaf/table-render": "^1.0.5"
+    "@authjs/express": "^1.0.6",
+    "@authjs/react": "^1.0.6",
+    "@authjs/react-ui": "^1.0.6",
+    "@mongodbjs/express": "^1.0.6",
+    "@xaf/editor-react": "^1.0.6",
+    "@xaf/table-render": "^1.0.6"
   },
   "keywords": [],
   "author": "",
