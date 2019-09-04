@@ -6,6 +6,6 @@
 
 ```
 const messagingModule = require('messaging-module');
-new pub
-// TODO: DEMONSTRATE API---
+
+// TODO: DEMONSTRATE API-----
 ```
