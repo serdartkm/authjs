@@ -19,7 +19,7 @@ deploy:
   provider: npm
    email: "tkm.house.new@gmail.com"
    api_key: "f1848aab-7cb9-4e66-b6d0-c4dbec028f8f"
-   script: "lerna publish --canary --yes --force-publish"
+  script: "lerna publish --canary --yes --force-publish"
   skip_cleanup: true
   on:
     node: "10"
