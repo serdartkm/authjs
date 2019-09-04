@@ -1,17 +1,17 @@
 {
   "name": "@rtcjs/messaging-module-webrtc",
   "private": true,
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/message-editor-displayer": "^1.0.9",
-    "@rtcjs/messages-displayer": "^1.0.9",
-    "@rtcjs/messaging-controller-webrtc": "^1.0.9",
-    "@rtcjs/webrtc-signaling": "^1.0.9"
+    "@rtcjs/message-editor-displayer": "^1.0.10",
+    "@rtcjs/messages-displayer": "^1.0.10",
+    "@rtcjs/messaging-controller-webrtc": "^1.0.10",
+    "@rtcjs/webrtc-signaling": "^1.0.10"
   },
   "directories": {
     "lib": "lib",
