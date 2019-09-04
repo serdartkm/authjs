@@ -19,7 +19,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "hhttps://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/serdartkm/authjs/issues"
   },
-  "gitHead": "9e01f2736e55153a9753c94c8653616ddbd2985d"
+  "gitHead": "55bc226c9d572c9aa45864441c6f3fc85c1db35b"
 }
