@@ -1,15 +1,15 @@
 {
   "name": "@rtcjs/messaging-controller-webrtc",
   "private": true,
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/chat-log": "^1.0.11",
-    "@rtcjs/shareables-webrtc": "^1.0.11"
+    "@rtcjs/chat-log": "^1.0.12",
+    "@rtcjs/shareables-webrtc": "^1.0.12"
   },
   "directories": {
     "lib": "lib",
