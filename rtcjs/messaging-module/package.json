@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/:_authToken=${NPM_TOKEN}",
+    "registry": "https://registry.npmjs.org/:_authToken=3cb69f61-c8cc-4a37-a30a-d3f1f44f642c",
     "access": "public"
   },
   "repository": {
