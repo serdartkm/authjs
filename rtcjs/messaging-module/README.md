@@ -7,5 +7,5 @@
 ```
 const messagingModule = require('messaging-module');
 
-// TODO: DEMONSTRATE API-----
+// TODO: DEMONSTRATE API--
 ```
