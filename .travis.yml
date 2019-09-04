@@ -14,6 +14,7 @@ script:
   - yarn run bootstrap
 before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+  - git stash
 deploy:
   provider: script
   script: "lerna publish --canary --yes --force-publish"
