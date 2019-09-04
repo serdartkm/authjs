@@ -1,15 +1,15 @@
 {
   "name": "@rtcjs/messaging-module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "devDependencies": {
-    "@rtcjs/message-editor-displayer": "^1.0.1",
-    "@rtcjs/messages-displayer": "^1.0.1",
-    "@rtcjs/messaging-controller": "^1.0.1"
+    "@rtcjs/message-editor-displayer": "^1.0.2",
+    "@rtcjs/messages-displayer": "^1.0.2",
+    "@rtcjs/messaging-controller": "^1.0.2"
   },
   "directories": {
     "lib": "lib",
@@ -30,5 +30,6 @@
   },
   "bugs": {
     "url": "https://github.com/serdartkm/authjs/issues"
-  }
+  },
+  "gitHead": "5e632f82240d5909bb993ca35b7d0d8898e3a9ff"
 }
