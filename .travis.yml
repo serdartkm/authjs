@@ -16,9 +16,9 @@ before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
   - git stash
 deploy:
-  provider: npm
-   email: "tkm.house.new@gmail.com"
-   api_key: "f1848aab-7cb9-4e66-b6d0-c4dbec028f8f"
+  provider: script
+   email: "YOUR_EMAIL_ADDRESS"
+   api_key: "YOUR_AUTH_TOKEN"
   script: "lerna publish --canary --yes --force-publish"
   skip_cleanup: true
   on:
