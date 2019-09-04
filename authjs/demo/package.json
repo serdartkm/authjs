@@ -1,7 +1,7 @@
 {
   "name": "authjs-demo",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -11,12 +11,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@authjs/express": "^1.0.3",
-    "@authjs/react": "^1.0.3",
-    "@authjs/react-ui": "^1.0.3",
-    "@mongodbjs/express": "^1.0.3",
-    "@xaf/editor-react": "^1.0.3",
-    "@xaf/table-render": "^1.0.3"
+    "@authjs/express": "^1.0.4",
+    "@authjs/react": "^1.0.4",
+    "@authjs/react-ui": "^1.0.4",
+    "@mongodbjs/express": "^1.0.4",
+    "@xaf/editor-react": "^1.0.4",
+    "@xaf/table-render": "^1.0.4"
   },
   "keywords": [],
   "author": "",
