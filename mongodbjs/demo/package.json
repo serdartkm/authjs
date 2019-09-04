@@ -1,7 +1,7 @@
 {
   "name": "mongodbjs-demo",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -11,12 +11,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@authjs/express": "^1.0.7",
-    "@authjs/react": "^1.0.7",
-    "@authjs/react-ui": "^1.0.7",
-    "@mongodbjs/express": "^1.0.7",
-    "@xaf/editor-react": "^1.0.7",
-    "@xaf/table-render": "^1.0.7"
+    "@authjs/express": "^1.0.8",
+    "@authjs/react": "^1.0.8",
+    "@authjs/react-ui": "^1.0.8",
+    "@mongodbjs/express": "^1.0.8",
+    "@xaf/editor-react": "^1.0.8",
+    "@xaf/table-render": "^1.0.8"
   },
   "keywords": [],
   "author": "",

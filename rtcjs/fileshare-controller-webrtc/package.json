@@ -1,14 +1,14 @@
 {
   "name": "@rtcjs/fileshare-controller-webrtc",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/shareables-webrtc": "^1.0.7"
+    "@rtcjs/shareables-webrtc": "^1.0.8"
   },
   "directories": {
     "lib": "lib",
