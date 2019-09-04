@@ -6,7 +6,7 @@
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "dependencies":{
+  "devDependencies":{
     "@rtcjs/messaging-controller":"*",
     "@rtcjs/messages-displayer":"*",
     "@rtcjs/message-editor-displayer":"*"

@@ -1,5 +1,6 @@
 {
   "name": "@rtcjs/messaging-controller",
+  "private": true,
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",

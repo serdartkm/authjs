@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 describe('@webrtc-signaling', function() {
   this.beforeEach(function() {
-    cy.visit('/nodejssingnaling');
+    cy.visit('http://localhost:3000/#/webrtcfileshare');
     cy.wait(2000)  
   });
   it('video offer is received', function() {

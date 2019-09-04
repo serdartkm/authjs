@@ -1,5 +1,6 @@
 {
   "name": "@rtcjs/fileshare-controls-displayer",
+  "private": true,
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
