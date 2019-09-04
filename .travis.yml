@@ -17,7 +17,7 @@ before_deploy:
   - git stash
 deploy:
   provider: script
-  script: "lerna publish --canary --yes --force-publish"
+  script: "cp .npmrc.template $HOME/.npmrc && lerna publish --canary --yes --force-publish"
   skip_cleanup: true
   on:
     node: "10"
