@@ -1,16 +1,16 @@
 {
   "name": "@rtcjs/fireshare-module-webrtc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/fileshare-controller-webrtc":"*",
-    "@rtcjs/fileshare-controls-displayer":"*",
-    "@rtcjs/fileshare-displayer":"*",
-    "@rtcjs/webrtc-signaling":"*"
+    "@rtcjs/fileshare-controller-webrtc": "^0.0.1",
+    "@rtcjs/fileshare-controls-displayer": "^0.0.1",
+    "@rtcjs/fileshare-displayer": "^0.0.1",
+    "@rtcjs/webrtc-signaling": "^0.0.1"
   },
   "directories": {
     "lib": "lib",

@@ -1,30 +1,33 @@
 {
   "name": "@rtcjs/app",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "server/server.js",
   "license": "MIT",
   "scripts": {
     "server": "nodemon --watch ../../packages server/server.js"
   },
   "dependencies": {
-    "socket.io": "^2.2.0",
+    "@rtcjs/server": "^0.0.1",
     "mongodb": "^3.2.7",
-    "@rtcjs/server":"*"
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "@rtcjs/webrtc-peer": "*",
-    "@rtcjs/webrtc-signaling": "*",
-    "@rtcjs/peer-text-chat":"*",
-    "@rtcjs/ui": "^1.0.77",
-    "@rtcjs/contacts":"*",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
     "@material-ui/core": "^4.1.3",
-    "@material-ui/icons": "^4.2.1"
+    "@material-ui/icons": "^4.2.1",
+    "@rtcjs/contacts": "^0.0.1",
+    "@rtcjs/peer-text-chat": "^0.0.1",
+    "@rtcjs/ui": "^1.0.77",
+    "@rtcjs/webrtc-peer": "^0.0.1",
+    "@rtcjs/webrtc-signaling": "^0.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
   },
   "nodemonConfig": {
-    "ignore": ["client/*", "public/*"],
+    "ignore": [
+      "client/*",
+      "public/*"
+    ],
     "delay": "0"
   }
 }

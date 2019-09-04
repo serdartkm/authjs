@@ -1,16 +1,14 @@
 {
   "name": "@xaf/table-render",
-  
   "private": true,
-
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "dependencies":{
-    "@xaf/editor-react":"*"
+  "dependencies": {
+    "@xaf/editor-react": "^0.0.1"
   },
   "directories": {
     "lib": "lib",

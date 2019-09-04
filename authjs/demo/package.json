@@ -1,7 +1,7 @@
 {
   "name": "authjs-demo",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -10,13 +10,13 @@
     "bootstrap": "lerna bootstrap --use-workspaces",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies":{
-  "@authjs/react":"*",
-  "@authjs/express":"*",
-  "@authjs/react-ui":"*",
-  "@mongodbjs/express":"*",
-  "@xaf/table-render":"*",
-  "@xaf/editor-react":"*"
+  "dependencies": {
+    "@authjs/express": "^0.0.1",
+    "@authjs/react": "^0.0.1",
+    "@authjs/react-ui": "^0.0.1",
+    "@mongodbjs/express": "^0.0.1",
+    "@xaf/editor-react": "^0.0.1",
+    "@xaf/table-render": "^0.0.1"
   },
   "keywords": [],
   "author": "",

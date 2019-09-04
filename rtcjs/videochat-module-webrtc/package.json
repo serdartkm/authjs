@@ -1,15 +1,15 @@
 {
   "name": "@rtcjs/videochat-module-webrtc",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/videochat-controller-webrtc":"*",
-    "@rtcjs/videochat-displayer":"*"
+    "@rtcjs/videochat-controller-webrtc": "^0.0.1",
+    "@rtcjs/videochat-displayer": "^0.0.1"
   },
   "directories": {
     "lib": "lib",
