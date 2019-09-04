@@ -1,15 +1,15 @@
 {
   "name": "@authjs/react",
   "private": true,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "dependencies": {
-    "@authjs/validation": "^1.0.6",
-    "@mongodbjs/react": "^1.0.6"
+    "@authjs/validation": "^1.0.7",
+    "@mongodbjs/react": "^1.0.7"
   },
   "directories": {
     "lib": "lib",
