@@ -16,9 +16,7 @@ before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
 deploy:
   provider: script
-  script: 
-  - "git stash"
-  - "lerna publish --canary --yes --force-publish"
+  script: "lerna publish --canary --yes --force-publish"
   skip_cleanup: true
   on:
     node: "10"
