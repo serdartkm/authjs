@@ -1,7 +1,7 @@
 {
   "name": "@rtcjs/server-peer-text-chat",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT"
 }

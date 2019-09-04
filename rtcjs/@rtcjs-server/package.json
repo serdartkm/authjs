@@ -1,12 +1,12 @@
 {
   "name": "@rtcjs/server",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@rtcjs/server-contacts": "^0.0.1",
-    "@rtcjs/server-peer-text-chat": "^0.0.1",
-    "@rtcjs/server-webrtc-signaling": "^0.0.1",
+    "@rtcjs/server-contacts": "^1.0.0",
+    "@rtcjs/server-peer-text-chat": "^1.0.0",
+    "@rtcjs/server-webrtc-signaling": "^1.0.0",
     "socket.io": "^2.2.0"
   }
 }
