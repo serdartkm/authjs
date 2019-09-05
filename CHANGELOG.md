@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - New feature in my API to print foo in the console....sdfsdf
+- New feature in my API to print foo in the console....sdfsdf
 
 ## [1.0.37] - 2019-09-05
 ### Added
