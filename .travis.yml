@@ -20,6 +20,7 @@ before_deploy:
   - git config --global user.name serdartkm
   - git remote set-url origin "https://github.com/serdartkm/authjs.git" > /dev/null 2>&1
   - git checkout master
+  - git stash
 deploy:
   provider: script
   script: "npm-cli-login -u tkmhousenew -p Dragonfly1977! -e tkm.house.new@gmail.com &&  yarn run lerna:publish"
