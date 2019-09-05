@@ -1,14 +1,14 @@
 {
   "name": "@xaf/bootstrap-table",
   "private": true,
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@xaf/table-render": "^1.0.16"
+    "@xaf/table-render": "^1.0.17"
   },
   "directories": {
     "lib": "lib",
