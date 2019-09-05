@@ -1,7 +1,7 @@
 {
   "name": "@rtcjs/webrtc-peer",
   "private": true,
-  "version": "1.0.17",
+  "version": "1.0.19",
   "main": "dist/index.esm.js",
   "module": "src/index.js",
   "license": "MIT",
