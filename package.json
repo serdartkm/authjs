@@ -14,7 +14,7 @@
     "cypress":"cypress open",
     "lerna:version": "lerna version patch && yarn run lerna:postversion",
     "lerna:postversion":"chan release  $(node -p -e \"require('./lerna.json').version\") --git-branch master && git add CHANGELOG.md && git commit -m \"Update: changelog\" && git push --follow-tags",
-    "lerna:publish": "lerna publish from-npm --yes --npm-client"
+    "lerna:publish": "lerna publish patch from-npm --yes --npm-client"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
