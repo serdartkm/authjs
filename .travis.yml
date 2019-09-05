@@ -15,7 +15,6 @@ script:
   - yarn run bootstrap
 before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
-  - git stash
 deploy:
   provider: script
   script: "npm-cli-login -u tkmhousenew -p Dragonfly1977! -e tkm.house.new@gmail.com && yarn run lerna publish --canary --yes --force-publish"
