@@ -1,14 +1,14 @@
 {
   "name": "@rtcjs/messaging-controller",
   "private": true,
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/chat-log": "^1.0.15"
+    "@rtcjs/chat-log": "^1.0.16"
   },
   "directories": {
     "lib": "lib",

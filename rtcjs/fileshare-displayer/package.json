@@ -1,15 +1,15 @@
 {
   "name": "@rtcjs/fileshare-displayer",
   "private": true,
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/fileshare-controls-displayer": "^1.0.15",
-    "@rtcjs/fileshare-display-components": "^1.0.15"
+    "@rtcjs/fileshare-controls-displayer": "^1.0.16",
+    "@rtcjs/fileshare-display-components": "^1.0.16"
   },
   "directories": {
     "lib": "lib",
