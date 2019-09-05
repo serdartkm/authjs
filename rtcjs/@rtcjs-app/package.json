@@ -1,25 +1,25 @@
 {
   "name": "@rtcjs/app",
   "private": true,
-  "version": "1.0.14-alpha.0",
+  "version": "1.0.15",
   "main": "server/server.js",
   "license": "MIT",
   "scripts": {
     "server": "nodemon --watch ../../packages server/server.js"
   },
   "dependencies": {
-    "@rtcjs/server": "^1.0.14-alpha.0",
+    "@rtcjs/server": "^1.0.15",
     "mongodb": "^3.2.7",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@material-ui/core": "^4.1.3",
     "@material-ui/icons": "^4.2.1",
-    "@rtcjs/contacts": "^1.0.14-alpha.0",
-    "@rtcjs/peer-text-chat": "^1.0.14-alpha.0",
+    "@rtcjs/contacts": "^1.0.15",
+    "@rtcjs/peer-text-chat": "^1.0.15",
     "@rtcjs/ui": "^1.0.77",
-    "@rtcjs/webrtc-peer": "^1.0.14-alpha.0",
-    "@rtcjs/webrtc-signaling": "^1.0.14-alpha.0",
+    "@rtcjs/webrtc-peer": "^1.0.15",
+    "@rtcjs/webrtc-signaling": "^1.0.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6"
   },

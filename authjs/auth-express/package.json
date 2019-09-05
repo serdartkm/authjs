@@ -1,7 +1,7 @@
 {
   "name": "@authjs/express",
   "private": true,
-  "version": "1.0.14-alpha.0",
+  "version": "1.0.15",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",

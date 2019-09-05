@@ -1,13 +1,13 @@
 {
   "name": "@rtcjs/server",
   "private": true,
-  "version": "1.0.14-alpha.0",
+  "version": "1.0.15",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@rtcjs/server-contacts": "^1.0.14-alpha.0",
-    "@rtcjs/server-peer-text-chat": "^1.0.14-alpha.0",
-    "@rtcjs/server-webrtc-signaling": "^1.0.14-alpha.0",
+    "@rtcjs/server-contacts": "^1.0.15",
+    "@rtcjs/server-peer-text-chat": "^1.0.15",
+    "@rtcjs/server-webrtc-signaling": "^1.0.15",
     "socket.io": "^2.2.0"
   },
   "gitHead": "5e632f82240d5909bb993ca35b7d0d8898e3a9ff"
