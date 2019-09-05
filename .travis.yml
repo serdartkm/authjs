@@ -22,6 +22,3 @@ deploy:
   skip_cleanup: true
   on:
     node: "10"
-    branches:
-      only:
-        - master
