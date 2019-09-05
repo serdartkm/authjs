@@ -1,6 +1,6 @@
 {
   "name": "@rtcjs/messaging-module",
-  "version": "1.0.13",
+  "version": "1.0.14-alpha.18+5c842a8",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry":"https://registry.npmjs.org",
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "repository": {
@@ -27,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/serdartkm/authjs/issues"
   },
-  "gitHead": "6c85e458054a596f908a6caa97f68854fedfaf39"
+  "gitHead": "5c842a83f6ff668250112098c42eabd410d51891"
 }
