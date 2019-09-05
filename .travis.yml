@@ -10,7 +10,6 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
   - npm install -g npm-cli-login
 before_script:
-
 script:
   - yarn run bootstrap
 before_deploy:
@@ -18,7 +17,7 @@ before_deploy:
   - git stash
 deploy:
   provider: script
-  script: "npm-cli-login -u tkmhousenew -p Dragonfly1977! -e tkm.house.new@gmail.com && yarn run lerna  publish patch --yes --force-publish --skip-git"
+  script: "npm-cli-login -u tkmhousenew -p Dragonfly1977! -e tkm.house.new@gmail.com &&  yarn run lerna  publish patch --yes --force-publish --skip-git"
   skip_cleanup: true
   on:
     node: "10"
