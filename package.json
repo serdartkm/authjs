@@ -11,7 +11,11 @@
     "install": "",
     "server": " nodemon --exec babel-node demo/server/index.js",
     "dev": "babel demo/server -d demo/dist && node demo/dist/index.js",
-    "cypress":"cypress open"
+    "cypress":"cypress open",
+    "lerna:version": "lerna version prerelease --preid beta && yarn run lerna:postversion",
+    "lerna:postversion": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\" && git push --follow-tags",
+    "prepublish": "lerna run prepublish",
+    "lerna:publish": "lerna publish from-git --yes --npm-client yarn --npm-tag beta"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
