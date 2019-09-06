@@ -1,7 +1,7 @@
 {
   "name": "rtcjs-demo",
   "private": true,
-  "version": "1.0.70-alpha.0",
+  "version": "1.0.71-alpha.0",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@authjs/express": "^1.0.70-alpha.0",
+    "@authjs/express": "^1.0.71-alpha.0",
     "@authjs/react": "^1.0.67-alpha.0",
     "@authjs/react-ui": "^1.0.67-alpha.0",
     "@mongodbjs/express": "^1.0.68-alpha.0",
