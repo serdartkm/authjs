@@ -22,12 +22,7 @@ export default MessagingModule
 //anotherone
 //${NPM_PASSWORD}
 //new commenet have been done
-//anotherone
-
-//${NPM_PASSWORD}
-//new commenet have been done
-//anotherone
-
+//anotheron
 //${NPM_PASSWORD}
 //new commenet have been done
 //anotherone
