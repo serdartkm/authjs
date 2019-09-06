@@ -1,7 +1,7 @@
 {
   "name": "rtcjs-demo",
   "private": true,
-  "version": "1.0.54",
+  "version": "1.0.55",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -16,7 +16,7 @@
     "@authjs/react-ui": "^1.0.44",
     "@mongodbjs/express": "^1.0.44",
     "@rtcjs/fireshare-module-webrtc": "^1.0.44",
-    "@rtcjs/messaging-module": "^1.0.54",
+    "@rtcjs/messaging-module": "^1.0.55",
     "@rtcjs/messaging-module-webrtc": "^1.0.44",
     "@rtcjs/server": "^1.0.44",
     "@rtcjs/videochat-display-components": "^1.0.44",
