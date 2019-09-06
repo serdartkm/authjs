@@ -1,7 +1,10 @@
 {
   "name": "@rtcjs/server-contacts",
-  "private": true,
   "version": "1.0.63-alpha.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
 }
