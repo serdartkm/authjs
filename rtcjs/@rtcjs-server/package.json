@@ -9,5 +9,9 @@
     "@rtcjs/server-webrtc-signaling": "^1.0.64-alpha.0",
     "socket.io": "^2.2.0"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "gitHead": "5e632f82240d5909bb993ca35b7d0d8898e3a9ff"
 }

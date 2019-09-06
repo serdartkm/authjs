@@ -1,6 +1,5 @@
 {
   "name": "@xaf/bootstrap-table",
-  "private": true,
   "version": "1.0.63-alpha.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
@@ -18,7 +17,8 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "repository": {
     "type": "git",

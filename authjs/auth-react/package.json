@@ -1,13 +1,12 @@
 {
   "name": "@authjs/react",
-  "private": true,
   "version": "1.0.63-alpha.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "ISC",
   "main": "lib/index.js",
-  "dependencies": {
+  "devDependencies": {
     "@authjs/validation": "^1.0.63-alpha.0",
     "@mongodbjs/react": "^1.0.63-alpha.0"
   },
@@ -19,6 +18,7 @@
     "lib"
   ],
   "publishConfig": {
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "repository": {
