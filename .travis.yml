@@ -21,6 +21,6 @@ deploy:
   script: "npm-cli-login -u ${NPM_USERNAME} -p ${NPM_PASSWORD} -e ${NPM_EMAIL} && yarn run lerna publish from-package --yes"
   skip_cleanup: true
   on:
-    node: "12.10.0"
+    node: "10"
     all_branches: true
     tags: false
