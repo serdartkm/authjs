@@ -8,7 +8,7 @@ const login = require ('./helper/login')
 const profile =require( './helper/profile')
 const recover =require ('./helper/recover')
 const crud =require( './helper/crud')
-module.exports =({resetUrl, mongoUrl,colName}) => {
+module.exports =function ({resetUrl, mongoUrl,colName}) {
     let client = null;
     (async () => {
         try {
@@ -17,7 +17,7 @@ module.exports =({resetUrl, mongoUrl,colName}) => {
             console.log("mongodb connection error", error)
         }
     })()
-    return async (req, res) => {
+    return async function (req, res) {
       const  collectionName = colName !==undefined ?colName: "users"
         const database = await client.db("demo");
         const collection = database.collection(collectionName)

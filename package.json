@@ -88,5 +88,8 @@
     "mongodbjs/*",
     "authjs/*",
     "rtcjs/*"
-  ]
+  ],
+  "engines": {
+    "node": "12.10.0"
+  }
 }
