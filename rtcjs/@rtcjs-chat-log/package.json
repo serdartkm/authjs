@@ -1,6 +1,6 @@
 {
   "name": "@rtcjs/chat-log",
-  "version": "1.0.44",
+  "version": "1.0.61-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "publishConfig": {

@@ -1,7 +1,7 @@
 {
   "name": "authjs-demo",
   "private": true,
-  "version": "1.0.44",
+  "version": "1.0.61-alpha.0",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -13,7 +13,7 @@
   "dependencies": {
     "@authjs/express": "^1.0.44",
     "@authjs/react": "^1.0.44",
-    "@authjs/react-ui": "^1.0.44",
+    "@authjs/react-ui": "^1.0.61-alpha.0",
     "@mongodbjs/express": "^1.0.44",
     "@xaf/editor-react": "^1.0.44",
     "@xaf/table-render": "^1.0.44"

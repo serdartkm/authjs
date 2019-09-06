@@ -1,7 +1,7 @@
 {
   "name": "@authjs/react-ui",
   "private": true,
-  "version": "1.0.44",
+  "version": "1.0.61-alpha.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
@@ -11,7 +11,7 @@
     "@authjs/react": "^1.0.44",
     "@xaf/bootstrap-async-button": "^1.0.44",
     "@xaf/bootstrap-dialog": "^1.0.44",
-    "@xaf/bootstrap-input": "^1.0.44",
+    "@xaf/bootstrap-input": "^1.0.61-alpha.0",
     "@xaf/bootstrap-table": "^1.0.44",
     "@xaf/editor-react": "^1.0.44"
   },
