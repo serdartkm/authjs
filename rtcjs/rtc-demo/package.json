@@ -1,7 +1,7 @@
 {
   "name": "rtcjs-demo",
   "private": true,
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
@@ -11,18 +11,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@authjs/express": "^1.0.19",
-    "@authjs/react": "^1.0.19",
-    "@authjs/react-ui": "^1.0.19",
-    "@mongodbjs/express": "^1.0.19",
-    "@rtcjs/fireshare-module-webrtc": "^1.0.19",
-    "@rtcjs/messaging-module": "^1.0.39",
-    "@rtcjs/messaging-module-webrtc": "^1.0.23",
-    "@rtcjs/server": "^1.0.19",
-    "@rtcjs/videochat-display-components": "^1.0.19",
-    "@rtcjs/videochat-module-webrtc": "^1.0.19",
-    "@xaf/editor-react": "^1.0.19",
-    "@xaf/table-render": "^1.0.19",
+    "@authjs/express": "^1.0.40",
+    "@authjs/react": "^1.0.40",
+    "@authjs/react-ui": "^1.0.40",
+    "@mongodbjs/express": "^1.0.40",
+    "@rtcjs/fireshare-module-webrtc": "^1.0.40",
+    "@rtcjs/messaging-module": "^1.0.40",
+    "@rtcjs/messaging-module-webrtc": "^1.0.40",
+    "@rtcjs/server": "^1.0.40",
+    "@rtcjs/videochat-display-components": "^1.0.40",
+    "@rtcjs/videochat-module-webrtc": "^1.0.40",
+    "@xaf/editor-react": "^1.0.40",
+    "@xaf/table-render": "^1.0.40",
     "socket.io": "^2.2.0"
   },
   "keywords": [],

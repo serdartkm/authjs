@@ -1,15 +1,15 @@
 {
   "name": "@rtcjs/videochat-displayer",
   "private": true,
-  "version": "1.0.19",
+  "version": "1.0.40",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@rtcjs/videochat-control-displayer": "^1.0.19",
-    "@rtcjs/videochat-display-components": "^1.0.19"
+    "@rtcjs/videochat-control-displayer": "^1.0.40",
+    "@rtcjs/videochat-display-components": "^1.0.40"
   },
   "directories": {
     "lib": "lib",

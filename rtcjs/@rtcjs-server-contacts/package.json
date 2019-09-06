@@ -1,7 +1,7 @@
 {
   "name": "@rtcjs/server-contacts",
   "private": true,
-  "version": "1.0.19",
+  "version": "1.0.40",
   "main": "index.js",
   "license": "MIT"
 }
