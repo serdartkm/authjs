@@ -1,6 +1,6 @@
 {
   "name": "@authjs/validation",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "private": true,
   "description": "username,password and other authentication validation for server and client",
   "keywords": [
