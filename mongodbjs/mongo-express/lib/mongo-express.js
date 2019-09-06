@@ -1,9 +1,9 @@
 'use strict';
 const ObjectID = require('mongodb').ObjectID
 const MongoClient = require("mongodb").MongoClient;
-import { find, findOne, updateOne, deleteOne, insertOne } from './crud'
+const { find, findOne, updateOne, deleteOne, insertOne } =require ('./crud')
 
-export default ({ mongoUrl }) => {
+module.exports = ({ mongoUrl }) => {
     let client = null;
     (async () => {
         try {

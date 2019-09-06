@@ -1,7 +1,7 @@
 'use strict';
-import MernAuthMiddleware from './MernAuthMiddleware'
+const MernAuthMiddleware =require( './MernAuthMiddleware')
 
-export default MernAuthMiddleware
+module.exports =MernAuthMiddleware
 
 //module.exports =function(){
 //    console.log('auth module')

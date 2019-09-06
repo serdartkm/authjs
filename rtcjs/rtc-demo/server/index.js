@@ -1,9 +1,9 @@
-import authjsExpress from '@authjs/express'
-import express from'express'
-import path from 'path'
-import bodyParser from 'body-parser'
-import expressMongo from '@mongodbjs/express'
-import rtcjsServer  from "@rtcjs/server";
+const authjsExpress =require ('@authjs/express')
+const express =require('express')
+const path =require ('path')
+const bodyParser =require ('body-parser')
+const expressMongo =require('@mongodbjs/express')
+const rtcjsServer =require("@rtcjs/server");
 const PORT = process.env.PORT || 3000;
 const http = require("http");
 const cors = require("cors");

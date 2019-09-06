@@ -14,4 +14,4 @@ const profile =async({req,res,collection})=>{
 
 }
 
-export default profile
+module.exports= profile

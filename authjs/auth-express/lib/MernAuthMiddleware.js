@@ -1,14 +1,14 @@
 const bcrypt = require('bcrypt');
-import jwt from 'jsonwebtoken';
+//import jwt from 'jsonwebtoken';
 const MongoClient = require("mongodb").MongoClient;
 //import exjwt from 'express-jwt';
-import signup from './helper/signup'
-import changePassword from './helper/changePassword'
-import login from './helper/login'
-import profile from './helper/profile'
-import recover from './helper/recover'
-import crud from './helper/crud'
-export default ({resetUrl, mongoUrl,colName}) => {
+const signup =require ('./helper/signup')
+const changePassword =require ('./helper/changePassword')
+const login = require ('./helper/login')
+const profile =require( './helper/profile')
+const recover =require ('./helper/recover')
+const crud =require( './helper/crud')
+module.exports =({resetUrl, mongoUrl,colName}) => {
     let client = null;
     (async () => {
         try {

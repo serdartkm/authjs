@@ -11,9 +11,9 @@
     "install": "",
     "server": " nodemon --exec babel-node demo/server/index.js",
     "dev": "babel demo/server -d demo/dist && node demo/dist/index.js",
-    "cypress":"cypress open",
+    "cypress": "cypress open",
     "lerna:version": "lerna version patch && yarn run lerna:postversion",
-    "lerna:postversion":"chan release  $(node -p -e \"require('./lerna.json').version\") --git-branch master && git add CHANGELOG.md && git commit -m \"Update: changelog\" && git push --follow-tags",
+    "lerna:postversion": "chan release  $(node -p -e \"require('./lerna.json').version\") --git-branch master && git add CHANGELOG.md && git commit -m \"Update: changelog\" && git push --follow-tags",
     "lerna:publish": "lerna publish patch from-npm --yes --npm-client"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "cross-env": "5.2.0",
     "cypress": "^3.3.1",
     "dotenv": "8.0.0",
+    "esm": "^3.2.25",
     "express": "4.16.4",
     "express-jwt": "^5.3.1",
     "jquery": "^3.4.1",

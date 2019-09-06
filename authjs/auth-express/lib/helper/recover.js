@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+const jwt =require('jsonwebtoken');
 const nodemailer = require("nodemailer")
 const recover = async ({ req, res, collection, resetUrl }) => {
     const { email } = req.body
@@ -38,4 +38,4 @@ const recover = async ({ req, res, collection, resetUrl }) => {
 
 }
 
-export default recover
+module.exports =recover

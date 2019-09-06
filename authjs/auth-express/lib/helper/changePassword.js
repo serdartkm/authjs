@@ -20,4 +20,4 @@ const changePassword = async (req, res, collection) => {
 
 }
 
-export default changePassword
+module.exports= changePassword

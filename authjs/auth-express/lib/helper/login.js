@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+const jwt = require ('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const invalidCredentials = {
@@ -31,4 +31,4 @@ const login = async function ({req, res, collection}) {
   }
 }
 
-export default login
+module.exports= login

@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+const jwt =require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const signup = async({req, res, collection}) => {
     //const SALT_WORK_FACTOR = 10;
@@ -29,4 +29,4 @@ const signup = async({req, res, collection}) => {
     }
 }
 
-export default signup
+module.exports =signup

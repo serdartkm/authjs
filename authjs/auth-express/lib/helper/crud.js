@@ -64,7 +64,7 @@ const deleteOne = async ({ id, collection, res }) => {
 }
 
 
-export default ({ req, res, collection }) => {
+exports.crud= ({ req, res, collection }) => {
     const { requestType, data, filter } = req.query
     switch (requestType) {
         case "findOne":

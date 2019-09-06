@@ -1,6 +1,6 @@
 
 
- const insertOne = async ({data,res,collection})=>{
+ exports.insertOne = async ({data,res,collection})=>{
 try {
     const result =collection.insertOne({data})
     res.status(200).send({result})
@@ -9,7 +9,7 @@ try {
 }
 }
 
- const findOne = async ({ filter, res, collection }) => {
+ exports.findOne = async ({ filter, res, collection }) => {
     try {
         const result = await collection.findOne({...filter})
         res.status(200).send({ result })
@@ -19,7 +19,7 @@ try {
 
 }
 
- const find = async ({ collection, res,filter }) => {
+ exports.find = async ({ collection, res,filter }) => {
 
     try {
         const result = await collection.find({...filter}).toArray()
@@ -31,7 +31,7 @@ try {
 }
 
 
- const updateOne = async ({ filter, data, collection, res }) => {
+ exports.updateOne = async ({ filter, data, collection, res }) => {
 
  try {
         const result = await collection.updateOne({...filter}, { $set: { ...data } })
@@ -44,7 +44,7 @@ try {
 
 }
 
- const deleteOne = async ({ filter, collection, res }) => {
+ exports.deleteOne = async ({ filter, collection, res }) => {
     try {
         const result = await collection.deleteOne({...filter})
         res.status(200).send({ result })
@@ -54,10 +54,3 @@ try {
 }
 
 
-export{
-    find,
-    findOne,
-    deleteOne,
-    updateOne,
-    insertOne
-}
