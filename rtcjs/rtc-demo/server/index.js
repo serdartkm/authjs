@@ -10,6 +10,9 @@ const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
 const mongoUrl ="mongodb://localhost:27017"
+app.get("*",(req,res)=>{
+res.send("Hello from Demo App")
+})
 rtcjsServer(server, mongoUrl),
 require('dotenv').config()
 app.use(cors());
