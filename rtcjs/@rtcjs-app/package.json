@@ -1,14 +1,14 @@
 {
   "name": "@rtcjs/app",
   "private": true,
-  "version": "1.0.64-alpha.0",
+  "version": "1.0.65-alpha.0",
   "main": "server/server.js",
   "license": "MIT",
   "scripts": {
     "server": "nodemon --watch ../../packages server/server.js"
   },
   "dependencies": {
-    "@rtcjs/server": "^1.0.64-alpha.0",
+    "@rtcjs/server": "^1.0.65-alpha.0",
     "mongodb": "^3.2.7",
     "socket.io": "^2.2.0"
   },
