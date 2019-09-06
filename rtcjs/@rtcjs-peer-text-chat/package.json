@@ -1,9 +1,9 @@
 {
   "name": "@rtcjs/peer-text-chat",
-  "version": "1.0.64-alpha.0",
+  "version": "1.0.67-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@rtcjs/chat-log": "^1.0.63-alpha.0"
+    "@rtcjs/chat-log": "^1.0.67-alpha.0"
   }
 }

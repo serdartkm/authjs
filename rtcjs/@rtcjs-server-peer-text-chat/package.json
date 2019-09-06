@@ -1,6 +1,6 @@
 {
   "name": "@rtcjs/server-peer-text-chat",
-  "version": "1.0.64-alpha.0",
+  "version": "1.0.67-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "publishConfig": {

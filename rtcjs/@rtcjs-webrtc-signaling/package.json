@@ -1,7 +1,7 @@
 {
   "name": "@rtcjs/webrtc-signaling",
   "private": true,
-  "version": "1.0.63-alpha.0",
+  "version": "1.0.67-alpha.0",
   "main": "dist/index.esm.js",
   "module": "src/index.js",
   "license": "MIT",
