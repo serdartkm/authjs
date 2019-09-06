@@ -1,7 +1,7 @@
 {
   "name": "@rtcjs/server-webrtc-signaling",
   "private": true,
-  "version": "1.0.42",
+  "version": "1.0.43",
   "main": "index.js",
   "license": "MIT"
 }
