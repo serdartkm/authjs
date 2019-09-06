@@ -19,5 +19,5 @@ const changePassword = async (req, res, collection) => {
     }
 
 }
-
+///Change password modified
 module.exports= changePassword
