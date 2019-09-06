@@ -8,7 +8,7 @@ const login = require ('./helper/login')
 const profile =require( './helper/profile')
 const recover =require ('./helper/recover')
 const crud =require( './helper/crud')
-module.exports =({resetUrl, mongoUrl,colName}) => {
+exports.MernAuthMiddleware =({resetUrl, mongoUrl,colName}) => {
     let client = null;
     (async () => {
         try {
