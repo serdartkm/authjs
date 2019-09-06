@@ -1,6 +1,5 @@
 {
   "name": "@rtcjs/server",
-  "private": true,
   "version": "1.0.64-alpha.0",
   "main": "index.js",
   "license": "MIT",
