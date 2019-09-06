@@ -1,7 +1,10 @@
 {
   "name": "@rtcjs/chat-log",
-  "private": true,
   "version": "1.0.44",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
 }

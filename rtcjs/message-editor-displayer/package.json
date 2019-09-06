@@ -1,13 +1,13 @@
 {
   "name": "@rtcjs/message-editor-displayer",
-  "private": true,
+
   "version": "1.0.44",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "dependencies": {
+  "devDendencies": {
     "@xaf/bootstrap-input": "^1.0.44"
   },
   "directories": {
@@ -18,7 +18,8 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "repository": {
     "type": "git",
