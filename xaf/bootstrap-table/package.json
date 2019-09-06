@@ -1,13 +1,13 @@
 {
   "name": "@xaf/bootstrap-table",
-  "version": "1.0.63-alpha.0",
+  "version": "1.0.66-alpha.0",
   "description": "> TODO: description",
   "author": "serdartkm <tkm.house.new@gmail.com>",
   "homepage": "https://github.com/serdartkm/authjs#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "@xaf/table-render": "^1.0.63-alpha.0"
+    "@xaf/table-render": "^1.0.66-alpha.0"
   },
   "directories": {
     "lib": "lib",
