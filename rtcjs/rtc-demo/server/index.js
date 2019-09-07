@@ -15,7 +15,6 @@ const server = http.createServer(app);
 
 var mongoUrl =process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
-console.log("process.env--------------------",mongoUrl)
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../public')))
