@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 
 
-var mongoUrl =process.env.MONGODB_URL
+var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
 app.use(cors());
 app.use(bodyParser.json())
