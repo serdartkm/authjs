@@ -12,6 +12,10 @@ const app =express()
 const server = http.createServer(app);
 
 
+app.get("*",(req,res)=>{
+
+  res.send("Hello from demo")
+})
 
 var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
