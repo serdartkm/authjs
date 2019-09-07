@@ -23,7 +23,8 @@
     "@rtcjs/videochat-module-webrtc": "^1.0.67-alpha.0",
     "@xaf/editor-react": "^1.0.67-alpha.0",
     "@xaf/table-render": "^1.0.67-alpha.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "dotenv": "8.0.0"
   },
   "keywords": [],
   "author": "",

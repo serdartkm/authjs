@@ -1,3 +1,4 @@
+require('dotenv').config()
 const authjsExpress =require('@authjs/express')
 const express =require('express')
 const path =require ('path')
@@ -9,12 +10,12 @@ const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-const mongoUrl ="mongodb://localhost:27017"
-app.get("*",(req,res)=>{
-res.send("Hello from Demo App")
-})
+
+
+
+var mongoUrl =process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
-require('dotenv').config()
+console.log("process.env--------------------",mongoUrl)
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../public')))

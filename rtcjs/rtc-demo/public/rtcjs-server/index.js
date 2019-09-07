@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const io = require("socket.io");
 let users = {};
-export default  async (httpServer, mongoDbUrl)=> {
+module.exports=  async (httpServer, mongoDbUrl)=> {
   let client = null;
   const dbName = "rtcjs";
   let db = null;

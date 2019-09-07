@@ -1,17 +1,21 @@
-import authjsExpress from '@authjs/express'
-import express from'express'
-import path from 'path'
-import bodyParser from 'body-parser'
-import expressMongo from '@mongodbjs/express'
-import rtcjsServer  from "@rtcjs/server";
+require('dotenv').config()
+const authjsExpress =require('@authjs/express')
+const express =require('express')
+const path =require ('path')
+const bodyParser =require ('body-parser')
+const expressMongo =require('@mongodbjs/express')
+const rtcjsServer =require("@rtcjs/server");
 const PORT = process.env.PORT || 3000;
 const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-const mongoUrl ="mongodb://localhost:27017"
+
+
+
+var mongoUrl =process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
-require('dotenv').config()
+console.log("process.env--------------------",mongoUrl)
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../public')))
