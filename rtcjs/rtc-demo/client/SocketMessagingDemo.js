@@ -3,14 +3,15 @@ import MessagingModule from '@rtcjs/messaging-module'
 import io from "socket.io-client";
 import DeviceContainer, { DevicesView } from './DevicesView'
 import './minimal-devices/css/iphone.css'
-const firstUser = io("http://localhost:3000/", { query: `name=mario@gmail.com` });
-const secondUser = io("http://localhost:3000/", { query: `name=dragos@gmail.com` });
+const serverURL = ENV ==="development" ? "http://localhost:3000/" : "https://portfolio-2024.herokuapp.com/"
+const firstUser = io(serverURL, { query: `name=mario@gmail.com` });
+const secondUser = io(serverURL, { query: `name=dragos@gmail.com` });
 class SocketMessagingDemo extends React.Component {
 
     render() {
         return (
             <DeviceContainer>{({ selected }) => {
-
+                console.log(ENV ==="development")
                 return (
                     <div>
                         <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{backgroundColor:"#ffecb3"}}>SocketIO Messaging Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,SocketIO</div>
