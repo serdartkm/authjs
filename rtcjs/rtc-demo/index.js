@@ -1,24 +1,4 @@
 
-//var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
-
-const http = require('http')
-const PORT = process.env.PORT || 3000;
-const requestHandler = (request, response) => {
-  console.log(request.url)
-  response.end('Hello Node.js Server!')
-}
-
-const server = http.createServer(requestHandler)
-
-server.listen(PORT, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  console.log(`server is listening on ${PORT}`)
-})
-////
-/* 
 require('dotenv').config()
 const authjsExpress =require('@authjs/express')
 const express =require('express')
@@ -73,8 +53,3 @@ function shutDown() {
 
 
 
-*/
-
-
-
-///
