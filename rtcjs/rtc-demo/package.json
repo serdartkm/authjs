@@ -2,7 +2,8 @@
   "name": "rtcjs-demo",
   "private": true,
   "version": "1.0.74-alpha.0",
-  "description": "",
+  "description": "A sample Node.js app",
+  "main":"index.js",
   "events": {
     "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
   },
