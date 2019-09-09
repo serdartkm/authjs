@@ -12,7 +12,7 @@ const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
 ///
-var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
+var mongoUrl = process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
 app.use(cors());
 app.use(bodyParser.json())
