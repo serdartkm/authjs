@@ -11,12 +11,13 @@ const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-
+///
 var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
 rtcjsServer(server, mongoUrl),
 app.use(cors());
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, '../public')))
+
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(expressMongo({mongoUrl}))
 app.use(authjsExpress({mongoUrl,resetUrl:"http://localhost:3000/#/resetpass"}));
 
