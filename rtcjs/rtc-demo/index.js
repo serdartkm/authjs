@@ -13,13 +13,14 @@ const app =express()
 const server = http.createServer(app);
 ///
 var mongoUrl = process.env.MONGODB_URL
+console.log("mongoUrl>>>>>>>>>>>>>>>>>>>>>>>>>",mongoUrl)
 rtcjsServer(server, mongoUrl),
 app.use(cors());
 app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(expressMongo({mongoUrl}))
-app.use(authjsExpress({mongoUrl,resetUrl:"http://localhost:3000/#/resetpass"}));
+app.use(authjsExpress({mongoUrl,resetUrl:`${mongoUrl}#/resetpass`}));
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
 process.on("SIGTERM", shutDown);
