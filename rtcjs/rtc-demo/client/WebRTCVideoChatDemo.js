@@ -4,6 +4,7 @@ import DeviceContainer, { DevicesView } from './DevicesView'
 import { LocalMediaStream } from '@rtcjs/videochat-display-components'
 import TabBar from './TabBar'
 import ViewSwithcer from './CodeNav'
+const serverURL = ENV ==="development" ? "http://localhost:3000/" : "https://portfolio-2024.herokuapp.com/"
 const WebRTCMessagingDemo = () => {
 
     return (
@@ -17,10 +18,10 @@ const WebRTCMessagingDemo = () => {
                                     <div style={{ textAlign: "center", margin: 10 }}> <h6 style={{ backgroundColor: "#b2dfdb" }}>WebRTC VideoChat Module.</h6>Developed by using ReactJS,MondoDB,Expressjs,WebRTC,SocketIO as a signaling service</div>
                                     <div style={{ display: "flex", justifyContent: "center"}}>
                                         <DevicesView deviceType={selected} >
-                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} initiator={true} serverUrl="http://localhost:3000/" name="mario@gmail.com" targetName="dragos@gmail.com" />
+                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} initiator={true} serverUrl={serverURL} name="mario@gmail.com" targetName="dragos@gmail.com" />
                                         </DevicesView>
                                         <DevicesView deviceType={selected} >
-                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} serverUrl="http://localhost:3000/" name="dragos@gmail.com" targetName="mario@gmail.com" />
+                                            <VideoChatModuleWebRTC localMediaStream={localMediaStream} serverUrl={serverURL} name="dragos@gmail.com" targetName="mario@gmail.com" />
                                         </DevicesView>
                                     </div>
                                 </div>
