@@ -1,1 +1,1 @@
-web: node index.js
+web: /usr/local/bin/node index.js
