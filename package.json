@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "node rtcjs/rtc-demo/index.js",
+    "build":"cross-env NODE_ENV=production rollup -c rollup.config.dev.js",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/index.js \" ",
