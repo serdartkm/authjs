@@ -1,41 +1,22 @@
 
-const express =require('express')
-const PORT = process.env.PORT || 3000;
-const http = require("http");
-const app =express()
-const server = http.createServer(app);
-
-app.get("*",(req,res)=>{
-
-  res.send("Hello from demo app")
-})
-
 //var mongoUrl = 'mongodb+srv://demoadmin:demoadmin@democluster-k12ir.mongodb.net/test?retryWrites=true&w=majority'// process.env.MONGODB_URL
 
-
-server.listen(PORT, () => console.log(`Listening on ${PORT}`));
-process.on("SIGTERM", shutDown);
-process.on("SIGINT", shutDown);
-
-function shutDown() {
-  console.log("Received kill signal, shutting down gracefully");
-  server.close(() => {
-    console.log("Closed out remaining connections");
-    process.exit(0);
-  });
-
-  setTimeout(() => {
-    console.error(
-      "Could not close connections in time, forcefully shutting down"
-    );
-    process.exit(1);
-  }, 10000);
-
-  connections.forEach(curr => curr.end());
-  setTimeout(() => connections.forEach(curr => curr.destroy()), 5000);
+const http = require('http')
+const PORT = process.env.PORT || 3000;
+const requestHandler = (request, response) => {
+  console.log(request.url)
+  response.end('Hello Node.js Server!')
 }
 
+const server = http.createServer(requestHandler)
 
+server.listen(PORT, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
+
+  console.log(`server is listening on ${PORT}`)
+})
 ////
 /* 
 require('dotenv').config()
