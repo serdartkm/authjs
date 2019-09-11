@@ -2,8 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "test": "jest --watch --coverage",
     "start": "node rtcjs/rtc-demo/index.js",
-    "build":"cross-env NODE_ENV=production rollup -c rollup.config.dev.js",
+    "build": "cross-env NODE_ENV=production rollup -c rollup.config.dev.js",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/index.js \" ",
@@ -94,5 +95,11 @@
   "version": "1.0.0",
   "engines": {
     "node": "12.10.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "expect": "^24.9.0",
+    "jest": "^24.9.0"
   }
 }
