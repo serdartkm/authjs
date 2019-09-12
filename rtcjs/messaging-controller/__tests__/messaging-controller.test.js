@@ -18,7 +18,7 @@ const setUp = (props = {}) => {
 }
 
 let socket = new MockedSocket();
-console.log("socket----....", socket)
+
 const expectedProps = {
     name: 'Test user',
     targetName: 'Test Target Name',
@@ -57,10 +57,20 @@ describe('<MessageController/>', () => {
 
     describe('Checking socket connection state', () => {
         it('connected state should be true', () => {
+           wrapper.instance().componentDidMount()
+           socket.socketClient.emit('connect', 'Hello World!');
+            expect(wrapper.state().connected).toBe(true)
 
-        })
+        })  
 
+        it('connected state should be false', () => {
+            wrapper.instance().componentDidMount()
+            socket.socketClient.emit('disconnect', 'Hello World!');
+             expect(wrapper.state().connected).toBe(false)
+ 
+         })  
 
+ 
     })
 
 });
