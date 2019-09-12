@@ -1,1 +1,2 @@
-{}
+{"/Users/testwriter/Desktop/authjs/Utils/index.js": {"path":"/Users/testwriter/Desktop/authjs/Utils/index.js","statementMap":{"0":{"start":{"line":4,"column":25},"end":{"line":8,"column":1}},"1":{"start":{"line":5,"column":16},"end":{"line":5,"column":88}},"2":{"start":{"line":7,"column":0},"end":{"line":7,"column":15}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":4,"column":25},"end":{"line":4,"column":26}},"loc":{"start":{"line":4,"column":52},"end":{"line":8,"column":1}},"line":4}},"branchMap":{},"s":{"0":1,"1":1,"2":1},"f":{"0":1},"b":{},"_coverageSchema":"43e27e138ebf9cfc5966b082cf9a028302ed4184","hash":"3c570c0cc51f79050dfed1094279caf224dc52a4"}
+}
