@@ -13,6 +13,14 @@ class MessageController extends React.Component {
 
     });
 
+    this.socket.on("connect",()=>{
+      this.setState({connected:true})
+    })
+
+    this.socket.on("disconnect",()=>{
+      this.setState({connected:false})
+    })
+
 
   } 
   sendMessage = () => {
