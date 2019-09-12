@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568287685843" clover="3.2.0">
-  <project timestamp="1568287685843" name="All files">
-    <metrics statements="12" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1" elements="16" coveredelements="6" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1"/>
-    <file name="index.js" path="/Users/testwriter/Desktop/authjs/rtcjs/messaging-controller/lib/index.js">
-      <metrics statements="12" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="28" count="1" type="stmt"/>
-      <line num="29" count="1" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-    </file>
+<coverage generated="1568289140657" clover="3.2.0">
+  <project timestamp="1568289140657" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>

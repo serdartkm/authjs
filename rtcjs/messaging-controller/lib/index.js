@@ -1,9 +1,8 @@
 import React from "react";
-import withChatLog from "@rtcjs/chat-log";
 import PropTypes from 'prop-types'
 
 class MessageController extends React.Component {
-  state={messageRecieved:null}
+  state={messageRecieved:null,messageSent:null,connected:false}
   componentDidMount() {
     const { socket, name } = this.props;
 
