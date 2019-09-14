@@ -10488,6 +10488,11 @@ mkdirp@*, mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5
   dependencies:
     minimist "0.0.8"
 
+mock-socket.io@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mock-socket.io/-/mock-socket.io-1.1.0.tgz#85ced032300e79387c3c551d5351678ff8349e81"
+  integrity sha1-hc7QMjAOeTh8PFUdU1Fnj/g0noE=
+
 modify-values@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"

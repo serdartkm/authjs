@@ -2,15 +2,18 @@ import React from "react";
 import PropTypes from 'prop-types'
 
 class MessageController extends React.Component {
-  state={messageRecieved:null,messageSent:null,connected:false}
+  constructor(){
+    super()
+    this.state ={messageRecieved:null,messageSent:null,connected:false, message:""}
+  }
+  
   componentDidMount() {
-    const { socket, name } = this.props;
+    const { socket } = this.props;
 
     this.socket = socket;
     this.socket.on("text_message", data => {
-      const { name , message, datetime } = data;
-
-
+      const { sender , message, datetime } = data;
+      this.setState({messageSent:{sender,message,datetime}})
     });
 
     this.socket.on("connect",()=>{
@@ -24,21 +27,24 @@ class MessageController extends React.Component {
 
   } 
   sendMessage = () => {
-    const { name, targetName, socket } = this.props;
-    const { message } = this.props;
-    socket.emit("text_message", { name,
-      targetName,
+    console.log("Send message clicked----")
+    const { targetName, socket } = this.props;
+    const { message } = this.state;
+    const datetime = new Date().getTime()
+    socket.emit("text_message",{
+      reciever:targetName,
       message,
-      datetime:new Date().getTime()});
+      datetime});
+    this.setState({messageSent:{reciever:targetName,datetime,message}})
   };
+  onMessageChange=(e)=>{
+    console.log("on message change clicked",e.target.value)
+    this.setState({message:e.target.value})
+  }
   render() {
-    const { children,message,messages } = this.props;
-    return children({
-          messages,
-          sendMessage: this.sendMessage,
-          onTextChange: this.props.onTextChange,
-          message
-        })
+    const { children } = this.props;
+    const {messageRecieved,messageSent,message}= this.state
+    return children({messageRecieved,messageSent,message,sendMessage:this.sendMessage,onMessageChange:this.onMessageChange})
   }
 }
 
