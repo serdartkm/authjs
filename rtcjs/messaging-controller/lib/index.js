@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class MessageController extends React.Component {
   constructor(){
     super()
-    this.state ={messageRecieved:null,messageSent:null,connected:false, message:""}
+    this.state ={messageRecieved:null,messageSent:null,connected:false, message:"",errors:[]}
   }
   
   componentDidMount() {
@@ -43,8 +43,8 @@ class MessageController extends React.Component {
   }
   render() {
     const { children } = this.props;
-    const {messageRecieved,messageSent,message}= this.state
-    return children({messageRecieved,messageSent,message,sendMessage:this.sendMessage,onMessageChange:this.onMessageChange})
+    const {messageRecieved,messageSent,message,errors}= this.state
+    return children({messageRecieved,messageSent,message,sendMessage:this.sendMessage,onMessageChange:this.onMessageChange,errors})
   }
 }
 

@@ -2,14 +2,10 @@
 import React from 'react'
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-//import expect from 'expect'
-import { checkProps } from '../../../Utils/index'
 import MockedSocket from 'socket.io-mock';
 import { shallow, mount } from 'enzyme';
 import MessageController from '../lib'
-import { isFunction } from 'util';
-
-
+import { ExpectInitialState, ExpectedPropTypes, ExpectComponentRender, ExpectClassMethods, ExpectedRenderProp, ExpectStateChange } from '../../../Utils/react-test-boilerplate/index'
 Enzyme.configure({ adapter: new Adapter() });
 const MessageDispatcher = () => null
 const setUp = (props = {}) => {
@@ -24,33 +20,23 @@ const expectedProps = {
   socket: socket
 }
 
+const classMethods = ['sendMessage', 'onMessageChange']
+const renderPropsPassed = [{ messageSent: null }, { messageRecieved: null }, { message: "" }, { errors: [] }, { sendMessage: () => { } }, { onMessageChange: () => { } }]
 let wrapper = setUp(expectedProps)
+
+ExpectComponentRender(MessageController, expectedProps)
+ExpectInitialState(MessageController, expectedProps, { messageRecieved: null, messageSent: null, message: "", connected: false, errors: [] })
+ExpectedPropTypes(MessageController, expectedProps)
+ExpectClassMethods(MessageController, classMethods, expectedProps)
+ExpectedRenderProp(MessageController, renderPropsPassed, expectedProps)
+
+ExpectStateChange(MessageController, expectedProps)
+  .fromState({ messageSent: null })
+  .ByClassMethod('sendMessage')
+  .toState({ messageSent: { reciver: expectedProps.targetName, message: "hello from api", datetime: "123" } })
 
 
 describe('<MessageController/>', () => {
-  describe('render', () => {
-    it('render <MessageController/>', () => {
-      expect(wrapper).toHaveLength(1)
-    });
-  })
-
-  describe('Checking PropTypes', () => {
-    it('Should not throw a warning', () => {
-      const propsError = checkProps(MessageController, expectedProps)
-      expect(MessageController.propTypes).toBeDefined()
-      expect(propsError).toBeUndefined()
-    })
-  })
-
-  describe('Checking State', () => {
-    it('Initial state should be null', () => {
-      expect(wrapper.state().messageRecieved).toBeNull()
-      expect(wrapper.state().messageSent).toBeNull()
-    })
-    it('Initial state should be false', () => {
-      expect(wrapper.state().connected).toBe(false)
-    })
-  })
 
   describe('Checking socket connection state', () => {
     it('connected state should be true', () => {
@@ -64,26 +50,6 @@ describe('<MessageController/>', () => {
       socket.socketClient.emit('disconnect', '');
       expect(wrapper.state().connected).toBe(false)
     })
-
-
-  })
-
-  describe("Checking renderProps", () => {
-    it("props {messageSent, messageRecieved, message} is passed to children", () => {
-      const messageRecieved = { sender: "userSender", datetime: new Date().getTime(), message: "Hello" }
-      const messageSent = { receiver: "userReciever", datetime: new Date().getTime(), message: "hi" }
-      const message = "Hello message"
-
-      const wrapper = shallow(<div><MessageController>{(x = 0) => (
-        <h1>
-          {messageRecieved.sender},{messageRecieved.datetime},{messageRecieved.message},
-          {messageSent.receiver},{messageSent.datetime},{messageSent.message},{message}
-        </h1>
-      )}</MessageController></div>)
-        .find(MessageController).renderProp('children')({ messageRecieved, messageSent, messageSent })
-      expect(wrapper.equals(<h1>{messageRecieved.sender},{messageRecieved.datetime},{messageRecieved.message},{messageSent.receiver},{messageSent.datetime},{messageSent.message},{message}</h1>)).toBe(true)
-
-    })
   })
 
   describe("Checking {sendMessage,onMessageChange} function", () => {
@@ -93,35 +59,25 @@ describe('<MessageController/>', () => {
         expect(message === "mymessage").toBe(true)
       })
 
-      const wrapper = setUp({...expectedProps,socket:socket.socketClient}) 
-      wrapper.setState({ message: "mymessage" })
-      wrapper.instance().sendMessage()
+      const wrapper = setUp({ ...expectedProps, socket: socket.socketClient })
+      //wrapper.setState({ message: "mymessage" })
+      // wrapper.instance().sendMessage()
 
-      expect(wrapper.state().messageSent.reciever === expectedProps.targetName).toBe(true)
-      expect(wrapper.state().messageSent.message === "mymessage").toBe(true)
+      //  expect(wrapper.state().messageSent.reciever === expectedProps.targetName).toBe(true)
+      //  expect(wrapper.state().messageSent.message === "mymessage").toBe(true)
       // expect(wrapper.state().messageSent.datetime === ).toBe(true)
     })
 
-    it("Should be defined and passed to render props", () => {
-   
-      const wrapper = mount(<MessageController {...expectedProps}>{({ sendMessage, onMessageChange }) => (
-        <MessageDispatcher sendMessage={sendMessage} onMessageChange={onMessageChange} />
-      )}</MessageController>)
-      expect(isFunction(wrapper.find(MessageDispatcher).prop('sendMessage'))).toBe(true)
-      expect(isFunction(wrapper.find(MessageDispatcher).prop('onMessageChange'))).toBe(true)
-    })
+    it('{onMessageChange} function, should be able to change message state', () => {
 
-    it('{onMessageChange} function, should be able to change message state', () => { 
-  
       const wrapper = mount(<MessageController {...expectedProps}>{({ sendMessage, onMessageChange }) => (
         <MessageDispatcher sendMessage={sendMessage} onMessageChange={onMessageChange} />
       )}</MessageController>)
       wrapper.find(MessageDispatcher).props()
-      const e ={target:{value:"helloo"}}
+      const e = { target: { value: "helloo" } }
       wrapper.find(MessageDispatcher).prop('onMessageChange')(e)
-      expect(wrapper.state().message ==="helloo").toBe(true)
+      expect(wrapper.state().message === "helloo").toBe(true)
     })
-
 
   })
 });
