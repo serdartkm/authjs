@@ -5,6 +5,7 @@ const ExpectInitialState = (Component, props, initialState, withRenderProp =true
 
     describe(`ExpectedInitialState for ${Component.name} `, () => {
         let wrapper=WithRenderProp(Component,props,withRenderProp)
+     
       
         const stateValues = Object.entries(initialState)
         stateValues.forEach((stateValue) => {
@@ -15,6 +16,7 @@ const ExpectInitialState = (Component, props, initialState, withRenderProp =true
             })
 
         })
+        
     })
 
 }

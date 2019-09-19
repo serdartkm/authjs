@@ -3,11 +3,11 @@ import React from 'react'
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import MockedSocket from 'socket.io-mock';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import MessageController from '../lib'
+var sinon = require('sinon');
 import { ExpectInitialState, ExpectedPropTypes, ExpectComponentRender, ExpectClassMethods, ExpectedRenderProp, ExpectStateChange } from '../../../Utils/react-test-boilerplate/index'
 Enzyme.configure({ adapter: new Adapter() });
-const MessageDispatcher = () => null
 const setUp = (props = {}) => {
   const component = shallow(<MessageController {...props}>{({ sendMessage, onMessageChange }) => { <div>Hello</div> }}</MessageController>)
   return component
@@ -20,25 +20,32 @@ const expectedProps = {
   socket: socket
 }
 
+sinon.useFakeTimers(new Date().getTime());
 const classMethods = ['sendMessage', 'onMessageChange']
 const renderPropsPassed = [{ messageSent: null }, { messageRecieved: null }, { message: "" }, { errors: [] }, { sendMessage: () => { } }, { onMessageChange: () => { } }]
 let wrapper = setUp(expectedProps)
-
-ExpectComponentRender(MessageController, expectedProps)
-ExpectInitialState(MessageController, expectedProps, { messageRecieved: null, messageSent: null, message: "", connected: false, errors: [] })
-ExpectedPropTypes(MessageController, expectedProps)
-ExpectClassMethods(MessageController, classMethods, expectedProps)
-ExpectedRenderProp(MessageController, renderPropsPassed, expectedProps)
-
-ExpectStateChange(MessageController, expectedProps)
-  .fromState({ messageSent: null })
-  .ByClassMethod('sendMessage')
-  .toState({ messageSent: { reciver: expectedProps.targetName, message: "hello from api", datetime: "123" } })
+const e = { target: { value: "mymessage" } }
 
 
 describe('<MessageController/>', () => {
 
+  ExpectComponentRender(MessageController, expectedProps)
+  ExpectInitialState(MessageController, expectedProps, { messageRecieved: null, messageSent: null, message: "", connected: false, errors: [] })
+  ExpectedPropTypes(MessageController, {name:"peros",targetName:"deros",socket})
+  ExpectClassMethods(MessageController, classMethods, expectedProps)
+  ExpectedRenderProp(MessageController, renderPropsPassed, expectedProps)
+  ExpectStateChange(MessageController, expectedProps)
+    .fromState({ messageSent: null, message: "hello from api" })
+    .ByClassMethod('sendMessage')
+    .toState({ messageSent: { reciever: expectedProps.targetName, message: "hello from api", datetime: new Date().getTime() } })
+
+  ExpectStateChange(MessageController, expectedProps)
+    .fromState({ message: "" })
+    .ByClassMethod("onMessageChange", e)
+    .toState({ message: "mymessage" })
+
   describe('Checking socket connection state', () => {
+    
     it('connected state should be true', () => {
       wrapper.instance().componentDidMount()
       socket.socketClient.emit('connect', '');
@@ -60,27 +67,16 @@ describe('<MessageController/>', () => {
       })
 
       const wrapper = setUp({ ...expectedProps, socket: socket.socketClient })
-      //wrapper.setState({ message: "mymessage" })
-      // wrapper.instance().sendMessage()
-
-      //  expect(wrapper.state().messageSent.reciever === expectedProps.targetName).toBe(true)
-      //  expect(wrapper.state().messageSent.message === "mymessage").toBe(true)
-      // expect(wrapper.state().messageSent.datetime === ).toBe(true)
+      wrapper.setState({ message: "mymessage" })
+      wrapper.instance().sendMessage()
+      expect(wrapper.state().messageSent.reciever === expectedProps.targetName).toBe(true)
+      expect(wrapper.state().messageSent.message === "mymessage").toBe(true)
+      expect(wrapper.state().messageSent.datetime === new Date().getTime() ).toBe(true)
     })
-
-    it('{onMessageChange} function, should be able to change message state', () => {
-
-      const wrapper = mount(<MessageController {...expectedProps}>{({ sendMessage, onMessageChange }) => (
-        <MessageDispatcher sendMessage={sendMessage} onMessageChange={onMessageChange} />
-      )}</MessageController>)
-      wrapper.find(MessageDispatcher).props()
-      const e = { target: { value: "helloo" } }
-      wrapper.find(MessageDispatcher).prop('onMessageChange')(e)
-      expect(wrapper.state().message === "helloo").toBe(true)
-    })
-
   })
+
 });
+
 test.todo('test messageSent datetime');
 test.todo('Check prop length passed from parent');
 test.todo('contol all required pros are passed from parent, name,targetName,socket');

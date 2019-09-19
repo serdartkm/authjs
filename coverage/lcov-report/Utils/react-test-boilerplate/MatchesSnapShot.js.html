@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for Utils/react-test-boilerplate/WithRenderProp.js</title>
+    <title>Code coverage report for Utils/react-test-boilerplate/MatchesSnapShot.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,35 +16,35 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">Utils/react-test-boilerplate</a> WithRenderProp.js
+      <a href="../../index.html">All files</a> / <a href="index.html">Utils/react-test-boilerplate</a> MatchesSnapShot.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">16.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/7</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>3/6</span>
+        <span class='fraction'>1/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/7</span>
+        <span class='fraction'>1/5</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -65,54 +65,45 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">26x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
 import React from 'react'
-import { shallow } from 'enzyme';
-import {ChildComponent}  from './ChildComponent'
+import render from 'react-test-renderer';
 &nbsp;
-const withRenderProp =(Component=<span class="branch-0 cbranch-no" title="branch not covered" >null,</span>props=<span class="branch-0 cbranch-no" title="branch not covered" >{},</span>withRenderProp=true, render=shallow)=&gt;{
+const MatchesSnapShot =<span class="fstat-no" title="function not covered" >(C</span>omponent,props,withRenderProp)=&gt;{
 &nbsp;
-    let wrapper=null
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(withRenderProp){
-     wrapper = render(&lt;Component {...props}&gt;{(renderProps) =&gt;{
-     return&lt;ChildComponent {...renderProps}/&gt;} }&lt;/Component&gt;)
-    }
-    else{
-<span class="cstat-no" title="statement not covered" >     wrapper = render(&lt;Component {...props}/&gt;)</span>
-    }
- return wrapper
+<span class="cstat-no" title="statement not covered" >    describe(`MatchesSnapShot ${Component.name}`,<span class="fstat-no" title="function not covered" >()</span>=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >        it("snapshot matches",<span class="fstat-no" title="function not covered" >()</span>=&gt;{</span>
+            let tree =<span class="cstat-no" title="statement not covered" >render.create(&lt;Component {...props}&gt;{<span class="fstat-no" title="function not covered" >()</span>=&gt;<span class="cstat-no" title="statement not covered" >&lt;div&gt;Hellow.&lt;/div&gt;}</span>&lt;/Component&gt;)</span>
+        
+<span class="cstat-no" title="statement not covered" >             expect(tree).toMatchSnapshot();</span>
+        })
+   
+    })
+&nbsp;
+&nbsp;
+&nbsp;
 }
 &nbsp;
-export default withRenderProp
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;</pre></td></tr>
+export default MatchesSnapShot</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->

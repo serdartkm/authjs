@@ -24,13 +24,14 @@ class MessageController extends React.Component {
       this.setState({connected:false})
     })
 
-
+//
   } 
   sendMessage = () => {
-    console.log("Send message clicked----")
+
     const { targetName, socket } = this.props;
     const { message } = this.state;
-    const datetime = new Date().getTime()
+    const datetime =  new Date().getTime()
+
     socket.emit("text_message",{
       reciever:targetName,
       message,

@@ -10,7 +10,7 @@ const ExpectRenderProp = (Component, renderPropsPassed = [], props, withRenderPr
         renderPropsPassed.forEach(prop => {
             const propName = Object.entries(prop)[0][0]
 
-            it(`prop ${propName} is passed to child component`, () => {
+            it(`prop, {${propName}} is passed to child component`, () => {
 
                 const propValue = Object.entries(prop)[0][1]
 

@@ -4,11 +4,10 @@ var ExpectStateChange = function (Component, props, withRenderProp) {
     let wrapper = WithRenderProp(Component, props, withRenderProp)
     return {
         fromState: (initialState) => {
-            console.log("initial state---",initialState)
-         //   wrapper.setState({ initialState })
+            wrapper.setState({ ...initialState })
             return {
-                ByClassMethod: (methodName) => {
-                    wrapper.instance()[methodName]()
+                ByClassMethod: (methodName, param) => {
+                    wrapper.instance()[methodName](param)
                     return {
                         toState: (changedState) => {
                             describe(`ExpectedStateChange on ${Component.name}`, () => {
@@ -19,19 +18,23 @@ var ExpectStateChange = function (Component, props, withRenderProp) {
                                     it(`state name ${name}, expected value ${value}`, () => {
                                         expect(wrapper.state(name)).toEqual(value)
                                     })
-                                
+
                                 })
 
                             })
                         }
                     }
+
+                },
+                ByComponentDidMount:()=>{
+                    wrapper.instance().componentDidMount()
+
                 }
             }
         }
     }
 
 }
-
 
 export default ExpectStateChange
 
