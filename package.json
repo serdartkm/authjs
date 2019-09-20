@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "test": "jest --watch --coverage",
-    "start": "node rtcjs/rtc-demo/index.js",
-    "build": "cross-env NODE_ENV=production rollup -c rollup.config.dev.js",
+    "start": "node index.js",
+    "build": "env-cmd rollup  --config",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/index.js \" ",
@@ -100,6 +100,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "check-prop-types": "^1.1.2",
+    "cross-var": "^1.1.0",
+    "env-cmd": "^10.0.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "expect": "^24.9.0",

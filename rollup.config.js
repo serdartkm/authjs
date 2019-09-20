@@ -53,9 +53,9 @@ const appPlugin = [
         'cloneElement'
       ],
       'node_modules/react-is/index.js': ['isValidElementType'],
-      'node_modules/prop-types/index.js': ['isValidElementType','element','elementType','func','bool','oneOfType'],
-      'node_modules/react-dom/index.js': ['render','findDOMNode'],
-      'node_modules/react-is/index.js': ['isValidElementType','ForwardRef'],
+      'node_modules/prop-types/index.js': ['isValidElementType', 'element', 'elementType', 'func', 'bool', 'oneOfType'],
+      'node_modules/react-dom/index.js': ['render', 'findDOMNode'],
+      'node_modules/react-is/index.js': ['isValidElementType', 'ForwardRef'],
     },
   }),
 
@@ -75,32 +75,29 @@ const appPlugin = [
   globals(),
 ];
 
-const globalNames= {
+const globalNames = {
   react: 'React',
   'react-dom': 'ReactDOM',
   'prop-types': 'PropTypes',
-  '@rtcjs/webrtc-signaling':'SignalingService',
-  '@rtcjs/webrtc-peer':'PeerConnection',
-  '@rtcjs/ui':'VideoClientUI',
-  '@rtcjs/contacts':'Contacts'
+  '@rtcjs/webrtc-signaling': 'SignalingService',
+  '@rtcjs/webrtc-peer': 'PeerConnection',
+  '@rtcjs/ui': 'VideoClientUI',
+  '@rtcjs/contacts': 'Contacts'
 }
 
-const externals =["react", "react-dom", "prop-types"]
-module.exports = [
-
-  {
-    input: './rtcjs/rtc-demo/client/index.js',
+const externals = ["react", "react-dom", "prop-types"]
+export default commandLineArgs => {
+  console.log("commandLineArgs-----",process.env.ENV2)
+  return {
+    input: `apps/${process.env.appName}/index.js`,
     external: externals,
-   output: {
-     file: './rtcjs/rtc-demo/public/index.js',
-     format: 'iife',
-     sourcemap: 'inline',
-     globals: globalNames,
-   },
-   
-   plugins: appPlugin,
- },
-
-
-
-];
+    output: {
+      file: `apps/${process.env.appName}/build/index.js`,
+      format: 'iife',
+      name: "AppOne",
+      sourcemap: 'inline',
+      globals: globalNames,
+    },
+    plugins: appPlugin,
+  }
+}
