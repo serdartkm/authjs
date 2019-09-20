@@ -4,7 +4,7 @@
   "scripts": {
     "test": "jest --watch --coverage",
     "start": "node index.js",
-    "build": "cross-env rollup  --config",
+    "build": "env-cmd rollup  --config",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/index.js \" ",
