@@ -87,7 +87,7 @@ const globalNames = {
 
 const externals = ["react", "react-dom", "prop-types"]
 export default commandLineArgs => {
-  console.log("commandLineArgs-----",process.env.ENV2)
+
   return {
     input: `apps/${process.env.appName}/index.js`,
     external: externals,
