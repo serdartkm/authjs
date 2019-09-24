@@ -84,20 +84,7 @@
     "rollup-plugin-svg": "1.0.1",
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-uglify": "6.0.2",
-    "vertical-timeline-component-for-react": "^1.0.6"
-  },
-  "workspaces": [
-    "packages/*",
-    "xaf/*",
-    "mongodbjs/*",
-    "authjs/*",
-    "rtcjs/*"
-  ],
-  "version": "1.0.0",
-  "engines": {
-    "node": "12.10.0"
-  },
-  "devDependencies": {
+    "vertical-timeline-component-for-react": "^1.0.6",
     "chai": "^4.2.0",
     "check-prop-types": "^1.1.2",
     "cross-var": "^1.1.0",
@@ -110,5 +97,16 @@
     "sinon": "^7.4.2",
     "socket.io-client": "^2.2.0",
     "socket.io-mock": "^1.2.3"
+  },
+  "workspaces": [
+    "packages/*",
+    "xaf/*",
+    "mongodbjs/*",
+    "authjs/*",
+    "rtcjs/*"
+  ],
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.10.0"
   }
 }

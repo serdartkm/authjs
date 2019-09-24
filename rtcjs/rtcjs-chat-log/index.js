@@ -9,32 +9,37 @@ class RTCChatLog extends React.Component {
   componentDidMount(){
     const {name}= this.props
     this._loadFromStorage({key:name})
-    console.log("Component did mount ---")
-  this.testMethod()
+  
+
   }
 componentWillReceiveProps(newProps){
 
-  //console.log("props----",this.props)//
+
   const {messageSent,messageRecieved,name}=this.props
+
   if(messageSent===null && newProps.messageSent){
-
+  //  console.log("-----------------------------------messageSent===null",newProps.messageSent)
     this._saveLocalMessage({key:name, messageSent:newProps.messageSent})
-  }else if(messageRecieved===null && newProps.messageRecieved){
+  }else 
 
+  if(messageRecieved===null && newProps.messageRecieved){
+  //  console.log("-----------------------------------messageRecieved ===null",newProps.messageRecieved)
     this._saveRemoteMessage({key:name,messageRecieved:newProps.messageRecieved })
-  } else if(messageSent !==null && messageSent!==undefined && messageSent.datetime!==undefined &&  newProps.messageSent.datetime> messageSent.datetime){
+  } else
 
+   if(messageSent !==null  &&   newProps.messageSent.datetime> messageSent.datetime){
+   // console.log("-----------------------------------messageSent !==null",newProps.messageSent)
     this._saveLocalMessage({key:name, messageSent:newProps.messageSent})
-  }else if(messageRecieved !==null && messageRecieved !==undefined && messageRecieved.datetime !==undefined && newProps.messageRecieved.datetime>messageRecieved.datetime){
-    console.log("-----------------------------------!!!!!!",newProps)
+  }else 
+  
+  if(messageRecieved !==null   && newProps.messageRecieved.datetime>messageRecieved.datetime){
+  //  console.log("-----------------------------------messageRecieved !==null",newProps.messageRecieved)
     this._saveRemoteMessage({key:name,messageRecieved:newProps.messageRecieved })
   }
 }
 
 
-testMethod =()=>{
-  console.log("test method---")
-}
+
 
   _loadFromStorage = ({ key }) => {
     loadFromStorage({
@@ -44,16 +49,19 @@ testMethod =()=>{
     })
 
   }
+  
   _saveLocalMessage = ({ key,messageSent }) => {
     const local = true;
     const from = key
     const { datetime, message, reciever } = messageSent
     saveToLocalStorage({
-      message: { message, from, local, datetime, to: reciever }, key, onSave: (message) => {
+      message: { message, from, local, datetime, to: reciever }, key, onSave: ({message}) => {
+      
         this.setState((prevState) => ({ messages: [...prevState.messages, message], message: "" }))
       }
     })
   }
+
   _saveRemoteMessage = ({ key,messageRecieved }) => {//
     const { datetime, message, sender } = messageRecieved
     const local = false
@@ -67,11 +75,17 @@ testMethod =()=>{
   render() {
     const { messages } = this.state;
     const { children } = this.props
-  
+
     return children({ messages })
 
   }
 };
+RTCChatLog.defaultProps = {
+  messageSent:null,
+  messageRecieved:null,
+  name:''
+
+}
 
 RTCChatLog.propTypes = {
   messageSent: PropTypes.object,
