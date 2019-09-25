@@ -1,6 +1,6 @@
-import MessagingController from '@rtcjs/messaging-controller'
-import MessagesDisplayer from '@rtcjs/messages-displayer'
-import MessageEditorDisplayer from '@rtcjs/message-editor-displayer'
+import MessagingController from '../messaging-controller'
+import MessagesDisplayer from '../messages-displayer'
+import MessageEditorDisplayer from '../message-editor-displayer'
 const MessagingModule = ({ name, targetName, socket }) => {
    
     return (<MessagingController name={name} targetName={targetName} socket={socket}>{({ messages, message, sendMessage, onTextChange }) => {

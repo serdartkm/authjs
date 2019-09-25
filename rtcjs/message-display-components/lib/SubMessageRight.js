@@ -1,6 +1,6 @@
 import React from 'react'
 import DateLine from './DateLine'
-import Message from './Message'
+import Message from './message-object-mapper/message-view'
 const SubMessageRight = ({ message, datetime, dateSpace,side }) => {
 
     return (

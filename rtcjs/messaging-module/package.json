@@ -10,11 +10,7 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "devDependencies": {
-    "@rtcjs/message-editor-displayer": "^1.0.67-alpha.0",
-    "@rtcjs/messages-displayer": "^1.0.67-alpha.0",
-    "@rtcjs/messaging-controller": "^1.0.67-alpha.0"
-  },
+ 
   "files": [
     "lib"
   ],

@@ -1,7 +1,7 @@
 import React from 'react'
 import DateLine from './DateLine'
-import Avatar from './Avatar';
-import Message from './Message'
+import Avatar from './message-object-mapper/message-avatar';
+import Message from './message-object-mapper/message-view'
 const FistMessageRight = ({ message, datetime, dateSpace, side, local, from }) => {
     return (
         <div>
@@ -17,7 +17,7 @@ const FistMessageRight = ({ message, datetime, dateSpace, side, local, from }) =
 
                 <div style ={{display:"flex", alignItems:"center"}}>
             
-                    
+    
             </div>
 
             </div>

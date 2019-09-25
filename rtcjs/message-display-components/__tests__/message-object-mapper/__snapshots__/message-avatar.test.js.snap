@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SNAPSHOT TEST MessageAvatar MessageAvatar renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "darkSmoke",
+      "borderColor": "#80cbc4",
+      "borderRadius": 30,
+      "borderStyle": "solid",
+      "borderWidth": 2,
+      "color": "#009688",
+      "display": "flex",
+      "height": 40,
+      "justifyContent": "center",
+      "padding": 3,
+      "width": 40,
+    }
+  }
+>
+  <div>
+    A
+  </div>
+</div>
+`;

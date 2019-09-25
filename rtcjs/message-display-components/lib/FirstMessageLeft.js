@@ -1,7 +1,7 @@
 import React from 'react'
 import DateLine from './DateLine'
-import Message from './Message'
-import Avatar from './Avatar';
+import Message from './message-object-mapper/message-view'
+import Avatar from './message-object-mapper/message-avatar';
 
 
 const FirstMessageLeft = ({ message, datetime, dateSpace,side,local, from }) => {

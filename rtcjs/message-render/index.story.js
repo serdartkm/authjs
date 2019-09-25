@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import MessageRender from './index'
-import  {DateLine,FirstMessageLeft,FirstMessageRight,SubMessageLeft,SubMessageRight,MessageContainer}from '../../message-display-components/lib/index'
+import  {DateLine,FirstMessageLeft,FirstMessageRight,SubMessageLeft,SubMessageRight,MessageContainer}from '../message-display-components/index'
 const messages = [
     {
         local: true,
