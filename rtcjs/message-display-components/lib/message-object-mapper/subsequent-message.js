@@ -5,7 +5,7 @@ const SubsequentMessage = ({ message, datetime }) => {
 
         return (
 
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", marginLeft:45 }}>
                         <Message message={message} datetime={datetime} backgroundColor="#FFECB3" />
                 </div>
 
