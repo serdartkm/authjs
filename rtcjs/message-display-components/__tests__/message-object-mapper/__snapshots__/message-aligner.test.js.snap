@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`message-aligner component  renders correctly to the left 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <div>
+    Child component on the left side
+  </div>
+</div>
+`;
+
+exports[`message-aligner component  renders correctly to the right 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <div>
+    Child component on the left side
+  </div>
+</div>
+`;

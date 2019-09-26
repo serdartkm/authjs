@@ -1,44 +1,57 @@
 import React from "react";
-import withChatLog from "@rtcjs/chat-log";
-class MessagingController extends React.Component {
+import PropTypes from 'prop-types'
 
+class MessageController extends React.Component {
+  constructor(){
+    super()
+    this.state ={messageRecieved:null,messageSent:null,connected:false, message:"",errors:[]}
+  }
+  
   componentDidMount() {
-    const { socket, name } = this.props;
-    this.props.loadFromStorage({key:name})
+    const { socket } = this.props;
+
     this.socket = socket;
     this.socket.on("text_message", data => {
-      const { name , message, datetime } = data;
-      this.props.saveRemoteMessage({
-        from:name,
-        message,
-        datetime,
-        key:this.props.name,
-        to:this.props.name
-      })   
+      const { sender , message, datetime } = data;
+      this.setState({messageSent:{sender,message,datetime}})
     });
 
-    this.socket.emit("join", name, data => {});
-    this.socket.on("joined", data => {
-      console.log("joined----", data);
-    });
+    this.socket.on("connect",()=>{
+      this.setState({connected:true})
+    })
+
+    this.socket.on("disconnect",()=>{
+      this.setState({connected:false})
+    })
+
+//
   } 
   sendMessage = () => {
-    const { name, targetName, socket } = this.props;
-    const { message } = this.props;
-    socket.emit("text_message", { name,
-      targetName,
+
+    const { targetName, socket } = this.props;
+    const { message } = this.state;
+    const datetime =  new Date().getTime()
+
+    socket.emit("text_message",{
+      reciever:targetName,
       message,
-      datetime:new Date().getTime()});
-      this.props.saveLocalMessage({key:name,to:targetName})
+      datetime});
+    this.setState({messageSent:{reciever:targetName,datetime,message}})
   };
+  onMessageChange=(e)=>{
+    console.log("on message change clicked",e.target.value)
+    this.setState({message:e.target.value})
+  }
   render() {
-    const { children,message,messages } = this.props;
-    return children({
-          messages,
-          sendMessage: this.sendMessage,
-          onTextChange: this.props.onTextChange,
-          message
-        })
+    const { children } = this.props;
+    const {messageRecieved,messageSent,message,errors}= this.state
+    return children({messageRecieved,messageSent,message,sendMessage:this.sendMessage,onMessageChange:this.onMessageChange,errors})
   }
 }
-export default withChatLog(MessagingController)
+
+MessageController.propTypes ={
+  name:PropTypes.string,
+  targetName:PropTypes.string,
+  socket:PropTypes.object
+}
+export default MessageController

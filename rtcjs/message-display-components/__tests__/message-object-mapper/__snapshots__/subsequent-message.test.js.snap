@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubsequentMessageView snapshot renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "marginLeft": 45,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#FFECB3",
+        "borderColor": "#9E9E9E",
+        "borderRadius": 15,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "margin": 2,
+        "maxWidth": "100%",
+        "minWidth": "30%",
+        "padding": 5,
+        "wordBreak": "break-all",
+        "wordWrap": "break-word",
+      }
+    }
+  >
+    <div>
+      hello from subsequent message
+    </div>
+    <div
+      style={
+        Object {
+          "fontSize": 10,
+          "paddingTop": 2,
+          "textAlign": "end",
+        }
+      }
+    >
+      <i
+        style={
+          Object {
+            "backgroundColor": "#efebe9",
+          }
+        }
+      >
+        11:46:00 AM
+      </i>
+    </div>
+  </div>
+</div>
+`;
