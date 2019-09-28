@@ -108,5 +108,8 @@
   "version": "1.0.0",
   "engines": {
     "node": "12.10.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-info": "^5.2.1"
   }
 }

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessagesViewScroller renders correctly 1`] = `
+<div
+  name="msgViewScroller"
+  style={
+    Object {
+      "backgroundColor": "#edeff2",
+      "flex": 10,
+      "overflow": "auto",
+      "width": "100%",
+    }
+  }
+/>
+`;
