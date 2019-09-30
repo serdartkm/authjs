@@ -36,7 +36,7 @@ class MessageControllerSocket extends React.Component {
       reciever:targetName,
       message,
       datetime});
-    this.setState({messageSent:{reciever:targetName,datetime,message}})
+    this.setState({messageSent:{reciever:targetName,datetime,message},message:""})
   };
   onMessageChange=(e)=>{
  

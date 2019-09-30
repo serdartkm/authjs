@@ -4,7 +4,7 @@ const style = {
   backgroundColor: "#edeff2",
   overflow: "auto",
   width: "100%",
-  flex: 10
+  height: "100%"
 };
 
 class MessageViewScroller extends React.Component {
@@ -26,8 +26,13 @@ class MessageViewScroller extends React.Component {
   }
 
   render() {
-    const { children } = this.props
-    return (<div name="msgViewScroller" style={style}>{children}</div>)
+    const { children, style } = this.props
+    return (<div name="msgViewScroller" style={{
+      backgroundColor: "#edeff2",
+      overflow: "auto",
+      width: "100%",
+      height: "100%", ...style
+    }}>{children}</div>)
   }
 
 }

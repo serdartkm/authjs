@@ -1,6 +1,9 @@
 import React from 'react'
 
 const MessageMapper =({messages,children, localSide="right",remoteSide="left"})=>{
+  if(messages.length===0){
+    return children({messages:[]})
+  }
     let email = messages[0].from
     let lastDatetime = messages[0].datetime
 const messagesMapped =messages.map((m, i) => {
@@ -11,7 +14,8 @@ const messagesMapped =messages.map((m, i) => {
     }
     else if (i === 0 && !m.local) {
       //  console.log("Loop two------")
-        return { ...m, side: remoteSide, order: "F", dateSpace: true,letter:m.from[0] }
+      let letter = m.from[0] !==undefined ? m.from[0]:""
+        return { ...m, side: remoteSide, order: "F", dateSpace: true,letter }
     }
     //local messages
     else if (i > 0 && email === m.from && m.local) {
@@ -50,27 +54,31 @@ const messagesMapped =messages.map((m, i) => {
       
         if (new Date(lastDatetime).getDate() !== new Date(m.datetime).getDate()) {
            // console.log("Loop seven------")
+           let letter = m.from[0] !==undefined ? m.from[0]:""
             lastDatetime = m.datetime
-            return { ...m, side: remoteSide, order: "S", dateSpace: true,letter:m.from[0] }
+            return { ...m, side: remoteSide, order: "S", dateSpace: true,letter }
         } else {
           //  console.log("Loop eight------")
+          let letter = m.from[0] !==undefined ? m.from[0]:""
             lastDatetime = m.datetime
-            return { ...m, side: remoteSide, order: "S", dateSpace: false,letter:m.from[0] }
+            return { ...m, side: remoteSide, order: "S", dateSpace: false,letter }
         }
     }
     else if (i > 0 && email !== m.from && !m.local) {
       
         if (new Date(lastDatetime).getDate() === new Date(m.datetime).getDate()) {
            // console.log("Loop nine------")
+           let letter = m.from[0] !==undefined ? m.from[0]:""
             email = m.from
             lastDatetime = m.datetime
-            return { ...m, side: remoteSide, order: "F", dateSpace: false,letter:m.from[0] }
+            return { ...m, side: remoteSide, order: "F", dateSpace: false,letter }
         }
         else {
            // console.log("Loop ten------")
+           let letter = m.from[0] !==undefined ? m.from[0]:""
             email = m.from
             lastDatetime = m.datetime
-            return { ...m, side: remoteSide, order: "F", dateSpace: true,letter:m.from[0] }
+            return { ...m, side: remoteSide, order: "F", dateSpace: true,letter }
         }
     }
 })

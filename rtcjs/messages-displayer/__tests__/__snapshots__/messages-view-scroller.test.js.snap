@@ -6,7 +6,7 @@ exports[`MessagesViewScroller renders correctly 1`] = `
   style={
     Object {
       "backgroundColor": "#edeff2",
-      "flex": 10,
+      "height": "100%",
       "overflow": "auto",
       "width": "100%",
     }

@@ -4,7 +4,7 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import MockedSocket from 'socket.io-mock';
 import { shallow } from 'enzyme';
-import MessageController from '../lib'
+import MessageController from '../index'
 var sinon = require('sinon');
 import { ExpectInitialState, ExpectedPropTypes, ExpectComponentRender, ExpectClassMethods, ExpectedRenderProp, ExpectStateChange } from '../../../Utils/react-test-boilerplate/index'
 Enzyme.configure({ adapter: new Adapter() });

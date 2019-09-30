@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {MessageObjectMapper, MessageAligner, DateLinebreak, SubsequentMessage, MessageView, FirstMessage, Avatar,MessageCollectionView, MessagesDispaler } from './index'
+import MessagesDispaler,{MessageObjectMapper, MessageAligner, DateLinebreak, SubsequentMessage, MessageView, FirstMessage, Avatar,MessageCollectionView } from './index'
 
 const ChildComponent = ({ text }) => {
   return <div style={{ width: 100, backgroundColor: "yellow" }}>Child,{text}</div>

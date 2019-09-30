@@ -15,7 +15,7 @@ const style={height:30,
      borderColor:"#80cbc4"}
     
 
-const MessageAvatar =({letter})=>{
+const MessageAvatar =({letter="U"})=>{
     return (<div style={style}><div>{letter.toUpperCase()}</div></div>)
 }
 

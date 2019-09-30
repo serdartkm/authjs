@@ -2,28 +2,22 @@
 
 exports[`MessageEditorDisplayer component Should render correctly 1`] = `
 <div
-  style={
-    Object {
-      "marginTop": 2,
-    }
-  }
+  className="input-group"
+  style={Object {}}
 >
+  <input
+    className="form-control"
+    name="message"
+    onKeyDown={[Function]}
+    placeholder="Enter message text"
+    type="text"
+  />
   <div
-    style={
-      Object {
-        "display": "flex",
-      }
-    }
+    className="input-group-append"
   >
-    <input
-      className="form-control"
-      name="message"
-      onKeyDown={[Function]}
-      placeholder="Enter message text"
-      type="text"
-    />
     <button
       className="btn btn-secondary"
+      data-testid="sendMessage"
       disabled={false}
       style={
         Object {
