@@ -9,7 +9,7 @@ const MessagingModuleSocket = ({ name, targetName, socket }) => {
         return (<div >
             <RTCChatLog messageRecieved={messageRecieved} messageSent={messageSent} name={name}>{({ messages }) => {
                 return (
-                    <div style={{height: "96vh"}}>
+                    <div style={{ height: "96vh" }}>
                         <MessagesDisplayer messages={messages} />
                         <MessageEditorDisplayer message={message} sendMessage={sendMessage} onMessageChange={onMessageChange} />
                     </div>

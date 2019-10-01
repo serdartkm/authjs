@@ -77,6 +77,3 @@ describe('<MessageController/>', () => {
 
 });
 
-test.todo('test messageSent datetime');
-test.todo('Check prop length passed from parent');
-test.todo('contol all required pros are passed from parent, name,targetName,socket');

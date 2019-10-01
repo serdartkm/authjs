@@ -6,10 +6,11 @@ import MessagingController from '../../messaging-controller-socket'
 import MessagesDisplayer from '../../messages-displayer'
 import MessageEditorDisplayer from '../../message-editor-displayer'
 import RTCChatLog from '../../rtcjs-chat-log'
-import {render,fireEvent, getAllByPlaceholderText, getByText} from '@testing-library/react'
+import MockedSocket from 'socket.io-mock';
+import {render,fireEvent, cleanup} from '@testing-library/react'
 const serverURL = "http://localhost:3000/"
 const socket = io(serverURL, { query: `name=mario@gmail.com` });
-
+afterEach(cleanup)
 describe("MessagingModuleSocket", () => {
     
     const wrapper = mount(<MessagingModuleSocket name="mario" targetName="dragos" socket={socket} />)
@@ -49,10 +50,13 @@ describe("MessagingModuleSocket", () => {
         expect(getByText("Hello My Dear")).toBeVisible()
     })
 
-    test.todo("Message Recieved is visible")
+    it("Message Recieved is visible", ()=>{
 
-    test.todo("window is scrolled to the bottom when message is sent")
-
-    test.todo("window is scrolled to the bottom when message is recived")
+       let messageReciever = new MockedSocket();
+       let messageSender =messageReciever.socketClient
+        const {getByText}= render(<MessagingModuleSocket  name="mario" targetName="dragos" socket={messageReciever}/>)
+        messageSender.emit("text_message",{message:"I am genius",sender:"dragos",datetime:new Date().getTime()})
+        expect(getByText("I am genius")).toBeVisible()
+    })
 
 })
