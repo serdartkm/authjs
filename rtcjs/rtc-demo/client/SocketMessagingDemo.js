@@ -1,5 +1,5 @@
 <h4 style={{ textAlign: "center", margin: 10 }}>Messaging Module (with SocketIO)</h4>
-import MessagingModule from '@rtcjs/messaging-module'
+import MessagingModule from '../../messaging-module'
 import io from "socket.io-client";
 import DeviceContainer, { DevicesView } from './DevicesView'
 import './minimal-devices/css/iphone.css'

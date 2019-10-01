@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SNAPSHOT TEST FirstMessage component snapshot Message local renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#FFECB3",
+        "borderColor": "#9E9E9E",
+        "borderRadius": 15,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "margin": 2,
+        "maxWidth": "100%",
+        "minWidth": "30%",
+        "padding": 5,
+        "wordBreak": "break-all",
+        "wordWrap": "break-word",
+      }
+    }
+  >
+    <div>
+      First Message
+    </div>
+    <div
+      style={
+        Object {
+          "fontSize": 10,
+          "paddingTop": 2,
+          "textAlign": "end",
+        }
+      }
+    >
+      <i
+        style={
+          Object {
+            "backgroundColor": "#efebe9",
+          }
+        }
+      >
+        11:46:00 AM
+      </i>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SNAPSHOT TEST FirstMessage component snapshot Message remote renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "darkSmoke",
+        "borderColor": "#80cbc4",
+        "borderRadius": 30,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "#009688",
+        "display": "flex",
+        "height": 40,
+        "justifyContent": "center",
+        "padding": 3,
+        "width": 40,
+      }
+    }
+  >
+    <div>
+      M
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#FFECB3",
+        "borderColor": "#9E9E9E",
+        "borderRadius": 15,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "margin": 2,
+        "maxWidth": "100%",
+        "minWidth": "30%",
+        "padding": 5,
+        "wordBreak": "break-all",
+        "wordWrap": "break-word",
+      }
+    }
+  >
+    <div>
+      First Message
+    </div>
+    <div
+      style={
+        Object {
+          "fontSize": 10,
+          "paddingTop": 2,
+          "textAlign": "end",
+        }
+      }
+    >
+      <i
+        style={
+          Object {
+            "backgroundColor": "#efebe9",
+          }
+        }
+      >
+        11:46:00 AM
+      </i>
+    </div>
+  </div>
+</div>
+`;

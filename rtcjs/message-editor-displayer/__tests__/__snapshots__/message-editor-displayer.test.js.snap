@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageEditorDisplayer component Should render correctly 1`] = `
+<div
+  className="input-group"
+  style={Object {}}
+>
+  <input
+    className="form-control"
+    name="message"
+    onKeyDown={[Function]}
+    placeholder="Enter message text"
+    type="text"
+  />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-secondary"
+      data-testid="sendMessage"
+      disabled={false}
+      style={
+        Object {
+          "marginLeft": 2,
+        }
+      }
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;

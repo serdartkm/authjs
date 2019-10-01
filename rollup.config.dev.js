@@ -27,11 +27,9 @@ const appPlugin = [
       { src: 'rtcjs/shareables-webrtc/lib/servers.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
       { src: 'rtcjs/shareables-webrtc/lib/useDataChannel.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
       { src: 'rtcjs/shareables-webrtc/lib/useMediaStream.js', dest: 'rtcjs/rtc-demo/public/shareables-webrtc' },
-
       { src: 'rtcjs/rtc-demo/server/index.js', dest: 'rtcjs/rtc-demo/public/server' },
       { src: 'rtcjs/@rtcjs-server/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server' },
       { src: 'rtcjs/@rtcjs-server-webrtc-signaling/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-webrtc-signaling' },
-
       { src: 'rtcjs/@rtcjs-server-peer-text-chat/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-peer-text-chat' },
     ]
   }),
