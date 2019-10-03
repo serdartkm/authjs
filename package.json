@@ -4,6 +4,7 @@
   "scripts": {
     "test": "jest --watch --coverage",
     "start": "node index.js",
+    "codelab:websocket":"concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths websocket  -w\" \" nodemon --exec babel-node codelab/websocket/server/index.js \" ",
     "build": "cross-env rollup  --config",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
@@ -96,7 +97,8 @@
     "sinon": "^7.4.2",
     "socket.io-client": "^2.2.0",
     "socket.io-mock": "^1.2.3",
-    "vertical-timeline-component-for-react": "^1.0.6"
+    "vertical-timeline-component-for-react": "^1.0.6",
+    "ws": "^7.1.2"
   },
   "workspaces": [
     "packages/*",

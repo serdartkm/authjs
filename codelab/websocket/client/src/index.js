@@ -2,7 +2,7 @@
 import React from 'react'
 
 
-class AppOne extends React.Component{
+class WebSocketCodeLab extends React.Component{
 
     componentDidMount(){
 
@@ -17,7 +17,7 @@ class AppOne extends React.Component{
 
     render(){
 
-        return <div>AppOne</div>
+        return <div>WebSocketCodeLab</div>
     }
 
 }
@@ -27,6 +27,6 @@ class AppOne extends React.Component{
 
 
 ReactDOM.render(
-    <AppOne />,
+    <WebSocketCodeLab />,
     document.getElementById('root')
   );
