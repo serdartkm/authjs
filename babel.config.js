@@ -15,5 +15,6 @@ module.exports = {
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-transform-runtime'
   ],
 };

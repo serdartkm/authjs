@@ -1,23 +1,29 @@
 
 import React from 'react'
+import TextChatContainer from './TextChatContainer'
+
+
+const style ={
+    root:{
+        display:"flex",
+        justifyContent:"space-between",
+ 
+
+    }
+}
 
 
 class WebSocketCodeLab extends React.Component{
 
-    componentDidMount(){
-
-        this.webSocket = new WebSocket("ws://localhost:3000")
-        this.webSocket.onopen =()=>{
-            console.log("client clonnected")
-        }
-        this.webSocket.onmessage=(data)=>{
-            console.log("data--",data)
-        }
-    }
+ 
 
     render(){
 
-        return <div>WebSocketCodeLab</div>
+        return (<div style={style.root}className="container">
+
+            <TextChatContainer userOne={true}/>
+            <TextChatContainer/>
+        </div>)
     }
 
 }

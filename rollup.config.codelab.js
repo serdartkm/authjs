@@ -60,12 +60,14 @@ const appPlugin = [
   }),
 
   babel({
+    runtimeHelpers: true,
     exclude: 'node_modules/**',
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-async-to-generator',
+      '@babel/plugin-transform-runtime'
     ],
   }),
 
