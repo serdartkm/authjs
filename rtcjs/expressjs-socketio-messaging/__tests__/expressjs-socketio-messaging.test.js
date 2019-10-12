@@ -8,14 +8,22 @@ const client = new SocketClient()
 
 describe("expressjs-socketio-messaging", () => {
 
-    it("text_message event should be triggered by server", () => {
+    it.only("text_message event should be triggered with correct data", (done) => {
+       
         server.on("connection", (socket) => {
-               expressSocketIOMessaging(socket)
-       //     socket.emit("text_message", "hello from client")
+            socket.join("victory")
+            expressSocketIOMessaging(socket)
         })
-      
         client.connect()
-        client.emit("text_message", "fff")
+        client.on("text_message", (data) => {
+            expect(data).toEqual({ datetime: "1", message: "hi", reciever: "drag" })
+            done()
+        })
+        client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })
+
+
     })
+
+
 
 })
