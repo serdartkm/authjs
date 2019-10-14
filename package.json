@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "test": "jest --watch --coverage ",
+    "test:debug":"node  --inspect-brk node_modules/.bin/jest  --runInBand --watch",
     "start": "node index.js",
     "codelab:websocket": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths websocket  -w\" \" nodemon --exec babel-node codelab/websocket/server/index.js \" ",
+    "codelab:socketio": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths socketio  -w\" \" nodemon --exec babel-node codelab/socketio/server/index.js \" ",
     "build": "cross-env rollup  --config",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
@@ -119,6 +121,7 @@
     "bootstrap": "^4.3.1",
     "cucumber": "^5.1.0",
     "express-session": "^1.16.2",
-    "pubsub-js": "^1.7.0"
+    "pubsub-js": "^1.7.0",
+    "uniqid": "^5.0.3"
   }
 }

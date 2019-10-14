@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js'
-let interval = null
+var uniqid = require('uniqid');
 
 class SocketServer {
     constructor() {
@@ -14,8 +14,10 @@ class SocketServer {
 
 class SocketClient {
     constructor(name) {
+        this.id = uniqid()
         this.socket = new Socket("socket", this)
-        this.rooms = []
+        this.events = []
+        this.rooms=[]
     }
     connect = () => {
         PubSub.publishSync("connection", this.socket)
@@ -26,32 +28,40 @@ class SocketClient {
 
         PubSub.subscribe(`socket${event}`, (msg, data) => {
             cb(data)
+        
         })
+
+        if(this.rooms.length>0){
+            this.rooms.forEach(r=>{
+                PubSub.subscribe(`${r}${event}`, (msg, data) => {
+                    cb(data)
+                })
+            })
+        }
     }
 
     emit = (event, data) => {
 
         PubSub.publishSync(`${event}`, data)
     }
+//
+    join = (room) => {
+   
+        this.rooms.push(room)
+
+    }
 }
 //
 class Socket {
     constructor(name, client) {
         this.name = name,
-            this.rooms = ['one', 'two'],
-            this.client = client,
-            this.events = []
-
+            this.client = client
     }
-
     to = (room) => {
-
-        this.rooms.push(room)
+  
         return {
-            emit: (event, data) => {        
-                this.rooms.forEach(r => {
-                    PubSub.publishSync(`${r}${event}`, data)
-                });
+            emit: (event, data) => {
+                PubSub.publishSync(`${room}${event}`, data)
             },
             to: this.to
         }
@@ -68,29 +78,11 @@ class Socket {
         PubSub.publishSync(`socket${event}`, data)
     }
 
-
     join = (room) => {
-        const events = this.event
-        this.client.rooms.push(new Room(room, events))
+        this.client.join(room)
     }
 }
 
-class Room {
-    constructor(name, events = []) {
-        this.name = name,
-            this.events = events,
-
-            this._subscribe()
-    }
-
-    _subscribe = () => {
-        this.events.forEach(event => {
-            PubSub.subscribe(`${name}${event}`, (msg, data) => {
-                PubSub.publishSync(`socket${event}`, data)
-            })
-        })
-    }
-}
 export {
     SocketClient,
     SocketServer

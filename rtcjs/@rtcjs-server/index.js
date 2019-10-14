@@ -22,7 +22,7 @@ module.exports=  async (httpServer, mongoDbUrl)=> {
       require("@rtcjs/server-webrtc-signaling")({ socket, users, db });
       require("@rtcjs/server-contacts")({ socket, users, db });
       require("@rtcjs/server-peer-text-chat")({ socket, users, db });
-    });
+    })
 
     socketServer.on("disconnect", function() {
       if (connection.handshake.query["name"]) {
