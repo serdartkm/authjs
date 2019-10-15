@@ -1,6 +1,8 @@
-require('dotenv').config()
-const express = require('express')
+
 const path = require('path')
+const express = require('express')
+const jwt = require('jsonwebtoken')
+require('dotenv').config({path:path.join(__dirname, `./.env`)})
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000;
 const http = require("http");
@@ -17,17 +19,27 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, `../client/build`)))
 
 
-app.post("/login", (req, res) => {
+app.post("/login", async(req, res) => {
 
-  res.writeHead(200, {
-    'Set-Cookie': `username=${req.body.username}`,
-    'Content-Type': 'text/plain'
-  })
-  res.end('hello\n')
+const {username}= req.body
+
+  try {
+    const token = await jwt.sign({data:username}, process.env.secret, { expiresIn: '1h' })
+    res.json({token})
+  } catch (error) {
+   
+    res.send({error})
+  }
+ 
+
 })
 
 
-
+process.once('SIGUSR2', function () {
+  server.close(function () {
+    process.kill(process.pid, 'SIGUSR2')
+  })
+})
 
 
 

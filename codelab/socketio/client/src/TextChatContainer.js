@@ -10,7 +10,7 @@ class TextChatContainer extends React.Component {
     componentDidMount() {
         this._isMounted = true;
 
-   this.initWebSocket()
+
     }
 
     onChange = (e) => {
@@ -21,8 +21,8 @@ class TextChatContainer extends React.Component {
     componentWillUnmount() {
         this._isMounted = false;
       }
-    initWebSocket=()=>{
-        this.io = io(`ws://localhost:3000`)
+    initWebSocket=({token})=>{
+        this.io = io(`ws://localhost:3000?token=${token}`)
     
 
         this.io.onmessage = (data) => {
@@ -69,9 +69,10 @@ class TextChatContainer extends React.Component {
                 'Content-Type': 'application/json'
 
               },})
-            const result = await response.text()
+            const result = await response.json()
+            console.log("Error",result)
          this.setState({loggedIn:true})
-           this.initWebSocket()
+           this.initWebSocket({token:result.token})
 
         } catch (error) {
             if(this._isMounted)
@@ -93,7 +94,7 @@ class TextChatContainer extends React.Component {
     render() {
         const { message, connected, errors, messages,loggedIn,username } = this.state
 
-        if(true)
+        if(loggedIn)
         return (<div>
             <div>Connection state: {connected ? <div style={{ color: "green" }}>connnected</div> : <div style={{ color: "red" }}>not connected</div>}</div>
             <div style={{color:"red"}}>{errors.length > 0 &&

@@ -3,21 +3,51 @@ var uniqid = require('uniqid');
 
 class SocketServer {
     constructor() {
-
+        this.stack=[]
+        PubSub.subscribe("connection---", (msg, data) => {
+              if( data instanceof Socket){ 
+                  this.socket =data
+             if(this.stack.length>0)
+                {
+                    this.stack.forEach((s)=>{
+                        console.log("midleware inv")
+                        s(data,()=>{})
+                    })
+                }
+               }
+            
+          })
     }
     on = (event, cb) => {
+      
         PubSub.subscribe(event, (msg, data) => {
+            if( data instanceof Socket){ 
+                if(this.stack.length>0)
+                {
+                    this.stack.forEach((s)=>{
+                        console.log("midleware inv")
+                        s(data,()=>{})
+                    })
+                }
+    
+            }
             cb(data)
         })
+    }
+
+    use =(callback)=>{
+      this.stack.push(callback)
     }
 }
 
 class SocketClient {
-    constructor(name) {
+    constructor(handshake={}) {
         this.id = uniqid()
-        this.socket = new Socket("socket", this)
+        this.socket = new Socket("socket", this,handshake)
         this.events = []
         this.rooms=[]
+        this.handshake =handshake
+
     }
     connect = () => {
         PubSub.publishSync("connection", this.socket)
@@ -53,9 +83,10 @@ class SocketClient {
 }
 //
 class Socket {
-    constructor(name, client) {
-        this.name = name,
-            this.client = client
+    constructor(name, client,handshake) {
+        this.name = name
+            this.client = client,
+            this.handshake=handshake
     }
     to = (room) => {
   

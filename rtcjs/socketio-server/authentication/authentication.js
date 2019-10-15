@@ -1,8 +1,17 @@
+const jwt = require('jsonwebtoken');
 
+module.exports = async function (socket, next) {//
+ 
+    let token = socket.handshake.query.token
 
-module.exports =function(socket,next){
- //   if(socket.request.headers.cookei) return next()
-socket.name ="serdarash"
- console.log("authenticated")
-    next()
+    console.log("token---",token)///
+    try {
+        const decoded = await jwt.verify(token, process.env.secret)
+        const { data } = decoded
+        socket.username = data
+        next()
+    } catch (error) {
+        next(error)
+    }
+
 }

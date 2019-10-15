@@ -2,15 +2,16 @@
 
 import { SocketClient, SocketServer } from '../mock-socket'
 
-const expressSocketIOMessaging = require('../messaging')
+const messaging = require('../messaging')
 describe("expressjs-socketio-messaging", () => {
 
     it("text_message event should be triggered with correct data", (done) => {
         let server = new SocketServer()
-        let client = new SocketClient()
+        let client = new SocketClient("token")
         server.on("connection", (socket) => {
+            socket.username ="mario"
             socket.join("drag")
-            expressSocketIOMessaging(socket,"mario")
+            messaging(socket,()=>{})
         })
         client.connect()
         client.on("text_message", (data) => {
@@ -28,8 +29,9 @@ describe("expressjs-socketio-messaging", () => {
         let client = new SocketClient()
         let spy = jest.spyOn(client.socket, 'to')
         server.on("connection", (socket) => {
+            socket.username ="mario"
             socket.join("drag")
-            expressSocketIOMessaging(socket,"mario")
+            messaging(socket,()=>{})
             done()
         })
         client.connect()
