@@ -3,50 +3,43 @@ var uniqid = require('uniqid');
 
 class SocketServer {
     constructor() {
-        this.stack=[]
-        PubSub.subscribe("connection---", (msg, data) => {
-              if( data instanceof Socket){ 
-                  this.socket =data
-             if(this.stack.length>0)
-                {
-                    this.stack.forEach((s)=>{
-                        console.log("midleware inv")
-                        s(data,()=>{})
-                    })
-                }
-               }
-            
-          })
+        this.stack = []
+  
     }
     on = (event, cb) => {
-      
         PubSub.subscribe(event, (msg, data) => {
-            if( data instanceof Socket){ 
-                if(this.stack.length>0)
-                {
-                    this.stack.forEach((s)=>{
+            if (event==="connection") {
+                if (this.stack.length > 0) { 
+                    this.stack.forEach(async(s) => {
                         console.log("midleware inv")
-                        s(data,()=>{})
+                      await  s(data,()=>{})
+                       cb(data)
+                        
                     })
+                } else{
+                    cb(data)
                 }
-    
+
             }
+           else{
             cb(data)
+           }
+           
         })
     }
 
-    use =(callback)=>{
-      this.stack.push(callback)
+    use = (callback) => {
+        this.stack.push(callback)
     }
 }
 
 class SocketClient {
-    constructor(handshake={}) {
+    constructor(handshake = {}) {
         this.id = uniqid()
-        this.socket = new Socket("socket", this,handshake)
+        this.socket = new Socket("socket", this, handshake)
         this.events = []
-        this.rooms=[]
-        this.handshake =handshake
+        this.rooms = []
+        this.handshake = handshake
 
     }
     connect = () => {
@@ -58,11 +51,11 @@ class SocketClient {
 
         PubSub.subscribe(`socket${event}`, (msg, data) => {
             cb(data)
-        
+
         })
 
-        if(this.rooms.length>0){
-            this.rooms.forEach(r=>{
+        if (this.rooms.length > 0) {
+            this.rooms.forEach(r => {
                 PubSub.subscribe(`${r}${event}`, (msg, data) => {
                     cb(data)
                 })
@@ -74,22 +67,22 @@ class SocketClient {
 
         PubSub.publishSync(`${event}`, data)
     }
-//
+    
     join = (room) => {
-   
+
         this.rooms.push(room)
 
     }
 }
 //
 class Socket {
-    constructor(name, client,handshake) {
+    constructor(name, client, handshake) {
         this.name = name
-            this.client = client,
-            this.handshake=handshake
+        this.client = client,
+            this.handshake = handshake
     }
     to = (room) => {
-  
+
         return {
             emit: (event, data) => {
                 PubSub.publishSync(`${room}${event}`, data)

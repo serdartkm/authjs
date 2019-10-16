@@ -4,8 +4,8 @@ const authentication = require('./authentication/authentication')
 module.exports = function (server) {
 
     const socketServer = io(server)
-     socketServer.use(authentication)
-     socketServer.use(messaging)
+    socketServer.use(authentication)
+    socketServer.use(messaging)
 
-  
+
 }
