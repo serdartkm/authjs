@@ -17,8 +17,6 @@ const users = {}
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, `../client/build`)))
-
-
 app.post("/login", async(req, res) => {
 
 const {username}= req.body

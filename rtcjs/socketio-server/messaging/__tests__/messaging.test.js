@@ -1,7 +1,8 @@
 
 
-import { SocketClient, SocketServer } from '../mock-socket'
-
+//import { SocketClient, SocketServer } from '../mock-socket'
+const SocketServer =require('socket.io')
+const SocketClient =require('socket.io-client')
 const messaging = require('../messaging')
 describe("expressjs-socketio-messaging", () => {
 
@@ -21,7 +22,7 @@ describe("expressjs-socketio-messaging", () => {
         })
         client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })
 
-    })
+    }) 
 
     it("message should be sent to specific room", (done) => {
 

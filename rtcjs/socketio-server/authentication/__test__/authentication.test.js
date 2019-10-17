@@ -2,7 +2,8 @@
 const jwt = require('jsonwebtoken')
 const path =require('path')
 require('dotenv').config({path:path.join(__dirname, `./.env`)})//
-import { SocketClient, SocketServer } from '../../messaging/mock-socket'
+const SocketServer =require('socket.io')
+const SocketClient =require('socket.io-client')
 
 const authentication = require('../authentication')
 describe("authentication", () => {

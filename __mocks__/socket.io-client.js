@@ -1,46 +1,18 @@
+'use strict';
 import PubSub from 'pubsub-js'
-var uniqid = require('uniqid');
-
-class SocketServer {
-    constructor() {
-        this.stack = []
-  
-    }
-    on = (event, cb) => {
-        PubSub.subscribe(event, (msg, data) => {
-            if (event==="connection") {
-                if (this.stack.length > 0) { 
-                    this.stack.forEach(async(s) => {
-                        console.log("midleware inv")
-                      await  s(data,()=>{})
-                       cb(data)
-                        
-                    })
-                } else{
-                    cb(data)
-                }
-
-            }
-           else{
-            cb(data)
-           }
-           
-        })
-    }
-
-    use = (callback) => {
-        this.stack.push(callback)
-    }
-}
-
 class SocketClient {
     constructor(handshake = {}) {
-        this.id = uniqid()
+      
         this.socket = new Socket("socket", this, handshake)
         this.events = []
         this.rooms = []
         this.handshake = handshake
-
+   PubSub.subscribe('listening', (msg, data)=>{
+     //  console.log("LISTENING RECIVED")
+    PubSub.publishSync("connection", this.socket)
+  //  console.log("CONNECTION TO SERVER SENT")
+    PubSub.unsubscribe('listening')
+   })
     }
     connect = () => {
         PubSub.publishSync("connection", this.socket)
@@ -48,7 +20,7 @@ class SocketClient {
     }
 
     on = (event, cb) => {
-
+    
         PubSub.subscribe(`socket${event}`, (msg, data) => {
             cb(data)
 
@@ -107,7 +79,7 @@ class Socket {
     }
 }
 
-export {
-    SocketClient,
-    SocketServer
+module.exports = function(handshake){
+
+    return new SocketClient(handshake)
 }
