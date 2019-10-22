@@ -3,10 +3,11 @@
   "private": true,
   "scripts": {
     "test": "jest --watch --coverage ",
-    "test:debug":"node  --inspect-brk node_modules/.bin/jest  --runInBand --watch",
+    "test:debug": "node  --inspect node_modules/.bin/jest /Users/personalcomputer/authjs/tests/integration/socketio-server-client.test.js   --runInBand",
     "start": "node index.js",
     "codelab:websocket": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths websocket  -w\" \" nodemon --exec babel-node codelab/websocket/server/index.js \" ",
     "codelab:socketio": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths socketio  -w\" \" nodemon --exec babel-node codelab/socketio/server/index.js \" ",
+    "debug:nodemon": "nodemon --exec babel-node --nolazy --inspect-brk tests/integration/socket.mock.debug.js",
     "build": "cross-env rollup  --config",
     "storybook": "start-storybook -p 5555",
     "bootstrap": "lerna bootstrap --use-workspaces",
@@ -24,7 +25,7 @@
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/node": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "7.4.0",
     "@babel/plugin-proposal-export-default-from": "7.2.0",
@@ -34,7 +35,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "7.0.0",
-    "@babel/register": "^7.5.5",
+    "@babel/register": "^7.6.2",
     "@storybook/react": "^5.0.11",
     "axios": "0.19.0",
     "babel-loader": "8.0.5",
@@ -115,9 +116,11 @@
     "node": "12.10.0"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.6.3",
     "@storybook/addon-info": "^5.2.1",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.2.0",
+    "babel-core": "^6.26.3",
     "bootstrap": "^4.3.1",
     "cucumber": "^5.1.0",
     "express-session": "^1.16.2",

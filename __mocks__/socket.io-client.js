@@ -1,27 +1,27 @@
 'use strict';
-import PubSub from 'pubsub-js'
+const PubSub  =require ('pubsub-js')
+const uniqid =require('uniqid')
 class SocketClient {
-    constructor(handshake = {}) {
+    constructor(token = "") {
       
-        this.socket = new Socket("socket", this, handshake)
+      
         this.events = []
         this.rooms = []
-        this.handshake = handshake
-   PubSub.subscribe('listening', (msg, data)=>{
-     //  console.log("LISTENING RECIVED")
-    PubSub.publishSync("connection", this.socket)
-  //  console.log("CONNECTION TO SERVER SENT")
-    PubSub.unsubscribe('listening')
-   })
-    }
-    connect = () => {
-        PubSub.publishSync("connection", this.socket)
-        return this
+        this.handshake = {query:{token}}
+    
+        this.id = uniqid()
+
+        PubSub.subscribe("listening", (msg,data)=>{
+             debugger
+            PubSub.unsubscribe('listening')
+               PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
+           })
     }
 
+
     on = (event, cb) => {
-    
-        PubSub.subscribe(`socket${event}`, (msg, data) => {
+    debugger
+        PubSub.subscribe(`${this.id}${event}`, (msg, data) => {
             cb(data)
 
         })
@@ -37,47 +37,13 @@ class SocketClient {
 
     emit = (event, data) => {
 
-        PubSub.publishSync(`${event}`, data)
+        PubSub.publishSync(`${this.id}${event}`, data)
     }
     
-    join = (room) => {
-
-        this.rooms.push(room)
-
-    }
+ 
 }
 //
-class Socket {
-    constructor(name, client, handshake) {
-        this.name = name
-        this.client = client,
-            this.handshake = handshake
-    }
-    to = (room) => {
 
-        return {
-            emit: (event, data) => {
-                PubSub.publishSync(`${room}${event}`, data)
-            },
-            to: this.to
-        }
-    }
-    on = (event, cb) => {
-
-        PubSub.subscribe(`${event}`, (msg, data) => {
-            cb(data)
-        })
-    }
-
-    emit = (event, data) => {
-
-        PubSub.publishSync(`socket${event}`, data)
-    }
-
-    join = (room) => {
-        this.client.join(room)
-    }
-}
 
 module.exports = function(handshake){
 

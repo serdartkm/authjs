@@ -6,6 +6,6 @@ module.exports = function (server) {
    const socketServer = io(server)
    socketServer.use(authentication)
    socketServer.use(messaging)
-
+return socketServer
 //
 }

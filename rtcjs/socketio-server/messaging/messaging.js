@@ -1,8 +1,8 @@
 'use strict';
-module.exports = function (socket, next) {
+module.exports =  function messaging(socket, next) {
 
-  console.log("message midllware-called-------")
   try {
+    debugger
     socket.on("text_message", (data) => {
         console.log("text message received")
       const { reciever, datetime, message } = data;
@@ -13,6 +13,7 @@ module.exports = function (socket, next) {
     );
     next()
   } catch (error) {
+    debugger
     next(error)
   }
 

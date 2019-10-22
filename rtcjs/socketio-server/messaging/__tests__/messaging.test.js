@@ -6,7 +6,7 @@ const SocketClient =require('socket.io-client')
 const messaging = require('../messaging')
 describe("expressjs-socketio-messaging", () => {
 
-    it("text_message event should be triggered with correct data", (done) => {
+    it.skip("text_message event should be triggered with correct data", (done) => {
         let server = new SocketServer()
         let client = new SocketClient("token")
         server.on("connection", (socket) => {
@@ -24,23 +24,34 @@ describe("expressjs-socketio-messaging", () => {
 
     }) 
 
-    it("message should be sent to specific room", (done) => {
-
+    it.only("message should be sent to specific room", (done) => {
+  debugger
         let server = new SocketServer()
         let client = new SocketClient()
-        let spy = jest.spyOn(client.socket, 'to')
-        server.on("connection", (socket) => {
-            socket.username ="mario"
-            socket.join("drag")
-            messaging(socket,()=>{})
+        client.on('message',(data)=>{
+            debugger
+            console.log("message recived")
+        })
+        server.on('connection',(socket)=>{
+           
+            debugger
+            socket.emit("message","hello")
             done()
         })
-        client.connect()
 
-        client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })//
-        expect(spy).toHaveBeenCalledTimes(2)
-        expect(spy).toHaveBeenCalledWith("drag")
-        spy.mockClear()
+       // let spy = jest.spyOn(client.socket, 'to')
+        // server.on("connection", (socket) => {
+        //     socket.username ="mario"
+        //     socket.join("drag")
+        //     messaging(socket,()=>{})
+        //     done()
+        // })
+     
+
+       // client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })//
+      //  expect(spy).toHaveBeenCalledTimes(2)
+      //  expect(spy).toHaveBeenCalledWith("drag")
+      //  spy.mockClear()
     })
 
 

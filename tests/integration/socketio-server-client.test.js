@@ -10,35 +10,30 @@ const serverURL = "http://localhost:3000/" //client
 
 //const socketClientTwo = io(serverURL, { query: `name=dragos@gmail.com` }); //client
 //server
-jest.mock('http')
-const express = require('express')
-const http = require('http')
-const app = express()
-const server = http.createServer(app);
-const socketServer = require('../../rtcjs/socketio-server')(server)
-server.listen("100")//
+
+const socketServer = require('../../rtcjs/socketio-server')({})
+
+
+
 describe("INTEGRATION TESTING ", () => {
 
     describe("socketio server and client messaging", () => {//
-        let token = ''
-        beforeEach(async () => {
-            token = await jwt.sign({ data: "aman" }, process.env.secret, { expiresIn: '1h' })
+     
+        it("client to server message", async() => {
+            debugger
+            const token = await jwt.sign({ data: "aman" }, "mysecret", { expiresIn: '1h' })
+            debugger
+            socketServer.listen(3000)
+            debugger
+           const socketClient = io();
+           debugger
+           const client =require('../../__mocks__/socket.io-client')(token)
 
+     
         })
-        it("client to server message", (done) => {
-            let handshake = { query: { token } }
-            const socketClientOne = io(handshake); //client/
-            socketClientOne.emit("text_message", { reciever: "mario", datetime: "1", message: "first message" })
-            done()//
-        })
-
-        it("server to client massage", () => {
-
-
-
-        })
-
 
 
     })
 })
+
+// token = await jwt.sign({ data: "aman" }, process.env.secret, { expiresIn: '1h' })
