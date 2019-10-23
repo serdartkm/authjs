@@ -2,37 +2,34 @@
 const PubSub  =require ('pubsub-js')
 const uniqid =require('uniqid')
 class SocketClient {
-    constructor(token = "") {
+    constructor(token = "",id) {
       
       
-        this.events = []
-        this.rooms = []
         this.handshake = {query:{token}}
-    
+        if(id === undefined)
         this.id = uniqid()
+        this.id=id
 
-        PubSub.subscribe("listening", (msg,data)=>{
-             debugger
-            PubSub.unsubscribe('listening')
-               PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
-           })
+ 
+
+     
     }
 
+    connect=()=>{
+       
+        PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
+    }
 
     on = (event, cb) => {
-    debugger
+   PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
+
         PubSub.subscribe(`${this.id}${event}`, (msg, data) => {
+         
             cb(data)
 
         })
 
-        if (this.rooms.length > 0) {
-            this.rooms.forEach(r => {
-                PubSub.subscribe(`${r}${event}`, (msg, data) => {
-                    cb(data)
-                })
-            })
-        }
+      
     }
 
     emit = (event, data) => {
@@ -45,7 +42,7 @@ class SocketClient {
 //
 
 
-module.exports = function(handshake){
+module.exports = function(handshake,id){
 
-    return new SocketClient(handshake)
+    return new SocketClient(handshake,id)
 }

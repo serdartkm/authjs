@@ -12,7 +12,7 @@
               "--inspect-brk",
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
-              "messaging.test.js"
+              "socketio-mock.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
