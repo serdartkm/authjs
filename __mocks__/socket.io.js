@@ -43,16 +43,7 @@ class Socket {
     }
 
     on = (event, cb) => {
-        for (const room of this.rooms) {
-            debugger
-            //subscribe to messages sent to room
-            PubSub.subscribe(`${room}${event}`, (msg, data) => {
-                debugger
-                //forward message to frontend client
-                PubSub.publishSync(`${id}${event}`, data)
-            })
-        }
-
+   
         //subscribtion for messages recived from client
         PubSub.subscribe(`${id}${event}`, (msg, data) => {
             cb(data)
@@ -61,17 +52,28 @@ class Socket {
 
     }
 
-    join = (room) => {
-        this.rooms.push(room)
+    join = (joinedroom) => {
+        const room = room
+        const socketid =this.id
+    
+        PubSub.subscribe('room', (msg, data) => {
+            const { room, id, userdata,event } = data
+        
+            if (room === joinedroom && id !== socketid)
+      
+                PubSub.publishSync(`${socketid}${event}`, userdata)
+        })
     }
 
     to = (room) => {
         //emits message to all clients joined to room
         return {
-            emit: (event, data) => {
-                debugger
+            emit: (event, userdata) => {
+              
+                const data = { userdata, id: this.id, room, event }
+            
                 //send message to specific room
-                PubSub.publishSync(`${room}${event}`, data)
+                PubSub.publishSync(`room`, data)
             }
         }
     }

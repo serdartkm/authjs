@@ -21,10 +21,10 @@ class SocketClient {
     }
 
     on = (event, cb) => {
-   PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
+   //PubSub.publishSync('connect', {id:this.id,handshake:this.handshake})
 
         PubSub.subscribe(`${this.id}${event}`, (msg, data) => {
-         
+  
             cb(data)
 
         })

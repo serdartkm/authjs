@@ -1,57 +1,59 @@
 
+const EventEmitter =require('events')
 
-//import { SocketClient, SocketServer } from '../mock-socket'
-const SocketServer =require('socket.io')
-const SocketClient =require('socket.io-client')
+class Socket   extends EventEmitter {
+  constructor(){
+      super()
+  }
+    to =(reciver)=>{
+
+        return {
+            emit :(event,data)=>{
+                if(this.count===0)
+                {
+                    this.emit(event,data)
+                    this.count=1
+                }
+              
+            }
+        }
+    }
+
+  
+}
+//
+const socket = new Socket()
+
 const messaging = require('../messaging')
 describe("expressjs-socketio-messaging", () => {
 
-    it.skip("text_message event should be triggered with correct data", (done) => {
-        let server = new SocketServer()
-        let client = new SocketClient("token")
-        server.on("connection", (socket) => {
-            socket.username ="mario"
-            socket.join("drag")
-            messaging(socket,()=>{})
-        })
-        client.connect()
-        client.on("text_message", (data) => {
+    
+    it("text_message event should be triggered with correct data", () => {
+        const spyOn =jest.fn()
+        const spyNext =jest.fn()
+        const spyTo =jest.spyOn(socket,'to')
+        const spyEmit =jest.spyOn(socket,'emit')
+        socket.on('text_message',spyOn)
+        
+        socket.username ="dragos"
+        messaging(socket, spyNext)
+        socket.emit("text_message",{reciever:"mario", datetime:"1", message:"hello" })
+        expect(spyOn).toHaveBeenCalledTimes(1)
+        expect(spyOn).toHaveBeenCalledWith({"datetime": "1", "message": "hello", "reciever": "mario"})
+        expect(spyNext).toHaveBeenCalledTimes(1)
+        expect(spyTo).toHaveBeenCalledTimes(1)
+        expect(spyTo).toHaveBeenCalledWith("mario")
+        expect(spyEmit).toHaveBeenCalledTimes(1)
+        expect(spyEmit).toHaveBeenCalledWith("text_message", {"datetime": "1", "message": "hello", "reciever": "mario"})
 
-            expect(data).toEqual({ datetime: "1", message: "hi", sender: "mario" })
-            done()
-        })
-        client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })
+    })
 
-    }) 
+    it("throws error",()=>{
 
-    it.only("message should be sent to specific room", (done) => {
-  debugger
-        let server = new SocketServer()
-        let client = new SocketClient()
-        client.on('message',(data)=>{
-            debugger
-            console.log("message recived")
-        })
-        server.on('connection',(socket)=>{
-           
-            debugger
-            socket.emit("message","hello")
-            done()
-        })
-
-       // let spy = jest.spyOn(client.socket, 'to')
-        // server.on("connection", (socket) => {
-        //     socket.username ="mario"
-        //     socket.join("drag")
-        //     messaging(socket,()=>{})
-        //     done()
-        // })
-     
-
-       // client.emit("text_message", { datetime: "1", message: "hi", reciever: "drag" })//
-      //  expect(spy).toHaveBeenCalledTimes(2)
-      //  expect(spy).toHaveBeenCalledWith("drag")
-      //  spy.mockClear()
+        // socket.username ="dragos"
+        // expect(messaging(socket, ()=>{ throw("s")})).toThroeError('s')
+        // socket.emit("text_message",{reciever:"mario", datetime:"1", message:"hello" })
+        
     })
 
 

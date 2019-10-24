@@ -1,18 +1,18 @@
-import socketio from '../socket.io'
-import io from '../socket.io-client'
 
 
 
 describe('socketio server mock', () => {
+  
+    beforeEach(() => {
+     jest.resetModules()
+    })
 
+    it("two socket.io-clients connected to server", (done) => {
 
-
-    it("two socket.io-clients connected to server", async (done) => {
-
-        const server = socketio()
-        const clientOne = io("token", "one")
-        const clientTwo = io("token", "two")
-        const spyOnClientOne = jest.spyOn(clientOne, 'on')
+        let server = require('../socket.io')()
+        let clientOne = require('../socket.io-client')("token", "one")
+        let clientTwo = require('../socket.io-client')("token", "two")
+        let spyOnClientOne = jest.spyOn(clientOne, 'on')
         server.on('connection', (socket) => {
             socket.emit("message", "hello" + socket.id)
         })
@@ -23,37 +23,45 @@ describe('socketio server mock', () => {
         expect(spyOnClientOne.mock.calls[0][0]).toBe('message')
         clientTwo.on('message', async (data) => {
 
-            //
+            
             await expect(data).toBe("hellotwo")
             done()
         })
 
         clientOne.connect()
         clientTwo.connect()
-
     })
 
-    it.only("message is sent between clients with the same room", () => {
-        const server = socketio()
-        const clientOne = io("token", "one")
-        const clientTwo = io("token", "one")
-        server.on('connection', (socket) => {
-           
-              socket.join("room-one")
-         
-              socket.to('room-one').emit("message","hello from socket"+ socket.id)
-              socket.on('message',(data)=>{
-                debugger
-            })
-              
+    it("message is sent between clients with the same room", (done) => {
+
+
+        let server = require('../socket.io')()
+        let clientOne = require('../socket.io-client')("token", "one")
+        let clientTwo = require('../socket.io-client')("token", "two")
+        let spyOnClientOne = jest.spyOn(clientOne, 'on')
+        server.on('connection', async (socket) => {
+
+            await socket.join("room-one")
+            await socket.to('room-one').emit("message", "hello from socket" + socket.id)
+
         })
 
-        clientOne.on('message',(data)=>{
-            debugger
-        })
+        clientOne.on('message', async (data) => {
+            const d = await data
+            await expect(d).toBe('hello from sockettwo')
 
+        })
+        clientTwo.on('message', async (data) => {
+            const d = await data
+            await expect(d).toBe('hello from socketone')
+
+        })
         clientOne.connect()
-        
+        clientTwo.connect()
+
+        done()
+
+    
     })
 
 })
