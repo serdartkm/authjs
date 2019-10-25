@@ -22,13 +22,15 @@ class Socket   extends EventEmitter {
   
 }
 //
-const socket = new Socket()
 
-const messaging = require('../messaging')
+
+
 describe("expressjs-socketio-messaging", () => {
-
+  
     
     it("text_message event should be triggered with correct data", () => {
+        const socket = new Socket()
+        const messaging = require('../messaging')
         const spyOn =jest.fn()
         const spyNext =jest.fn()
         const spyTo =jest.spyOn(socket,'to')
@@ -47,12 +49,16 @@ describe("expressjs-socketio-messaging", () => {
         expect(spyEmit).toHaveBeenCalledWith("text_message", {"datetime": "1", "message": "hello", "reciever": "mario"})
 
     })
-
+//
     it("throws error",()=>{
+        const socket = new Socket()
+        const messaging = require('../messaging')
+        // socket.username =undefined
+        const spyOnError =jest.fn()
+        messaging(socket, spyOnError)
+        expect(spyOnError).toHaveBeenCalledTimes(1)
+        expect(spyOnError).toHaveBeenCalledWith(new Error('User name is undefined'))//
 
-        // socket.username ="dragos"
-        // expect(messaging(socket, ()=>{ throw("s")})).toThroeError('s')
-        // socket.emit("text_message",{reciever:"mario", datetime:"1", message:"hello" })
         
     })
 

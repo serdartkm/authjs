@@ -1,22 +1,23 @@
 const jwt = require('jsonwebtoken');
 
-module.exports =  function config(secret) {//
- 
-    return async function authentication(socket,next){
-            debugger
-        let token = socket.handshake.query.token
+module.exports = function config(secret) {
+
+    return async function authentication(socket, next) {
+
         try {
-       
-            const decoded = await jwt.verify(token,secret)
+
+
+            let token = socket.token
+            const decoded = await jwt.verify(token, secret)
             const { data } = await decoded
-      
-           socket.username =    data
-      
-          next()
+
+            socket.username = data
+
+            next()
         } catch (err) {
-      
-            console.log("error>>>>",err );
+            const error = err
             next(err)
+
         }
 
     }
