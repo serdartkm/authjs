@@ -1,37 +1,51 @@
 'use strict';
 const PubSub = require('pubsub-js')
 
-let interval = null
-
 class SocketServer {
     constructor() {
+        this.rooms=[]
         this.stack = []
-        PubSub.subscribe(`connect`, async (msg, data) => {
-            const { id, handshake } = data
-            const socket = new Socket(id, handshake)
-            if (this.stack.length > 0) {
-                for (const fn of this.stack) {
-                    await fn(socket, () => { })
-                }
-                PubSub.publishSync('connection', socket)
-            }
-            else {
-                PubSub.publishSync('connection', socket)
-            }
-        })
+      
     }
-
 
     use = (callback) => {
         this.stack.push(callback)
     }
 
     on = (event, cb) => {
-        if (event === "connection") {
-            PubSub.subscribe(event, (msg, data) => {
-                cb(data)
+        debugger
+        if(event ==="connection"){
+            debugger
+           setInterval(()=>{
+                debugger
+                PubSub.publishSync(`listening`, "")
+                console.log("listening.....")
+            },0)
+          
+            PubSub.subscribe(`connect`,  (msg, data) => {
+                debugger
+                // const { id, handshake } = data
+        
+                // const socket = new Socket(id, handshake)
+                // if (this.stack.length > 0) {
+                //     for (const fn of this.stack) {
+                //         await fn(socket, () => { })
+                //     }
+                //     PubSub.publishSync(`connection${id}`, socket)
+                // }
+                // else {
+                //     debugger
+                //     PubSub.publishSync(`connection${id}`, socket)
+                // }
             })
         }
+        debugger
+        // if (event === "connection") {
+        //     PubSub.subscribe(event, (msg, data) => {
+        //         debugger
+        //         cb(data)
+        //     })
+        // }
     }
 }
 
@@ -43,7 +57,8 @@ class Socket {
     }
 
     on = (event, cb) => {
-   
+        debugger
+
         //subscribtion for messages recived from client
         PubSub.subscribe(`${id}${event}`, (msg, data) => {
             cb(data)
@@ -54,13 +69,14 @@ class Socket {
 
     join = (joinedroom) => {
         const room = room
-        const socketid =this.id
-    
+        const socketid = this.id
+        this.rooms.push(joinedroom)
         PubSub.subscribe('room', (msg, data) => {
-            const { room, id, userdata,event } = data
-        
+
+            const { room, id, userdata, event } = data
+
             if (room === joinedroom && id !== socketid)
-      
+
                 PubSub.publishSync(`${socketid}${event}`, userdata)
         })
     }
@@ -69,9 +85,9 @@ class Socket {
         //emits message to all clients joined to room
         return {
             emit: (event, userdata) => {
-              
+
                 const data = { userdata, id: this.id, room, event }
-            
+
                 //send message to specific room
                 PubSub.publishSync(`room`, data)
             }
@@ -85,5 +101,8 @@ class Socket {
 }
 
 module.exports = function () {
-    return new SocketServer()
+
+    return function () {
+        return new SocketServer()
+    }
 }

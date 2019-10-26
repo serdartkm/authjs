@@ -1,16 +1,16 @@
-debugger
+
 const io = require('socket.io')
 const messaging = require('./messaging/messaging')
 const authentication = require('./authentication/authentication')
 
-module.exports = function socketioserver(server,secret="secret") {
+module.exports = function socketioserver(server, secret = "secret") {
 
+  const socketServer = io(server)()
 
-  debugger
-  const socketServer =   io(server)()
   socketServer.use(authentication(secret))
+
   socketServer.use(messaging)
+ 
   return socketServer
-  
 
 }

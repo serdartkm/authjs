@@ -1,16 +1,16 @@
 
 
-
-
-
     describe("socketio-server",()=>{
-
-        it('use function is called',()=>{
-            debugger
-         
+        
+    
+        it('meddlewares are added correctly',()=>{
             const socketioServer = require('../index')({},"mysecret")
-            const spyOnUse =jest.spyOn(socketioServer,'use')
+              expect(socketioServer.stack.length).toBe(2)
+              expect(socketioServer.stack[0].name).toBe("authentication")
+              expect(socketioServer.stack[1].name).toBe("messaging")
+          
         })
+        
     })
 
 

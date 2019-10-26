@@ -13,7 +13,7 @@
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
               "--coverage",
-              "socketio-server.test.js"
+              "socketio-mock.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

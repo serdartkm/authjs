@@ -8,28 +8,23 @@ import io from "socket.io-client"; //client
 import MessagingModuleSocket from '../../rtcjs/messaging-module-socket' //client
 const serverURL = "http://localhost:3000/" //client
 
-//const socketClientTwo = io(serverURL, { query: `name=dragos@gmail.com` }); //client
-//server
-
-const socketServer = require('../../rtcjs/socketio-server')({})
-
-
 
 describe("INTEGRATION TESTING ", () => {
 
     describe("socketio server and client messaging", () => {//
-     
-        it("client to server message", async() => {
-            debugger
-            const token = await jwt.sign({ data: "aman" }, "mysecret", { expiresIn: '1h' })
-            debugger
-            socketServer.listen(3000)
-            debugger
-           const socketClient = io();
-           debugger
-           const client =require('../../__mocks__/socket.io-client')(token)
 
-     
+        it("client sever connection established with required params", (done) => {
+
+            const socketServer = require('../../rtcjs/socketio-server')({})
+            const socketClient = io("mario");
+            socketServer.on("connection", (socket) => {
+            socket.join("mario")
+               // socket.to("mario").emit("text_message", { reciever: "dragos", datetime: "1", message: "hello dragos" })
+              expect(socket.username).toBe("mario")
+      
+
+            })
+
         })
 
 

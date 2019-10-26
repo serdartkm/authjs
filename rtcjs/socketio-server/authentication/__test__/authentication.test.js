@@ -3,6 +3,11 @@ const jwt = require('jsonwebtoken')
 const path =require('path')
 require('dotenv').config({path:path.join(__dirname, `./.env`)})//
 
+const fakeSocket ={
+    handshake:{
+        query:{token:""}
+    }
+}
 
 const authentication = require('../authentication')
 describe("authentication", () => {
@@ -10,16 +15,16 @@ describe("authentication", () => {
 beforeEach(async()=>{
  token = await jwt.sign({ data: "aman" }, "mysecret", { expiresIn: '1h' })
 })
-    it("testing error handling token not proveded",(done)=>{
+    it.only("testing error handling token not proveded",(done)=>{
         const spyOnErrorThrow =jest.fn()
-        authentication("secret")({},spyOnErrorThrow)
+        authentication("secret")(fakeSocket,spyOnErrorThrow)
         expect(spyOnErrorThrow.mock.calls[0][0].message).toBe('jwt must be provided')
-        done()
+        done()//
     }) 
     it('testing error handling token  malformed',(done)=>{
         const spyOnErrorThrow =jest.fn()
         const socket ={}
-        socket.token ="dfdfdf"
+        socket.handshake.query.token ="dfdfdf"
         authentication("secret")(socket,spyOnErrorThrow)
         expect(spyOnErrorThrow.mock.calls[0][0].message).toBe('jwt malformed')
         done()
@@ -30,7 +35,7 @@ beforeEach(async()=>{
         const spyOnErrorThrow =jest.fn()
         const socket ={}
 
-        socket.token =token
+        socket.handshake.query.token=token
         authentication("secret")(socket,spyOnErrorThrow)
 
         expect(spyOnErrorThrow.mock.calls[0][0].message).toBe('invalid signature')
@@ -41,7 +46,7 @@ beforeEach(async()=>{
         debugger
         const spyOnNext =jest.fn()
         const socket ={}
-        socket.token =token
+        socket.handshake.query.token=token
         await authentication("mysecret")(socket,spyOnNext)
         debugger
         expect(spyOnNext).toHaveBeenCalledTimes(1)
