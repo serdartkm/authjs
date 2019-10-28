@@ -6,7 +6,7 @@ const authentication = require('./authentication/authentication')
 module.exports = function socketioserver(server, secret = "secret") {
 
   const socketServer = io(server)()
-
+debugger
   socketServer.use(authentication(secret))
 
   socketServer.use(messaging)

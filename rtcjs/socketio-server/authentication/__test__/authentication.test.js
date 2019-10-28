@@ -15,7 +15,7 @@ describe("authentication", () => {
 beforeEach(async()=>{
  token = await jwt.sign({ data: "aman" }, "mysecret", { expiresIn: '1h' })
 })
-    it.only("testing error handling token not proveded",(done)=>{
+    it("testing error handling token not proveded",(done)=>{
         const spyOnErrorThrow =jest.fn()
         authentication("secret")(fakeSocket,spyOnErrorThrow)
         expect(spyOnErrorThrow.mock.calls[0][0].message).toBe('jwt must be provided')
@@ -23,7 +23,7 @@ beforeEach(async()=>{
     }) 
     it('testing error handling token  malformed',(done)=>{
         const spyOnErrorThrow =jest.fn()
-        const socket ={}
+        const socket =fakeSocket
         socket.handshake.query.token ="dfdfdf"
         authentication("secret")(socket,spyOnErrorThrow)
         expect(spyOnErrorThrow.mock.calls[0][0].message).toBe('jwt malformed')
@@ -33,7 +33,7 @@ beforeEach(async()=>{
 
     it('testing error handling invalid signature (wrong seceret)',(done)=>{
         const spyOnErrorThrow =jest.fn()
-        const socket ={}
+        const socket =fakeSocket
 
         socket.handshake.query.token=token
         authentication("secret")(socket,spyOnErrorThrow)
@@ -45,7 +45,7 @@ beforeEach(async()=>{
     it('authorized user',async (done)=>{
         debugger
         const spyOnNext =jest.fn()
-        const socket ={}
+        const socket =fakeSocket
         socket.handshake.query.token=token
         await authentication("mysecret")(socket,spyOnNext)
         debugger
@@ -58,4 +58,3 @@ beforeEach(async()=>{
    
 })
 
-//

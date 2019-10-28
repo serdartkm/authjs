@@ -6,15 +6,15 @@ module.exports = function config(secret) {
 
         try {
 
-
+debugger
             let token = socket.handshake.query.token
             const decoded = await jwt.verify(token, secret)
             const { data } = await decoded
             socket.username = data
             next()
-         
+         debugger
         } catch (err) {
-       
+       debugger
             const error = err
             next(err)
 

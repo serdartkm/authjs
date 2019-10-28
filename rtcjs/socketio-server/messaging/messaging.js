@@ -2,7 +2,7 @@
 module.exports = function messaging(socket, next) {
 
   try {
-  
+  debugger
     if(socket.username=== undefined)
  
     throw Error("User name is undefined")

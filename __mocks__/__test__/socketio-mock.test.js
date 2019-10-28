@@ -1,71 +1,86 @@
 
 const jwt = require('jsonwebtoken')
-
+const messaging = require('../../rtcjs/socketio-server/messaging/messaging')
+const authentication = require('../../rtcjs/socketio-server/authentication/authentication')
 describe('socketio server mock', () => {
-  
+
     beforeEach(() => {
-     jest.resetModules()
+        jest.resetModules()
     })
 
-    it.only("two socket.io-clients connected to server", async (done) => {
+    it("two socket.io-clients connected to server", async (done) => {
         const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
-      
-        debugger
-   
-        let server =  require('../socket.io')()()
-        let clientOne = require('../socket.io-client')( token,"one")
-        debugger
-      //  let clientTwo = await require('../socket.io-client')( "two")
-       // let spyOnClientOne = jest.spyOn(clientOne, 'on')//
-    //    clientOne.on('connection',  (data) => {
-    //     debugger
-    //    //   expect(data).toBe("helloone")
-    //  })
-        server.on('connection',  (socket) => {
-            debugger
-          //  socket.emit("message", "hello" + socket.id)
-      
-        })
-    
-       //  clientOne.connect()
-      //  expect(spyOnClientOne.mock.calls[0][0]).toBe('message')
-        //  clientTwo.on('message', async (data) => {
+        let server = require('../socket.io')()()
+        let clientOne = require('../socket.io-client')(token, "one")
+        let clientTwo = require('../socket.io-client')(token, "two")
 
-            
-        //   //   expect(data).toBe("hellotwo")
-        
-        // })
+
+        let spyOnMessageOne = jest.fn()
+        let spyOnMessageTwo = jest.fn()
+        let spyOnServer = jest.spyOn(server, 'on')
+        clientOne.on('message', spyOnMessageOne)
+        clientTwo.on('message', spyOnMessageTwo)
+        server.on('connection', async (socket) => {
+           await socket.emit("message", "hello" + socket.id)
+
+            expect(spyOnMessageTwo).toHaveBeenCalledWith("hellotwo")
+            expect(spyOnMessageOne).toHaveBeenCalledWith("helloone")
+        })
+
+        expect(spyOnServer.mock.calls[0][0]).toBe("connection")
+   
+
         done()
     })
 
-    it("message is sent between clients with the same room", (done) => {
+    it("message is sent between clients within the same room", async (done) => {
+        const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
         let server = require('../socket.io')()()
-        let clientOne = require('../socket.io-client')("token", "one")
-        let clientTwo = require('../socket.io-client')("token", "two")
-        let spyOnClientOne = jest.spyOn(clientOne, 'on')
-        server.on('connection', async (socket) => {
+        let clientOne = require('../socket.io-client')(token, "one")
+        let clientTwo = require('../socket.io-client')(token, "two")
 
+        let spyOnServer = jest.spyOn(server, 'on')
+
+        let spyOnMessageOne = jest.fn()
+        let spyOnMessageTwo = jest.fn()
+        clientOne.on('message', spyOnMessageOne)
+        clientTwo.on('message', spyOnMessageTwo)
+        server.on('connection', async (socket) => {
+            let spyOnTo = jest.spyOn(socket, 'to')
+            let spyOnJoin = jest.spyOn(socket, 'join')
+
+            debugger
             await socket.join("room-one")
             await socket.to('room-one').emit("message", "hello from socket" + socket.id)
 
-        })
 
-        clientOne.on('message', async (data) => {
-            const d = await data
-            await expect(d).toBe('hello from sockettwo')
-
-        })
-        clientTwo.on('message', async (data) => {
-            const d = await data
-            await expect(d).toBe('hello from socketone')
+            expect(spyOnTo.mock.calls[0][0]).toBe("room-one")
+            expect(spyOnJoin.mock.calls[0][0]).toBe("room-one")
+            expect(spyOnMessageOne).toHaveBeenCalledWith("hello from sockettwo")
+            expect(spyOnMessageTwo).toHaveBeenCalledWith("hello from socketone")
 
         })
-        clientOne.connect()
-        clientTwo.connect()
 
+
+        expect(spyOnServer.mock.calls[0][0]).toBe("connection")
         done()
+    })
 
-    
+    it("testing middleware registration in right order",async(done)=>{
+        const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
+        let server = require('../socket.io')()()
+        let clientOne = require('../socket.io-client')(token, "one")
+        let clientTwo = require('../socket.io-client')(token, "two")
+  
+        server.use(authentication("secret"))
+        server.use(messaging)
+
+        server.on("connection",(socket)=>{
+            debugger
+             expect(socket.username).toBe("mario")
+             done()
+        })
+     
     })
 
 })
