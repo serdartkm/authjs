@@ -2,11 +2,12 @@
 module.exports = function messaging(socket, next) {
 
   try {
-  debugger
+
     if(socket.username=== undefined)
  
     throw Error("User name is undefined")
     socket.on("text_message", (data) => {
+  
       debugger
       const { reciever, datetime, message } = data;
 
@@ -15,9 +16,9 @@ module.exports = function messaging(socket, next) {
     }
     );
     next()
-  
+  debugger
   } catch (error) {
-    
+    debugger
     next(error)
   }
 

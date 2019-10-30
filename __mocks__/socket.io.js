@@ -1,94 +1,92 @@
 'use strict';
 const PubSub = require('pubsub-js')
-
+const EventEmitter = require('events')
 class SocketServer {
     constructor() {
-        this.rooms=[]
+        this.connected = false
+        this.rooms = []
         this.stack = []
-        PubSub.subscribe(`connect`, (msg,data)=>{  
+        this.sockets = []
+        PubSub.subscribe(`client`, (msg, data) => {
             this._initConnection(data)
         })
     }
-    _initConnection = async(data)=>{
-            const { id, handshake } = data
-            const socket = new Socket(id, handshake)
-            if (this.stack.length > 0) {
-                for (const fn of this.stack) {
-                    await fn(socket, () => { })
-                }
-             
-                PubSub.publishSync(`connection`, socket)
+    _initConnection = async (data) => {
+
+        const { id, handshake } = data
+        const socket = new Socket(id, handshake)
+
+        if (this.stack.length > 0) {
+            for (const fn of this.stack) {
+                await fn(socket, () => { })
             }
-            else {
-                PubSub.publishSync(`connection`, socket)
-                PubSub.publishSync(`connection${id}`, socket)
-            }
+
+            PubSub.publishSync(`connected${id}`, socket)
+            PubSub.publishSync(`connection`, socket)
+            this.sockets.push(socket)
+
+        }
+        else {
+
+            PubSub.publishSync(`connected${id}`, socket)
+            PubSub.publishSync(`connection`, socket)
+        }
     }
 
     use = (callback) => {
         this.stack.push(callback)
     }
-    on = (event, cb) => {
-        if (event === "connection") {
-            PubSub.subscribe(event, (msg, data) => {
-                cb(data)
-            })
-        }
-        PubSub.publishSync(`server`, "") //server last
+
+    onconnection = (cb) => {
+
+        PubSub.subscribe('connection', (msg, data) => {
+
+            cb(data)
+        })
+
+        PubSub.publishSync("listening", "")
     }
 }
 
-class Socket {
+class Socket extends EventEmitter {
     constructor(id, handshake) {
+        super()
         this.id = id
         this.handshake = handshake
         this.rooms = []
-
-        PubSub.subscribe(`connection`, (msg, data) => {
-
-          if(data.id===this.id){
-            PubSub.publishSync(`connection${this.id}`, data)
-          }
-        })
+ 
     }
 
-    on = (event, cb) => {
-        debugger
-        //subscribtion for messages recived from client
-        PubSub.subscribe(`${event}${id}`, (msg, data) => {
-            debugger
-            cb(data)
-        })
-        //subscribe to events sent to room and forward to socket.io-client
-
-    }
-
-    join = (joinedroom) => {
-        const room = room
-        const socketid = this.id
-        this.rooms.push(joinedroom)
-        PubSub.subscribe('room', (msg, data) => {
-            const { room, id, userdata, event } = data
-            if (room === joinedroom && id !== socketid)
-                PubSub.publishSync(`${event}${socketid}`, userdata)
+    join = (room) => {
+        let self =this
+        this.rooms.push(room)
+        PubSub.subscribe(room, (msg, data) => {
+       
+            const { event, message, id } = data
+            
+            if (id !== self.id) {
+             
+                PubSub.publishSync(`${event}${this.id}`,message)
+           
+            }
+     
         })
     }
 
     to = (room) => {
         //emits message to all clients joined to room
         return {
-            emit: (event, userdata) => {
-                const data = { userdata, id: this.id, room, event }
+            emit: (event, data) => {
+                debugger
                 //send message to specific room
-                PubSub.publishSync(`room`, data)
+                PubSub.publishSync(room, { message: data, event, id: this.id })
+                debugger
             }
         }
     }
 
-    emit = (event, data) => {
-        //emits message to the socket owner client
-        PubSub.publishSync(`${event}${this.id}`, data)
-    }
+ 
+
 }
 
 module.exports = function () {

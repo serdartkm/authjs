@@ -9,78 +9,59 @@ describe('socketio server mock', () => {
     })
 
     it("two socket.io-clients connected to server", async (done) => {
-        const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
+
+        const tokenMario = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
+        const tokenDragos = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
+        const tokenBred = await jwt.sign({ data: "bred" }, "secret", { expiresIn: '1h' })
         let server = require('../socket.io')()()
-        let clientOne = require('../socket.io-client')(token, "one")
-        let clientTwo = require('../socket.io-client')(token, "two")
 
+        let clientOne = require('../socket.io-client')(tokenMario, "one")
+        let clientTwo = require('../socket.io-client')(tokenDragos, "two")
+        let clientThree = require('../socket.io-client')(tokenDragos, "three")
 
-        let spyOnMessageOne = jest.fn()
-        let spyOnMessageTwo = jest.fn()
-        let spyOnServer = jest.spyOn(server, 'on')
-        clientOne.on('message', spyOnMessageOne)
-        clientTwo.on('message', spyOnMessageTwo)
-        server.on('connection', async (socket) => {
-           await socket.emit("message", "hello" + socket.id)
-
-            expect(spyOnMessageTwo).toHaveBeenCalledWith("hellotwo")
-            expect(spyOnMessageOne).toHaveBeenCalledWith("helloone")
+        let spyOnMessage = jest.fn(() => { })
+        clientOne.onconnection((client) => {
+            client.on('message', spyOnMessage)
         })
+        clientTwo.onconnection((client) => {
 
-        expect(spyOnServer.mock.calls[0][0]).toBe("connection")
-   
+            client.on("message", spyOnMessage)
+        })
+        clientThree.onconnection((client) => {
 
+            client.on("message", spyOnMessage)
+        })
+        server.onconnection((socket) => {
+            socket.join("mario")
+            if (clientThree.connected) {
+                socket.to("mario").emit("message", `hello from ${socket.id}`)
+            }
+        })
+        expect(spyOnMessage).toHaveBeenCalledTimes(2)
+        expect(spyOnMessage).toHaveBeenCalledWith("hello from three")
         done()
     })
 
-    it("message is sent between clients within the same room", async (done) => {
+
+    it("testing middleware registration in right order", async (done) => {
         const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
         let server = require('../socket.io')()()
         let clientOne = require('../socket.io-client')(token, "one")
-        let clientTwo = require('../socket.io-client')(token, "two")
-
-        let spyOnServer = jest.spyOn(server, 'on')
-
-        let spyOnMessageOne = jest.fn()
-        let spyOnMessageTwo = jest.fn()
-        clientOne.on('message', spyOnMessageOne)
-        clientTwo.on('message', spyOnMessageTwo)
-        server.on('connection', async (socket) => {
-            let spyOnTo = jest.spyOn(socket, 'to')
-            let spyOnJoin = jest.spyOn(socket, 'join')
-
-            debugger
-            await socket.join("room-one")
-            await socket.to('room-one').emit("message", "hello from socket" + socket.id)
-
-
-            expect(spyOnTo.mock.calls[0][0]).toBe("room-one")
-            expect(spyOnJoin.mock.calls[0][0]).toBe("room-one")
-            expect(spyOnMessageOne).toHaveBeenCalledWith("hello from sockettwo")
-            expect(spyOnMessageTwo).toHaveBeenCalledWith("hello from socketone")
-
+        clientOne.onconnection((client) => {
+         
         })
 
 
-        expect(spyOnServer.mock.calls[0][0]).toBe("connection")
-        done()
-    })
-
-    it("testing middleware registration in right order",async(done)=>{
-        const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
-        let server = require('../socket.io')()()
-        let clientOne = require('../socket.io-client')(token, "one")
-        let clientTwo = require('../socket.io-client')(token, "two")
-  
         server.use(authentication("secret"))
         server.use(messaging)
 
-        server.on("connection",(socket)=>{
+        server.onconnection((socket) => {
             debugger
-             expect(socket.username).toBe("mario")
-             done()
+            expect(socket.username).toBe("mario")
+            done()
         })
-     
+
+
     })
 
 })

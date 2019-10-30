@@ -15,7 +15,7 @@ class MessageControllerSocket extends React.Component {
 
     this.socket = socket;
     this.socket.on("text_message", data => {
-  
+  debugger
       const { sender , message, datetime } = data;
       if(this._isMounted)
       this.setState({messageSent:{sender,message,datetime}})
