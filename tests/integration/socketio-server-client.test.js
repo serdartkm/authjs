@@ -5,11 +5,15 @@ const jwt = require('jsonwebtoken')
 //client
 import React from 'react'
 import { render, fireEvent, cleanup } from '@testing-library/react'  //client
+import {mount,configure} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import ReactTestRenderer from 'react-test-renderer'
 
 import io from "socket.io-client"; //client
 import MessagingModuleSocket from '../../rtcjs/messaging-module-socket' //client
 const serverURL = "http://localhost:3000/" //client
 
+configure({adapter:new Adapter()})
 
 describe("INTEGRATION TESTING ", () => {
 
@@ -25,34 +29,43 @@ describe("INTEGRATION TESTING ", () => {
       marioClient.onconnection((client) => {
         debugger
         try {
-          debugger
-          const { getByText,getAllByText ,getByPlaceholderText } = render(<MessagingModuleSocket name="mario" targetName="dragos" socket={client} />)
-          //  fireEvent.change(getByPlaceholderText("Enter message text"), { target: { value: "Hello My Dear" } })
-          client.on("text_message",(data)=>{
-            debugger
-          //  expect(getByText(/Hello My Dear/)).toBeVisible()
 
-            done()
-          })
+          (()=>{
+
+            debugger
+          //  const { getByText, getByPlaceholderText } = render(<MessagingModuleSocket id={1} name="mario" targetName="dragos" socket={client} />)
+             const testRenderer =ReactTestRenderer.create(<MessagingModuleSocket id={1} name="mario" targetName="dragos" socket={client} />)
+            //fireEvent.change(getByPlaceholderText("Enter message text"), { target: { value: "Hello My Dear" } })
+            client.on("text_message",(data)=>{
+              testRenderer.update()
+              debugger
+
+               const jsonformat=     testRenderer.toJSON()
+             // expect(getByText("Hello My Dear")).toBeVisible()
+  
+              done()
+            })
+          })()
       
-          debugger
         } catch (error) {
           debugger
         }
       })
-
       dragosClient.onconnection((client) => {
         try {
-          debugger
-          const { getByText, getByPlaceholderText,getAllByPlaceholderText,getAllByText  } = render(<MessagingModuleSocket name="dragos" targetName="mario" socket={client} />)
-          fireEvent.change(getAllByPlaceholderText("Enter message text")[1], { target: { value: "Hello My Dear" } })
-          fireEvent.click(getAllByText("Send")[1])
+
+          (()=>{
+      
+            debugger
+            const { getByTestId  } = render(<MessagingModuleSocket id={2} name="dragos" targetName="mario" socket={client} />)
+            fireEvent.change(getByTestId(`message${2}`), { target: { value: "Hello My Dear" } })
+            fireEvent.click(getByTestId(`sendMessage${2}`))
+          })()
+        
         } catch (error) {
           debugger
         }
-
         // expect(getByText("Hello My Dear")).toBeVisible()
-
       })
 
       socketServer.onconnection((socket) => {
