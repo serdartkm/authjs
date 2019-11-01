@@ -7,6 +7,7 @@ exports[`MessageEditorDisplayer component Should render correctly 1`] = `
 >
   <input
     className="form-control"
+    data-testid="message0"
     name="message"
     onKeyDown={[Function]}
     placeholder="Enter message text"
@@ -17,7 +18,7 @@ exports[`MessageEditorDisplayer component Should render correctly 1`] = `
   >
     <button
       className="btn btn-secondary"
-      data-testid="sendMessage"
+      data-testid="sendMessage0"
       disabled={false}
       style={
         Object {
