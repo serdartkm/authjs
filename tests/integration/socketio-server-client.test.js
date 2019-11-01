@@ -8,16 +8,15 @@ const jwt = require('jsonwebtoken')
 
 describe("INTEGRATION TESTING ", () => {
 
-  describe("socketio server and client messaging", () => {
+  describe("positive testing", () => {
 
     it("client sever connection established with required params", async (done) => {
 
       const tokenMario = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
       const tokenDragos = await jwt.sign({ data: "dragos" }, "secret", { expiresIn: '1h' })
-      const socketServer = require('../../rtcjs/socketio-server')({})
+      const socketServer = require('../../rtcjs/nodejs-socketio-text-chat')({})
       const marioClient = io(tokenMario, "one");
       const dragosClient = io(tokenDragos, "two");
-
 
       marioClient.onconnection((client) => {
         const { getAllByText, getByPlaceholderText } = render(<MessagingModuleSocket id={1} name="mario" targetName="dragos" socket={client} />)
@@ -28,16 +27,14 @@ describe("INTEGRATION TESTING ", () => {
           }, 0)
         })
       })
-
+      
       dragosClient.onconnection(async (client) => {
         const { getByTestId, getAllByText } = render(<MessagingModuleSocket id={2} name="dragos" targetName="mario" socket={client} />)
         fireEvent.change(getByTestId(`message${2}`), { target: { value: "Hello My Dear" } })
         fireEvent.click(getByTestId(`sendMessage${2}`))
         await expect(getAllByText("Hello My Dear")[1]).toBeVisible()
       })
-
       socketServer.onconnection((socket) => {
-        socket.join("mario")
       })
     })
   })

@@ -16,7 +16,9 @@ module.exports =function ({resetUrl, mongoUrl,colName}) {
         } catch (error) {
             console.log("mongodb connection error", error)
         }
+        
     })()
+
     return async function (req, res) {
       const  collectionName = colName !==undefined ?colName: "users"
         const database = await client.db("demo");
@@ -41,6 +43,5 @@ module.exports =function ({resetUrl, mongoUrl,colName}) {
             console.log("/users called")
             crud({req,res,collection})
         }
-       
     }
 }

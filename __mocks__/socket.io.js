@@ -90,7 +90,5 @@ class Socket extends EventEmitter {
 }
 
 module.exports = function () {
-    return function () {
-        return new SocketServer()
-    }
+    return  new SocketServer()
 }

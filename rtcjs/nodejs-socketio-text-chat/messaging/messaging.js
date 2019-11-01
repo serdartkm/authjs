@@ -10,7 +10,7 @@ module.exports = function messaging(socket, next) {
   
       debugger
       const { reciever, datetime, message } = data;
-
+   debugger
       socket.to(reciever).emit("text_message", { datetime, message, sender: socket.username })
 
     }

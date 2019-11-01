@@ -8,8 +8,10 @@ import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
 import postcss from 'rollup-plugin-postcss'
 import copy from 'rollup-plugin-copy'
+//import builtins from 'rollup-plugin-node-builtins';
 "rtcjs/videochat-module-webrtc/lib"
 const appPlugin = [
+
   copy({
     targets: [
       { src: 'rtcjs/videochat-module-webrtc/lib/WebRTCVideoChatModule.js', dest: 'rtcjs/rtc-demo/public/videochat-module-webrtc' },
@@ -60,12 +62,14 @@ const appPlugin = [
   }),
 
   babel({
+    runtimeHelpers:true,
     exclude: 'node_modules/**',
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-async-to-generator',
+      "@babel/plugin-transform-runtime"
     ],
   }),
 

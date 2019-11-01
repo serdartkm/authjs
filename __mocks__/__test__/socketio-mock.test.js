@@ -1,7 +1,7 @@
 
 const jwt = require('jsonwebtoken')
-const messaging = require('../../rtcjs/socketio-server/messaging/messaging')
-const authentication = require('../../rtcjs/socketio-server/authentication/authentication')
+const messaging = require('../../rtcjs/nodejs-socketio-text-chat/messaging/messaging')
+const authentication = require('../../rtcjs/nodejs-socketio-text-chat/authentication/authentication')
 describe('socketio server mock', () => {
 
     beforeEach(() => {
@@ -13,7 +13,7 @@ describe('socketio server mock', () => {
         const tokenMario = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
         const tokenDragos = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
         const tokenBred = await jwt.sign({ data: "bred" }, "secret", { expiresIn: '1h' })
-        let server = require('../socket.io')()()
+        let server = require('../socket.io')()
 
         let clientOne = require('../socket.io-client')(tokenMario, "one")
         let clientTwo = require('../socket.io-client')(tokenDragos, "two")
@@ -45,7 +45,7 @@ describe('socketio server mock', () => {
 
     it("testing middleware registration in right order", async (done) => {
         const token = await jwt.sign({ data: "mario" }, "secret", { expiresIn: '1h' })
-        let server = require('../socket.io')()()
+        let server = require('../socket.io')()
         let clientOne = require('../socket.io-client')(token, "one")
         clientOne.onconnection((client) => {
          

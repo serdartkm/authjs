@@ -1,1 +1,3 @@
-{"ignore": ["demo/client/*.js","demo/public/*.js"],"delay": "1400" }
+{"ignore": ["demo/client/*.js","demo/public/*.js"],"delay": "1400","env": {
+    "__DEV__": "true"
+} }
