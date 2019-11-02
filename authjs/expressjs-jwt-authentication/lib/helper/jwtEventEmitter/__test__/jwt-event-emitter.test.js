@@ -21,7 +21,7 @@ describe("jwt-event-emitter",()=>{
     })
 
      describe('negative testing',()=>{
-         it.only('arguments undefined',(done)=>{
+         it('handle errors',(done)=>{
             JwtEventEmitter.requestToken({}, (err,token)=>{
                  expect(err).not.toBe(null)//
                 debugger
