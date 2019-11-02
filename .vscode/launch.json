@@ -13,7 +13,7 @@
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
               "--coverage",
-              "socketio-server-client.test.js"
+              "jwt-event-emitter.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
