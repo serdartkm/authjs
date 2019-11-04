@@ -13,7 +13,7 @@
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
               "--coverage",
-              "jwt-event-emitter.test.js"
+              "anonymous.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

@@ -9,12 +9,15 @@ const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
+const expressjsJWTAuth =require('./authjs/expressjs-jwt-authentication')
 
 nodeJsSocketIoTextChat(server)
 
 
 app.use(cors());
 app.use(bodyParser.json())
+app.use(expressjsJWTAuth)
+
 console.log("process NODE_ENV.....",process.env.NODE_ENV)
 if(process.env.NODE_ENV==="development"){
   console.log("process NODE_ENV.....",process.env.NODE_ENV)
