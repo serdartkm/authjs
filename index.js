@@ -1,32 +1,37 @@
+global.reqlib=require('app-root-path') //var mymodule =reqlib('./lib/my-module.js')
 require('dotenv').config()
-
+const uncaughtExceptionHandler =require('./utils/error-handlers/uncaught-exception-handler')()
 const express =require('express')
+const morgan =require('morgan')
 const path =require ('path')
 const bodyParser =require ('body-parser')
-const nodeJsSocketIoTextChat = require('./rtcjs/nodejs-socketio-text-chat')
 const PORT = process.env.PORT || 3000;
 const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-const expressjsJWTAuth =require('./authjs/expressjs-jwt-authentication')
-
-nodeJsSocketIoTextChat(server)
-
-
+const winston = require('./winston')
+const JWTAuth =require('./authjs/expressjs-jwt-authentication')
+const nodeJsSocketIoTextChat = require('./rtcjs/nodejs-socketio-text-chat')
+debugger
+app.use(morgan('combined'),{stream:winston.stream})
 app.use(cors());
-app.use(bodyParser.json())
-app.use(expressjsJWTAuth)
 
-console.log("process NODE_ENV.....",process.env.NODE_ENV)
+
+//nodeJsSocketIoTextChat(server)
 if(process.env.NODE_ENV==="development"){
   console.log("process NODE_ENV.....",process.env.NODE_ENV)
   app.use(express.static(path.join(__dirname, `apps/${process.env.appName}/build`)))
-
 }
+app.use(express.json())
 
 
-server.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+app.use(JWTAuth)
+
+server.listen(PORT, () => console.log(`Listening on ${PORT}, processid${process.pid}`));
+
+
 
 
 process.on("SIGTERM", shutDown);

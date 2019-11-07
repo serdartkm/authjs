@@ -1,16 +1,20 @@
 const EventEmitter = require('events')
-const jwt = require('jsonwebtoken');
-
+const mailingProcessor = require('./nodemailer-controller')
+const jwtProcessor = require('./jwt-controller')
 module.exports = function () {
     const eventBus = new EventEmitter()
-        .on('request.jwt.token', async ({ payload, secret, expiresIn }) => {
-            try {
-                const token = await jwt.sign(payload, secret, { expiresIn })
-                debugger
-                eventBus.emit('response.jwt.token', token)
-            } catch (error) {
-                eventBus.emit('response.jwt.error', error)
-            }
-        })
-    return eventBus
+
+    eventBus.on('request.jwt.token', (data) => {
+        jwtProcessor(eventBus)
+        eventBus.emit('request.jwt.token', data)
+    })
+
+    eventBus.on('request.mailing', (data) => {
+        mailingProcessor(eventBus)
+        eventBus.emit('request.mailing', data)
+    })
+
+})
+
+return eventBus
 }()
