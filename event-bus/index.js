@@ -1,20 +1,20 @@
 const EventEmitter = require('events')
-const mailingProcessor = require('./nodemailer-controller')
-const jwtProcessor = require('./jwt-controller')
+//const mailingProcessor = require('./event-processors/mailing-processor')
+const jwtProcessor = require('./event-processors/jwt-processor')
 module.exports = function () {
-    const eventBus = new EventEmitter()
-
-    eventBus.on('request.jwt.token', (data) => {
+    const eventBus =     new EventEmitter()
+  
+  //  eventBus.on('request.jwt.token', (data) => {
         jwtProcessor(eventBus)
-        eventBus.emit('request.jwt.token', data)
-    })
+       // eventBus.emit('request.jwt.token', data)
+   // })
 
-    eventBus.on('request.mailing', (data) => {
-        mailingProcessor(eventBus)
-        eventBus.emit('request.mailing', data)
-    })
+    // eventBus.on('request.mailing', (data) => {
+    //     mailingProcessor(eventBus)
+    //     eventBus.emit('request.mailing', data)
+    // })
 
-})
 
 return eventBus
+
 }()

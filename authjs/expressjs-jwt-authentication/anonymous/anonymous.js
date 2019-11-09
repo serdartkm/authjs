@@ -1,26 +1,20 @@
 const jwtController = require('../../../event-bus/jwt-controller')
-const debug =require('debug')('jwt:anonymous')
-module.exports =  function anonymous(req, res) {
+module.exports =  function anonymous(req, res, next) {
         try {
             const {expiresIn='1h', secret ='dragonfly', payload}  =req.body
-
-            debug('req.body.secret',secret)
-            debug('req.body.expiresIn',expiresIn)
-            debug('req.body.payload',payload)
-            
-            jwtController.requestToken({ expiresIn, secret, payload }, ({ err, token }) => {
-                debugger
-                if (err) {
-                    debugger
-                    res.json({ err })
+            jwtController.requestToken({ expiresIn, secret, payload }, ({error, token }) => {
+                console.log('requestToken called.....')
+                if(error){
+                    error.chains = [...error.chains, 'anonymous']
+                    console.log('chains------,', error.chains)
+                   next(error)
                 }
-                else {
-                    debugger
                     res.json({ token })
-                }
             })
-        } catch (err) {
-            res.json({ err })
+        } catch (error) {
+            error.chains = [...error.chains, 'anonymous']
+            console.log('chains------,', error.chains)
+            next(error)
         }
     }
 

@@ -10,7 +10,7 @@ class AppTwo extends React.Component {
     componentDidMount() {
         fetch('/anonymous', {
             method: 'POST',
-            body: JSON.stringify({ username: "mario" }),
+            body: JSON.stringify({ usernamedd: "mario" }),
             headers: {
                 'Content-Type': 'application/json'
             }

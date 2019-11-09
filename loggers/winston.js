@@ -1,4 +1,5 @@
-const winston = require("winston")
+const {createLogger, format,transports} = require("winston")
+const{combine,timestamp,label,prettyPrint} =format
 const appRoot = require('app-root-path')
 var options = {
     file: {
@@ -11,17 +12,24 @@ var options = {
         colorize: false,
     },
     console: {
-        level: 'debug',
+        level: 'error',
         handleExceptions: true,
-        json: false,
-        colorize: true
+        // json: true,
+        // colorize: true
     }
 }
 
-var logger = winston.createLogger({
+var logger = createLogger({
+    level:'silly',
+    format:combine(
+        format.json(),
+        format.colorize(),
+        label({label:"right meo!"}),
+        timestamp(),
+        prettyPrint()),
     transports: [
-        new winston.transports.File(options.file),
-        new winston.transports.Console(options.console)
+        new transports.File(options.file),
+        new transports.Console()
     ],
     exitOnError: false
 })

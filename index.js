@@ -1,6 +1,6 @@
-global.reqlib=require('app-root-path') //var mymodule =reqlib('./lib/my-module.js')
+global.reqlib = require('app-root-path').require;
 require('dotenv').config()
-const uncaughtExceptionHandler =require('./utils/error-handlers/uncaught-exception-handler')()
+//const uncaughtExceptionHandler =require('./utils/error-handlers/uncaught-exception-handler')()
 const express =require('express')
 const morgan =require('morgan')
 const path =require ('path')
@@ -10,11 +10,9 @@ const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-const winston = require('./winston')
 const JWTAuth =require('./authjs/expressjs-jwt-authentication')
 const nodeJsSocketIoTextChat = require('./rtcjs/nodejs-socketio-text-chat')
 debugger
-app.use(morgan('combined'),{stream:winston.stream})
 app.use(cors());
 
 
@@ -28,7 +26,12 @@ app.use(express.json())
 
 
 app.use(JWTAuth)
+app.use((err,req,res, next)=>{
+  const {payload}=req.body
 
+  console.log('payload...',payload)
+  console.log("err>>>>>>>",err)
+})
 server.listen(PORT, () => console.log(`Listening on ${PORT}, processid${process.pid}`));
 
 
