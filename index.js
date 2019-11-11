@@ -1,4 +1,5 @@
 global.reqlib = require('app-root-path').require;
+require('./globals/globals')()
 require('dotenv').config()
 //const uncaughtExceptionHandler =require('./utils/error-handlers/uncaught-exception-handler')()
 const express =require('express')
@@ -10,8 +11,11 @@ const http = require("http");
 const cors = require("cors");
 const app =express()
 const server = http.createServer(app);
-const JWTAuth =require('./authjs/expressjs-jwt-authentication')
+const anonymous =require('./authjs/expressjs-jwt-authentication/anonymous/anonymous')
+const errorhandler =require('./Utils/error-handlers/express-error-handler')
 const nodeJsSocketIoTextChat = require('./rtcjs/nodejs-socketio-text-chat')
+
+
 debugger
 app.use(cors());
 
@@ -21,17 +25,14 @@ if(process.env.NODE_ENV==="development"){
   console.log("process NODE_ENV.....",process.env.NODE_ENV)
   app.use(express.static(path.join(__dirname, `apps/${process.env.appName}/build`)))
 }
-app.use(express.json())
+app.use(bodyParser.json())
 
 
 
-app.use(JWTAuth)
-app.use((err,req,res, next)=>{
-  const {payload}=req.body
+app.post('/anonymous',anonymous)
+debugger
+app.use(errorhandler)
 
-  console.log('payload...',payload)
-  console.log("err>>>>>>>",err)
-})
 server.listen(PORT, () => console.log(`Listening on ${PORT}, processid${process.pid}`));
 
 

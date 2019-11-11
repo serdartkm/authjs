@@ -6,9 +6,10 @@ module.exports =function jwtProcessor(eventBus){
             debugger
             eventBus.emit('response.jwt.token', token)
         } catch (error) {
-            error.chains =['jwtProcessor']
-            console.log('chains------,',error.chains)
-            eventBus.emit('response.jwt.error', error)
+            debugger
+            const modifiedError = errorTransformer(error,'jwtProcessorr')
+             console.log('modifiedError',modifiedError)
+            eventBus.emit('response.jwt.error',modifiedError)
         }
     })
 }

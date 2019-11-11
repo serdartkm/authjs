@@ -3,7 +3,7 @@ const{combine,timestamp,label,prettyPrint} =format
 const appRoot = require('app-root-path')
 var options = {
     file: {
-        level: 'info',
+        level: 'error',
         filename: `${appRoot}/logs/app.log`,
         handleExceptions: true,
         json: true,
@@ -12,24 +12,25 @@ var options = {
         colorize: false,
     },
     console: {
-        level: 'error',
+        level: "error",
         handleExceptions: true,
-        // json: true,
-        // colorize: true
+        json: true,
+        colorize: true
     }
 }
 
 var logger = createLogger({
-    level:'silly',
+    level:'info',
     format:combine(
         format.json(),
         format.colorize(),
         label({label:"right meo!"}),
         timestamp(),
-        prettyPrint()),
+         prettyPrint()
+        ),
     transports: [
         new transports.File(options.file),
-        new transports.Console()
+        new transports.Console(options.console)
     ],
     exitOnError: false
 })
