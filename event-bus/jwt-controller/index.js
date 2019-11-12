@@ -6,18 +6,18 @@ module.exports = {
 
     requestToken: ({ expiresIn, secret, payload }, cb) => {
         try {
-            debugger
-            eventBus.on('response.jwt.token', (token) => {
+        
+            eventBus.once('response.jwt.token', (token) => {
                 cb({error:null, token })
             })
-            eventBus.on('response.jwt.error', (error) => {
-                debugger
+            eventBus.once('response.jwt.error', (error) => {
+             
           
                 cb({error:errorTransformer(error,'requestToken'), token:null })
             })
             eventBus.emit('request.jwt.token', { expiresIn, secret, payload })
         } catch (error) {
-            debugger
+          
          
             cb({error:errorTransformer(error,'requestToken'), token:null })
         }

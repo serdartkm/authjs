@@ -3,13 +3,14 @@ const io = require('socket.io')
 const messaging = require('./messaging/messaging')
 const authentication = require('./authentication/authentication')
 const room =require('./room/room')
-module.exports = function socketioserver(server, secret = "secret") {
+module.exports =async  function socketioserver(server, secret = "secret") {
+console.log("in socket server")
+  const socketServer = await io(server)
+ await socketServer.use(authentication(secret))
+ await socketServer.use(room)
+ await socketServer.use(messaging)
 
-  const socketServer = io(server)
 
-  socketServer.use(authentication(secret))
-  socketServer.use(room)
-  socketServer.use(messaging)
   return socketServer
 
 }
