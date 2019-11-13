@@ -48,7 +48,8 @@
     "morgan": "^1.9.1",
     "nodemailer": "6.3.0",
     "rimraf": "2.6.3",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "uniqid": "^5.0.3"
   },
   "workspaces": [
     "packages/*",
@@ -93,7 +94,7 @@
     "express-session": "^1.16.2",
     "pubsub-js": "^1.7.0",
     "rollup-plugin-node-builtins": "^2.1.2",
-    "uniqid": "^5.0.3",
+ 
     "rollup": "1.0.0",
     "rollup-plugin-analyzer": "^3.0.1",
     "rollup-plugin-babel": "4.3.2",
