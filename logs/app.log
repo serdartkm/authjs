@@ -18074,3 +18074,225 @@
   label: 'right meo!',
   timestamp: '2019-11-13T09:08:13.077Z'
 }
+{
+  error: ReferenceError: connections is not defined
+      at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 14:28:01 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 11796,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [
+      '/usr/local/bin/node',
+      '/Users/personalcomputer/authjs/index.js'
+    ],
+    memoryUsage: {
+      rss: 31502336,
+      heapTotal: 10842112,
+      heapUsed: 9065432,
+      external: 2202355
+    }
+  },
+  os: { loadavg: [ 2.888671875, 2.541015625, 2.525390625 ], uptime: 21480 },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.shutDown',
+      line: 53,
+      method: 'shutDown',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T09:28:01.747Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 14:29:18 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 11850,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [
+      '/usr/local/bin/node',
+      '/Users/personalcomputer/authjs/index.js'
+    ],
+    memoryUsage: {
+      rss: 33730560,
+      heapTotal: 11628544,
+      heapUsed: 9221400,
+      external: 1284851
+    }
+  },
+  os: { loadavg: [ 2.298828125, 2.4453125, 2.48828125 ], uptime: 21557 },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.shutDown',
+      line: 53,
+      method: 'shutDown',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T09:29:18.444Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 14:29:30 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 11890,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [
+      '/usr/local/bin/node',
+      '/Users/personalcomputer/authjs/index.js'
+    ],
+    memoryUsage: {
+      rss: 37019648,
+      heapTotal: 19013632,
+      heapUsed: 11659424,
+      external: 1291577
+    }
+  },
+  os: {
+    loadavg: [ 2.1787109375, 2.41357421875, 2.4765625 ],
+    uptime: 21569
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.shutDown',
+      line: 53,
+      method: 'shutDown',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T09:29:30.215Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.shutDown (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 14:33:05 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 12065,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [
+      '/usr/local/bin/node',
+      '/Users/personalcomputer/authjs/index.js'
+    ],
+    memoryUsage: {
+      rss: 32399360,
+      heapTotal: 11890688,
+      heapUsed: 9157520,
+      external: 1284851
+    }
+  },
+  os: {
+    loadavg: [ 2.8359375, 2.43115234375, 2.4560546875 ],
+    uptime: 21783
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.shutDown',
+      line: 53,
+      method: 'shutDown',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T09:33:05.781Z'
+}

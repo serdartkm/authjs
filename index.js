@@ -50,8 +50,7 @@ function shutDown() {
     process.exit(1);
   }, 10000);
 
-  connections.forEach(curr => curr.end());
-  setTimeout(() => connections.forEach(curr => curr.destroy()), 5000);
+
 }
 
 
