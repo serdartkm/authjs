@@ -24,12 +24,12 @@ var logger = createLogger({
     format:combine(
         format.json(),
         format.colorize(),
-        label({label:"right meo!"}),
+       // label({label:"right meo!"}),
         timestamp(),
-         prettyPrint()
+       //  prettyPrint()
         ),
     transports: [
-        new transports.File(options.file),
+     //   new transports.File(options.file),
         new transports.Console(options.console)
     ],
     exitOnError: false
