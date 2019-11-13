@@ -8,7 +8,7 @@ class SocketComponent extends React.Component {
 
         const { username } = this.props
         try {
-            const response = await fetch('/anonymous', {
+            const response = await fetch(`${REACT_APP_SOCKET_URL}/anonymous`, {
                 method: 'POST',
                 body: JSON.stringify({ username }),
                 headers: {
