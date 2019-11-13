@@ -17659,3 +17659,418 @@
   label: 'right meo!',
   timestamp: '2019-11-12T12:36:48.329Z'
 }
+{
+  error: ReferenceError: connections is not defined
+      at process.connections (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 11:44:21 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 8568,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 50618368,
+      heapTotal: 24031232,
+      heapUsed: 21057856,
+      external: 1336614
+    }
+  },
+  os: {
+    loadavg: [ 2.9677734375, 2.630859375, 2.3876953125 ],
+    uptime: 11661
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.connections',
+      line: 53,
+      method: 'connections',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T06:44:21.126Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.connections (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 11:45:22 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 8626,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 50110464,
+      heapTotal: 23506944,
+      heapUsed: 20465656,
+      external: 1260321
+    }
+  },
+  os: { loadavg: [ 3.0947265625, 2.72607421875, 2.4375 ], uptime: 11722 },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.connections',
+      line: 53,
+      method: 'connections',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T06:45:22.543Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.connections (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 11:47:01 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 8782,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 49197056,
+      heapTotal: 22982656,
+      heapUsed: 20630440,
+      external: 1268513
+    }
+  },
+  os: {
+    loadavg: [ 3.158203125, 2.90087890625, 2.53759765625 ],
+    uptime: 11821
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.connections',
+      line: 53,
+      method: 'connections',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T06:47:01.117Z'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (net.js:1298:14)
+      at listenInCluster (net.js:1346:12)
+      at Server.listen (net.js:1434:7)
+      at Object.listen (/Users/personalcomputer/authjs/index.js:34:8)
+      at Module._compile (internal/modules/cjs/loader.js:936:30)
+      at Module._compile (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:99:24)
+      at Module._extensions..js (internal/modules/cjs/loader.js:947:10)
+      at Object.newLoader [as .js] (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:104:7)
+      at Module.load (internal/modules/cjs/loader.js:790:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:703:12) {
+    code: 'EADDRINUSE',
+    errno: 'EADDRINUSE',
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1298:14)\n' +
+    '    at listenInCluster (net.js:1346:12)\n' +
+    '    at Server.listen (net.js:1434:7)\n' +
+    '    at Object.listen (/Users/personalcomputer/authjs/index.js:34:8)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:936:30)\n' +
+    '    at Module._compile (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:99:24)\n' +
+    '    at Module._extensions..js (internal/modules/cjs/loader.js:947:10)\n' +
+    '    at Object.newLoader [as .js] (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:104:7)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:790:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:703:12)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (net.js:1298:14)\n' +
+    '    at listenInCluster (net.js:1346:12)\n' +
+    '    at Server.listen (net.js:1434:7)\n' +
+    '    at Object.listen (/Users/personalcomputer/authjs/index.js:34:8)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:936:30)\n' +
+    '    at Module._compile (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:99:24)\n' +
+    '    at Module._extensions..js (internal/modules/cjs/loader.js:947:10)\n' +
+    '    at Object.newLoader [as .js] (/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js:104:7)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:790:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:703:12)',
+  exception: true,
+  date: 'Wed Nov 13 2019 12:23:07 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 9560,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 91910144,
+      heapTotal: 65310720,
+      heapUsed: 39226488,
+      external: 3798512
+    }
+  },
+  os: {
+    loadavg: [ 20.32373046875, 7.16552734375, 4.203125 ],
+    uptime: 13986
+  },
+  trace: [
+    {
+      column: 14,
+      file: 'net.js',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1298,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'net.js',
+      function: 'listenInCluster',
+      line: 1346,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'net.js',
+      function: 'Server.listen',
+      line: 1434,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 8,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'Object.listen',
+      line: 34,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 936,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 24,
+      file: '/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js',
+      function: 'Module._compile',
+      line: 99,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 947,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 7,
+      file: '/Users/personalcomputer/authjs/node_modules/pirates/lib/index.js',
+      function: 'Object.newLoader [as .js]',
+      line: 104,
+      method: 'js]',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 790,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 703,
+      method: '_load',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T07:23:07.044Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.connections (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 13:54:09 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 10150,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 50028544,
+      heapTotal: 23769088,
+      heapUsed: 20648872,
+      external: 1369502
+    }
+  },
+  os: {
+    loadavg: [ 3.37255859375, 2.759765625, 3.08056640625 ],
+    uptime: 19448
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.connections',
+      line: 53,
+      method: 'connections',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T08:54:09.809Z'
+}
+{
+  error: ReferenceError: connections is not defined
+      at process.connections (/Users/personalcomputer/authjs/index.js:53:3)
+      at process.emit (events.js:209:13),
+  level: '\u001b[31merror\u001b[39m',
+  message: 'uncaughtException: connections is not defined\n' +
+    'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  stack: 'ReferenceError: connections is not defined\n' +
+    '    at process.connections (/Users/personalcomputer/authjs/index.js:53:3)\n' +
+    '    at process.emit (events.js:209:13)',
+  exception: true,
+  date: 'Wed Nov 13 2019 14:08:13 GMT+0500 (West Kazakhstan Time)',
+  process: {
+    pid: 10654,
+    uid: 501,
+    gid: 20,
+    cwd: '/Users/personalcomputer/authjs',
+    execPath: '/usr/local/bin/node',
+    version: 'v12.10.0',
+    argv: [ 'node', '/Users/personalcomputer/authjs/index.js' ],
+    memoryUsage: {
+      rss: 51494912,
+      heapTotal: 23769088,
+      heapUsed: 21457520,
+      external: 1889573
+    }
+  },
+  os: {
+    loadavg: [ 1.642578125, 2.072265625, 2.57177734375 ],
+    uptime: 20292
+  },
+  trace: [
+    {
+      column: 3,
+      file: '/Users/personalcomputer/authjs/index.js',
+      function: 'process.connections',
+      line: 53,
+      method: 'connections',
+      native: false
+    },
+    {
+      column: 13,
+      file: 'events.js',
+      function: 'process.emit',
+      line: 209,
+      method: 'emit',
+      native: false
+    }
+  ],
+  label: 'right meo!',
+  timestamp: '2019-11-13T09:08:13.077Z'
+}

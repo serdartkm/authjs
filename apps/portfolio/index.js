@@ -1,29 +1,14 @@
 import React from 'react'
-
-import MessageModuleSocket from '../../rtcjs/messaging-module-socket'
-import AnonymousToken from './AnonymousToken'
-class AppTwo extends React.Component {
-    
-    state = { tokenMario: null, tokenDragos: null }
-  
-    render() {
-        return (<AnonymousToken username="mario">{(({socket})=>{
-            console.log("socket",socket)
-            if(socket !==undefined)
-            return (
-            <MessageModuleSocket id={1} name="mario" targetName="dragos" socket={socket} />
-            )
-
-            return <div>Loading</div>
-        })}</AnonymousToken>)
-    }
-}
+import ChatRoom from './ChatRoom'
 
 ReactDOM.render(
-    <AppTwo />,
+    <div style={{ display: "flex",flexDirection:"column", alignItems: "center",marginTop:70 }}>
+        <div style={{display:"flex",justifyContent:"center"}}>
+            <h3>SocketIO text messaging demo</h3>
+        </div>
+        <ChatRoom />
+    </div>
+    ,
     document.getElementById('root')
 );
 
-
-
-{/* <MessagingModuleSocket id={1} name="dragos" targetName="mario" socket={this.clientTwo} /> */}

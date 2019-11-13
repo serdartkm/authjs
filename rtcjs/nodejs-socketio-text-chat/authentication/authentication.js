@@ -9,6 +9,7 @@ module.exports = function config(secret) {
             const decoded = await jwt.verify(token, secret)
             const { data } = await decoded
             socket.username = data
+            socket.join(data)
             next()
      debugger
         } catch (err) {

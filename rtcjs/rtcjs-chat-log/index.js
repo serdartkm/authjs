@@ -18,7 +18,7 @@ componentWillReceiveProps(newProps){
   const {messageSent,messageRecieved,name}=this.props
 
   if(messageSent===null && newProps.messageSent){
-  //  console.log("-----------------------------------messageSent===null",newProps.messageSent)
+ //console.log("-----------------------------------messageSent===null",newProps.messageSent)
     this._saveLocalMessage({key:name, messageSent:newProps.messageSent})
   }else 
 
@@ -56,7 +56,7 @@ componentWillReceiveProps(newProps){
     const { datetime, message, reciever } = messageSent
     saveToLocalStorage({
       message: { message, from, local, datetime, to: reciever }, key, onSave: ({message}) => {
-      
+      //  console.log("message local",message)
         this.setState((prevState) => ({ messages: [...prevState.messages, message], message: "" }))
       }
     })
@@ -67,6 +67,7 @@ componentWillReceiveProps(newProps){
     const local = false
     saveToLocalStorage({
       message: { message, from: sender, local, datetime, to: key }, key, onSave: ({message}) => {
+       // console.log("message remote.....",message)
         this.setState((prevState) => ({ messages: [...prevState.messages, message] }))
       }
     })

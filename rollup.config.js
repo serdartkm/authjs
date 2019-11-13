@@ -11,7 +11,10 @@ import copy from 'rollup-plugin-copy'
 //import builtins from 'rollup-plugin-node-builtins';
 "rtcjs/videochat-module-webrtc/lib"
 const appPlugin = [
-
+  replace({
+    ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    REACT_APP_SOCKET_URL:JSON.stringify(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3000')
+  }),
   copy({
     targets: [
       { src: 'rtcjs/videochat-module-webrtc/lib/WebRTCVideoChatModule.js', dest: 'rtcjs/rtc-demo/public/videochat-module-webrtc' },
@@ -71,10 +74,6 @@ const appPlugin = [
       '@babel/plugin-transform-async-to-generator',
       "@babel/plugin-transform-runtime"
     ],
-  }),
-
-  replace({
-    ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
   }),
   globals(),
 ];

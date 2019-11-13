@@ -15,10 +15,9 @@ class MessageControllerSocket extends React.Component {
 
     this.socket = socket;
     this.socket.on("text_message", data => {
-  debugger
       const { sender , message, datetime } = data;
       if(this._isMounted)
-      this.setState({messageSent:{sender,message,datetime}})
+      this.setState({messageRecieved:{sender,message,datetime}})
     });
 
     this.socket.on("connect",()=>{
@@ -31,7 +30,6 @@ class MessageControllerSocket extends React.Component {
       this.setState({connected:false})
     })
 
-//
   }
   componentWillUnmount() {
     this._isMounted = false;

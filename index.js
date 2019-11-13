@@ -21,10 +21,10 @@ const nodeJsSocketIoTextChat = require('./rtcjs/nodejs-socketio-text-chat')(serv
 app.use(cors());
 // nodeJsSocketIoTextChat(server)
 //nodeJsSocketIoTextChat(server)
-if(process.env.NODE_ENV==="development"){
-  console.log("process NODE_ENV.....",process.env.NODE_ENV)
+//if(process.env.NODE_ENV==="development"){
+  // console.log("process NODE_ENV.....",process.env.NODE_ENV)
   app.use(express.static(path.join(__dirname, `apps/${process.env.appName}/build`)))
-}
+//}
 app.use(bodyParser.json())
 debugger
 app.post('/anonymous',anonymous)
