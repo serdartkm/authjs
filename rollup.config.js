@@ -15,7 +15,7 @@ import del from 'rollup-plugin-delete'
 import htmlTemplate from 'rollup-plugin-generate-html-template'
 const appPlugin = [
   del({targets:[`apps/${process.env.appName}/build`,'public']}),
-  htmlTemplate({template:"apps/html-template/index.html",target:`apps/${process.env.appName}/build/index.html`}),
+  htmlTemplate({template:"apps/html-template/index.html",target:`apps/${process.env.appName}/build/index.html`, attrs:['type="module"']}),
   replace({
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     REACT_APP_SOCKET_URL:JSON.stringify(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3000')
