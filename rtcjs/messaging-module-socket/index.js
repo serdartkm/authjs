@@ -14,7 +14,6 @@ const MessagingModuleSocket = ({ name, targetName, socket, id=0 ,height="96vh"})
                     </div>
                 )
             }}</RTCChatLog>
-
       )
     }}</MessagingController>)
 }

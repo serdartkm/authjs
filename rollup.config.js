@@ -11,8 +11,11 @@ import copy from 'rollup-plugin-copy'
 import alias from '@rollup/plugin-alias';
 import { terser } from "rollup-plugin-terser";
 import zip from 'rollup-plugin-zip'
-"rtcjs/videochat-module-webrtc/lib"
+import del from 'rollup-plugin-delete'
+import htmlTemplate from 'rollup-plugin-generate-html-template'
 const appPlugin = [
+  del({targets:[`apps/${process.env.appName}/build`,'public']}),
+  htmlTemplate({template:"apps/html-template/index.html",target:`apps/${process.env.appName}/build/index.html`}),
   replace({
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     REACT_APP_SOCKET_URL:JSON.stringify(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3000')
@@ -69,8 +72,8 @@ const appPlugin = [
     ],
   }),
   globals(),
-//terser({sourcemap:false}),
- //zip()
+terser({sourcemap:false}),
+ zip()
 ];
 
 const globalNames = {
