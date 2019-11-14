@@ -91,14 +91,14 @@ export default commandLineArgs => {
       file: `apps/${process.env.appName}/build/index.js`,
       format: 'iife',
       name: "AppOne",
-   //   sourcemap: 'inline',
+     sourcemap: false,
       globals: globalNames,
     },
     {
       file: `public/index.js`,
       format: 'iife',
       name: "AppOne",
-    //  sourcemap: 'inline',
+      sourcemap: false,
       globals: globalNames,
     }
   ],
