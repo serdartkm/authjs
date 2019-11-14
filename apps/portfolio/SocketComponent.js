@@ -40,7 +40,7 @@ class SocketComponent extends Component {
         }
         else
 
-            return <div>L.....</div>
+            return <div>Loading...<div>
     }
 }
 
