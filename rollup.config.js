@@ -69,8 +69,8 @@ const appPlugin = [
     ],
   }),
   globals(),
-  terser({sourcemap:false}),
-  zip()
+ (process.env.NODE_ENV ==="production" && terser({sourcemap:false})),
+ (process.env.NODE_ENV ==="production" && zip())
 ];
 
 const globalNames = {
@@ -88,15 +88,15 @@ export default commandLineArgs => {
     input: `apps/${process.env.appName}/index.js`,
     external: externals,
     output: [{
-      file: `apps/${process.env.appName}/build/index.js`,
-      format: 'iife',
+      dir: `apps/${process.env.appName}/build`,
+      format: 'es',
       name: "AppOne",
      sourcemap: false,
       globals: globalNames,
     },
     {
-      file: `public/index.js`,
-      format: 'iife',
+      dir: `public`,
+      format: 'es',
       name: "AppOne",
       sourcemap: false,
       globals: globalNames,
