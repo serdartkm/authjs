@@ -69,7 +69,7 @@ const appPlugin = [
     ],
   }),
   globals(),
-  terser({sourcemap:true}),
+  terser({sourcemap:false}),
   zip()
 ];
 
@@ -87,13 +87,21 @@ export default commandLineArgs => {
   return {
     input: `apps/${process.env.appName}/index.js`,
     external: externals,
-    output: {
+    output: [{
       file: `apps/${process.env.appName}/build/index.js`,
       format: 'iife',
       name: "AppOne",
-      sourcemap: 'inline',
+   //   sourcemap: 'inline',
       globals: globalNames,
     },
+    {
+      file: `public/index.js`,
+      format: 'iife',
+      name: "AppOne",
+    //  sourcemap: 'inline',
+      globals: globalNames,
+    }
+  ],
     plugins: appPlugin,
   }
 }
