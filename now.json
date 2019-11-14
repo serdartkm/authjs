@@ -1,0 +1,8 @@
+{
+    "build":{
+        "env":{
+            "appName":"portfolio",
+            "REACT_APP_SOCKET_URL":"https://portfolio44.herokuapp.com"
+        }
+    }
+}
