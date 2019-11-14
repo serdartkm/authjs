@@ -1,5 +1,4 @@
-import React from 'react'
-
+import {h} from 'preact'
 const style={height:30,
      width:40,
      height:40,

@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 
 const MessageAligner = ({ children, side, style }) => {
     const alignment = side === "left" ? "flex-start" : "flex-end"

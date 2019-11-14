@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import MessageAligner from './message-aligner'
 import FirstMessage from './first-message'
 import SubsequentMessage from './subsequent-message'

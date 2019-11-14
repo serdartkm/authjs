@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import ChatUser from './ChatUser'
 const ChatRoom =()=>{
 return(

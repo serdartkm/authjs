@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 
 const MessageSorter =({messages=[],children})=>{
 const messagesSorted =messages.sort((a, b)=> a.datetime - b.datetime)

@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import MessageObjectMapper from './message-object-mapper'
 const MessageCollectionView = ({ messages }) =>{
 

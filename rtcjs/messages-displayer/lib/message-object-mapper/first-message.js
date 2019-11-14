@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import Message from './message-view'
 import MessageAvatar from './message-avatar'
 const FirstMessage = ({ message, datetime,letter,local }) => {

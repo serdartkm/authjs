@@ -1,8 +1,8 @@
-import React from "react";
+import {h, Component} from 'preact'
 import { loadFromStorage, saveToLocalStorage } from './LocStorage'
-import PropTypes from 'prop-types'
 
-class RTCChatLog extends React.Component {
+
+class RTCChatLog extends Component {
   state = { messages: [], errors: [] };
 
 
@@ -81,17 +81,9 @@ componentWillReceiveProps(newProps){
 
   }
 };
-RTCChatLog.defaultProps = {
-  messageSent:null,
-  messageRecieved:null,
-  name:''
 
-}
 
-RTCChatLog.propTypes = {
-  messageSent: PropTypes.object,
-  messageRecieved: PropTypes.object,
-}
+
 
 
 

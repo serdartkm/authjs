@@ -8,7 +8,9 @@ import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
 import postcss from 'rollup-plugin-postcss'
 import copy from 'rollup-plugin-copy'
-//import builtins from 'rollup-plugin-node-builtins';
+import alias from '@rollup/plugin-alias';
+import { terser } from "rollup-plugin-terser";
+import zip from 'rollup-plugin-zip'
 "rtcjs/videochat-module-webrtc/lib"
 const appPlugin = [
   replace({
@@ -50,17 +52,7 @@ const appPlugin = [
     include: ['node_modules/**'],
     exclude: ['node_modules/process-es6/**'],
     namedExports: {
-      'node_modules/react/index.js': [
-        'Children',
-        'Component',
-        'createElement',
-        'isValidElement',
-        'cloneElement'
-      ],
-      'node_modules/react-is/index.js': ['isValidElementType'],
-      'node_modules/prop-types/index.js': ['isValidElementType', 'element', 'elementType', 'func', 'bool', 'oneOfType'],
-      'node_modules/react-dom/index.js': ['render', 'findDOMNode'],
-      'node_modules/react-is/index.js': ['isValidElementType', 'ForwardRef'],
+      'node_modules/preact/dist/preact.js': ['h', 'render', 'Component', 'cloneElement', 'options'],
     },
   }),
 
@@ -72,16 +64,17 @@ const appPlugin = [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-async-to-generator',
-      "@babel/plugin-transform-runtime"
+      "@babel/plugin-transform-runtime",
+      ["@babel/plugin-transform-react-jsx", { "pragma":"h" }]
     ],
   }),
   globals(),
+  terser({sourcemap:true}),
+  zip()
 ];
 
 const globalNames = {
-  react: 'React',
-  'react-dom': 'ReactDOM',
-  'prop-types': 'PropTypes',
+
   '@rtcjs/webrtc-signaling': 'SignalingService',
   '@rtcjs/webrtc-peer': 'PeerConnection',
   '@rtcjs/ui': 'VideoClientUI',

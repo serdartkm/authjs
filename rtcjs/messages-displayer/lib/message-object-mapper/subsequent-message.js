@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import Message from './message-view'
 
 const SubsequentMessage = ({ message, datetime }) => {

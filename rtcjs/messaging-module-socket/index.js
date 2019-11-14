@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import MessagingController from '../messaging-controller-socket'
 import MessagesDisplayer from '../messages-displayer'
 import MessageEditorDisplayer from '../message-editor-displayer'

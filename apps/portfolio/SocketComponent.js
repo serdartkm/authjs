@@ -1,8 +1,8 @@
-import React from 'react'
+import {h,Component} from 'preact'
 import io from "socket.io-client"
 
 
-class SocketComponent extends React.Component {
+class SocketComponent extends Component {
     state = { token: null, socket: null }
     async  componentWillMount() {
 

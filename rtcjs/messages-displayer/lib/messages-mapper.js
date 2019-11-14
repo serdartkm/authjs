@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 
 const MessageMapper =({messages,children, localSide="right",remoteSide="left"})=>{
   if(messages.length===0){

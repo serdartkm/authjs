@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import SocketComponent from './SocketComponent'
 import MessageModuleSocket from '../../rtcjs/messaging-module-socket'
 const ChatUser = ({ name, targetName }) => {

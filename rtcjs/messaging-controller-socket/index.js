@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from 'prop-types'
+import {h, Component} from 'preact'
 
-class MessageControllerSocket extends React.Component {
+
+class MessageControllerSocket extends Component {
   _isMounted = false;
   constructor(){
     super()
@@ -35,7 +35,7 @@ class MessageControllerSocket extends React.Component {
     this._isMounted = false;
   }
   sendMessage = () => {
-
+    console.log("send message clicked")
     const { targetName, socket } = this.props;
     const { message } = this.state;
     const datetime =  new Date().getTime()
@@ -57,9 +57,5 @@ class MessageControllerSocket extends React.Component {
   }
 }
 
-MessageControllerSocket.propTypes ={
-  name:PropTypes.string,
-  targetName:PropTypes.string,
-  socket:PropTypes.object
-}
+
 export default MessageControllerSocket

@@ -1,4 +1,4 @@
-import React from 'react'
+import {h} from 'preact'
 import MessagesSorter from './messages-sorter'
 import MessagesMapper from './messages-mapper'
 import MessageCollectionView from './message-collection-view'

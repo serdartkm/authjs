@@ -1,4 +1,4 @@
-import React from 'react'
+import {h, Component} from 'preact'
 const style = {
 
   backgroundColor: "#edeff2",
@@ -7,7 +7,7 @@ const style = {
   height: "100%"
 };
 
-class MessageViewScroller extends React.Component {
+class MessageViewScroller extends Component {
 
   componentWillReceiveProps() {
     this.gotoBottom()

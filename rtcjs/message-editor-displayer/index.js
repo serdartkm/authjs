@@ -1,6 +1,5 @@
 'use strict';
-import React from 'react'
-
+import {h} from 'preact'
 
 const MessageEditorDisplayer = ({ onMessageChange, message, sendMessage, style,id=0 }) => {
     return (
