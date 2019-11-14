@@ -33,14 +33,7 @@ class SocketComponent extends Component {
 
     render() {
         const { children } = this.props
-    
-        if (this.state.socket !== null) {
-
             return children({ socket: this.state.socket })
-        }
-        else
-
-            return <div>Loading...</div>
     }
 }
 
