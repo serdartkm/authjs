@@ -11,15 +11,19 @@ class MessageControllerSocket extends Component {
   componentDidMount() {
     this._isMounted = true;
 
-    const { socket } = this.props;
 
-    this.socket = socket;
+
+  }
+
+componentWillReceiveProps(nextProps){ 
+  if(nextProps.socket !==null && this.props.socket===null){
+
+    this.socket = nextProps.socket;
     this.socket.on("text_message", data => {
       const { sender , message, datetime } = data;
       if(this._isMounted)
       this.setState({messageRecieved:{sender,message,datetime}})
     });
-
     this.socket.on("connect",()=>{
       if(this._isMounted)
       this.setState({connected:true})
@@ -29,8 +33,8 @@ class MessageControllerSocket extends Component {
       if(this._isMounted)
       this.setState({connected:false})
     })
-
   }
+}
   componentWillUnmount() {
     this._isMounted = false;
   }

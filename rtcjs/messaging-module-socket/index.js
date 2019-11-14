@@ -10,7 +10,7 @@ const MessagingModuleSocket = ({ name, targetName, socket, id=0 ,height="96vh"})
                 return (
                     <div style={{ height, width:"100%" }}>
                         <MessagesDisplayer messages={messages} />
-                        <MessageEditorDisplayer id={id} message={message} sendMessage={sendMessage} onMessageChange={onMessageChange} />
+                        <MessageEditorDisplayer disabled={socket===null} id={id} message={message} sendMessage={sendMessage} onMessageChange={onMessageChange} />
                     </div>
                 )
             }}</RTCChatLog>

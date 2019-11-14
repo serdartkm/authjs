@@ -69,8 +69,8 @@ const appPlugin = [
     ],
   }),
   globals(),
-terser({sourcemap:false}),
- zip()
+//terser({sourcemap:false}),
+ //zip()
 ];
 
 const globalNames = {
@@ -91,7 +91,7 @@ export default commandLineArgs => {
       dir: `apps/${process.env.appName}/build`,
       format: 'es',
       name: "AppOne",
-     sourcemap: false,
+     sourcemap: "inline",
       globals: globalNames,
     },
     {

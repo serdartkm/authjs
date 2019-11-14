@@ -3,7 +3,7 @@ import io from "socket.io-client"
 
 
 class SocketComponent extends Component {
-    state = { token: null, socket: null }
+    state = { token: null, socket: null,connected:false }
     async  componentWillMount() {
 
         const { username } = this.props
@@ -22,7 +22,7 @@ class SocketComponent extends Component {
                 console.log("error from socket", error)
             })
             this.socket.on('connect', () => {
-                console.log("connected", this.socket)
+               this.setState({connected:true})
             })
 
             this.setState({ socket: this.socket })
@@ -33,7 +33,12 @@ class SocketComponent extends Component {
 
     render() {
         const { children } = this.props
-            return children({ socket: this.state.socket })
+        const{connected}=this.state
+    
+
+            return children({ socket: this.state.socket,connected })
+        
+ 
     }
 }
 
