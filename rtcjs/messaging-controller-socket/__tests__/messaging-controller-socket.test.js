@@ -1,13 +1,10 @@
 'use strict';
-import React from 'react'
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import{h} from 'preact'
 import MockedSocket from 'socket.io-mock';
 import { shallow } from 'enzyme';
 import MessageController from '../index'
 var sinon = require('sinon');
 import { ExpectInitialState, ExpectedPropTypes, ExpectComponentRender, ExpectClassMethods, ExpectedRenderProp, ExpectStateChange } from '../../../Utils/react-test-boilerplate/index'
-Enzyme.configure({ adapter: new Adapter() });
 const setUp = (props = {}) => {
   const component = shallow(<MessageController {...props}>{({ sendMessage, onMessageChange }) => { <div>Hello</div> }}</MessageController>)
   return component

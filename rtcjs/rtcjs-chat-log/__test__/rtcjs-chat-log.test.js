@@ -1,5 +1,5 @@
 
-import React from 'react'
+import {h} from 'preact'
 import RTCChatLog from '../index'
 import {shallow} from 'enzyme'
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for event-bus/jwt-controller/index.js</title>
+    <title>Code coverage report for Utils/error-handlers/error-transformer.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,35 +16,35 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">event-bus/jwt-controller</a> index.js
+      <a href="../../index.html">All files</a> / <a href="index.html">Utils/error-handlers</a> error-transformer.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">13.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/12</span>
+        <span class='fraction'>2/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/3</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">13.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/12</span>
+        <span class='fraction'>2/15</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -71,56 +71,68 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const appRoot = require('app-root-path');
-const logger = require(appRoot + '/loggers/winston.js');
-const eventBus = require('../../event-bus')
-const errorTransformer =require ('../../Utils/error-handlers/error-transformer')
-module.exports = {
-&nbsp;
-    requestToken: ({ expiresIn, secret, payload }, cb) =&gt; {
-        try {
-        
-            eventBus.once('response.jwt.token', (token) =&gt; {
-                cb({error:null, token })
-            })
-            eventBus.once('response.jwt.error', <span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
-             
-          
-<span class="cstat-no" title="statement not covered" >                cb({error:errorTransformer(error,'requestToken'), token:null })</span>
-            })
-            eventBus.emit('request.jwt.token', { expiresIn, secret, payload })
-        } catch (error) {
-          
-         
-<span class="cstat-no" title="statement not covered" >            cb({error:errorTransformer(error,'requestToken'), token:null })</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+const logger = require('../../loggers/winston')
+module.exports =  function <span class="fstat-no" title="function not covered" >errorTransformer(</span>error, functionName) {
+<span class="cstat-no" title="statement not covered" >    debugger</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >        debugger</span>
+<span class="cstat-no" title="statement not covered" >        if (!error instanceof Error || functionName === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('errorPropagator: argument error')</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (error.chains !==undefined &amp;&amp; error.chains.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            debugger</span>
+<span class="cstat-no" title="statement not covered" >             error.chains = [...error.chains, functionName]</span>
+<span class="cstat-no" title="statement not covered" >             return error</span>
         }
 &nbsp;
+        else {
+<span class="cstat-no" title="statement not covered" >                debugger</span>
+<span class="cstat-no" title="statement not covered" >             error.chains = [functionName]</span>
+<span class="cstat-no" title="statement not covered" >             return error</span>
+        }
+&nbsp;
+    } catch (error) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        logger.error({ origin: 'errorPropagator', stack: error })</span>
+&nbsp;
     }
+&nbsp;
+&nbsp;
+&nbsp;
 }</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

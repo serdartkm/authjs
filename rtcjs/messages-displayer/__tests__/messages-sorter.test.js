@@ -1,4 +1,4 @@
-import React from 'react'
+import{h} from 'preact'
 import MessageSorter from '../lib/messages-sorter'
 import {shallow} from 'enzyme'
 const messages =[

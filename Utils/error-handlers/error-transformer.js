@@ -1,5 +1,5 @@
 
-const logger = require('../loggers/winston')
+const logger = require('../../loggers/winston')
 module.exports =  function errorTransformer(error, functionName) {
     debugger
     try {

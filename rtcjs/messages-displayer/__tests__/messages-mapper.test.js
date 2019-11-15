@@ -1,4 +1,4 @@
-import React from 'react'
+import{h} from 'preact'
 import { shallow } from 'enzyme'
 import MessageMapper from '../lib/messages-mapper'
 

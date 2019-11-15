@@ -1,5 +1,6 @@
 const jwtController = require('../../../event-bus/jwt-controller')
 const uniqid =require('uniqid')
+const errorTransformer =require ('../../../Utils/error-handlers/error-transformer')
 module.exports = function anonymous(req, res, next) {
      
    

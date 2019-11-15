@@ -1,4 +1,5 @@
-import React from 'react'
+import {h} from 'preact'
+
 import { mount } from 'enzyme'
 import io from "socket.io-client";
 import MessagingModuleSocket from '../index'
@@ -7,19 +8,20 @@ import MessagesDisplayer from '../../messages-displayer'
 import MessageEditorDisplayer from '../../message-editor-displayer'
 import RTCChatLog from '../../rtcjs-chat-log'
 import MockedSocket from 'socket.io-mock';
-import {render,fireEvent, cleanup} from '@testing-library/react'
+import {render,fireEvent, cleanup} from '@testing-library/preact'
+import '@testing-library/jest-dom/extend-expect'
 const serverURL = "http://localhost:3000/"
 const socket = io(serverURL, { query: `name=mario@gmail.com` });
 afterEach(cleanup)
 describe("MessagingModuleSocket", () => {
     
     const wrapper = mount(<MessagingModuleSocket name="mario" targetName="dragos" socket={socket} />)
-    it("Child components exist", () => {
+    it.only("Child components exist", () => {
 
         expect(wrapper.find(MessagingController)).toHaveLength(1)
-        expect(wrapper.find(MessagesDisplayer)).toHaveLength(1)
-        expect(wrapper.find(MessageEditorDisplayer)).toHaveLength(1)
-        expect(wrapper.find(RTCChatLog)).toHaveLength(1)
+       expect(wrapper.find(MessagesDisplayer)).toHaveLength(1)
+       expect(wrapper.find(MessageEditorDisplayer)).toHaveLength(1)
+       expect(wrapper.find(RTCChatLog)).toHaveLength(1)
 
     })
 

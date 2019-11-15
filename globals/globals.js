@@ -1,4 +1,4 @@
 
 module.exports =function globalvars(){
-global.errorTransformer = require('./error-transformer')
+//global.errorTransformer = require('./error-transformer')
 }

@@ -1,12 +1,11 @@
-import React from 'react'
+import{h} from 'preact'
 import MessageAvatar from '../../lib/message-object-mapper/message-avatar'
-import renderer from 'react-test-renderer'
-
+import  render from 'preact-render-to-string';
 
 describe("SNAPSHOT TEST MessageAvatar",()=>{
 
     it("MessageAvatar renders correctly",()=>{
-        const tree = renderer.create(<MessageAvatar letter="A"/>).toJSON()
+        const tree = render(<MessageAvatar letter="A"/>)
 
         expect(tree).toMatchSnapshot();
 

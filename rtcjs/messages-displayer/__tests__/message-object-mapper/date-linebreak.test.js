@@ -1,14 +1,11 @@
-import React from 'react'
+import{h} from 'preact'
 import MessageDateLine from '../../lib/message-object-mapper/date-linebreak'
-import renderer from 'react-test-renderer'
-
-
+import  render from 'preact-render-to-string';
 
 
 describe("MessageDateLine component snapshot",()=>{
     it("renders correctly",()=>{
-        const tree =renderer
-        .create(<MessageDateLine datetime={1569393960355}/>).toJSON()
+        const tree =render(<MessageDateLine datetime={1569393960355}/>)
          expect(tree).toMatchSnapshot();
     })
 })

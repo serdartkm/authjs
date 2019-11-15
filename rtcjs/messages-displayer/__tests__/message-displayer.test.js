@@ -1,4 +1,4 @@
-import React from 'react'
+import{h} from 'preact'
 import {mount} from 'enzyme'
 import MessageDispaler from '../lib/messages-displayer'
 import MessageObjectMapper from '../lib/message-object-mapper'

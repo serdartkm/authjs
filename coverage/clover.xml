@@ -1,69 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1573188133301" clover="3.2.0">
-  <project timestamp="1573188133301" name="All files">
-    <metrics statements="40" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6" elements="47" coveredelements="42" complexity="0" loc="40" ncloc="40" packages="4" files="4" classes="4"/>
-    <package name="event-bus">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.js" path="/Users/personalcomputer/authjs/event-bus/index.js">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="event-bus.event-processors">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="jwt-processor.js" path="/Users/personalcomputer/authjs/event-bus/event-processors/jwt-processor.js">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="event-bus.jwt-controller">
-      <metrics statements="18" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="index.js" path="/Users/personalcomputer/authjs/event-bus/jwt-controller/index.js">
-        <metrics statements="18" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+<coverage generated="1573821770484" clover="3.2.0">
+  <project timestamp="1573821770484" name="All files">
+    <metrics statements="50" coveredstatements="30" conditionals="10" coveredconditionals="1" methods="8" coveredmethods="6" elements="68" coveredelements="37" complexity="0" loc="50" ncloc="50" packages="4" files="4" classes="4"/>
+    <package name="Utils.error-handlers">
+      <metrics statements="15" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="error-transformer.js" path="/Users/personalcomputer/authjs/Utils/error-handlers/error-transformer.js">
+        <metrics statements="15" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="loggers">
-      <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="winston.js" path="/Users/personalcomputer/authjs/loggers/winston.js">
-        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="43" count="2" type="stmt"/>
+    <package name="authjs.expressjs-jwt-authentication.anonymous">
+      <metrics statements="13" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="anonymous.js" path="/Users/personalcomputer/authjs/authjs/expressjs-jwt-authentication/anonymous/anonymous.js">
+        <metrics statements="13" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="event-bus.event-processors">
+      <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="jwt-processor.js" path="/Users/personalcomputer/authjs/event-bus/event-processors/jwt-processor.js">
+        <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="event-bus.jwt-controller">
+      <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="index.js" path="/Users/personalcomputer/authjs/event-bus/jwt-controller/index.js">
+        <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
       </file>
     </package>
   </project>

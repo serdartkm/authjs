@@ -1,13 +1,12 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
+import{h} from 'preact'
+import  render from 'preact-render-to-string';
 import MessageView from '../../lib/message-object-mapper/message-view'
 
 describe("MessageView snapshot test",()=>{
 
     it('renders correctly', () => {
-        const tree = renderer
-            .create(<MessageView message="hello from subsequent message" datetime={1569393960355} />).toJSON()
-
+        const tree = render
+            (<MessageView message="hello from subsequent message" datetime={1569393960355} />)
         expect(tree).toMatchSnapshot();
     })
 })

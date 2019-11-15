@@ -1,5 +1,5 @@
 
-import React from 'react'
+import {h,Component} from 'preact'
 import { render, fireEvent, cleanup } from '@testing-library/react'  //client
 import io from "socket.io-client"; //client
 import MessagingModuleSocket from '../../rtcjs/messaging-module-socket' //client

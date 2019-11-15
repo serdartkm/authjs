@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const errorTransformer =require ('../../Utils/error-handlers/error-transformer')
 module.exports =function jwtProcessor(eventBus){
     eventBus.on('request.jwt.token', async ({ payload, secret, expiresIn }) => {
         try {

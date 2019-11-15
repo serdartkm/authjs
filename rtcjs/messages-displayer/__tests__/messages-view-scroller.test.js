@@ -1,12 +1,12 @@
-import React from 'react'
+import{h} from 'preact'
 import MessagesViewScroller from '../lib/messages-view-scroller'
-import renderer from 'react-test-renderer'
+import  render from 'preact-render-to-string';
 
 
 
 describe('MessagesViewScroller', () => {
     it("renders correctly", () => {
-        const tree = renderer.create(<MessagesViewScroller></MessagesViewScroller>)
+        const tree = render(<MessagesViewScroller></MessagesViewScroller>)
         expect(tree).toMatchSnapshot();
     })
 })

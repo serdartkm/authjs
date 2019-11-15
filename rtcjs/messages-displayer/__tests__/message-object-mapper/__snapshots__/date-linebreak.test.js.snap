@@ -1,33 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageDateLine component snapshot renders correctly 1`] = `
-<div
-  style={
-    Object {
-      "display": "flex",
-    }
-  }
->
-  <div
-    style={
-      Object {
-        "flex": "1",
-      }
-    }
-  >
-    <hr />
-  </div>
-  <div>
-    9/25/2019
-  </div>
-  <div
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  >
-    <hr />
-  </div>
-</div>
-`;
+exports[`MessageDateLine component snapshot renders correctly 1`] = `"<div style=\\"display: flex;\\"><div style=\\"flex: 1;\\"><hr /></div><div>9/25/2019</div><div style=\\"flex: 1;\\"><hr /></div></div>"`;
