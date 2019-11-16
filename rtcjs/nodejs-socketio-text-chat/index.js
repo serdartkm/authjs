@@ -1,16 +1,24 @@
 
+const appRoot = require('app-root-path');
+const errorTransformer =require(appRoot+'/Utils/error-handlers/error-transformer.js')
 const io = require('socket.io')
 const messaging = require('./messaging/messaging')
 const authentication = require('./authentication/authentication')
 const room = require('./room/room')
-module.exports = async function socketioserver(server, secret = "secret") {
 
-  const socketServer = await io(server)
-  await socketServer.use(authentication(secret))
-  await socketServer.use(room)
-  await socketServer.use(messaging)
+module.exports = function nodeJsSocketioTextChat(server, secret = "secret") {
+  try {
 
+    const socketServer = io(server)
+    socketServer.use(authentication(secret))
+    socketServer.use(room)
+    socketServer.use(messaging)
+    return socketServer
 
-  return socketServer
+  } catch (error) {
+    errorTransformer(error,'nodeJsSocketioTextChat')
+
+  }
+
 
 }

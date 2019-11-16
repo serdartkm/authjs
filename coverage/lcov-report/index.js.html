@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>2/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">40% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>2/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>2/3</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -60,22 +60,13 @@
 <a name='L12'></a><a href='#L12'>12</a>
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -83,36 +74,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {h,Component} from 'preact'
-import MessagingController from '../messaging-controller-socket'
-import MessagesDisplayer from '../messages-displayer'
-import MessageEditorDisplayer from '../message-editor-displayer'
-import RTCChatLog from '../rtcjs-chat-log'
-const MessagingModuleSocket = <span class="fstat-no" title="function not covered" >({</span> name, targetName, socket, id=<span class="branch-0 cbranch-no" title="branch not covered" >0 </span>,height=<span class="branch-0 cbranch-no" title="branch not covered" >"96vh"}</span>) =&gt; {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+import {h} from 'preact'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (&lt;MessagingController targetName={targetName} socket={socket}&gt;{<span class="fstat-no" title="function not covered" >({</span> messageSent, messageRecieved, message, sendMessage, onMessageChange }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        return (&lt;RTCChatLog messageRecieved={messageRecieved} messageSent={messageSent} name={name}&gt;{<span class="fstat-no" title="function not covered" >({</span> messages }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                return (</span>
-                    &lt;div style={{ height, width:"100%" }}&gt;
-                        &lt;MessagesDisplayer messages={messages} /&gt;
-                        &lt;MessageEditorDisplayer disabled={socket===null} id={id} message={message} sendMessage={sendMessage} onMessageChange={onMessageChange} /&gt;
-                    &lt;/div&gt;
-                )
-            }}&lt;/RTCChatLog&gt;
-      )
-    }}&lt;/MessagingController&gt;)
+const   MessageEditorDisplayer = ({ onMessageChange, message, sendMessage, style,id=<span class="branch-0 cbranch-no" title="branch not covered" >0,</span>disabled })=&gt; {
+    return (
+        &lt;div style={{...style,display:"flex"}} &gt;
+            &lt;input style={{flex:1, padding:5}} data-testid={`message${id}`} onKeyDown={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; { <span class="cstat-no" title="statement not covered" >e.keyCode === 13 ? sendMesage() : null </span>}} className='form-control' onChange={onMessageChange} value={message} name="message" type="text" placeholder="Enter message text" /&gt;
+            &lt;div style={{width:100}} &gt;
+            &lt;button   data-testid={`sendMessage${id}`} disabled={message===""||disabled} style={{ marginLeft: 2, padding:5, width:"100%" }}  onClick={sendMessage}&gt;Send&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    )
 }
-export default MessagingModuleSocket
-&nbsp;</pre></td></tr>
+&nbsp;
+export default MessageEditorDisplayer</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 15 2019 11:20:30 GMT+0500 (West Kazakhstan Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 16 2019 14:54:52 GMT+0500 (West Kazakhstan Time)
 </div>
 </div>
 <script src="prettify.js"></script>

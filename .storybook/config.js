@@ -1,10 +1,4 @@
-import {configure,addDecorator} from '@storybook/react';
-import {withInfo} from '@storybook/addon-info'
+import { configure } from '@storybook/preact';
 
-const req = require.context('../rtcjs', true, /.story.js$/);
-addDecorator(withInfo)
-function loadStories() {
-    req.keys().forEach((filename) => req(filename));
-}
-
-configure(loadStories, module);
+// automatically import all files ending in *.stories.js
+configure(require.context('../stories', true, /\.stories\.js$/), module);

@@ -1,4 +1,4 @@
-import React from 'react';
+import {h} from 'preact';
 import { storiesOf } from '@storybook/react';
 import MessagesDispaler,{MessageObjectMapper, MessageAligner, DateLinebreak, SubsequentMessage, MessageView, FirstMessage, Avatar,MessageCollectionView } from './index'
 

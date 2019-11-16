@@ -36,7 +36,7 @@
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
               "--coverage",
-              "anonymous.test.js"
+              "message-editor-displayer.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

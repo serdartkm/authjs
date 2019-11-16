@@ -1,33 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageEditorDisplayer component Should render correctly 1`] = `
-<div
-  className="input-group"
-  style={Object {}}
->
-  <input
-    className="form-control"
-    data-testid="message0"
-    name="message"
-    onKeyDown={[Function]}
-    placeholder="Enter message text"
-    type="text"
-  />
-  <div
-    className="input-group-append"
-  >
-    <button
-      className="btn btn-secondary"
-      data-testid="sendMessage0"
-      disabled={false}
-      style={
-        Object {
-          "marginLeft": 2,
-        }
+"function MessageEditorDisplayer({
+  onMessageChange,
+  message,
+  sendMessage,
+  style,
+  id =
+  /* istanbul ignore next */
+  (cov_z2x33qnza.b[0][0]++, 0),
+  disabled
+}) {
+  /* istanbul ignore next */
+  cov_z2x33qnza.f[0]++;
+  cov_z2x33qnza.s[0]++;
+  return (
+    /* istanbul ignore next */
+    React.createElement(
+    /* istanbul ignore next */
+    &quot;div&quot;,
+    /* istanbul ignore next */
+    {
+      style: { ...style,
+        display: &quot;flex&quot;
       }
-    >
-      Send
-    </button>
-  </div>
-</div>
+    },
+    /* istanbul ignore next */
+    React.createElement(
+    /* istanbul ignore next */
+    &quot;input&quot;,
+    /* istanbul ignore next */
+    {
+      style: {
+        flex: 1,
+        padding: 5
+      },
+
+      /* istanbul ignore next */
+      &quot;data-testid&quot;: \`message\${id}\`,
+      onKeyDown: e =&gt; {
+        /* istanbul ignore next */
+        cov_z2x33qnza.f[1]++;
+        cov_z2x33qnza.s[1]++;
+        e.keyCode === 13 ?
+        /* istanbul ignore next */
+        (cov_z2x33qnza.b[1][0]++, sendMesage()) :
+        /* istanbul ignore next */
+        (cov_z2x33qnza.b[1][1]++, null);
+      },
+      className: &quot;form-control&quot;,
+      onChange: onMessageChange,
+      value: message,
+      name: &quot;message&quot;,
+      type: &quot;text&quot;,
+      placeholder: &quot;Enter message text&quot;
+    }),
+    /* istanbul ignore next */
+    React.createElement(
+    /* istanbul ignore next */
+    &quot;div&quot;,
+    /* istanbul ignore next */
+    {
+      style: {
+        width: 100
+      }
+    },
+    /* istanbul ignore next */
+    React.createElement(
+    /* istanbul ignore next */
+    &quot;button&quot;,
+    /* istanbul ignore next */
+    {
+      /* istanbul ignore next */
+      &quot;data-testid&quot;: \`sendMessage\${id}\`,
+      disabled:
+      /* istanbul ignore next */
+      (cov_z2x33qnza.b[2][0]++, message === &quot;&quot;) ||
+      /* istanbul ignore next */
+      (cov_z2x33qnza.b[2][1]++, disabled),
+      style: {
+        marginLeft: 2,
+        padding: 5,
+        width: &quot;100%&quot;
+      },
+      onClick: sendMessage
+    },
+    /* istanbul ignore next */
+    &quot;Send&quot;)))
+  );
+}"
 `;
