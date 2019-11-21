@@ -11,7 +11,8 @@ module.exports = {
         "SharedArrayBuffer": "readonly",
         "describe":true,
         "it":true,
-        "expect":true
+        "expect":true,
+        "afterEach":false
     },
     "parserOptions": {
         "ecmaVersion": 2018,

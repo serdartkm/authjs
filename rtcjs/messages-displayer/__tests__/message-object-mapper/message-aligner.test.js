@@ -1,6 +1,7 @@
 import{h} from 'preact'
-import MessageAligner from '../../lib/message-object-mapper/message-aligner'
 import  render from 'preact-render-to-string';
+import MessageAligner from '../../lib/message-object-mapper/message-aligner'
+
 describe("message-aligner component ", () => {
 
     it("renders correctly to the left", () => {
@@ -15,7 +16,7 @@ describe("message-aligner component ", () => {
         const tree = render
             (<MessageAligner align="right">
                 <div>Child component on the left side</div>
-            </MessageAligner>)
+             </MessageAligner>)
 
         expect(tree).toMatchSnapshot();
     })

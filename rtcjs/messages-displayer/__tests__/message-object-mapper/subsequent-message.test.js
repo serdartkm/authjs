@@ -1,6 +1,7 @@
 import{h} from 'preact'
-import  SubsequentMessage  from '../../lib/message-object-mapper/subsequent-message'
 import  render from 'preact-render-to-string';
+import  SubsequentMessage  from '../../lib/message-object-mapper/subsequent-message'
+
 describe("SubsequentMessageView snapshot", () => {
     it('renders correctly', () => {
         const tree = render
