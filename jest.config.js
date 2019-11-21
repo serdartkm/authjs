@@ -1,6 +1,6 @@
 module.exports = {
 
-    testPathIgnorePatterns:["/node_modules/","cypress/*"],
-    setupFilesAfterEnv: ["<rootDir>/testSetupFile.js"],
-    projects:["<rootDir>/rtcjs/message-controller/*"]
-  };
+  testPathIgnorePatterns: ['/node_modules/', 'cypress/*'],
+  setupFilesAfterEnv: ['<rootDir>/testSetupFile.js'],
+  projects: ['<rootDir>/rtcjs/message-controller/*'],
+};

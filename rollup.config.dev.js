@@ -2,13 +2,11 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import { eslint } from 'rollup-plugin-eslint';
-import serve from 'rollup-plugin-serve';
-import livereload from 'rollup-plugin-livereload';
+
 import globals from 'rollup-plugin-node-globals';
-import postcss from 'rollup-plugin-postcss'
-import copy from 'rollup-plugin-copy'
-"rtcjs/videochat-module-webrtc/lib"
+import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
+
 const appPlugin = [
   copy({
     targets: [
@@ -31,10 +29,10 @@ const appPlugin = [
       { src: 'rtcjs/@rtcjs-server/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server' },
       { src: 'rtcjs/@rtcjs-server-webrtc-signaling/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-webrtc-signaling' },
       { src: 'rtcjs/@rtcjs-server-peer-text-chat/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-peer-text-chat' },
-    ]
+    ],
   }),
   postcss({
-    plugins: []
+    plugins: [],
   }),
   resolve({
     browser: true,
@@ -50,12 +48,12 @@ const appPlugin = [
         'Component',
         'createElement',
         'isValidElement',
-        'cloneElement'
+        'cloneElement',
       ],
-      'node_modules/react-is/index.js': ['isValidElementType'],
-      'node_modules/prop-types/index.js': ['isValidElementType','element','elementType','func','bool','oneOfType'],
-      'node_modules/react-dom/index.js': ['render','findDOMNode'],
-      'node_modules/react-is/index.js': ['isValidElementType','ForwardRef'],
+
+      'node_modules/prop-types/index.js': ['isValidElementType', 'element', 'elementType', 'func', 'bool', 'oneOfType'],
+      'node_modules/react-dom/index.js': ['render', 'findDOMNode'],
+      'node_modules/react-is/index.js': ['isValidElementType', 'ForwardRef'],
     },
   }),
 
@@ -75,32 +73,31 @@ const appPlugin = [
   globals(),
 ];
 
-const globalNames= {
+const globalNames = {
   react: 'React',
   'react-dom': 'ReactDOM',
   'prop-types': 'PropTypes',
-  '@rtcjs/webrtc-signaling':'SignalingService',
-  '@rtcjs/webrtc-peer':'PeerConnection',
-  '@rtcjs/ui':'VideoClientUI',
-  '@rtcjs/contacts':'Contacts'
-}
+  '@rtcjs/webrtc-signaling': 'SignalingService',
+  '@rtcjs/webrtc-peer': 'PeerConnection',
+  '@rtcjs/ui': 'VideoClientUI',
+  '@rtcjs/contacts': 'Contacts',
+};
 
-const externals =["react", "react-dom", "prop-types"]
+const externals = ['react', 'react-dom', 'prop-types'];
 module.exports = [
 
   {
     input: './rtcjs/rtc-demo/client/index.js',
     external: externals,
-   output: {
-     file: './rtcjs/rtc-demo/public/index.js',
-     format: 'iife',
-     sourcemap: 'inline',
-     globals: globalNames,
-   },
-   
-   plugins: appPlugin,
- },
+    output: {
+      file: './rtcjs/rtc-demo/public/index.js',
+      format: 'iife',
+      sourcemap: 'inline',
+      globals: globalNames,
+    },
 
+    plugins: appPlugin,
+  },
 
 
 ];

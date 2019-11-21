@@ -2,23 +2,20 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import { eslint } from 'rollup-plugin-eslint';
-import serve from 'rollup-plugin-serve';
-import livereload from 'rollup-plugin-livereload';
 import globals from 'rollup-plugin-node-globals';
-import postcss from 'rollup-plugin-postcss'
-import copy from 'rollup-plugin-copy'
-import alias from '@rollup/plugin-alias';
-import { terser } from "rollup-plugin-terser";
-import zip from 'rollup-plugin-zip'
-import del from 'rollup-plugin-delete'
-import htmlTemplate from 'rollup-plugin-generate-html-template'
+import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
+import { terser } from 'rollup-plugin-terser';
+import zip from 'rollup-plugin-zip';
+import del from 'rollup-plugin-delete';
+import htmlTemplate from 'rollup-plugin-generate-html-template';
+
 const appPlugin = [
-  del({targets:[`apps/${process.env.appName}/build`,'public']}),
-  htmlTemplate({template:"apps/html-template/index.html",target:`apps/${process.env.appName}/build/index.html`, attrs:['type="module"']}),
+  del({ targets: [`apps/${process.env.appName}/build`, 'public'] }),
+  htmlTemplate({ template: 'apps/html-template/index.html', target: `apps/${process.env.appName}/build/index.html`, attrs: ['type="module"'] }),
   replace({
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-    REACT_APP_SOCKET_URL:JSON.stringify(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3000')
+    REACT_APP_SOCKET_URL: JSON.stringify(process.env.REACT_APP_SOCKET_URL || 'http://localhost:3000'),
   }),
   copy({
     targets: [
@@ -41,10 +38,10 @@ const appPlugin = [
       { src: 'rtcjs/@rtcjs-server/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server' },
       { src: 'rtcjs/@rtcjs-server-webrtc-signaling/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-webrtc-signaling' },
       { src: 'rtcjs/@rtcjs-server-peer-text-chat/index.js', dest: 'rtcjs/rtc-demo/public/rtcjs-server-peer-text-chat' },
-    ]
+    ],
   }),
   postcss({
-    plugins: []
+    plugins: [],
   }),
   resolve({
     browser: true,
@@ -60,20 +57,20 @@ const appPlugin = [
   }),
 
   babel({
-    runtimeHelpers:true,
+    runtimeHelpers: true,
     exclude: 'node_modules/**',
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-async-to-generator',
-      "@babel/plugin-transform-runtime",
-      ["@babel/plugin-transform-react-jsx", { "pragma":"h" }]
+      '@babel/plugin-transform-runtime',
+      ['@babel/plugin-transform-react-jsx', { pragma: 'h' }],
     ],
   }),
   globals(),
-terser({sourcemap:false}),
- zip()
+  terser({ sourcemap: false }),
+  zip(),
 ];
 
 const globalNames = {
@@ -81,30 +78,27 @@ const globalNames = {
   '@rtcjs/webrtc-signaling': 'SignalingService',
   '@rtcjs/webrtc-peer': 'PeerConnection',
   '@rtcjs/ui': 'VideoClientUI',
-  '@rtcjs/contacts': 'Contacts'
-}
+  '@rtcjs/contacts': 'Contacts',
+};
 
-const externals = ["react", "react-dom", "prop-types"]
-export default commandLineArgs => {
-
-  return {
-    input: `apps/${process.env.appName}/index.js`,
-    external: externals,
-    output: [{
-      dir: `apps/${process.env.appName}/build`,
-      format: 'es',
-      name: "AppOne",
-     sourcemap: "inline",
-      globals: globalNames,
-    },
-    {
-      dir: `public`,
-      format: 'es',
-      name: "AppOne",
-      sourcemap: false,
-      globals: globalNames,
-    }
+const externals = ['react', 'react-dom', 'prop-types'];
+export default (commandLineArgs) => ({
+  input: `apps/${process.env.appName}/index.js`,
+  external: externals,
+  output: [{
+    dir: `apps/${process.env.appName}/build`,
+    format: 'es',
+    name: 'AppOne',
+    sourcemap: 'inline',
+    globals: globalNames,
+  },
+  {
+    dir: 'public',
+    format: 'es',
+    name: 'AppOne',
+    sourcemap: false,
+    globals: globalNames,
+  },
   ],
-    plugins: appPlugin,
-  }
-}
+  plugins: appPlugin,
+});

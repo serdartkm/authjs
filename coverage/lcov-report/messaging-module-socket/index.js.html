@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -66,16 +66,22 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -91,19 +97,22 @@ import MessagingController from '../messaging-controller-socket'
 import MessagesDisplayer from '../messages-displayer'
 import MessageEditorDisplayer from '../message-editor-displayer'
 import RTCChatLog from '../rtcjs-chat-log'
-const MessagingModuleSocket = <span class="fstat-no" title="function not covered" >({</span> name, targetName, socket, id=<span class="branch-0 cbranch-no" title="branch not covered" >0 </span>,height=<span class="branch-0 cbranch-no" title="branch not covered" >"96vh"}</span>) =&gt; {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (&lt;MessagingController targetName={targetName} socket={socket}&gt;{<span class="fstat-no" title="function not covered" >({</span> messageSent, messageRecieved, message, sendMessage, onMessageChange }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        return (&lt;RTCChatLog messageRecieved={messageRecieved} messageSent={messageSent} name={name}&gt;{<span class="fstat-no" title="function not covered" >({</span> messages }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                return (</span>
+const MessagingModuleSocket = ({ name, targetName, socket, id=0 ,height="96vh"}) =&gt; {
+&nbsp;
+    return (&lt;MessagingController targetName={targetName} socket={socket}&gt;{({ messageSent, messageRecieved, message, sendMessage, onMessageChange }) =&gt; {
+        return (&lt;RTCChatLog messageRecieved={messageRecieved} messageSent={messageSent} name={name}&gt;{({ messages }) =&gt; {
+                return (
                     &lt;div style={{ height, width:"100%" }}&gt;
                         &lt;MessagesDisplayer messages={messages} /&gt;
                         &lt;MessageEditorDisplayer disabled={socket===null} id={id} message={message} sendMessage={sendMessage} onMessageChange={onMessageChange} /&gt;
                     &lt;/div&gt;
                 )
-            }}&lt;/RTCChatLog&gt;
+            }}
+                &lt;/RTCChatLog&gt;
       )
-    }}&lt;/MessagingController&gt;)
+    }}
+            &lt;/MessagingController&gt;)
 }
 export default MessagingModuleSocket
 &nbsp;</pre></td></tr>
@@ -112,7 +121,7 @@ export default MessagingModuleSocket
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 15 2019 11:51:12 GMT+0500 (West Kazakhstan Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 21 2019 13:28:33 GMT+0500 (West Kazakhstan Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

@@ -1,92 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageEditorDisplayer component Should render correctly 1`] = `
-"function MessageEditorDisplayer({
-  onMessageChange,
-  message,
-  sendMessage,
-  style,
-  id =
+"function MessageEditorDisplayer(
+/* istanbul ignore next */
+_ref) {
   /* istanbul ignore next */
-  (cov_z2x33qnza.b[0][0]++, 0),
-  disabled
-}) {
+  var onMessageChange = _ref.onMessageChange,
+      message = _ref.message,
+      sendMessage = _ref.sendMessage,
+      _ref$id = _ref.id,
+      id = _ref$id === void 0 ? (cov_z2x33qnza.b[0][0]++, 0) : _ref$id,
+      disabled = _ref.disabled;
+
   /* istanbul ignore next */
   cov_z2x33qnza.f[0]++;
-  cov_z2x33qnza.s[0]++;
+  cov_z2x33qnza.s[1]++;
   return (
     /* istanbul ignore next */
-    React.createElement(
+    (0, _preact.h)(
     /* istanbul ignore next */
     &quot;div&quot;,
     /* istanbul ignore next */
     {
-      style: { ...style,
-        display: &quot;flex&quot;
+      style: {
+        display: 'flex'
       }
     },
     /* istanbul ignore next */
-    React.createElement(
+    (0, _preact.h)(
     /* istanbul ignore next */
     &quot;input&quot;,
     /* istanbul ignore next */
     {
       style: {
-        flex: 1,
-        padding: 5
+        flex: 1
       },
 
       /* istanbul ignore next */
-      &quot;data-testid&quot;: \`message\${id}\`,
-      onKeyDown: e =&gt; {
-        /* istanbul ignore next */
-        cov_z2x33qnza.f[1]++;
-        cov_z2x33qnza.s[1]++;
-        e.keyCode === 13 ?
-        /* istanbul ignore next */
-        (cov_z2x33qnza.b[1][0]++, sendMesage()) :
-        /* istanbul ignore next */
-        (cov_z2x33qnza.b[1][1]++, null);
-      },
-      className: &quot;form-control&quot;,
-      onChange: onMessageChange,
+      &quot;data-testid&quot;:
+      /* istanbul ignore next */
+      &quot;message&quot;.concat(id),
+      onInput: onMessageChange,
       value: message,
       name: &quot;message&quot;,
       type: &quot;text&quot;,
       placeholder: &quot;Enter message text&quot;
     }),
     /* istanbul ignore next */
-    React.createElement(
+    (0, _preact.h)(
     /* istanbul ignore next */
     &quot;div&quot;,
     /* istanbul ignore next */
     {
       style: {
-        width: 100
+        display: 'flex'
       }
     },
     /* istanbul ignore next */
-    React.createElement(
+    (0, _preact.h)(
     /* istanbul ignore next */
     &quot;button&quot;,
     /* istanbul ignore next */
     {
       /* istanbul ignore next */
-      &quot;data-testid&quot;: \`sendMessage\${id}\`,
+      &quot;data-testid&quot;:
+      /* istanbul ignore next */
+      &quot;sendMessage&quot;.concat(id),
       disabled:
       /* istanbul ignore next */
-      (cov_z2x33qnza.b[2][0]++, message === &quot;&quot;) ||
+      (cov_z2x33qnza.b[1][0]++, message === '') ||
       /* istanbul ignore next */
-      (cov_z2x33qnza.b[2][1]++, disabled),
+      (cov_z2x33qnza.b[1][1]++, disabled),
       style: {
         marginLeft: 2,
-        padding: 5,
-        width: &quot;100%&quot;
+        width: '100%'
       },
       onClick: sendMessage
     },
     /* istanbul ignore next */
-    &quot;Send&quot;)))
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;svg&quot;,
+    /* istanbul ignore next */
+    {
+      xmlns: &quot;http://www.w3.org/2000/svg&quot;,
+      width: &quot;24&quot;,
+      height: &quot;24&quot;,
+      viewBox: &quot;0 0 24 24&quot;
+    },
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;path&quot;,
+    /* istanbul ignore next */
+    {
+      d: &quot;M2.01 21L23 12 2.01 3 2 10l15 2-15 2z&quot;
+    }),
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;path&quot;,
+    /* istanbul ignore next */
+    {
+      d: &quot;M0 0h24v24H0z&quot;,
+      fill: &quot;none&quot;
+    })))))
   );
 }"
 `;

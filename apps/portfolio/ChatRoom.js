@@ -3,7 +3,7 @@ import ChatUser from './ChatUser'
 const ChatRoom =()=>{
 return(
 
-    <div style={{display:"flex",alignItems:"center",width:"50%"}}>
+    <div style={{display:"flex",alignItems:"center"}}>
         <ChatUser name ="mario" targetName="dragos"/>
         <ChatUser name ="dragos" targetName="mario"/>
     </div>

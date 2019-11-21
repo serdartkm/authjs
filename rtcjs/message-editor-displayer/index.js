@@ -1,15 +1,20 @@
 
-import {h} from 'preact'
+import { h } from 'preact';
 
-const   MessageEditorDisplayer = ({ onMessageChange, message, sendMessage, style,id=0,disabled })=> {
-    return (
-        <div style={{...style,display:"flex"}} >
-            <input style={{flex:1, padding:5}} data-testid={`message${id}`} onKeyDown={(e) => { e.keyCode === 13 ? sendMesage() : null }} className='form-control' onChange={onMessageChange} value={message} name="message" type="text" placeholder="Enter message text" />
-            <div style={{width:100}} >
-            <button   data-testid={`sendMessage${id}`} disabled={message===""||disabled} style={{ marginLeft: 2, padding:5, width:"100%" }}  onClick={sendMessage}>Send</button>
-            </div>
-        </div>
-    )
-}
+const MessageEditorDisplayer = ({
+  onMessageChange, message, sendMessage, id = 0, disabled,
+}) => (
+  <div style={{ display: 'flex' }}>
+    <input style={{ flex: 1 }} data-testid={`message${id}`} onInput={onMessageChange} value={message} name="message" type="text" placeholder="Enter message text" />
+    <div style={{ display: 'flex' }}>
+          <button data-testid={`sendMessage${id}`} disabled={message === '' || disabled} style={{ marginLeft: 2, width: '100%' }} onClick={sendMessage}>
 
-export default MessageEditorDisplayer
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+          </button>
+    </div>
+  </div>
+);
+export default MessageEditorDisplayer;
