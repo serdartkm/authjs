@@ -17,17 +17,7 @@ describe('MessageEditorDisplayer component', () => {
         const tree = renderer(MessageEditorDisplayer)
         expect(tree).toMatchSnapshot();
     })
-
-    it("send Message button is disabled when message input is empty string",()=>{
-    const {getByTestId } = render( <MessageEditorDisplayer message='' id={0}  />,{})
-    // expect(getByTestId('sendMessage0')).toBeInTheDocument()
-   //  const messageTextInput =getByPlaceholderText(/Enter message text/i)
-     const sendMessageButton =getByTestId('sendMessage0')
-        expect(sendMessageButton).toBeDisabled()
-      //  fireEvent.input(messageTextInput, { target: { value: 'hello' } })
-     //   expect(messageTextInput).toBeDisabled()
-    })
-    it('on message text input sendMessage button is enabled',()=>{
+    it('on user interaction message-editor behaves correctly',()=>{
         const MessageController =()=>{
           const [message,setMessage]=useState('')
           const sendMessage=()=>{
@@ -39,10 +29,14 @@ describe('MessageEditorDisplayer component', () => {
         }
         const {getByPlaceholderText,getByTestId } = render( <MessageController  />,{})
         const messageTextInput =getByPlaceholderText(/Enter message text/i)
+        const sendMessageButton =getByTestId('sendMessage0')
+        expect(sendMessageButton).toBeDisabled()
+        expect(messageTextInput.value).toBe('')
         fireEvent.input(messageTextInput,{ target: { value: 'hello' } })
         expect(messageTextInput.value).toBe('hello')
-        expect(getByTestId('sendMessage0')).toBeEnabled()
+        expect(sendMessageButton).toBeEnabled()
+        fireEvent.click(sendMessageButton)
+        expect(messageTextInput.value).toBe('')
+        expect(sendMessageButton).toBeDisabled()
     })
-
-
 })
