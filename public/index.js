@@ -1,1 +1,490 @@
-import{a as t,b as n,c as e,d as o,e as r,f as i,g as a,h as p}from"./chunk-10a91b1b.js";var u={};function s(t,n){for(var e in n)t[e]=n[e];return t}function c(t,n){return t.rank<n.rank?1:t.rank>n.rank?-1:t.index-n.index}function l(t,n){return t.index=n,t.rank=function(t){return t.props.default?0:(n=t.props.path,f(n).map(h).join(""));var n}(t),t.props}function f(t){return t.replace(/(^\/+|\/+$)/g,"").split("/")}function h(t){return":"==t.charAt(0)?1+"*+?".indexOf(t.charAt(t.length-1))||4:5}var d=null,m=[],g=[],y={};function v(){var t;return""+((t=d&&d.location?d.location:d&&d.getCurrentLocation?d.getCurrentLocation():"undefined"!=typeof location?location:y).pathname||"")+(t.search||"")}function b(t,n){return void 0===n&&(n=!1),"string"!=typeof t&&t.url&&(n=t.replace,t=t.url),function(t){for(var n=m.length;n--;)if(m[n].canRoute(t))return!0;return!1}(t)&&function(t,n){void 0===n&&(n="push"),d&&d[n]?d[n](t):"undefined"!=typeof history&&history[n+"State"]&&history[n+"State"](null,null,t)}(t,n?"replace":"push"),C(t)}function C(t){for(var n=!1,e=0;e<m.length;e++)!0===m[e].routeTo(t)&&(n=!0);for(var o=g.length;o--;)g[o](t);return n}function k(t){if(t&&t.getAttribute){var n=t.getAttribute("href"),e=t.getAttribute("target");if(n&&n.match(/^\//g)&&(!e||e.match(/^_?self$/i)))return b(n)}}function x(t){if(0==t.button)return k(t.currentTarget||t.target||this),O(t)}function O(t){return t&&(t.stopImmediatePropagation&&t.stopImmediatePropagation(),t.stopPropagation&&t.stopPropagation(),t.preventDefault()),!1}function j(t){if(!(t.ctrlKey||t.metaKey||t.altKey||t.shiftKey||0!==t.button)){var n=t.target;do{if("A"===String(n.nodeName).toUpperCase()&&n.getAttribute("href")){if(n.hasAttribute("native"))return;if(k(n))return O(t)}}while(n=n.parentNode)}}var U=!1;var D=function(e){function o(t){e.call(this,t),t.history&&(d=t.history),this.state={url:t.url||v()},U||("function"==typeof addEventListener&&(d||addEventListener("popstate",(function(){C(v())})),addEventListener("click",j)),U=!0)}return e&&(o.__proto__=e),o.prototype=Object.create(e&&e.prototype),o.prototype.constructor=o,o.prototype.shouldComponentUpdate=function(t){return!0!==t.static||(t.url!==this.props.url||t.onChange!==this.props.onChange)},o.prototype.canRoute=function(n){var e=t(this.props.children);return this.getMatchingChildren(e,n,!1).length>0},o.prototype.routeTo=function(t){this.setState({url:t});var n=this.canRoute(t);return this.updating||this.forceUpdate(),n},o.prototype.componentWillMount=function(){m.push(this),this.updating=!0},o.prototype.componentDidMount=function(){var t=this;d&&(this.unlisten=d.listen((function(n){t.routeTo(""+(n.pathname||"")+(n.search||""))}))),this.updating=!1},o.prototype.componentWillUnmount=function(){"function"==typeof this.unlisten&&this.unlisten(),m.splice(m.indexOf(this),1)},o.prototype.componentWillUpdate=function(){this.updating=!0},o.prototype.componentDidUpdate=function(){this.updating=!1},o.prototype.getMatchingChildren=function(t,e,o){return t.filter(l).sort(c).map((function(t){var r=function(t,n,e){var o,r=/(?:\?([^#]*))?(#.*)?$/,i=t.match(r),a={};if(i&&i[1])for(var p=i[1].split("&"),s=0;s<p.length;s++){var c=p[s].split("=");a[decodeURIComponent(c[0])]=decodeURIComponent(c.slice(1).join("="))}t=f(t.replace(r,"")),n=f(n||"");for(var l=Math.max(t.length,n.length),h=0;h<l;h++)if(n[h]&&":"===n[h].charAt(0)){var d=n[h].replace(/(^:|[+*?]+$)/g,""),m=(n[h].match(/[+*?]+$/)||u)[0]||"",g=~m.indexOf("+"),y=~m.indexOf("*"),v=t[h]||"";if(!v&&!y&&(m.indexOf("?")<0||g)){o=!1;break}if(a[d]=decodeURIComponent(v),g||y){a[d]=t.slice(h).map(decodeURIComponent).join("/");break}}else if(n[h]!==t[h]){o=!1;break}return(!0===e.default||!1!==o)&&a}(e,t.props.path,t.props);if(r){if(!1!==o){var i={url:e,matches:r};return s(i,r),delete i.ref,delete i.key,n(t,i)}return t}})).filter(Boolean)},o.prototype.render=function(n,e){var o=n.children,r=n.onChange,i=e.url,a=this.getMatchingChildren(t(o),i,!0),p=a[0]||null,u=this.previousUrl;return i!==u&&(this.previousUrl=i,"function"==typeof r&&r({router:this,url:i,previous:u,active:a,current:p})),p},o}(e);D.subscribers=g,D.getCurrentUrl=v,D.route=b,D.Router=D,D.Route=function(t){return o(t.component,t)},D.Link=function(t){return o("a",s({onClick:x},t))};var R=i((function(t,n){var e,o;t.exports=(e=r,o=Object.assign||function(t){for(var n=1;n<arguments.length;n++){var e=arguments[n];for(var o in e)Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o])}return t},function(t){function n(){!function(t,n){if(!(t instanceof n))throw new TypeError("Cannot call a class as a function")}(this,n);var e=function(t,n){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!n||"object"!=typeof n&&"function"!=typeof n?t:n}(this,t.call(this));return e.state={componentData:null},e}return function(t,n){if("function"!=typeof n&&null!==n)throw new TypeError("Super expression must either be null or a function, not "+typeof n);t.prototype=Object.create(n&&n.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),n&&(Object.setPrototypeOf?Object.setPrototypeOf(t,n):t.__proto__=n)}(n,t),n.prototype.loadComponent=function(){var t=this;if(this.props.component)return this.setState({componentData:this.props.component});var n,e=this.props.getComponent(this.props.url,(function(n){var e=n.component;e&&t.setState({componentData:e})}),o({},this.props,this.props.matches));e&&e.then&&(n=this.props.url,e.then((function(e){n===t.props.url?t.setState({componentData:e}):t.setState({componentData:null},(function(){t.loadComponent()}))})))},n.prototype.componentWillReceiveProps=function(t){var n=this;this.props.path&&this.props.path!==t.path&&this.setState({componentData:null},(function(){n.loadComponent()}))},n.prototype.componentWillMount=function(){this.loadComponent()},n.prototype.render=function(){return this.state.componentData?e.h(this.state.componentData,this.props):this.props.loading?this.props.loading():null},n}(e.Component))}));p(o("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",marginTop:70}},o("div",{style:{display:"flex",justifyContent:"center"}},o("h3",null,"SocketIO text messaging demo")),o((function(){return o("div",{style:{width:"100%"}},"Nav",o("a",{href:"/chatroom"},"chat room"),o(D,null,o(R,{path:"/chatroom",getComponent:function(){return import("./chunk-ce847d09.js").then((function(t){return t.default}))}})))}),null)),document.getElementById("root"));
+import { a as b, b as I, c as y, d as h, e as preact_module, f as createCommonjsModule, g as commonjsGlobal, h as E } from './chunk-7f0399f9.js';
+
+var EMPTY$1 = {};
+
+function assign(obj, props) {
+	// eslint-disable-next-line guard-for-in
+	for (var i in props) {
+		obj[i] = props[i];
+	}
+	return obj;
+}
+
+function exec(url, route, opts) {
+	var reg = /(?:\?([^#]*))?(#.*)?$/,
+		c = url.match(reg),
+		matches = {},
+		ret;
+	if (c && c[1]) {
+		var p = c[1].split('&');
+		for (var i=0; i<p.length; i++) {
+			var r = p[i].split('=');
+			matches[decodeURIComponent(r[0])] = decodeURIComponent(r.slice(1).join('='));
+		}
+	}
+	url = segmentize(url.replace(reg, ''));
+	route = segmentize(route || '');
+	var max = Math.max(url.length, route.length);
+	for (var i$1=0; i$1<max; i$1++) {
+		if (route[i$1] && route[i$1].charAt(0)===':') {
+			var param = route[i$1].replace(/(^:|[+*?]+$)/g, ''),
+				flags = (route[i$1].match(/[+*?]+$/) || EMPTY$1)[0] || '',
+				plus = ~flags.indexOf('+'),
+				star = ~flags.indexOf('*'),
+				val = url[i$1] || '';
+			if (!val && !star && (flags.indexOf('?')<0 || plus)) {
+				ret = false;
+				break;
+			}
+			matches[param] = decodeURIComponent(val);
+			if (plus || star) {
+				matches[param] = url.slice(i$1).map(decodeURIComponent).join('/');
+				break;
+			}
+		}
+		else if (route[i$1]!==url[i$1]) {
+			ret = false;
+			break;
+		}
+	}
+	if (opts.default!==true && ret===false) { return false; }
+	return matches;
+}
+
+function pathRankSort(a, b$$1) {
+	return (
+		(a.rank < b$$1.rank) ? 1 :
+			(a.rank > b$$1.rank) ? -1 :
+				(a.index - b$$1.index)
+	);
+}
+
+// filter out VNodes without attributes (which are unrankeable), and add `index`/`rank` properties to be used in sorting.
+function prepareVNodeForRanking(vnode, index) {
+	vnode.index = index;
+	vnode.rank = rankChild(vnode);
+	return vnode.props;
+}
+
+function segmentize(url) {
+	return url.replace(/(^\/+|\/+$)/g, '').split('/');
+}
+
+function rankSegment(segment) {
+	return segment.charAt(0)==':' ? (1 + '*+?'.indexOf(segment.charAt(segment.length-1))) || 4 : 5;
+}
+
+function rank(path) {
+	return segmentize(path).map(rankSegment).join('');
+}
+
+function rankChild(vnode) {
+	return vnode.props.default ? 0 : rank(vnode.props.path);
+}
+
+var customHistory = null;
+
+var ROUTERS = [];
+
+var subscribers = [];
+
+var EMPTY = {};
+
+function setUrl(url, type) {
+	if ( type === void 0 ) type='push';
+
+	if (customHistory && customHistory[type]) {
+		customHistory[type](url);
+	}
+	else if (typeof history!=='undefined' && history[type+'State']) {
+		history[type+'State'](null, null, url);
+	}
+}
+
+
+function getCurrentUrl() {
+	var url;
+	if (customHistory && customHistory.location) {
+		url = customHistory.location;
+	}
+	else if (customHistory && customHistory.getCurrentLocation) {
+		url = customHistory.getCurrentLocation();
+	}
+	else {
+		url = typeof location!=='undefined' ? location : EMPTY;
+	}
+	return ("" + (url.pathname || '') + (url.search || ''));
+}
+
+
+
+function route(url, replace) {
+	if ( replace === void 0 ) replace=false;
+
+	if (typeof url!=='string' && url.url) {
+		replace = url.replace;
+		url = url.url;
+	}
+
+	// only push URL into history if we can handle it
+	if (canRoute(url)) {
+		setUrl(url, replace ? 'replace' : 'push');
+	}
+
+	return routeTo(url);
+}
+
+
+/** Check if the given URL can be handled by any router instances. */
+function canRoute(url) {
+	for (var i=ROUTERS.length; i--; ) {
+		if (ROUTERS[i].canRoute(url)) { return true; }
+	}
+	return false;
+}
+
+
+/** Tell all router instances to handle the given URL.  */
+function routeTo(url) {
+	var didRoute = false;
+	for (var i=0; i<ROUTERS.length; i++) {
+		if (ROUTERS[i].routeTo(url)===true) {
+			didRoute = true;
+		}
+	}
+	for (var i$1=subscribers.length; i$1--; ) {
+		subscribers[i$1](url);
+	}
+	return didRoute;
+}
+
+
+function routeFromLink(node) {
+	// only valid elements
+	if (!node || !node.getAttribute) { return; }
+
+	var href = node.getAttribute('href'),
+		target = node.getAttribute('target');
+
+	// ignore links with targets and non-path URLs
+	if (!href || !href.match(/^\//g) || (target && !target.match(/^_?self$/i))) { return; }
+
+	// attempt to route, if no match simply cede control to browser
+	return route(href);
+}
+
+
+function handleLinkClick(e) {
+	if (e.button==0) {
+		routeFromLink(e.currentTarget || e.target || this);
+		return prevent(e);
+	}
+}
+
+
+function prevent(e) {
+	if (e) {
+		if (e.stopImmediatePropagation) { e.stopImmediatePropagation(); }
+		if (e.stopPropagation) { e.stopPropagation(); }
+		e.preventDefault();
+	}
+	return false;
+}
+
+
+function delegateLinkHandler(e) {
+	// ignore events the browser takes care of already:
+	if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || e.button!==0) { return; }
+
+	var t = e.target;
+	do {
+		if (String(t.nodeName).toUpperCase()==='A' && t.getAttribute('href')) {
+			if (t.hasAttribute('native')) { return; }
+			// if link is handled by the router, prevent browser defaults
+			if (routeFromLink(t)) {
+				return prevent(e);
+			}
+		}
+	} while ((t=t.parentNode));
+}
+
+
+var eventListenersInitialized = false;
+
+function initEventListeners() {
+	if (eventListenersInitialized) { return; }
+
+	if (typeof addEventListener==='function') {
+		if (!customHistory) {
+			addEventListener('popstate', function () {
+				routeTo(getCurrentUrl());
+			});
+		}
+		addEventListener('click', delegateLinkHandler);
+	}
+	eventListenersInitialized = true;
+}
+
+
+var Router = (function (Component$$1) {
+	function Router(props) {
+		Component$$1.call(this, props);
+		if (props.history) {
+			customHistory = props.history;
+		}
+
+		this.state = {
+			url: props.url || getCurrentUrl()
+		};
+
+		initEventListeners();
+	}
+
+	if ( Component$$1 ) Router.__proto__ = Component$$1;
+	Router.prototype = Object.create( Component$$1 && Component$$1.prototype );
+	Router.prototype.constructor = Router;
+
+	Router.prototype.shouldComponentUpdate = function shouldComponentUpdate (props) {
+		if (props.static!==true) { return true; }
+		return props.url!==this.props.url || props.onChange!==this.props.onChange;
+	};
+
+	/** Check if the given URL can be matched against any children */
+	Router.prototype.canRoute = function canRoute (url) {
+		var children = b(this.props.children);
+		return this.getMatchingChildren(children, url, false).length > 0;
+	};
+
+	/** Re-render children with a new URL to match against. */
+	Router.prototype.routeTo = function routeTo (url) {
+		this.setState({ url: url });
+
+		var didRoute = this.canRoute(url);
+
+		// trigger a manual re-route if we're not in the middle of an update:
+		if (!this.updating) { this.forceUpdate(); }
+
+		return didRoute;
+	};
+
+	Router.prototype.componentWillMount = function componentWillMount () {
+		ROUTERS.push(this);
+		this.updating = true;
+	};
+
+	Router.prototype.componentDidMount = function componentDidMount () {
+		var this$1 = this;
+
+		if (customHistory) {
+			this.unlisten = customHistory.listen(function (location) {
+				this$1.routeTo(("" + (location.pathname || '') + (location.search || '')));
+			});
+		}
+		this.updating = false;
+	};
+
+	Router.prototype.componentWillUnmount = function componentWillUnmount () {
+		if (typeof this.unlisten==='function') { this.unlisten(); }
+		ROUTERS.splice(ROUTERS.indexOf(this), 1);
+	};
+
+	Router.prototype.componentWillUpdate = function componentWillUpdate () {
+		this.updating = true;
+	};
+
+	Router.prototype.componentDidUpdate = function componentDidUpdate () {
+		this.updating = false;
+	};
+
+	Router.prototype.getMatchingChildren = function getMatchingChildren (children, url, invoke) {
+		return children
+			.filter(prepareVNodeForRanking)
+			.sort(pathRankSort)
+			.map( function (vnode) {
+				var matches = exec(url, vnode.props.path, vnode.props);
+				if (matches) {
+					if (invoke !== false) {
+						var newProps = { url: url, matches: matches };
+						assign(newProps, matches);
+						delete newProps.ref;
+						delete newProps.key;
+						return I(vnode, newProps);
+					}
+					return vnode;
+				}
+			}).filter(Boolean);
+	};
+
+	Router.prototype.render = function render (ref, ref$1) {
+		var children = ref.children;
+		var onChange = ref.onChange;
+		var url = ref$1.url;
+
+		var active = this.getMatchingChildren(b(children), url, true);
+
+		var current = active[0] || null;
+
+		var previous = this.previousUrl;
+		if (url!==previous) {
+			this.previousUrl = url;
+			if (typeof onChange==='function') {
+				onChange({
+					router: this,
+					url: url,
+					previous: previous,
+					active: active,
+					current: current
+				});
+			}
+		}
+
+		return current;
+	};
+
+	return Router;
+}(y));
+
+var Link = function (props) { return (
+	h('a', assign({ onClick: handleLinkClick }, props))
+); };
+
+var Route = function (props) { return h(props.component, props); };
+
+Router.subscribers = subscribers;
+Router.getCurrentUrl = getCurrentUrl;
+Router.route = route;
+Router.Router = Router;
+Router.Route = Route;
+Router.Link = Link;
+//# sourceMappingURL=preact-router.es.js.map
+
+var dist = createCommonjsModule(function (module, exports) {
+(function (global, factory) {
+	module.exports = factory(preact_module);
+}(commonjsGlobal, (function (preact) {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AsyncRoute = function (_Component) {
+	_inherits(AsyncRoute, _Component);
+
+	function AsyncRoute() {
+		_classCallCheck(this, AsyncRoute);
+
+		var _this = _possibleConstructorReturn(this, _Component.call(this));
+
+		_this.state = {
+			componentData: null
+		};
+		return _this;
+	}
+
+	AsyncRoute.prototype.loadComponent = function loadComponent() {
+		var _this2 = this;
+
+		if (this.props.component) {
+			return this.setState({
+				componentData: this.props.component
+			});
+		}
+		var componentData = this.props.getComponent(this.props.url, function (_ref) {
+			var component = _ref.component;
+
+			// Named param for making callback future proof
+			if (component) {
+				_this2.setState({
+					componentData: component
+				});
+			}
+		}, _extends({}, this.props, this.props.matches));
+
+		// In case returned value was a promise
+		if (componentData && componentData.then) {
+			// IIFE to check if a later ending promise was creating a race condition
+			// Check test case for more info
+			(function (url) {
+				componentData.then(function (component) {
+					if (url !== _this2.props.url) {
+						_this2.setState({ componentData: null }, function () {
+							_this2.loadComponent();
+						});
+						return;
+					}
+					_this2.setState({
+						componentData: component
+					});
+				});
+			})(this.props.url);
+		}
+	};
+
+	AsyncRoute.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+		var _this3 = this;
+
+		if (this.props.path && this.props.path !== nextProps.path) {
+			this.setState({
+				componentData: null
+			}, function () {
+				_this3.loadComponent();
+			});
+		}
+	};
+
+	AsyncRoute.prototype.componentWillMount = function componentWillMount() {
+		this.loadComponent();
+	};
+
+	AsyncRoute.prototype.render = function render() {
+		if (this.state.componentData) {
+			return preact.h(this.state.componentData, this.props);
+		} else if (this.props.loading) {
+			var loadingComponent = this.props.loading();
+			return loadingComponent;
+		}
+		return null;
+	};
+
+	return AsyncRoute;
+}(preact.Component);
+
+return AsyncRoute;
+
+})));
+//# sourceMappingURL=index.js.map
+});
+
+var Nav = function Nav() {
+  return h("div", {
+    style: {
+      width: "100%"
+    }
+  }, "Nav", h("a", {
+    href: "/chatroom"
+  }, "chat room"), h(Router, null, h(dist, {
+    path: "/chatroom",
+    getComponent: function getComponent() {
+      return import('./chunk-efe16782.js').then(function (module) {
+        return module["default"];
+      });
+    }
+  })));
+};
+
+E(h("div", {
+  style: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: 70
+  }
+}, h("div", {
+  style: {
+    display: "flex",
+    justifyContent: "center"
+  }
+}, h("h3", null, "SocketIO text messaging demo")), h(Nav, null)), document.getElementById('root'));

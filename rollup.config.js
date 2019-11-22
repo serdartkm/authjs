@@ -69,8 +69,8 @@ const appPlugin = [
     ],
   }),
   globals(),
-  terser({ sourcemap: false }),
-  zip(),
+ // terser({ sourcemap: false }),
+ // zip(),
 ];
 
 const globalNames = {

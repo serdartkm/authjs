@@ -3,8 +3,12 @@ import { loadFromStorage, saveToLocalStorage } from './LocStorage'
 
 
 class RTCChatLog extends Component {
-  state = { messages: [], errors: [] };
+  
 
+  constructor(props){
+    super (props)
+    this.state ={ messages: [], errors: [] };
+  }
 
   componentDidMount(){
     const {name}= this.props
