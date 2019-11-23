@@ -1,4 +1,4 @@
-import { f as createCommonjsModule, g as commonjsGlobal, c as y, i as n, d as h } from './chunk-7f0399f9.js';
+import { f as createCommonjsModule, g as commonjsGlobal, c as y, i as n, d as h } from './chunk-10a91b1b.js';
 
 var runtime_1 = createCommonjsModule(function (module) {
 /**
@@ -10225,7 +10225,7 @@ function _slicedToArray(arr, i) {
 
 var slicedToArray = _slicedToArray;
 
-var t,u,r,i$1=[],o=n.__r,f=n.diffed,c=n.__c,e=n.unmount;function a(t){n.__h&&n.__h(u);var r=u.__H||(u.__H={t:[],u:[]});return t>=r.t.length&&r.t.push({}),r.t[t]}function v(n$$1){return m$2(x,n$$1)}function m$2(n$$1,r,i){var o=a(t++);return o.__c||(o.__c=u,o.i=[i?i(r):x(void 0,r),function(t){var u=n$$1(o.i[0],t);o.i[0]!==u&&(o.i[0]=u,o.__c.setState({}));}]),o.i}function p(n$$1,r){var i=a(t++);q(i.o,r)&&(i.i=n$$1,i.o=r,u.__H.u.push(i));}function F(){i$1.some(function(n$$1){n$$1.__P&&(n$$1.__H.u.forEach(_),n$$1.__H.u.forEach(g),n$$1.__H.u=[]);}),i$1=[];}function _(n$$1){n$$1.m&&n$$1.m();}function g(n$$1){var t=n$$1.i();"function"==typeof t&&(n$$1.m=t);}function q(n$$1,t){return !n$$1||t.some(function(t,u){return t!==n$$1[u]})}function x(n$$1,t){return "function"==typeof t?t(n$$1):t}n.__r=function(n$$1){o&&o(n$$1),t=0,(u=n$$1.__c).__H&&(u.__H.u.forEach(_),u.__H.u.forEach(g),u.__H.u=[]);},n.diffed=function(t){f&&f(t);var u=t.__c;if(u){var o=u.__H;o&&o.u.length&&(1!==i$1.push(u)&&r===n.requestAnimationFrame||((r=n.requestAnimationFrame)||function(n$$1){var t,u=function(){clearTimeout(r),cancelAnimationFrame(t),setTimeout(n$$1);},r=setTimeout(u,100);"undefined"!=typeof window&&(t=requestAnimationFrame(u));})(F));}},n.__c=function(n$$1,t){t.some(function(n$$1){n$$1.__h.forEach(_),n$$1.__h=n$$1.__h.filter(function(n$$1){return !n$$1.i||g(n$$1)});}),c&&c(n$$1,t);},n.unmount=function(n$$1){e&&e(n$$1);var t=n$$1.__c;if(t){var u=t.__H;u&&u.t.forEach(function(n$$1){return n$$1.m&&n$$1.m()});}};//# sourceMappingURL=hooks.module.js.map
+var t,u,r,i$1=[],o=n.__r,f=n.diffed,c=n.__c,e=n.unmount;function a(t){n.__h&&n.__h(u);var r=u.__H||(u.__H={t:[],u:[]});return t>=r.t.length&&r.t.push({}),r.t[t]}function v(n$$1){return m$2(x,n$$1)}function m$2(n$$1,r,i){var o=a(t++);return o.__c||(o.__c=u,o.i=[i?i(r):x(void 0,r),function(t){var u=n$$1(o.i[0],t);o.i[0]!==u&&(o.i[0]=u,o.__c.setState({}));}]),o.i}function p(n$$1,r){var i=a(t++);q(i.o,r)&&(i.i=n$$1,i.o=r,u.__H.u.push(i));}function F(){i$1.some(function(n$$1){n$$1.__P&&(n$$1.__H.u.forEach(_),n$$1.__H.u.forEach(g),n$$1.__H.u=[]);}),i$1=[];}function _(n$$1){n$$1.m&&n$$1.m();}function g(n$$1){var t=n$$1.i();"function"==typeof t&&(n$$1.m=t);}function q(n$$1,t){return !n$$1||t.some(function(t,u){return t!==n$$1[u]})}function x(n$$1,t){return "function"==typeof t?t(n$$1):t}n.__r=function(n$$1){o&&o(n$$1),t=0,(u=n$$1.__c).__H&&(u.__H.u.forEach(_),u.__H.u.forEach(g),u.__H.u=[]);},n.diffed=function(t){f&&f(t);var u=t.__c;if(u){var o=u.__H;o&&o.u.length&&(1!==i$1.push(u)&&r===n.requestAnimationFrame||((r=n.requestAnimationFrame)||function(n$$1){var t,u=function(){clearTimeout(r),cancelAnimationFrame(t),setTimeout(n$$1);},r=setTimeout(u,100);"undefined"!=typeof window&&(t=requestAnimationFrame(u));})(F));}},n.__c=function(n$$1,t){t.some(function(n$$1){n$$1.__h.forEach(_),n$$1.__h=n$$1.__h.filter(function(n$$1){return !n$$1.i||g(n$$1)});}),c&&c(n$$1,t);},n.unmount=function(n$$1){e&&e(n$$1);var t=n$$1.__c;if(t){var u=t.__H;u&&u.t.forEach(function(n$$1){return n$$1.m&&n$$1.m()});}};
 
 var useSocket = function useSocket(_ref) {
   var socket = _ref.socket,
@@ -10440,152 +10440,162 @@ var MessageObjectMappter = function MessageObjectMappter(props) {
   return h("div", null, dateSpace && h(DateLinebreak, props), h(MessageAligner, props, order === 'F' ? h(FirstMessage, props) : h(SubsequentMessage, props)));
 };
 
-var MessageSorter = function MessageSorter(_ref) {
-  var _ref$messages = _ref.messages,
-      messages = _ref$messages === void 0 ? [] : _ref$messages,
-      children = _ref.children;
-  var messagesSorted = messages.sort(function (a, b) {
-    return a.datetime - b.datetime;
-  });
-  return children({
-    messages: messagesSorted
-  });
+var useMessageSorter = function useMessageSorter(messages) {
+  var _useState = v(messages),
+      _useState2 = slicedToArray(_useState, 2),
+      sortedMessages = _useState2[0],
+      setSortedMessages = _useState2[1];
+
+  p(function () {
+    setSortedMessages(messages.sort(function (a, b) {
+      return a.datetime - b.datetime;
+    }));
+  }, [messages]);
+  return {
+    sortedMessages: sortedMessages
+  };
 };
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var MessageMapper = function MessageMapper(_ref) {
-  var messages = _ref.messages,
-      children = _ref.children,
-      _ref$localSide = _ref.localSide,
-      localSide = _ref$localSide === void 0 ? "right" : _ref$localSide,
-      _ref$remoteSide = _ref.remoteSide,
-      remoteSide = _ref$remoteSide === void 0 ? "left" : _ref$remoteSide;
+var useMessagesMapper = function useMessagesMapper(messages) {
+  var _useState = v(messages),
+      _useState2 = slicedToArray(_useState, 2),
+      mappedMessages = _useState2[0],
+      setMappedMessages = _useState2[1];
 
-  if (messages.length === 0) {
-    return children({
-      messages: []
-    });
-  }
+  var mapMessages = function mapMessages() {
+    var localSide = "right";
+    var remoteSide = "left";
 
-  var email = messages[0].from;
-  var lastDatetime = messages[0].datetime;
-  var messagesMapped = messages.map(function (m, i) {
-    if (i === 0 && m.local) {
-      return _objectSpread$1({}, m, {
-        side: localSide,
-        order: "F",
-        dateSpace: true
-      });
+    if (messages.length === 0) {
+      return [];
     }
 
-    if (i === 0 && !m.local) {
-      var letter = m.from[0] !== undefined ? m.from[0] : "";
-      return _objectSpread$1({}, m, {
-        side: remoteSide,
-        order: "F",
-        dateSpace: true,
-        letter: letter
-      });
-    }
-
-    if (i > 0 && email === m.from && m.local) {
-      if (new Date(lastDatetime).getDate() !== new Date(m.datetime).getDate()) {
-        email = m.from;
-        lastDatetime = m.datetime;
+    var email = messages[0].from;
+    var lastDatetime = messages[0].datetime;
+    return messages.map(function (m, i) {
+      if (i === 0 && m.local) {
         return _objectSpread$1({}, m, {
           side: localSide,
-          order: "S",
+          order: "F",
           dateSpace: true
         });
       }
 
-      email = m.from;
-      lastDatetime = m.datetime;
-      return _objectSpread$1({}, m, {
-        side: localSide,
-        order: "S",
-        dateSpace: false
-      });
-    }
+      if (i === 0 && !m.local) {
+        var letter = m.from[0] !== undefined ? m.from[0] : "";
+        return _objectSpread$1({}, m, {
+          side: remoteSide,
+          order: "F",
+          dateSpace: true,
+          letter: letter
+        });
+      }
 
-    if (i > 0 && email !== m.from && m.local) {
-      if (new Date(lastDatetime).getDate() === new Date(m.datetime).getDate()) {
+      if (i > 0 && email === m.from && m.local) {
+        if (new Date(lastDatetime).getDate() !== new Date(m.datetime).getDate()) {
+          email = m.from;
+          lastDatetime = m.datetime;
+          return _objectSpread$1({}, m, {
+            side: localSide,
+            order: "S",
+            dateSpace: true
+          });
+        }
+
+        email = m.from;
+        lastDatetime = m.datetime;
+        return _objectSpread$1({}, m, {
+          side: localSide,
+          order: "S",
+          dateSpace: false
+        });
+      }
+
+      if (i > 0 && email !== m.from && m.local) {
+        if (new Date(lastDatetime).getDate() === new Date(m.datetime).getDate()) {
+          email = m.from;
+          lastDatetime = m.datetime;
+          return _objectSpread$1({}, m, {
+            side: localSide,
+            order: "F",
+            dateSpace: false
+          });
+        }
+
         email = m.from;
         lastDatetime = m.datetime;
         return _objectSpread$1({}, m, {
           side: localSide,
           order: "F",
-          dateSpace: false
+          dateSpace: true
         });
       }
 
-      email = m.from;
-      lastDatetime = m.datetime;
-      return _objectSpread$1({}, m, {
-        side: localSide,
-        order: "F",
-        dateSpace: true
-      });
-    }
+      if (i > 0 && email === m.from && !m.local) {
+        if (new Date(lastDatetime).getDate() !== new Date(m.datetime).getDate()) {
+          var _letter2 = m.from[0] !== undefined ? m.from[0] : "";
 
-    if (i > 0 && email === m.from && !m.local) {
-      if (new Date(lastDatetime).getDate() !== new Date(m.datetime).getDate()) {
-        var _letter2 = m.from[0] !== undefined ? m.from[0] : "";
+          lastDatetime = m.datetime;
+          return _objectSpread$1({}, m, {
+            side: remoteSide,
+            order: "S",
+            dateSpace: true,
+            letter: _letter2
+          });
+        }
+
+        var _letter = m.from[0] !== undefined ? m.from[0] : "";
 
         lastDatetime = m.datetime;
         return _objectSpread$1({}, m, {
           side: remoteSide,
           order: "S",
-          dateSpace: true,
-          letter: _letter2
+          dateSpace: false,
+          letter: _letter
         });
       }
 
-      var _letter = m.from[0] !== undefined ? m.from[0] : "";
+      if (i > 0 && email !== m.from && !m.local) {
+        if (new Date(lastDatetime).getDate() === new Date(m.datetime).getDate()) {
+          var _letter4 = m.from[0] !== undefined ? m.from[0] : "";
 
-      lastDatetime = m.datetime;
-      return _objectSpread$1({}, m, {
-        side: remoteSide,
-        order: "S",
-        dateSpace: false,
-        letter: _letter
-      });
-    }
+          email = m.from;
+          lastDatetime = m.datetime;
+          return _objectSpread$1({}, m, {
+            side: remoteSide,
+            order: "F",
+            dateSpace: false,
+            letter: _letter4
+          });
+        }
 
-    if (i > 0 && email !== m.from && !m.local) {
-      if (new Date(lastDatetime).getDate() === new Date(m.datetime).getDate()) {
-        var _letter4 = m.from[0] !== undefined ? m.from[0] : "";
+        var _letter3 = m.from[0] !== undefined ? m.from[0] : "";
 
         email = m.from;
         lastDatetime = m.datetime;
         return _objectSpread$1({}, m, {
           side: remoteSide,
           order: "F",
-          dateSpace: false,
-          letter: _letter4
+          dateSpace: true,
+          letter: _letter3
         });
       }
 
-      var _letter3 = m.from[0] !== undefined ? m.from[0] : "";
+      return null;
+    });
+  };
 
-      email = m.from;
-      lastDatetime = m.datetime;
-      return _objectSpread$1({}, m, {
-        side: remoteSide,
-        order: "F",
-        dateSpace: true,
-        letter: _letter3
-      });
-    }
-
-    return null;
-  });
-  return children({
-    messages: messagesMapped
-  });
+  p(function () {
+    console.log("message mappted");
+    setMappedMessages(mapMessages());
+  }, [messages]);
+  return {
+    mappedMessages: mappedMessages
+  };
 };
 
 var _extends_1 = createCommonjsModule(function (module) {
@@ -10614,12 +10624,14 @@ var MessageCollectionView = function MessageCollectionView(_ref) {
   var messages = _ref.messages;
 
   if (messages.length > 0) {
-    return messages.map(function (message, key) {
+    return messages.map(function (message, i) {
       return h(MessageObjectMappter, _extends_1({}, message, {
-        key: key
+        key: i
       }));
     });
-  } else return null;
+  }
+
+  return null;
 };
 
 function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -10646,7 +10658,8 @@ function (_Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       this.gotoBottom();
-    }
+    } // eslint-disable-next-line class-methods-use-this
+
   }, {
     key: "gotoBottom",
     value: function gotoBottom() {
@@ -10680,19 +10693,16 @@ function (_Component) {
 
 var MessagesDisplayer = function MessagesDisplayer(_ref) {
   var messages = _ref.messages;
-  return h(MessageSorter, {
-    messages: messages
-  }, function (_ref2) {
-    var messages = _ref2.messages;
-    return h(MessageMapper, {
-      messages: messages
-    }, function (_ref3) {
-      var messages = _ref3.messages;
-      return h(MessageViewScroller, null, h(MessageCollectionView, {
-        messages: messages
-      }));
-    });
-  });
+
+  var _useMessageSorter = useMessageSorter(messages),
+      sortedMessages = _useMessageSorter.sortedMessages;
+
+  var _useMessageMapper = useMessagesMapper(sortedMessages),
+      mappedMessages = _useMessageMapper.mappedMessages;
+
+  return h(MessageViewScroller, null, h(MessageCollectionView, {
+    messages: mappedMessages
+  }));
 };
 
 var MessageEditorDisplayer = function MessageEditorDisplayer(_ref) {

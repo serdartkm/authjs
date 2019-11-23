@@ -2,30 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "/Users/personalcomputer/rtcjs"
-		},
-		{
-			"path": "/Users/personalcomputer/mern-auth"
-		},
-		{
-			"path": "/Users/personalcomputer/expressapp"
-		},
-		{
-			"path": "/Users/personalcomputer/biosoft-monorepo"
-		},
-		{
-			"path": "/Users/personalcomputer/minimal-devices"
-		},
-		{
-			"path": "/Users/personalcomputer/portfolio"
-		},
-		{
-			"path": "/Users/personalcomputer/samples"
-		},
-		{
-			"path": "/Users/personalcomputer/rtc-demo"
 		}
 	],
 	"settings": {

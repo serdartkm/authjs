@@ -1,11 +1,7 @@
+/* eslint-disable react/no-deprecated */
 import {h, Component} from 'preact'
-const style = {
 
-  backgroundColor: "#edeff2",
-  overflow: "auto",
-  width: "100%",
-  height: "100%"
-};
+
 
 class MessageViewScroller extends Component {
 
@@ -17,8 +13,9 @@ class MessageViewScroller extends Component {
     this.gotoBottom()
   }
 
-  gotoBottom() {
-    var elements = document.getElementsByName("msgViewScroller");
+  // eslint-disable-next-line class-methods-use-this
+  gotoBottom () {
+    const elements = document.getElementsByName("msgViewScroller");
     elements.forEach((e) => {
       e.scrollTop = e.scrollHeight - e.clientHeight;
     })
@@ -27,12 +24,20 @@ class MessageViewScroller extends Component {
 
   render() {
     const { children, style } = this.props
-    return (<div name="msgViewScroller" style={{
+    return (
+<div
+  name="msgViewScroller"
+  style={{
       backgroundColor: "#edeff2",
       overflow: "auto",
       width: "100%",
       height: "100%", ...style
-    }}>{children}</div>)
+    }}
+>
+{children}
+
+</div>
+)
   }
 
 }

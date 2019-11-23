@@ -1,4 +1,4 @@
-import { a as b, b as I, c as y, d as h, e as preact_module, f as createCommonjsModule, g as commonjsGlobal, h as E } from './chunk-7f0399f9.js';
+import { a as b, b as I, c as y, d as h, e as preact_module, f as createCommonjsModule, g as commonjsGlobal, h as E } from './chunk-10a91b1b.js';
 
 var EMPTY$1 = {};
 
@@ -356,7 +356,6 @@ Router.route = route;
 Router.Router = Router;
 Router.Route = Route;
 Router.Link = Link;
-//# sourceMappingURL=preact-router.es.js.map
 
 var dist = createCommonjsModule(function (module, exports) {
 (function (global, factory) {
@@ -455,7 +454,7 @@ var AsyncRoute = function (_Component) {
 return AsyncRoute;
 
 })));
-//# sourceMappingURL=index.js.map
+
 });
 
 var Nav = function Nav() {
@@ -468,7 +467,7 @@ var Nav = function Nav() {
   }, "chat room"), h(Router, null, h(dist, {
     path: "/chatroom",
     getComponent: function getComponent() {
-      return import('./chunk-10b5acf3.js').then(function (module) {
+      return import('./chunk-c6d478ea.js').then(function (module) {
         return module["default"];
       });
     }
