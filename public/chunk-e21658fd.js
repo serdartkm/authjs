@@ -10225,7 +10225,7 @@ function _slicedToArray(arr, i) {
 
 var slicedToArray = _slicedToArray;
 
-var t,u,r,i$1=[],o=n.__r,f=n.diffed,c=n.__c,e=n.unmount;function a(t){n.__h&&n.__h(u);var r=u.__H||(u.__H={t:[],u:[]});return t>=r.t.length&&r.t.push({}),r.t[t]}function v(n$$1){return m$2(x,n$$1)}function m$2(n$$1,r,i){var o=a(t++);return o.__c||(o.__c=u,o.i=[i?i(r):x(void 0,r),function(t){var u=n$$1(o.i[0],t);o.i[0]!==u&&(o.i[0]=u,o.__c.setState({}));}]),o.i}function p(n$$1,r){var i=a(t++);q(i.o,r)&&(i.i=n$$1,i.o=r,u.__H.u.push(i));}function F(){i$1.some(function(n$$1){n$$1.__P&&(n$$1.__H.u.forEach(_),n$$1.__H.u.forEach(g),n$$1.__H.u=[]);}),i$1=[];}function _(n$$1){n$$1.m&&n$$1.m();}function g(n$$1){var t=n$$1.i();"function"==typeof t&&(n$$1.m=t);}function q(n$$1,t){return !n$$1||t.some(function(t,u){return t!==n$$1[u]})}function x(n$$1,t){return "function"==typeof t?t(n$$1):t}n.__r=function(n$$1){o&&o(n$$1),t=0,(u=n$$1.__c).__H&&(u.__H.u.forEach(_),u.__H.u.forEach(g),u.__H.u=[]);},n.diffed=function(t){f&&f(t);var u=t.__c;if(u){var o=u.__H;o&&o.u.length&&(1!==i$1.push(u)&&r===n.requestAnimationFrame||((r=n.requestAnimationFrame)||function(n$$1){var t,u=function(){clearTimeout(r),cancelAnimationFrame(t),setTimeout(n$$1);},r=setTimeout(u,100);"undefined"!=typeof window&&(t=requestAnimationFrame(u));})(F));}},n.__c=function(n$$1,t){t.some(function(n$$1){n$$1.__h.forEach(_),n$$1.__h=n$$1.__h.filter(function(n$$1){return !n$$1.i||g(n$$1)});}),c&&c(n$$1,t);},n.unmount=function(n$$1){e&&e(n$$1);var t=n$$1.__c;if(t){var u=t.__H;u&&u.t.forEach(function(n$$1){return n$$1.m&&n$$1.m()});}};
+var t,u,r,i$1=[],o=n.__r,f=n.diffed,c=n.__c,e=n.unmount;function a(t){n.__h&&n.__h(u);var r=u.__H||(u.__H={t:[],u:[]});return t>=r.t.length&&r.t.push({}),r.t[t]}function v(n$$1){return m$2(x,n$$1)}function m$2(n$$1,r,i){var o=a(t++);return o.__c||(o.__c=u,o.i=[i?i(r):x(void 0,r),function(t){var u=n$$1(o.i[0],t);o.i[0]!==u&&(o.i[0]=u,o.__c.setState({}));}]),o.i}function p(n$$1,r){var i=a(t++);q(i.o,r)&&(i.i=n$$1,i.o=r,u.__H.u.push(i));}function F(){i$1.some(function(n$$1){n$$1.__P&&(n$$1.__H.u.forEach(_),n$$1.__H.u.forEach(g),n$$1.__H.u=[]);}),i$1=[];}function _(n$$1){n$$1.m&&n$$1.m();}function g(n$$1){var t=n$$1.i();"function"==typeof t&&(n$$1.m=t);}function q(n$$1,t){return !n$$1||t.some(function(t,u){return t!==n$$1[u]})}function x(n$$1,t){return "function"==typeof t?t(n$$1):t}n.__r=function(n$$1){o&&o(n$$1),t=0,(u=n$$1.__c).__H&&(u.__H.u.forEach(_),u.__H.u.forEach(g),u.__H.u=[]);},n.diffed=function(t){f&&f(t);var u=t.__c;if(u){var o=u.__H;o&&o.u.length&&(1!==i$1.push(u)&&r===n.requestAnimationFrame||((r=n.requestAnimationFrame)||function(n$$1){var t,u=function(){clearTimeout(r),cancelAnimationFrame(t),setTimeout(n$$1);},r=setTimeout(u,100);"undefined"!=typeof window&&(t=requestAnimationFrame(u));})(F));}},n.__c=function(n$$1,t){t.some(function(n$$1){n$$1.__h.forEach(_),n$$1.__h=n$$1.__h.filter(function(n$$1){return !n$$1.i||g(n$$1)});}),c&&c(n$$1,t);},n.unmount=function(n$$1){e&&e(n$$1);var t=n$$1.__c;if(t){var u=t.__H;u&&u.t.forEach(function(n$$1){return n$$1.m&&n$$1.m()});}};//# sourceMappingURL=hooks.module.js.map
 
 var useSocket = function useSocket(_ref) {
   var socket = _ref.socket,
@@ -10739,176 +10739,63 @@ var MessageEditorDisplayer = function MessageEditorDisplayer(_ref) {
   })))));
 };
 
-var saveToLocalStorage = function saveToLocalStorage(_ref) {
-  var message = _ref.message,
-      key = _ref.key,
-      onSave = _ref.onSave;
-  var messages = JSON.parse(localStorage.getItem(key)) === null ? [message] : [].concat(toConsumableArray(JSON.parse(localStorage.getItem(key))), [message]);
-  localStorage.setItem(key, JSON.stringify(messages));
-  onSave({
-    message: message
-  });
-};
+var useChatLog = function useChatLog(_ref) {
+  var name = _ref.name,
+      messageRecieved = _ref.messageRecieved,
+      messageSent = _ref.messageSent;
 
-var loadFromStorage = function loadFromStorage(_ref2) {
-  var key = _ref2.key,
-      onLoad = _ref2.onLoad;
-  var messages = JSON.parse(localStorage.getItem(key)) === null ? [] : toConsumableArray(JSON.parse(localStorage.getItem(key)));
-  onLoad({
-    messages: messages
-  });
-};
+  var _useState = v([]),
+      _useState2 = slicedToArray(_useState, 2),
+      messages = _useState2[0],
+      setMessages = _useState2[1];
 
-var RTCChatLog =
-/*#__PURE__*/
-function (_Component) {
-  inherits(RTCChatLog, _Component);
+  var saveToLocalStorage = function saveToLocalStorage(m, key) {
+    var persistedMessages = JSON.parse(localStorage.getItem(key)) === null ? [m] : [].concat(toConsumableArray(JSON.parse(localStorage.getItem(key))), [m]);
+    localStorage.setItem(key, JSON.stringify(persistedMessages));
+    return persistedMessages;
+  }; // componentDidMount
 
-  function RTCChatLog(props) {
-    var _this;
 
-    classCallCheck(this, RTCChatLog);
+  p(function () {
+    setMessages(JSON.parse(localStorage.getItem(name)) === null ? [] : toConsumableArray(JSON.parse(localStorage.getItem(name))));
+  }, []); // saveRemoteMessage
 
-    _this = possibleConstructorReturn(this, getPrototypeOf(RTCChatLog).call(this, props));
-
-    defineProperty(assertThisInitialized(_this), "_loadFromStorage", function (_ref) {
-      var key = _ref.key;
-      loadFromStorage({
-        key: key,
-        onLoad: function onLoad(_ref2) {
-          var messages = _ref2.messages;
-
-          _this.setState({
-            messages: messages
-          });
-        }
-      });
-    });
-
-    defineProperty(assertThisInitialized(_this), "_saveLocalMessage", function (_ref3) {
-      var key = _ref3.key,
-          messageSent = _ref3.messageSent;
-      var local = true;
-      var from = key;
-      var datetime = messageSent.datetime,
-          message = messageSent.message,
-          reciever = messageSent.reciever;
-      saveToLocalStorage({
-        message: {
-          message: message,
-          from: from,
-          local: local,
-          datetime: datetime,
-          to: reciever
-        },
-        key: key,
-        onSave: function onSave(_ref4) {
-          var message = _ref4.message;
-
-          //  console.log("message local",message)
-          _this.setState(function (prevState) {
-            return {
-              messages: [].concat(toConsumableArray(prevState.messages), [message]),
-              message: ""
-            };
-          });
-        }
-      });
-    });
-
-    defineProperty(assertThisInitialized(_this), "_saveRemoteMessage", function (_ref5) {
-      var key = _ref5.key,
-          messageRecieved = _ref5.messageRecieved;
-      //
+  p(function () {
+    if (messageRecieved !== null) {
       var datetime = messageRecieved.datetime,
           message = messageRecieved.message,
           sender = messageRecieved.sender;
       var local = false;
-      saveToLocalStorage({
-        message: {
-          message: message,
-          from: sender,
-          local: local,
-          datetime: datetime,
-          to: key
-        },
-        key: key,
-        onSave: function onSave(_ref6) {
-          var message = _ref6.message;
-
-          // console.log("message remote.....",message)
-          _this.setState(function (prevState) {
-            return {
-              messages: [].concat(toConsumableArray(prevState.messages), [message])
-            };
-          });
-        }
-      });
-    });
-
-    _this.state = {
-      messages: [],
-      errors: []
-    };
-    return _this;
-  }
-
-  createClass(RTCChatLog, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var name = this.props.name;
-
-      this._loadFromStorage({
-        key: name
-      });
+      setMessages(saveToLocalStorage({
+        message: message,
+        from: sender,
+        local: local,
+        datetime: datetime,
+        to: name
+      }, name));
     }
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(newProps) {
-      var _this$props = this.props,
-          messageSent = _this$props.messageSent,
-          messageRecieved = _this$props.messageRecieved,
-          name = _this$props.name;
+  }, [messageRecieved]); // saveLocalMessage
 
-      if (messageSent === null && newProps.messageSent) {
-        //console.log("-----------------------------------messageSent===null",newProps.messageSent)
-        this._saveLocalMessage({
-          key: name,
-          messageSent: newProps.messageSent
-        });
-      } else if (messageRecieved === null && newProps.messageRecieved) {
-        //  console.log("-----------------------------------messageRecieved ===null",newProps.messageRecieved)
-        this._saveRemoteMessage({
-          key: name,
-          messageRecieved: newProps.messageRecieved
-        });
-      } else if (messageSent !== null && newProps.messageSent.datetime > messageSent.datetime) {
-        // console.log("-----------------------------------messageSent !==null",newProps.messageSent)
-        this._saveLocalMessage({
-          key: name,
-          messageSent: newProps.messageSent
-        });
-      } else if (messageRecieved !== null && newProps.messageRecieved.datetime > messageRecieved.datetime) {
-        //  console.log("-----------------------------------messageRecieved !==null",newProps.messageRecieved)
-        this._saveRemoteMessage({
-          key: name,
-          messageRecieved: newProps.messageRecieved
-        });
-      }
+  p(function () {
+    if (messageSent !== null) {
+      var datetime = messageSent.datetime,
+          message = messageSent.message,
+          reciever = messageSent.reciever;
+      var local = true;
+      var from = name;
+      setMessages(saveToLocalStorage({
+        message: message,
+        from: from,
+        local: local,
+        datetime: datetime,
+        to: reciever
+      }, name));
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var messages = this.state.messages;
-      var children = this.props.children;
-      return children({
-        messages: messages
-      });
-    }
-  }]);
-
-  return RTCChatLog;
-}(y);
+  }, [messageSent]);
+  return {
+    messages: messages
+  };
+};
 
 var MessagingModuleSocket = function MessagingModuleSocket(_ref) {
   var name = _ref.name,
@@ -10929,27 +10816,27 @@ var MessagingModuleSocket = function MessagingModuleSocket(_ref) {
       sendMessage = _useSocket.sendMessage,
       handleMessageChange = _useSocket.handleMessageChange;
 
-  return h(RTCChatLog, {
+  var _useChatLog = useChatLog({
+    name: name,
     messageRecieved: messageRecieved,
-    messageSent: messageSent,
-    name: name
-  }, function (_ref2) {
-    var messages = _ref2.messages;
-    return h("div", {
-      style: {
-        height: height,
-        width: "100%"
-      }
-    }, h(MessagesDisplayer, {
-      messages: messages
-    }), h(MessageEditorDisplayer, {
-      disabled: socket === null,
-      id: id,
-      message: messageText,
-      sendMessage: sendMessage,
-      onMessageChange: handleMessageChange
-    }));
-  });
+    messageSent: messageSent
+  }),
+      messages = _useChatLog.messages;
+
+  return h("div", {
+    style: {
+      height: height,
+      width: "100%"
+    }
+  }, h(MessagesDisplayer, {
+    messages: messages
+  }), h(MessageEditorDisplayer, {
+    disabled: socket === null,
+    id: id,
+    message: messageText,
+    sendMessage: sendMessage,
+    onMessageChange: handleMessageChange
+  }));
 };
 
 var ChatUser = function ChatUser(_ref) {
