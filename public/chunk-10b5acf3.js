@@ -10676,6 +10676,8 @@ function (_Component) {
   return MessageViewScroller;
 }(y);
 
+/* eslint-disable no-shadow */
+
 var MessagesDisplayer = function MessagesDisplayer(_ref) {
   var messages = _ref.messages;
   return h(MessageSorter, {

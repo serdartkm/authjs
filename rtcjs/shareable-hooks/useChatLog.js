@@ -1,4 +1,4 @@
-import {h, Component} from 'preact'
+import {h} from 'preact'
 import {useState,useEffect} from 'preact/hooks'
 
 const useChatLog =({name,messageRecieved,messageSent})=>{
@@ -24,7 +24,6 @@ const useChatLog =({name,messageRecieved,messageSent})=>{
   setMessages(saveToLocalStorage( { message, from: sender, local, datetime, to: name },name))
    }
   
-      
  },[messageRecieved])
 
   // saveLocalMessage
@@ -39,7 +38,6 @@ const useChatLog =({name,messageRecieved,messageSent})=>{
     }
 },[messageSent])
  
-
   return {messages}
 }
 
