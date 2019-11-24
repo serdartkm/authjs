@@ -5,4 +5,4 @@ node_modules/
 yarn-error.log
 .lock
 .env
-coverage/ 
+coverage
