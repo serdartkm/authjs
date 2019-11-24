@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test:watch":"jest --watch --coverage ",
-    "test": "jest",
+    "test": "jest --coverage ",
     "test:debug": "node  --inspect node_modules/.bin/jest /Users/personalcomputer/authjs/tests/integration/socketio-server-client.test.js   --runInBand",
     "start": "cross-env NODE_ENV=production node index.js",
     "start:portfolio": "concurrently \"cross-env NODE_ENV=development appName=portfolio rollup --config -w\" \"cross-env NODE_ENV=development appName=portfolio nodemon --exec babel-node index.js \"",
