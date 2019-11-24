@@ -17,15 +17,12 @@
     "authjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node authjs/rtcdemo/server/index.js \" ",
     "xaf:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node xaf/demo/server/index.js \" ",
     "mongodbjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node mongodbjs/demo/server/index.js \" ",
-    "install": "",
     "server": " nodemon --exec babel-node demo/server/index.js",
     "dev": "babel demo/server -d demo/dist && node demo/dist/index.js",
-    "cypress": "cypress open",
     "lerna:version": "lerna version patch && yarn run lerna:postversion",
     "lerna:postversion": "chan release  $(node -p -e \"require('./lerna.json').version\") --git-branch master && git add CHANGELOG.md && git commit -m \"Update: changelog\" && git push --follow-tags",
     "lerna:publish": "lerna publish patch from-npm --yes --npm-client",
-    "build-storybook": "build-storybook",
-    "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
