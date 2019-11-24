@@ -93,7 +93,7 @@ export default (commandLineArgs) => ({
     globals: globalNames,
   },
   {
-    dir: 'public',
+    dir: 'build',
     format: 'es',
     name: 'AppOne',
     sourcemap: false,
