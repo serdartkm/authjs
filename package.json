@@ -10,7 +10,7 @@
     "codelab:websocket": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths websocket  -w\" \" nodemon --exec babel-node codelab/websocket/server/index.js \" ",
     "codelab:socketio": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths socketio  -w\" \" nodemon --exec babel-node codelab/socketio/server/index.js \" ",
     "debug:nodemon": "nodemon --exec babel-node --nolazy --inspect-brk tests/integration/socket.mock.debug.js",
-    "build": "cross-env NODE_ENV=production rollup  --config",
+    "build": "cross-env rollup  --config",
     "storybook": "start-storybook -p 6006",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "rtcjs:start": "concurrently \"cross-env NODE_ENV=development rollup -c rollup.config.dev.js -w\" \" nodemon --exec babel-node rtcjs/rtc-demo/index.js \" ",
