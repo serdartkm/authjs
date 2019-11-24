@@ -17,7 +17,7 @@ class SocketComponent extends Component {
             })
             const data = await response.json()
          
-            this.socket = io(REACT_APP_SOCKET_URL, { query: `token=${data.token}` });
+            this.socket = io(REACT_APP_SOCKET_URL+'/socket:3001', { query: `token=${data.token}` });
 
             this.socket.on('error', (error) => {
                 console.log("error from socket", error)
