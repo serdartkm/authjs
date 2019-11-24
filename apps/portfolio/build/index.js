@@ -467,7 +467,7 @@ var Nav = function Nav() {
   }, "chat room"), h(Router, null, h(dist, {
     path: "/chatroom",
     getComponent: function getComponent() {
-      return import('./chunk-c6d478ea.js').then(function (module) {
+      return import('./chunk-a2ce1aff.js').then(function (module) {
         return module["default"];
       });
     }

@@ -1,7 +1,7 @@
 import {h} from 'preact'
 import useSocket from './useSocket'
-import MessagesDisplayer from '../messages-displayer'
-import MessageEditorDisplayer from '../message-editor-displayer'
+import MessagesDisplayer from '../shareable-ui/messages-displayer'
+import MessageEditorDisplayer from '../shareable-ui/message-editor-displayer'
 import useChatLog from '../shareable-hooks/useChatLog'
 
 const MessagingModuleSocket = ({ name, targetName, socket, id=0 ,height="96vh"}) => {

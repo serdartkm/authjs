@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageEditorDisplayer component Should render correctly 1`] = `
+"function MessageEditorDisplayer(
+/* istanbul ignore next */
+_ref) {
+  /* istanbul ignore next */
+  var onMessageChange = _ref.onMessageChange,
+      message = _ref.message,
+      sendMessage = _ref.sendMessage,
+      _ref$id = _ref.id,
+      id = _ref$id === void 0 ? (cov_2o6b6zjvee.b[0][0]++, 0) : _ref$id,
+      disabled = _ref.disabled;
+
+  /* istanbul ignore next */
+  cov_2o6b6zjvee.f[0]++;
+  cov_2o6b6zjvee.s[1]++;
+  return (
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;div&quot;,
+    /* istanbul ignore next */
+    {
+      style: {
+        display: 'flex'
+      }
+    },
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;input&quot;,
+    /* istanbul ignore next */
+    {
+      style: {
+        flex: 1
+      },
+
+      /* istanbul ignore next */
+      &quot;data-testid&quot;:
+      /* istanbul ignore next */
+      &quot;message&quot;.concat(id),
+      onInput: onMessageChange,
+      value: message,
+      name: &quot;message&quot;,
+      type: &quot;text&quot;,
+      placeholder: &quot;Enter message text&quot;
+    }),
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;div&quot;,
+    /* istanbul ignore next */
+    {
+      style: {
+        display: 'flex'
+      }
+    },
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;button&quot;,
+    /* istanbul ignore next */
+    {
+      /* istanbul ignore next */
+      &quot;data-testid&quot;:
+      /* istanbul ignore next */
+      &quot;sendMessage&quot;.concat(id),
+      disabled:
+      /* istanbul ignore next */
+      (cov_2o6b6zjvee.b[1][0]++, message === '') ||
+      /* istanbul ignore next */
+      (cov_2o6b6zjvee.b[1][1]++, disabled),
+      style: {
+        marginLeft: 2,
+        width: '100%'
+      },
+      onClick: sendMessage
+    },
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;svg&quot;,
+    /* istanbul ignore next */
+    {
+      xmlns: &quot;http://www.w3.org/2000/svg&quot;,
+      width: &quot;24&quot;,
+      height: &quot;24&quot;,
+      viewBox: &quot;0 0 24 24&quot;
+    },
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;path&quot;,
+    /* istanbul ignore next */
+    {
+      d: &quot;M2.01 21L23 12 2.01 3 2 10l15 2-15 2z&quot;
+    }),
+    /* istanbul ignore next */
+    (0, _preact.h)(
+    /* istanbul ignore next */
+    &quot;path&quot;,
+    /* istanbul ignore next */
+    {
+      d: &quot;M0 0h24v24H0z&quot;,
+      fill: &quot;none&quot;
+    })))))
+  );
+}"
+`;
