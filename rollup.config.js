@@ -11,7 +11,7 @@ import del from 'rollup-plugin-delete';
 import htmlTemplate from 'rollup-plugin-generate-html-template';
 
 const appPlugin = [
-  (process.env.NODE_ENV!=='production' && del({ targets: [`apps/${process.env.appName}/build`, 'public'] })),
+  del({ targets: [`apps/${process.env.appName}/build`, 'public'] }),
   htmlTemplate({ template: 'apps/html-template/index.html', target: `apps/${process.env.appName}/build/index.html`, attrs: ['type="module"'] }),
   replace({
     ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
