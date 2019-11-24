@@ -69,7 +69,7 @@ const appPlugin = [
     ],
   }),
   globals(),
-  (process.env.NODE_ENV==='production' && terser({ sourcemap: false })),
+  (process.env.NODE_ENV==='production' && terser({ sourcemap: true })),
   (process.env.NODE_ENV==='production' && zip())
 ];
 
