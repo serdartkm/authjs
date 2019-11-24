@@ -1,6 +1,7 @@
 
 const appRoot = require('app-root-path');
-const errorTransformer =require(appRoot+'/Utils/error-handlers/error-transformer.js')
+
+const errorTransformer =require(`${appRoot}/Utils/error-handlers/error-transformer.js`)
 const io = require('socket.io')
 const messaging = require('./messaging/messaging')
 const authentication = require('./authentication/authentication')
