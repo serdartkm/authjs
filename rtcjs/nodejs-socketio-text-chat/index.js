@@ -10,7 +10,7 @@ const room = require('./room/room')
 module.exports = function nodeJsSocketioTextChat(server, secret = "secret") {
   try {
 
-    const socketServer = io(server)
+    const socketServer = server ===null ? io().listen(3001) :io(server)
     socketServer.use(authentication(secret))
     socketServer.use(room)
     socketServer.use(messaging)
