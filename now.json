@@ -5,5 +5,5 @@
             "REACT_APP_SOCKET_URL":"https://portfolio45.now.sh/api"
         }
     },
-    "routes":[{"src":"/socket.io/(.*)","dest":"/socket.io"}]
+    "routes":[{"src":"/socket.io/(.*)","dest":"/socket.io.js"}]
 }
