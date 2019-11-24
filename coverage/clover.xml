@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1574583528023" clover="3.2.0">
-  <project timestamp="1574583528023" name="All files">
+<coverage generated="1574583687964" clover="3.2.0">
+  <project timestamp="1574583687964" name="All files">
     <metrics statements="213" coveredstatements="160" conditionals="87" coveredconditionals="34" methods="45" coveredmethods="39" elements="345" coveredelements="233" complexity="0" loc="213" ncloc="213" packages="12" files="24" classes="24"/>
     <package name="Utils.error-handlers">
       <metrics statements="15" coveredstatements="2" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
