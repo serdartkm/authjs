@@ -2,7 +2,7 @@
     "build":{
         "env":{
             "appName":"portfolio",
-            "REACT_APP_SOCKET_URL":"https://portfolio45.now.sh/api"
+            "REACT_APP_SOCKET_URL":"https://portfolio44.herokuapp.com"
         }
     },
     "routes":[{"src":"/socket.io:3001/(.*)","dest":"/socket.io.js"}]
