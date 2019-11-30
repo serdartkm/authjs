@@ -52,6 +52,7 @@
     "preact-async-route": "^2.2.1",
     "preact-compat": "^3.19.0",
     "preact-router": "^3.1.0",
+    "preact-material-components": "^1.6.1",
     "rimraf": "2.6.3",
     "uniqid": "^5.0.3",
     "winston": "^3.2.1"
@@ -120,7 +121,7 @@
     "mockdate": "^2.0.5",
     "nodemon": "1.18.11",
     "path": "^0.12.7",
-    "preact-material-components": "^1.6.1",
+
     "preact-render-to-string": "^5.1.1",
     "prettier": "^1.19.1",
     "prop-types": "15.7.2",

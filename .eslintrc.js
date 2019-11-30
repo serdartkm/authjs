@@ -32,5 +32,6 @@ module.exports = {
         "react/jsx-filename-extension":"off",
         "react/react-in-jsx-scope":"off",
         "react/jsx-indent":"off",
-        "react/button-has-type":"off"
+        "react/button-has-type":"off",
+        "react/jsx-one-expression-per-line":"off"
     }}

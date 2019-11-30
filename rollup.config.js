@@ -41,6 +41,7 @@ const appPlugin = [
     ],
   }),
   postcss({
+    extensions:['.css'],
     plugins: [],
   }),
   resolve({
@@ -69,8 +70,8 @@ const appPlugin = [
     ],
   }),
   globals(),
-  (process.env.NODE_ENV==='production' && terser({ sourcemap: true })),
-  (process.env.NODE_ENV==='production' && zip())
+  (process.env.NODE_ENV!=='production' && terser({ sourcemap: true })),
+  (process.env.NODE_ENV!=='production' && zip())
 ];
 
 const globalNames = {
@@ -86,7 +87,9 @@ export default (commandLineArgs) => ({
   input: `apps/${process.env.appName}/index.js`,
   external: externals,
   output: [{
+
     dir: `apps/${process.env.appName}/build`,
+    chunkfileNames:[`contents/chunki-[hash].js`],
     format: 'es',
     name: 'AppOne',
     sourcemap: 'inline',

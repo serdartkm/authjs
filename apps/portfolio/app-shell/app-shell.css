@@ -1,0 +1,31 @@
+.fixed{
+    position: fixed;
+    top:0
+}
+
+.card-dynamic {
+    height: 100vh;
+ 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.content{
+    background-color: burlywood;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.top-bar{
+    margin-left: 0;
+    width: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
