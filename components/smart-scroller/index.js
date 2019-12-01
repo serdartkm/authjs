@@ -3,7 +3,7 @@
 import { h } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 // eslint-disable-next-line import/no-named-as-default
-import DynamicCard from "./DynamicCard";
+import DynamicCard from "../dynamic-card";
 import ScrollerArrows from "./ScrollerArrows";
 
 function SmartScroller({ dynamicItems }) {
@@ -13,6 +13,8 @@ function SmartScroller({ dynamicItems }) {
   const [scrolling, setScrolling] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(undefined);
   const [scrolledNode, setScrolledNode] = useState(0);
+  const [disabledUpScroll, setDisabledUpScroll] = useState(false);
+  const [disabledDownScroll, setDisabledDownScroll] = useState(false);
   const scroller = useRef(null);
   function setViewCandidate(id) {
     setScrolling(true);
@@ -45,11 +47,6 @@ function SmartScroller({ dynamicItems }) {
         scroller.current.scrollHeight
       ).toFixed(0)
     );
-
-    // console.log("offsetHeight",scroller.current.offsetHeight)
-    // console.log("scrollHeight",scroller.current.scrollHeight)
-    // console.log("offsetTop",scroller.current.offsetTop)
-    // console.log("offsetTop",scroller)
   }
 
   useEffect(() => {
@@ -61,15 +58,30 @@ function SmartScroller({ dynamicItems }) {
   }, []);
   useEffect(() => {
     setViewCandidate(scrolledNode);
+    if (dynamicItems.length - 1 === scrolledNode) {
+      setDisabledDownScroll(true);
+    } else {
+      setDisabledDownScroll(false);
+    }
+
+    if (scrolledNode === 0) {
+      setDisabledUpScroll(true);
+    } else {
+      setDisabledUpScroll(false);
+    }
   }, [scrolledNode]);
   return [
     <div style={{ height: 67 }} />,
-    <ScrollerArrows scrollHandler={scrollHandler} />,
-    <div ref={scroller} style={{ height: "90vh", overflow: "scroll" }}>
+    <ScrollerArrows
+      disabledUpScroll={disabledUpScroll}
+      disabledDownScroll={disabledDownScroll}
+      scrollHandler={scrollHandler}
+    />,
+    <div ref={scroller} style={{ height: "90vh", overflow: "scroll", display:"flex", flexDirection:"column" }}>
       {dynamicItems.map((d, i) => {
         return (
           <DynamicCard
-            path={d.path}
+            load={d.load}
             scrollDirection={scrollDirection}
             scrolling={scrolling}
             setViewCandidate={setViewCandidate}

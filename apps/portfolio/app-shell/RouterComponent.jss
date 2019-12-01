@@ -7,7 +7,7 @@ const RouterComponent = () => {
     <Router>
       <AsyncRoute
         path="/chatroom"
-        getComponent={() => import("../ChatRoom").then(module => module.default)}
+        getComponent={() => import("../modules/socketIOMessagingDemo/ChatRoom").then(module => module.default)}
       />
 
     {/* <AsyncRoute

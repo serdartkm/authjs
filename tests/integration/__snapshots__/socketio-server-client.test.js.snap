@@ -3,11 +3,10 @@
 exports[`messaging-module-socket and nodejs-socketio-text-chat positive testing client sever connection established with required params 1`] = `
 <div>
   <div
-    style="height: 96vh; width: 100%;"
+    style="transform: rotate(180deg); height: 85%; background-color: rgb(237, 239, 242); overflow: scroll;"
   >
     <div
-      name="msgViewScroller"
-      style="background-color: rgb(237, 239, 242); overflow: auto; width: 100%; height: 100%;"
+      style="transform: rotate(180deg);"
     >
       <div>
         <div
@@ -60,40 +59,40 @@ exports[`messaging-module-socket and nodejs-socketio-text-chat positive testing 
         </div>
       </div>
     </div>
+  </div>
+  <div
+    style="display: flex;"
+  >
+    <input
+      data-testid="message1"
+      name="message"
+      placeholder="Enter message text"
+      style="flex: 1;"
+      type="text"
+    />
     <div
       style="display: flex;"
     >
-      <input
-        data-testid="message1"
-        name="message"
-        placeholder="Enter message text"
-        style="flex: 1;"
-        type="text"
-      />
-      <div
-        style="display: flex;"
+      <button
+        data-testid="sendMessage1"
+        disabled=""
+        style="margin-left: 2px; width: 100%;"
       >
-        <button
-          data-testid="sendMessage1"
-          disabled=""
-          style="margin-left: 2px; width: 100%;"
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
-            />
-            <path
-              d="M0 0h24v24H0z"
-              fill="none"
-            />
-          </svg>
-        </button>
-      </div>
+          <path
+            d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
     </div>
   </div>
 </div>

@@ -1,18 +1,13 @@
+import { h, render } from "preact";
+import AppShell from "../../components/app-shell";
 
-
-import { h, render } from 'preact';
-import AppShell from './app-shell/AppShell'
-
-    render(
-        <div>
-            
-            <AppShell />
-       
-        </div>
-        ,
-        document.getElementById('root')
-    );
-
-
-
-
+render(
+  <div>
+    <AppShell
+      drawerItems={[{ route: "/modules", title: "Modules" }]}
+      appTitle="Portfolio"
+      routes={[{ path: "/modules", load: () => import("./modules/index") }]}
+    />
+  </div>,
+  document.getElementById("root")
+);

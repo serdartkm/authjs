@@ -3,7 +3,7 @@ import io from "socket.io-client"
 
 
 class SocketComponent extends Component {
-    state = { token: null, socket: null,connected:false }
+    state={ token: null, socket: null,connected:false }
     async  componentWillMount() {
 
         const { username } = this.props

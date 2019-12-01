@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useRef, useEffect, useState } from "preact/hooks";
 import Card from "preact-material-components/Card";
 import "preact-material-components/Card/style.css";
-import "./app-shell.css";
+import "./style.css";
 
 const DynamicCard = ({
   scrollDirection,
@@ -12,16 +12,16 @@ const DynamicCard = ({
   order,
   setViewCandidate,
   scrolling,
-  path='./contents/ContentOne'
+  load
 }) => {
   const card = useRef(null);
   const [offsetHeight, setOffsetHeight] = useState(0);
   const [offsetPercent, setOffsetPercent] = useState(0);
   const [entryLevel, setEntryLevel] = useState(0);
   const [centered, setCentered] = useState(false);
-  const [LLComponent,setLLComponent]=useState(null);
-  const [error,setError]=useState(null);
-  const [loading,setLoading]=useState(false);
+  const [LLComponent, setLLComponent] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setOffsetHeight(card.current.offsetHeight);
   }, []);
@@ -55,43 +55,31 @@ const DynamicCard = ({
     }
   }, [entryLevel, offsetPercent]);
 
-  useEffect(async()=>{
-   
-    if(centered && path !==''){
-      console.log("path",path)
-      setLoading(true);
-      try{
-      const module = await import(`../contents/${path}`)
-
-      setLLComponent(module.default)
-      setLoading(false)
-      } catch(error){
-        console.log('error',error)
-        setError(error)
-        setLoading(false)
+  useEffect(() => {
+    async function loadDynamicData() {
+      try {
+        if (centered) {
+          const loadedmodule = await load();
+          setLLComponent(loadedmodule.default);
+          setLoading(false);
+        }
+      } catch (e) {
+        setError(e);
+        setLoading(false);
       }
-
     }
-  },[centered,path])
+    loadDynamicData();
+  }, [centered, load]);
 
   return (
-    <div
-      style={{ height: "100%", borderBottom: "5px solid white" }}
-      ref={card}
-      id={order}
-    >
+    <div ref={card} id={order}>
       <Card className="card-dynamic">
-        <div className="content">
-          <div>
-            {(loading && LLComponent !==null) ? <div>Loading</div>:LLComponent}
-          </div>
-        </div>
+        {loading && LLComponent !== null ? <div>Loading</div> : LLComponent}
       </Card>
     </div>
   );
 };
 export default DynamicCard;
-
 
 /*
       <Card className="card-dynamic">
