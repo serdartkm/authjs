@@ -3,7 +3,7 @@
 exports[`messaging-module-socket and nodejs-socketio-text-chat positive testing client sever connection established with required params 1`] = `
 <div>
   <div
-    style="transform: rotate(180deg); height: 85%; background-color: rgb(237, 239, 242); overflow: scroll;"
+    style="transform: rotate(180deg); height: 85%; background-color: rgb(237, 239, 242); overflow: scroll; width: 100%;"
   >
     <div
       style="transform: rotate(180deg);"
