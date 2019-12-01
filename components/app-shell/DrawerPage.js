@@ -22,7 +22,7 @@ const DrawerPage =({open,setToggle, items})=> {
           </Drawer.DrawerHeader>
           <Drawer.DrawerContent>
             {items && items.map((item,i)=>{
-              console.log('item',item)
+             
               return(
                 <Drawer.DrawerItem href={`${item.route}`}>
                 {item.title}

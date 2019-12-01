@@ -1,0 +1,8 @@
+.chip{
+    background-color: darkgrey;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+   line-height: 20px;
+}

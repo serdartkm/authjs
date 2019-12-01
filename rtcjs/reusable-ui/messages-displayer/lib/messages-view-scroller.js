@@ -9,7 +9,8 @@ const MessageViewScroller = ({ children }) => {
         transform: "rotate(180deg)",
         height: "85%",
         backgroundColor: "#edeff2",
-        overflow: "scroll"
+        overflow: "scroll",
+        width:"100%"
       }}
     >
       <div style={{ transform: "rotate(180deg)" }}>

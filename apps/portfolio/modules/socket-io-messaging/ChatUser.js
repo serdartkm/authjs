@@ -1,16 +1,30 @@
 import { h } from "preact";
-import MessageModuleSocket from "../../../../rtcjs/messaging-module-socket";
+import MessageDisplayer from "../../../../rtcjs/reusable-ui/messages-displayer";
 
-const ChatUser = ({ name, targetName,socket }) => {
+
+const ChatUser = ({
+  name,
+  targetName,
+  socket,
+  errors,
+  messages,
+  handleMessageChange,
+  messageText,
+  sendMessage
+}) => {
   return (
-
-          <MessageModuleSocket
-            name={name}
-            targetName={targetName}
-            socket={socket}
-          />
-        );
   
+
+            <MessageDisplayer
+              errors={errors}
+              socket={socket}
+              messages={messages}
+              handleMessageChange={handleMessageChange}
+              messageText={messageText}
+              sendMessage={sendMessage}
+            />
+
+  );
 };
 
 export default ChatUser;

@@ -36,7 +36,7 @@ const useSocketComp = username => {
         setConnected(true);
       });
       socket.on("message",()=>{
-        
+
       })
     }
   }, [socket]);
