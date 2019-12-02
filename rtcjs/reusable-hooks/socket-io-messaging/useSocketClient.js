@@ -1,11 +1,11 @@
 import {h} from 'preact'
-import useSocketMessaging from "../../../../rtcjs/reusable-hooks/useSocketMessaging";
-import useChatLog from "../../../../rtcjs/reusable-hooks/useChatLog";
-
-const useMsgClient =({ name, targetName, socket })=>{
-
+import useSocketMessaging from "./useSocketMessaging";
+import useChatLog from "../useChatLog";
+import useSocket from "./useSocket"
+const useSocketClient =({ name, targetName,route,serverUrl })=>{
+   const {socket, connected, socketError} = useSocket({username:name,route,serverUrl})
     const {
-        connected,
+ 
         errors,
         handleMessageChange,
         messageRecieved,
@@ -18,4 +18,4 @@ const useMsgClient =({ name, targetName, socket })=>{
       return {messages,messageRecieved,messageSent,messageText,sendMessage,errors,connected,handleMessageChange}
 }
 
-export default useMsgClient
+export default useSocketClient

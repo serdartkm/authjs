@@ -14,6 +14,7 @@ module.exports = {
         "it":true,
         "expect":true,
         "afterEach":false,
+        "REACT_APP_SOCKET_URL":false
    
     },
     "parserOptions": {

@@ -19,9 +19,9 @@ describe("messaging-module-socket and nodejs-socketio-text-chat", () => {
      
       const marioClient = io(tokenMario, "one");
       const dragosClient = io(tokenDragos, "two");
-
+     // route='/anonymous',serverUrl
       marioClient.onconnection((client) => {
-        const { getAllByText,container } = render(<MessagingModuleSocket id={1} name="mario" targetName="dragos" socket={client} />)
+        const { getAllByText,container } = render(<MessagingModuleSocket route='/anonymous' serverUrl="http://localhost:3000"  id={1} name="mario" targetName="dragos" />)
         client.on("text_message", (data) => {
           setTimeout(() => {
             expect(getAllByText("Hello My Dear")[0]).toBeVisible()
@@ -33,7 +33,7 @@ describe("messaging-module-socket and nodejs-socketio-text-chat", () => {
       })
       
       dragosClient.onconnection(async (client) => {
-        const { getByTestId, getAllByText } = render(<MessagingModuleSocket id={2} name="dragos" targetName="mario" socket={client} />)
+        const { getByTestId, getAllByText } = render(<MessagingModuleSocket route='/anonymous' serverUrl="http://localhost:3000" id={2} name="dragos" targetName="mario" />)
         fireEvent.input(getByTestId(`message${2}`), { target: { value: "Hello My Dear" } })
         fireEvent.click(getByTestId(`sendMessage${2}`))
         await expect(getAllByText("Hello My Dear")[1]).toBeVisible()
