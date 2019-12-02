@@ -6,19 +6,13 @@ import "preact-material-components/Tabs/style.css";
 
 import ChatUser from "./ChatUser";
 import "./style.css";
-import useSocketComp from "./useSocketComp";
-import useMsgClient from "./useMsgClient";
+import useSocketClient from "socket-io-messaging/useSocketClient";
 
 const ChatRoom = () => {
   const [msgForMario, setMsgForMario] = useState(0);
   const [msgForDragos, setMsgForDragos] = useState(0);
   const [selectedItem, setSelectedItem] = useState(0);
-  const { socket: marioSocket,  } = useSocketComp(
-    "mario"
-  );
-  const { socket: dragosSocket } = useSocketComp(
-    "dragos"
-  );
+
   const {
     messages: msgMario,
     messageRecieved: msgRecMario,
@@ -27,11 +21,14 @@ const ChatRoom = () => {
     sendMessage: sendMsgMario,
     errors: errMario,
     connected: cntMario,
-    handleMessageChange: hdleMessageChageMario
-  } = useMsgClient({
+    handleMessageChange: hdleMessageChageMario,
+    socket: marioSocket
+  } = useSocketClient({
     name: "mario",
     targetName: "dragos",
-    socket: marioSocket
+    serverUrl:REACT_APP_SOCKET_URL,
+    route:'/anonymous'
+  
   });
   const {
     messages: msgDragos,
@@ -41,11 +38,13 @@ const ChatRoom = () => {
     sendMessage: sendMsgDragos,
     errors: errDragos,
     connected: cntDragos,
-    handleMessageChange: hdleMessageChageDragos
-  } = useMsgClient({
+    handleMessageChange: hdleMessageChageDragos,
+    socket: dragosSocket
+  } = useSocketClient({
     name: "dragos",
     targetName: "mario",
-    socket: dragosSocket
+    serverUrl:REACT_APP_SOCKET_URL,
+    route:'/anonymous'
   });
 
   useEffect(() => {
@@ -66,11 +65,13 @@ const ChatRoom = () => {
   }, [selectedItem]);
   return (
     <div style={{ width: "100%", height: "100%" }}>
+      <div className="tab-bar">
+        <div>
       <TabBar>
         <TabBar.Tab active onClick={() => setSelectedItem(0)}>
           <TabBar.TabLabel>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ color: cntMario ? "green" : "orange" }}>mario</div>
+            <div style={{ display: "flex", alignItems: "center"}}>
+              <div style={{ color: cntMario ? "green" : "orange"}}>mario</div>
               <div
                 className="chip"
                 style={{
@@ -100,6 +101,8 @@ const ChatRoom = () => {
           </TabBar.TabLabel>
         </TabBar.Tab>
       </TabBar>
+      </div>
+      </div>
       {selectedItem === 0 && (
         <ChatUser
           handleMessageChange={hdleMessageChageMario}

@@ -1,7 +1,6 @@
 import { h } from "preact";
 import MessageDisplayer from "../../../../rtcjs/reusable-ui/messages-displayer";
-
-
+import './style.css'
 const ChatUser = ({
   name,
   targetName,
@@ -13,17 +12,16 @@ const ChatUser = ({
   sendMessage
 }) => {
   return (
-  
-
-            <MessageDisplayer
-              errors={errors}
-              socket={socket}
-              messages={messages}
-              handleMessageChange={handleMessageChange}
-              messageText={messageText}
-              sendMessage={sendMessage}
-            />
-
+    <div className="root" style={{ height: "97%", width:"50%" }}>
+      <MessageDisplayer
+        errors={errors}
+        socket={socket}
+        messages={messages}
+        handleMessageChange={handleMessageChange}
+        messageText={messageText}
+        sendMessage={sendMessage}
+      />
+    </div>
   );
 };
 

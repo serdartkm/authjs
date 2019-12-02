@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import io from "socket.io-client";
 
-const useSocketComp = username => {
+const useSocket = ({username,route='/anonymous',serverUrl}) => {
   const [socket, setSocket] = useState(null);
   const [connected, setConnected] = useState(false);
   const [socketError, setSocketError] = useState(null);
@@ -10,7 +10,7 @@ const useSocketComp = username => {
   useEffect(() => {
     async function fetchToken() {
       try {
-        const response = await fetch(`/anonymous`, {
+        const response = await fetch(route, {
           method: "POST",
           body: JSON.stringify({ username }),
           headers: {
@@ -19,7 +19,7 @@ const useSocketComp = username => {
         });
         const data = await response.json();
 
-        setSocket(io(REACT_APP_SOCKET_URL, { query: `token=${data.token}` }));
+        setSocket(io(serverUrl, { query: `token=${data.token}` }));
       } catch (error) {
         setSocketError(error);
       }
@@ -43,4 +43,4 @@ const useSocketComp = username => {
   return { socket, connected, socketError };
 };
 
-export default useSocketComp;
+export default useSocket;
