@@ -1,6 +1,6 @@
 import {h} from 'preact';
 
- import MessagesDispaler, { MessageAligner,DateLinebreak,Avatar,FirstMessage,SubsequentMessage,MessageView,MessageObjectMapper,MessageCollectionView} from '../rtcjs/messages-displayer'
+ import MessagesDispaler, { MessageAligner,DateLinebreak,Avatar,FirstMessage,SubsequentMessage,MessageView,MessageObjectMapper,MessageCollectionView} from '../rtcjs/reusable-ui/messages-displayer'
 import messages from './fake-data/messages'
 
 const ChildComponent = ({ text }) => {

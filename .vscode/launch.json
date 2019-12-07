@@ -36,7 +36,7 @@
               "${workspaceRoot}/node_modules/.bin/jest",
               "--runInBand",
               "--coverage",
-              "useMessageSorter.test.js"
+              "signup.test.js"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

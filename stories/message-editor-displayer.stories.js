@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import MessageEditorDisplayer from '../rtcjs/message-editor-displayer'
+import MessageEditorDisplayer from '../rtcjs/reusable-ui/message-editor-displayer'
 
 
 export default {
