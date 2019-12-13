@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { render, fireEvent, cleanup } from "@testing-library/preact";
 
-import httpResponse from "../../../../http-response-status";
+import { signupResponse } from "../../../../http-response-status";
 import { SignUpFunction } from "../index";
 import messages from "../hooks/constraint-validation/constMessages";
 
@@ -110,9 +110,10 @@ describe("signup testing", () => {
         return new Promise((resolve, reject) =>
           resolve({
             ok: false,
-            status: httpResponse.USERNAME_TAKEN.status,
+            status: signupResponse.BadRequest.status,
+            code: signupResponse.BadRequest.USERNAME_TAKEN.code,
             json: () => {
-              return { message: httpResponse.USERNAME_TAKEN.message };
+              return { message: signupResponse.BadRequest.USERNAME_TAKEN.message };
             }
           })
         );
@@ -143,7 +144,7 @@ describe("signup testing", () => {
         expect(getByTestId(/password/i)).toHaveAttribute("helpertext", "");
         expect(getByTestId(/username/i)).toHaveAttribute(
           "helpertext",
-          httpResponse.USERNAME_TAKEN.message
+          signupResponse.BadRequest.USERNAME_TAKEN.message
         );
         done();
       }, 0);
@@ -155,9 +156,10 @@ describe("signup testing", () => {
         return new Promise((resolve, reject) =>
           resolve({
             ok: false,
-            status: httpResponse.EMAIL_TAKEN.status,
+            status: signupResponse.BadRequest.status,
+            code: signupResponse.BadRequest.EMAIL_TAKEN.code,
             json: () => {
-              return { message: httpResponse.EMAIL_TAKEN.message };
+              return { message: signupResponse.BadRequest.EMAIL_TAKEN.message };
             }
           })
         );
@@ -188,7 +190,7 @@ describe("signup testing", () => {
         expect(getByTestId(/password/i)).toHaveAttribute("helpertext", "");
         expect(getByTestId(/email/i)).toHaveAttribute(
           "helpertext",
-          httpResponse.EMAIL_TAKEN.message
+          signupResponse.BadRequest.EMAIL_TAKEN.message
         );
         done();
       }, 0);
@@ -201,9 +203,10 @@ describe("signup testing", () => {
         return new Promise((resolve, reject) =>
           resolve({
             ok: false,
-            status: httpResponse.EMAIL_USERNAME_TAKEN.status,
+            status: signupResponse.BadRequest.status,
+            code:  signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.code,
             json: () => {
-              return { message: httpResponse.EMAIL_USERNAME_TAKEN.message };
+              return { message: signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message };
             }
           })
         );
@@ -232,11 +235,11 @@ describe("signup testing", () => {
       expect(global.fetch).toHaveBeenCalledTimes(1);
       setTimeout(() => {
           // not constrain error is visible
-        expect(getByTestId(/userName/i)).toHaveAttribute("helpertext", httpResponse.EMAIL_USERNAME_TAKEN.message);
+        expect(getByTestId(/userName/i)).toHaveAttribute("helpertext", signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message);
         expect(getByTestId(/password/i)).toHaveAttribute("helpertext", "");
         expect(getByTestId(/email/i)).toHaveAttribute(
           "helpertext",
-          httpResponse.EMAIL_USERNAME_TAKEN.message
+          signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message
         );
         done();
       }, 0);

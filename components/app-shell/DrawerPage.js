@@ -13,17 +13,17 @@ const DrawerPage =({open,setToggle, items})=> {
           modal
           open={open}
           onClose={() => {
-            setToggle(false) 
+          //  setToggle(false) 
           }}
         >
           <Drawer.DrawerHeader className="mdc-theme--primary-bg">
            Portfolio
-           <input />
+           <input type="text" style={{opacity: 0}} />
           </Drawer.DrawerHeader>
           <Drawer.DrawerContent>
             {items && items.map((item,i)=>{
               return(
-                <Drawer.DrawerItem href={`${item.route}`}>
+                <Drawer.DrawerItem onClick={setToggle} href={`${item.route}`}>
                 {item.title}
                 </Drawer.DrawerItem>
               )

@@ -1,9 +1,9 @@
 import { h } from "preact";
-import SmartScroller from "../../../components/smart-scroller";
+import LazyScroller from "../../../components/lazy-scroller";
 
 const ModuleComponent = () => {
     
-  return <SmartScroller     dynamicItems={[
+  return <LazyScroller     dynamicItems={[
     { load: () => import("./socket-io-messaging/index") },
     { load: () => import("./webrtc-messaging/index") },
     { load: () => import("./webrtc-video-chat/index") }
@@ -12,14 +12,4 @@ const ModuleComponent = () => {
 
 export default ModuleComponent;
 
-// import React from 'react'
-// import TimeLine from './TimeLine'
-// import data from './data'
-// const Modules =()=>{
-//     return (<div>Modules
 
-//         <TimeLine data={data}/>
-//     </div>)
-// }
-
-// export default Modules

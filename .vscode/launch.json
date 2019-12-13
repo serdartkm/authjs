@@ -15,25 +15,33 @@
         "internalConsoleOptions": "neverOpen"
       },
     {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Launch Chrome",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/apps/portfolio"
-    },
-    {
       "type": "node",
       "request": "attach",
       "name": "Attach by Process ID",
       "processId": "${command:PickProcess}"
     },
         {
-            "name": "Debug Jest Tests",
+            "name": "Debug Jest Tests Mac",
             "type": "node",
             "request": "launch",
             "runtimeArgs": [
               "--inspect-brk",
               "${workspaceRoot}/node_modules/.bin/jest",
+              "--runInBand",
+              "--coverage",
+              "login.test.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "port": 9229
+          },
+          {
+            "name": "Debug Jest Tests Windows",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+              "--inspect-brk",
+              "${workspaceRoot}/node_modules/jest/bin/jest.js",
               "--runInBand",
               "--coverage",
               "signup.test.js"
@@ -42,7 +50,6 @@
             "internalConsoleOptions": "neverOpen",
             "port": 9229
           },
-  
         {
             "type": "node",
             "request": "launch",

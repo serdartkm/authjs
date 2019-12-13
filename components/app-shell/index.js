@@ -12,7 +12,7 @@ const AppShell = ({drawerItems,appTitle,routes}) => {
   const [toggle, setToggle] = useState(false);
 
   return [
-    <DrawerPage open={toggle} setToggle={setToggle} items={drawerItems} />,
+    <DrawerPage open={toggle} setToggle={()=>setToggle(!toggle)} items={drawerItems} />,
     <TopAppBar toggle={toggle} setToggle={setToggle} title={appTitle} />,
     <RouterComponent routes={routes} />
   ];
