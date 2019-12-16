@@ -5,7 +5,7 @@
     "test:watch": "jest --watch",
     "test": "jest",
     "test:debug": "node  --inspect node_modules/.bin/jest /Users/personalcomputer/authjs/tests/integration/socketio-server-client.test.js   --runInBand",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "startsss": "cross-env NODE_ENV=production node index.js",
     "start:portfolio": "concurrently \"cross-env NODE_ENV=development appName=portfolio rollup --config -w\" \"cross-env NODE_ENV=development appName=portfolio nodemon --exec babel-node index.js \"",
     "codelab:websocket": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths websocket  -w\" \" nodemon --exec babel-node codelab/websocket/server/index.js \" ",
     "codelab:socketio": "concurrently \"cross-env  rollup --config rollup.config.codelab.js --paths socketio  -w\" \" nodemon --exec babel-node codelab/socketio/server/index.js \" ",
