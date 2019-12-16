@@ -1,11 +1,15 @@
+/* eslint-disable import/no-unresolved */
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useContext } from "preact/hooks";
+import { SnackMessageContext } from "components/app-provider";
 import useToken from "./useToken";
 import useConstraintValidation from "./constraint-validation";
 import useFormInput from "./useFormInput";
-import useServerValidation from './useServerValidation'
+import useServerValidation from "./useServerValidation";
 
 export default function useSignUp() {
+  const snackMessageContext = useContext(SnackMessageContext);
+
   const { userName, password, email, onInput } = useFormInput({
     email: "",
     password: "",
@@ -19,9 +23,9 @@ export default function useSignUp() {
 
   const { saveToken } = useToken();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [response, setResponse] = useState(null);
-  const {serverValidation,validate} =useServerValidation(response)
+  const { serverValidation, validate } = useServerValidation(response);
+
   function signUp() {
     async function callapi() {
       if (
@@ -40,10 +44,12 @@ export default function useSignUp() {
             body: JSON.stringify({ email, userName, password })
           });
           await setResponse(res);
-          
+
           setLoading(false);
         } catch (e) {
-          setError(e);
+          const err = e;
+
+          snackMessageContext.setMessage(err.message);
         }
       }
     }
@@ -51,22 +57,17 @@ export default function useSignUp() {
   }
 
   useEffect(() => {
-
-         validate(response)
-       if (response !==null && response !==undefined && response.status.ok) {
-          saveToken(response.json().token);
-        }
-      
-
+    validate(response);
+    if (response !== null && response !== undefined && response.status.ok) {
+      saveToken(response.json().token);
+    }
   }, [response]);
-
-
 
   return {
     signUp,
     onInput,
     loading,
-    error,
+
     password,
     email,
     userName,

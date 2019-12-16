@@ -1,6 +1,8 @@
+/* eslint-disable import/no-unresolved */
 import {h} from 'preact'
 import {useState} from 'preact/hooks'
 import { signupResponse } from "http-response-status";
+
 
 export default function useServerValidation (){
 
@@ -12,13 +14,14 @@ export default function useServerValidation (){
 
    function validate (response){
     if (response !== null && response !== undefined) {
-     
+        const {message}  =response.json()
+        
                     if (response.status === signupResponse.BadRequest.status) {
                       if (response.code === signupResponse.BadRequest.USERNAME_TAKEN.code) {
                         setServerValidation(prevState => {
                           return {
                             ...prevState,
-                            userName: { valid: false, message: response.json().message }
+                            userName: { valid: false, message}
                           };
                         });
                       } else if (
@@ -27,15 +30,15 @@ export default function useServerValidation (){
                         setServerValidation(prevState => {
                           return {
                             ...prevState,
-                            email: { valid: false, message: response.json().message }
+                            email: { valid: false, message }
                           };
                         });
                       } else if (
                         response.code === signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.code
                       ) {
                         setServerValidation({
-                          email: { valid: false, message: response.json().message },
-                          userName: { valid: false, message: response.json().message }
+                          email: { valid: false, message },
+                          userName: { valid: false, message }
                         });
                   
                       }

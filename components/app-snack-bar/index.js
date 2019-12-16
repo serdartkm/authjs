@@ -8,10 +8,14 @@ export default function AppSnackBar() {
   const input = useRef(null);
   const snackBarMessageContext = useContext(SnackMessageContext);
   useEffect(() => {
-    input.current.MDComponent.show({
-      message: snackBarMessageContext.message
-    });
+
+    if( snackBarMessageContext.message !==''){
+      input.current.MDComponent.show({
+        message: snackBarMessageContext.message
+      });
+    }
+
   }, [snackBarMessageContext]);
 
-  return <Snackbar dismissesOnAction ref={input} />;
+  return <Snackbar timeout={0} data-testid="snack" dismissesOnAction ref={input} />;
 }

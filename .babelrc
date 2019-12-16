@@ -11,7 +11,8 @@
         "alias":{
           "socket-io-messaging":"./rtcjs/reusable-hooks/socket-io-messaging",
           "email-password-ui":"./authjs/email-password/front-end/email-password-ui",
-          "http-response-status":"./http-response-status"
+          "http-response-status":"./http-response-status",
+          "components":"./components"
         }
       }],
       "@babel/plugin-proposal-object-rest-spread",

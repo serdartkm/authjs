@@ -1,12 +1,14 @@
 import { h, createContext } from "preact";
-import { useState } from "preact/hooks";
+import { useState,useCallback } from "preact/hooks";
 
 export const SnackMessageContext = createContext("feedback");
 
 export default function AppProvider({ children }) {
-  const [message, setMessage] = useState('test messages');
+  const [message, setValue] = useState('');
 
-
+ const setMessage =useCallback((msg)=>{
+   setValue(msg)
+ },[])
  
   return (
     <SnackMessageContext.Provider value={{ message, setMessage }}>

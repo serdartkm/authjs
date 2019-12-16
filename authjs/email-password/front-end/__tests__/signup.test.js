@@ -1,16 +1,18 @@
+/* eslint-disable import/no-unresolved */
 import { h } from "preact";
 import { render, fireEvent, cleanup } from "@testing-library/preact";
-
+import AppSnackBar from "components/app-snack-bar";
+import AppProvider from "components/app-provider";
 import { signupResponse } from "../../../../http-response-status";
 import { SignUpFunction } from "../index";
 import messages from "../hooks/constraint-validation/constMessages";
+
 
 cleanup();
 describe("signup testing", () => {
   describe("negative testing", () => {
     it("username, email, password fields are empty", () => {
       global.fetch = jest.fn();
-      
       const { getByText, getByTestId } = render(<SignUpFunction />);
       // input values for username,email,password are empty
       expect(getByTestId(/userName/i)).toHaveValue("");
@@ -33,11 +35,10 @@ describe("signup testing", () => {
       );
       // fetch api should not be called bacause of credentials constraint errors
       expect(global.fetch).toHaveBeenCalledTimes(0);
-    
     });
 
     it("invalid email, username format", () => {
-      global.fetch = jest.fn()
+      global.fetch = jest.fn();
       const { getByText, getByTestId } = render(<SignUpFunction />);
       // input incorrect format for username,email,password
       fireEvent.input(getByTestId(/username/i), {
@@ -68,10 +69,52 @@ describe("signup testing", () => {
       );
       // fetch api call to the server did not get called because of input constraint error
       expect(global.fetch).toHaveBeenCalledTimes(0);
-     
     });
 
-    it.todo("network error");
+    it("network error", done => {
+      global.fetch = jest.fn().mockImplementationOnce(() => {
+        return new Promise((resolve, reject) =>
+          reject(new Error("promise reject"))
+        );
+      });
+
+      const { getByText, getByTestId } = render(
+        <AppProvider>
+          <div>
+            <SignUpFunction />
+            <AppSnackBar />
+          </div>
+        </AppProvider>
+      );
+      // input values for username,password, email with correct format
+      fireEvent.input(getByTestId(/username/i), {
+        target: { value: "serdar" }
+      });
+      fireEvent.input(getByTestId(/email/i), {
+        target: { value: "tkm.house.new@gmail.com" }
+      });
+
+      fireEvent.input(getByTestId(/password/i), {
+        target: { value: "pop@1332YUI_d33*&kk" }
+      });
+      // input values visible to user
+      expect(getByTestId(/username/i)).toHaveValue("serdar");
+      expect(getByTestId(/email/i)).toHaveValue("tkm.house.new@gmail.com");
+      expect(getByTestId(/password/i)).toHaveValue("pop@1332YUI_d33*&kk");
+      // click signup button
+      fireEvent.click(getByText(/signup/i));
+      // not constrain error is visible
+      expect(getByTestId(/email/i)).toHaveAttribute("helpertext", "");
+      expect(getByTestId(/password/i)).toHaveAttribute("helpertext", "");
+      expect(getByTestId(/username/i)).toHaveAttribute("helpertext", "");
+
+      setTimeout(() => {
+        expect(getByText(/promise reject/i)).toBeVisible()
+        done();
+      }, 50);
+      // fetch api is called once after positive validation
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+    });
 
     it.todo("server error");
   });
@@ -104,7 +147,7 @@ describe("signup testing", () => {
       // fetch api is called once after positive validation
       expect(global.fetch).toHaveBeenCalledTimes(1);
     });
-    
+
     it("valid username, email, password but USERNAME IS TAKEN", done => {
       global.fetch = jest.fn().mockImplementationOnce(() => {
         return new Promise((resolve, reject) =>
@@ -113,7 +156,9 @@ describe("signup testing", () => {
             status: signupResponse.BadRequest.status,
             code: signupResponse.BadRequest.USERNAME_TAKEN.code,
             json: () => {
-              return { message: signupResponse.BadRequest.USERNAME_TAKEN.message };
+              return {
+                message: signupResponse.BadRequest.USERNAME_TAKEN.message
+              };
             }
           })
         );
@@ -197,17 +242,17 @@ describe("signup testing", () => {
       // fetch api is called once after positive validation
     });
 
-
     it("valid username, email, password but EMAIL AND USERNAME IS TAKEN", done => {
-   
       global.fetch = jest.fn().mockImplementationOnce(() => {
         return new Promise((resolve, reject) =>
           resolve({
             ok: false,
             status: signupResponse.BadRequest.status,
-            code:  signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.code,
+            code: signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.code,
             json: () => {
-              return { message: signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message };
+              return {
+                message: signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message
+              };
             }
           })
         );
@@ -231,12 +276,15 @@ describe("signup testing", () => {
       // click signup button
 
       fireEvent.click(getByText(/signup/i));
-    
-         // fetch api is called once after positive validation
+
+      // fetch api is called once after positive validation
       expect(global.fetch).toHaveBeenCalledTimes(1);
       setTimeout(() => {
-          // not constrain error is visible
-        expect(getByTestId(/userName/i)).toHaveAttribute("helpertext", signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message);
+        // not constrain error is visible
+        expect(getByTestId(/userName/i)).toHaveAttribute(
+          "helpertext",
+          signupResponse.BadRequest.EMAIL_USERNAME_TAKEN.message
+        );
         expect(getByTestId(/password/i)).toHaveAttribute("helpertext", "");
         expect(getByTestId(/email/i)).toHaveAttribute(
           "helpertext",
@@ -244,7 +292,6 @@ describe("signup testing", () => {
         );
         done();
       }, 0);
-   
     });
   });
 });

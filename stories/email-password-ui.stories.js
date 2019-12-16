@@ -63,3 +63,15 @@ export const signUpInvalid = () => {
     />
   );
 };
+
+
+export const signUpNetworkError = () => {
+  return (
+    <SignUp
+      loading
+      emailValidation={{ valid: false, message: "invalid email format" }}
+      usernameValidation={{valid:false,message:'invalid username'}}
+      passwordValidation={{valid:false,message:'invalid password'}}
+    />
+  );
+};
