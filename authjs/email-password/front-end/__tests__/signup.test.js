@@ -199,6 +199,7 @@ describe("signup testing", () => {
 
 
     it("valid username, email, password but EMAIL AND USERNAME IS TAKEN", done => {
+   
       global.fetch = jest.fn().mockImplementationOnce(() => {
         return new Promise((resolve, reject) =>
           resolve({

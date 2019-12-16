@@ -4,7 +4,6 @@ import commonjs from "rollup-plugin-commonjs";
 import replace from "rollup-plugin-replace";
 import globals from "rollup-plugin-node-globals";
 import postcss from "rollup-plugin-postcss";
-import copy from "rollup-plugin-copy";
 import { terser } from "rollup-plugin-terser";
 import zip from "rollup-plugin-zip";
 import del from "rollup-plugin-delete";
