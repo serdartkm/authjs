@@ -1,4 +1,3 @@
-require("dotenv").config();
 import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
@@ -14,6 +13,9 @@ import cleanup from "rollup-plugin-cleanup";
 import strip from "@rollup/plugin-strip";
 import filesize from "rollup-plugin-filesize";
 import progress from "rollup-plugin-progress";
+
+require("dotenv").config();
+
 const prodPlugins = [
   strip({
     // set this to `false` if you don't want to
@@ -78,15 +80,6 @@ const commonPlugins = [
   }),
   babel({
      runtimeHelpers: true,
-    // exclude: "node_modules/**",
-    // presets: [["@babel/preset-env", { modules: false }], "@babel/preset-react"],
-    // plugins: [
-    //   "@babel/plugin-proposal-class-properties",
-    //   "@babel/plugin-syntax-dynamic-import",
-    //   "@babel/plugin-transform-async-to-generator",
-    //   "@babel/plugin-transform-runtime",
-    //   ["@babel/plugin-transform-react-jsx", { pragma: "h" }]
-    // ]
   }),
   globals()
 

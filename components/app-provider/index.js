@@ -1,24 +1,16 @@
 import { h, createContext } from "preact";
-import { useState,useEffect } from "preact/hooks";
+import { useState } from "preact/hooks";
 
-export const FeedbackContext = createContext("feedback");
+export const SnackMessageContext = createContext("feedback");
 
 export default function AppProvider({ children }) {
-  const [feedback, setFeedback] = useState({
-    message: "h",
-    level: "",
-    status: "",
-    code: ""
-  });
+  const [message, setMessage] = useState('test messages');
 
-  function changeFeed (feed){
-          console.log("feed",feed)  
-    setFeedback(feed)
-  }
+
  
   return (
-    <FeedbackContext.Provider value={{ feedback, changeFeed }}>
+    <SnackMessageContext.Provider value={{ message, setMessage }}>
       {children}
-    </FeedbackContext.Provider>
+    </SnackMessageContext.Provider>
   );
 }

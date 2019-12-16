@@ -44,7 +44,7 @@ export default function useSignUp() {
             body: JSON.stringify({ email, userName, password })
           });
           await setResponse(res);
-            debugger
+          
           setLoading(false);
         } catch (e) {
           setError(e);
@@ -56,7 +56,7 @@ export default function useSignUp() {
 
   useEffect(() => {
     if (response !== null && response !== undefined) {
- debugger
+
       if (response.status === signupResponse.BadRequest.status) {
         if (response.code === signupResponse.BadRequest.USERNAME_TAKEN.code) {
           setServerValidation(prevState => {
@@ -81,7 +81,7 @@ export default function useSignUp() {
             email: { valid: false, message: response.json().message },
             userName: { valid: false, message: response.json().message }
           });
-          debugger
+    
         } else if (response.status.ok) {
           saveToken(response.json().token);
         }
@@ -93,7 +93,7 @@ export default function useSignUp() {
   useEffect(()=>{
 
     console.log("serverValidation",serverValidation)
-    debugger
+  
 
   
 

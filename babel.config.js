@@ -8,7 +8,6 @@ module.exports = {
         },
       },
     ],
-   '@babel/preset-react',
     'preact',
   ],
   plugins: [
@@ -19,11 +18,16 @@ module.exports = {
         "http-response-status":"./http-response-status"
       }
     }],
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-proposal-optional-chaining',
+
     '@babel/plugin-transform-runtime',
     ["@babel/plugin-transform-react-jsx", { pragma: "h" }]
   ],
 };
+
+
+/*
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-optional-chaining',
+*/
