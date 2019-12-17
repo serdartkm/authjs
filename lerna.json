@@ -1,10 +1,7 @@
 {
   "packages": [
-    "packages/*",
-    "xaf/*",
-    "mongodbjs/*",
-    "authjs/*",
-    "rtcjs/*"
+    "front-end/*"
+  
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
