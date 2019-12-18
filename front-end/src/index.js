@@ -4,7 +4,7 @@ import { Result } from "./result";
 
 const SEARCH = "//api.github.com/search/repositories";
 
-// new one one ///////
+// new one one ///////ssss
 export default class App extends Component {
   componentDidMount() {
     fetch(`${SEARCH}?q=preact`)
