@@ -3,9 +3,10 @@ import { Component, render } from "preact";
 import { Result } from "./result";
 
 const SEARCH = "//api.github.com/search/repositories";
+
 // my first modification
 // another modification
-export default class App extends Component {
+// another modification
   componentDidMount() {
     fetch(`${SEARCH}?q=preact`)
       .then(r => r.json())
@@ -21,7 +22,9 @@ export default class App extends Component {
       <div>
         <h1>Example</h1>
         <div class="list">
-          {results.map(result => <Result result={result} />)}
+          {results.map(result => (
+            <Result result={result} />
+          ))}
         </div>
       </div>
     );
