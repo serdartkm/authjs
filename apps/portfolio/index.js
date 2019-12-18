@@ -1,19 +1,13 @@
+import { h, render } from "preact";
+import AppShell from "../../components/app-shell";
 
-
-import { h, render, Component } from 'preact';
-// import ChatRoom from './ChatRoom'
-import Nav from './Nav'
-    render(
-        <div style={{ display: "flex",flexDirection:"column", alignItems: "center",marginTop:70 }}>
-            <div style={{display:"flex",justifyContent:"center"}}>
-                <h3>SocketIO text messaging demo</h3>
-            </div>
-            <Nav />
-        </div>
-        ,
-        document.getElementById('root')
-    );
-
-
-
-
+render(
+  <div>
+    <AppShell
+      drawerItems={[{ route: "/modules", title: "Modules" }]}
+      appTitle="Portfolio"
+      routes={[{ path: "/modules", load: () => import("./modules/index") }]}
+    />
+  </div>,
+  document.getElementById("root")
+);

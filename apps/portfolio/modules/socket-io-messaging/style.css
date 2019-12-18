@@ -1,0 +1,29 @@
+.chip{
+    background-color: darkgrey;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+   line-height: 20px;
+}
+
+.media-height{
+height: 100%;
+}
+
+
+.root{
+    padding: 3px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.tab-bar{
+    padding: 0;
+    width: 50%;
+    display: flex ;
+    justify-content: center;
+  
+    
+}
