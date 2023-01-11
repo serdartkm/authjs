@@ -42,7 +42,7 @@
     "express-jwt": "^5.3.1",
     "jest": "^24.9.0",
     "jquery": "^3.4.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^2.2.0",
     "linkstate": "^1.1.1",
     "mongodb": "3.3.0-beta2",
